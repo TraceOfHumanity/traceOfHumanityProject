@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+
+.header {
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: calc(40px + (80 - 40) * ((100vw - 320px) / (2500 - 320)));
+  max-height: 100px;
+  z-index: 5;
+  width: 100%;
+  left: 0;
+  padding: 5px $lateralPadding;
+  backdrop-filter: blur(5px);
+  // background: linear-gradient(0deg, rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.8),rgb(0, 0, 0));
+  background-color: rgba(0, 0, 0, 0.456);
+  .left {
+    // background: blue;
+  }
+  .middle {
+    position: relative;
+    a {
+      position: absolute;
+      display: block;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+    }
+  }
+  .right {
+    // background: blue;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+}

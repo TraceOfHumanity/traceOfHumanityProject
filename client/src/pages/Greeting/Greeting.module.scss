@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+.greeting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(500px + (1000 - 500) * ((100vw - 320px) / (2500 - 320)));
+  max-height: 1000px;
+  // height: 100%;
+  // background: red;
+}
+.popup {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  z-index: 10;
+  padding: 10px;
+  backdrop-filter: blur(5px);
+  border: 1px solid red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  border-radius: $rounded;
+  -webkit-border-radius: $rounded;
+  -moz-border-radius: $rounded;
+  -ms-border-radius: $rounded;
+  -o-border-radius: $rounded;
+  h3 {
+    display: inline-block;
+    margin: 0 auto;
+    // text-align: center;
+    text-transform: uppercase;
+    background: $mainGradient;
+    background-clip: text;
+    color: transparent;
+    padding-bottom: $paddingButtom;
+  }
+  p{
+    text-align: center;
+  }
+  .close{
+    cursor: pointer;
+    position: absolute;top: 0;
+    right: 0;
+    color: red;
+    // border: 1px solid red;
+    padding: 5px;
+  }
+}

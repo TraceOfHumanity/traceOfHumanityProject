@@ -1,0 +1,20 @@
+@import "../../styles/variables.scss";
+
+.management {
+  padding-top: $headerHeightPlus;
+  .authorization {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  button {
+    border: 1px solid rgb(0, 57, 66);
+    padding: 4px 15px;
+    background: $mainAlphaGradient;
+    border-radius: $rounded;
+    -webkit-border-radius: $rounded;
+    -moz-border-radius: $rounded;
+    -ms-border-radius: $rounded;
+    -o-border-radius: $rounded;
+  }
+}

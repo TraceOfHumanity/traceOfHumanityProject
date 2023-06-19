@@ -1,0 +1,20 @@
+$mainBg: #000000;
+$whiteText: #fdfdff;
+$mainGradient: linear-gradient(330deg, #0094ff, #ff0000);
+// $mainAlphaGradient: linear-gradient(330deg, rgba(0, 149, 255, 0.3), rgba(255, 0, 0, 0.3));
+$mainAlphaRevertGradient: linear-gradient(
+  70deg,
+  rgba(0, 149, 255, 0.1),
+  rgba(255, 0, 0, 0.1)
+);
+$mainAlphaGradient: linear-gradient(
+  330deg,
+  rgba(0, 149, 255, 0.1),
+  rgba(255, 0, 0, 0.1)
+);
+
+$lateralPadding: calc(8px + (100 - 8) * ((100vw - 320px) / (9999 - 320)));
+$rounded: calc(5px + (15 - 5) * ((100vw - 320px) / (2500 - 320)));
+$paddingButtom: calc(10px + (20 - 10) * ((100vw - 320px) / (2500 - 320)));
+$headerHeight: calc(40px + (80 - 40) * ((100vw - 320px) / (2500 - 320)));
+$headerHeightPlus: calc($headerHeight + 20px);

@@ -1,0 +1,47 @@
+@import "./variables.scss";
+@import "./normalize.scss";
+
+.app {
+  padding: 0 $lateralPadding 0;
+  position: relative;
+  width: 100%;
+  max-width: 2500px;
+  height: 100vh;
+  color: $whiteText;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: calc(28px + (46 - 28) * ((100vw - 320px) / (2500 - 320)));
+  font-weight: 700;
+}
+h2 {
+  font-size: calc(24px + (40 - 24) * ((100vw - 320px) / (2500 - 320)));
+  font-weight: 600;
+}
+h3 {
+  font-size: calc(20px + (36 - 20) * ((100vw - 320px) / (2500 - 320)));
+  font-weight: 500;
+}
+h4 {
+  font-size: calc(18px + (28 - 18) * ((100vw - 320px) / (2500 - 320)));
+  font-weight: 400;
+}
+h5 {
+  font-size: calc(12px + (20 - 12) * ((100vw - 320px) / (2500 - 320)));
+  font-weight: 400;
+}
+p {
+  padding-bottom: 20px;
+}
+.openPopup {
+  opacity: 1;
+}
+.closedPopup {
+  opacity: 0;
+  pointer-events: none;
+}
+
+button {
+  padding: 5px;
+}

@@ -1,0 +1,169 @@
+@import "../../styles/variables.scss";
+.menuContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  //   background: blue;
+  .cut {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    // background: rgba(0, 0, 255, 0.242);
+    width: calc(450px + (900 - 450) * ((100vw - 100px) / (2500 - 100)));
+    height: calc(450px + (900 - 450) * ((100vw - 100px) / (2500 - 100)));
+    max-width: 900px;
+    max-height: 900px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    @media (max-width: 560px) {
+      width: 100vw;
+      height: 100vw;
+    }
+  }
+  .menu {
+    width: calc(250px + (500 - 250) * ((100vw - 320px) / (2500 - 320)));
+    height: calc(250px + (500 - 250) * ((100vw - 320px) / (2500 - 320)));
+    // background: rgba(0, 0, 255, 0.502);
+    max-width: 500px;
+    max-height: 500px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: $rounded;
+    -webkit-border-radius: $rounded;
+    -moz-border-radius: $rounded;
+    -ms-border-radius: $rounded;
+    -o-border-radius: $rounded;
+    align-items: center;
+    @media (max-width: 560px) {
+      width: calc(170px + (250 - 170) * ((100vw - 320px) / (560 - 320)));
+      height: calc(170px + (250 - 170) * ((100vw - 320px) / (560 - 320)));
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url(../../../public/assets/ld.svg);
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: left;
+      pointer-events: none;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url(../../../public/assets/rd.svg);
+      height: 100%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right;
+      pointer-events: none;
+    }
+
+    a,
+    button {
+      gap: 3%;
+      position: relative;
+      padding: 4px 15px;
+      display: flex;
+      align-items: center;
+      border: 1px solid rgb(0, 57, 66);
+      border-radius: $rounded;
+      -webkit-border-radius: $rounded;
+      -moz-border-radius: $rounded;
+      -ms-border-radius: $rounded;
+      -o-border-radius: $rounded;
+      @media (max-width: 560px) {
+        padding: 4px 8px;
+      }
+      &:hover {
+        h5 {
+          text-shadow: 1px 1px 1rem rgb(0, 0, 0), 0 0 1rem rgb(255, 0, 0),
+            0 0 1rem blue;
+          letter-spacing: 1px;
+        }
+      }
+
+      &:nth-child(even) {
+        left: 102%;
+        justify-content: start;
+        background: $mainAlphaGradient;
+      }
+      &:nth-child(odd) {
+        flex-direction: row-reverse;
+        right: 102%;
+        justify-content: end;
+        background: $mainAlphaRevertGradient;
+      }
+      &:nth-child(1) {
+        clip-path: polygon(0% 0%, 100% 0%, 93% 100%, 0% 100%);
+        transform: translateX(14%);
+        -webkit-transform: translateX(14%);
+        -moz-transform: translateX(14%);
+        -ms-transform: translateX(14%);
+        -o-transform: translateX(14%);
+      }
+      &:nth-child(2) {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 7% 100%);
+        transform: translateX(-14%);
+        -webkit-transform: translateX(-14%);
+        -moz-transform: translateX(-14%);
+        -ms-transform: translateX(-14%);
+        -o-transform: translateX(-14%);
+      }
+
+      &:nth-child(5) {
+        clip-path: polygon(0% 0%, 93% 0%, 100% 100%, 0% 100%);
+        transform: translateX(14%);
+        -webkit-transform: translateX(14%);
+        -moz-transform: translateX(14%);
+        -ms-transform: translateX(14%);
+        -o-transform: translateX(14%);
+      }
+      &:nth-child(6) {
+        clip-path: polygon(7% 0%, 100% 0%, 100% 100%, 0% 100%);
+        transform: translateX(-14%);
+        -webkit-transform: translateX(-14%);
+        -moz-transform: translateX(-14%);
+        -ms-transform: translateX(-14%);
+        -o-transform: translateX(-14%);
+      }
+
+      span {
+        display: block;
+        width: 25px;
+        height: 25px;
+        font-size: 25px;
+        line-height: 25px;
+        @media (max-width: 560px) {
+          width: calc(14px + (25 - 14) * ((100vw - 320px) / (560 - 320)));
+          height: calc(14px + (25 - 14) * ((100vw - 320px) / (560 - 320)));
+          line-height: calc(14px + (25 - 14) * ((100vw - 320px) / (560 - 320)));
+          font-size: calc(14px + (25 - 14) * ((100vw - 320px) / (560 - 320)));
+        }
+      }
+      img {
+        width: 25px;
+        @media (max-width: 560px) {
+          width: calc(14px + (25 - 14) * ((100vw - 320px) / (560 - 320)));
+        }
+      }
+    }
+  }
+}

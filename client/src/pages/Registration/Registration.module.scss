@@ -1,0 +1,48 @@
+@import "../../styles/variables.scss";
+.registration {
+  border: 1px solid red;
+  background: $mainAlphaRevertGradient;
+  padding: 10px;
+  border-radius: $rounded;
+  -webkit-border-radius: $rounded;
+  -moz-border-radius: $rounded;
+  -ms-border-radius: $rounded;
+  -o-border-radius: $rounded;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto 0;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+  }
+  label {
+    white-space: nowrap;
+  }
+  input {
+    border-bottom: 1px solid red;
+    width: 100%;
+    color: inherit;
+  }
+  p {
+    text-align: center;
+    color: red;
+  }
+  h2 {
+    text-align: center;
+  }
+  form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  button {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .disabledButton {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
