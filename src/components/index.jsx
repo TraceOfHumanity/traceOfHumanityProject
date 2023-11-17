@@ -1,0 +1,1 @@
+export { EarthScene } from "./EarthScene";
