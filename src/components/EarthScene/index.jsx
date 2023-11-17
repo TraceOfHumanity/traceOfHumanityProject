@@ -65,7 +65,7 @@ export const EarthScene = () => {
 
     const pointLight2 = new THREE.PointLight();
     pointLight2.position.set(-1, 1, 1);
-    pointLight2.intensity = 4;
+    pointLight2.intensity = 3;
     scene.add(pointLight2);
 
     const sizes = {

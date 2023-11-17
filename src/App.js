@@ -1,5 +1,5 @@
+import React from "react";
 import { EarthScene } from "./components";
-
 
 function App() {
   return (
