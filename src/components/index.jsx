@@ -1,1 +1,0 @@
-export { EarthScene } from "./EarthScene";
