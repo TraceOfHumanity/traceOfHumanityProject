@@ -1,8 +1,9 @@
+import { EarthScene } from "./components";
 
 function App() {
   return (
     <div className="App">
-      123
+      <EarthScene />
     </div>
   );
 }
