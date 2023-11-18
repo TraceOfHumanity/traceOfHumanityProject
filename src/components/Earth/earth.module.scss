@@ -1,0 +1,14 @@
+.earthScene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  // height: 100%;
+  // height: calc(500px + (1000 - 500) * ((100vw - 390px) / (1920 - 390)));
+  @media (max-width: 1000px) {
+    height: calc(100vw /1.1);
+  }
+
+}

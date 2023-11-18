@@ -1,11 +1,11 @@
 import React from "react";
-import { EarthScene, Header } from "./components";
+import { Earth, Header } from "./components";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header />
-      <EarthScene />
+      <Earth />
     </div>
   );
 }

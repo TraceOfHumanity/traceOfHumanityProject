@@ -1,2 +1,2 @@
-export { EarthScene } from "./EarthScene";
+export { Earth } from "./Earth";
 export { Header } from "./Header";
