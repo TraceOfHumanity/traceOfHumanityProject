@@ -1,9 +1,10 @@
 import React from "react";
-import { EarthScene } from "./components";
+import { EarthScene, Header } from "./components";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <EarthScene />
     </div>
   );

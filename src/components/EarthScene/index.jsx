@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import styles from "./EarthScene.module.scss";
+import styles from "./earthScene.module.scss";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import SpaceTexture from "./textures/space.svg";
@@ -95,17 +95,6 @@ export const EarthScene = () => {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Resize handler
-    // const handleResize = () => {
-    //   // Оновити розміри канвасу при зміні розмірів вікна
-    //   sizes.width = window.innerWidth;
-    //   sizes.height = window.innerHeight;
-
-    //   camera.aspect = sizes.width / sizes.height;
-    //   camera.updateProjectionMatrix();
-
-    //   renderer.setSize(sizes.width, sizes.height);
-    // };
     const handleResize = () => {
       // Оновити розміри канвасу при зміні розмірів батьківського елементу
       sizes.width = canvasWrapper.current.clientWidth;
@@ -118,6 +107,23 @@ export const EarthScene = () => {
     };
 
     window.addEventListener("resize", handleResize);
+    // window.addEventListener("dblclick", () => {
+    //   const fullscreenElement =
+    //     document.fullscreenElement || document.webkitFullscreenElement;
+    //   if (!fullscreenElement) {
+    //     if (canvasWrapper.current.requestFullscreen) {
+    //       canvasWrapper.current.requestFullscreen();
+    //     } else if (canvasWrapper.current.webkitRequestFullscreen) {
+    //       canvasWrapper.current.webkitRequestFullscreen();
+    //     }
+    //   } else {
+    //     if (document.exitFullscreen) {
+    //       document.exitFullscreen();
+    //     } else if (document.webkitExitFullscreen) {
+    //       document.webkitExitFullscreen();
+    //     }
+    //   }
+    // });
 
     /**
      * Animate
@@ -160,7 +166,7 @@ export const EarthScene = () => {
 
   return (
     <div ref={canvasWrapper} className={styles.space}>
-      <canvas ref={canvas} style={{ width: "100%" }} className="webgl" />
+      <canvas ref={canvas} style={{ width: "100vw" }} className="webgl" />
     </div>
   );
 };
