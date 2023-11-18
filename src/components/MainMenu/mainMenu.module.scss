@@ -1,0 +1,28 @@
+.mainMenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: fit-content;
+  //margin: 0 auto;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  //width: fit-content;
+  //height: fit-content;
+  //margin: auto auto;
+  ////background-color: red;
+  //position: relative;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  //z-index: 10;
+  //border-left-color: red;
+  //border-left-style: solid;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}

@@ -21,6 +21,7 @@ export const EarthScene = (props) => {
   const cloudsRef = React.useRef();
   const sunRef = React.useRef();
   const moonRef = React.useRef();
+  const starsRef = React.useRef();
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     earthRef.current.rotation.y = elapsedTime / 60;
@@ -34,6 +35,8 @@ export const EarthScene = (props) => {
     moonRef.current.position.z = Math.sin(elapsedTime / 50) * 1;
 
     moonRef.current.rotation.y = elapsedTime / 50;
+
+    starsRef.current.rotation.y = elapsedTime / 150;
   });
 
   function Intro() {
@@ -58,6 +61,7 @@ export const EarthScene = (props) => {
         factor={3}
         saturation={0}
         fade={true}
+        ref={starsRef}
       />
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1.006, 32, 32]} />
@@ -92,7 +96,7 @@ export const EarthScene = (props) => {
       <mesh position={[3, 0, 1]} rotation={[0, 0, 0]} ref={moonRef}>
         <sphereGeometry args={[0.1, 32, 32]} />
         <meshPhongMaterial map={moonMap} />
-        <pointLight intensity={0.05} />
+        <pointLight intensity={0.01} />
       </mesh>
       <mesh position={[10, 0, -10]} ref={sunRef} rotation={[0, 0, 0]}>
         <sphereGeometry args={[0.3, 32, 32]} />

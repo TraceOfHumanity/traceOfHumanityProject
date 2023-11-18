@@ -46,16 +46,17 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  background-color: $mainBg;
+  // background-color: $mainBg;
+  background-color: transparent;
   font-weight: 600;
   color: $whiteText;
 }
 
 .app {
-  padding: 0 $lateralPadding 0;
+  // padding: 0 $lateralPadding 0;
   position: relative;
   width: 100%;
-  max-width: 2500px;
+  // max-width: 2500px; 
   height: 100vh;
   color: $whiteText;
   margin: 0 auto;
