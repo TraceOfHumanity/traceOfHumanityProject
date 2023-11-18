@@ -24,12 +24,12 @@ export const EarthScene = (props) => {
   const starsRef = React.useRef();
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    earthRef.current.rotation.y = elapsedTime / 60;
+    earthRef.current.rotation.y = elapsedTime / 60 + 4.7;
     cloudsRef.current.rotation.y = elapsedTime / 70;
 
-    sunRef.current.position.x = Math.cos(elapsedTime / 30) * 20;
-    sunRef.current.position.z = Math.sin(elapsedTime / 30) * 20;
-    sunRef.current.position.y = Math.sin(elapsedTime / -30) * 10;
+    sunRef.current.position.x = Math.cos(elapsedTime / 50) * 20;
+    sunRef.current.position.z = Math.sin(elapsedTime / 50) * 20;
+    sunRef.current.position.y = Math.sin(elapsedTime / -50) * 10;
 
     moonRef.current.position.x = Math.cos(elapsedTime / 50) * 3;
     moonRef.current.position.z = Math.sin(elapsedTime / 50) * 1;
@@ -73,7 +73,7 @@ export const EarthScene = (props) => {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh ref={earthRef} position={[0, 0, 0]}>
+      <mesh ref={earthRef} position={[0, 0, 0]} rotation={[0, 0, -0.2]}>
         <sphereGeometry args={[1, 100, 100]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
@@ -99,7 +99,7 @@ export const EarthScene = (props) => {
         <pointLight intensity={0.01} />
       </mesh>
       <mesh position={[10, 0, -10]} ref={sunRef} rotation={[0, 0, 0]}>
-        <sphereGeometry args={[0.3, 32, 32]} />
+        <sphereGeometry args={[0.15, 32, 32]} />
         <meshPhongMaterial emissive="yellow" />
         <pointLight intensity={2000} />
       </mesh>
