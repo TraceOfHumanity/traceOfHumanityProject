@@ -3,14 +3,15 @@ import styles from "./mainMenu.module.scss";
 import { Player } from "./Player";
 import { Link } from "react-router-dom";
 import { FaSpaceShuttle } from "react-icons/fa";
+import { SiAlienware } from "react-icons/si";
 
 const menuItems = [
-  { name: "explore", link: "/library" },
-  { name: "About", link: "/about" },
-  { name: "Contact", link: "/contact" },
-  { name: "Portfolio", link: "/portfolio" },
-  { name: "Blog", link: "/blog" },
-  { name: "Shop", link: "/shop" },
+  { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
+  { name: "Author", link: "/AboutAuthor", icon: <SiAlienware /> },
+  // { name: "Contact", link: "/contact" },
+  // { name: "Portfolio", link: "/portfolio" },
+  // { name: "Blog", link: "/blog" },
+  // { name: "Shop", link: "/shop" },
 ];
 
 export const MainMenu = () => {
@@ -19,16 +20,14 @@ export const MainMenu = () => {
       <div className={styles.cut}>
         <div className={styles.menuItems}>
           {menuItems.map((item, index) => (
-            <Link
-              to={item.link}
-              // style={index % 2 === 0 ? { right: "100%" } : { left: "100%" }}
-            >
-              {item.name === "explore" && <FaSpaceShuttle />}
+            <Link to={item.link}>
+              {item % 2 !== 0 ? item.icon : null}
               {item.name}
+              {item % 2 === 0 ? item.icon : null}
             </Link>
           ))}
-          <Player />
         </div>
+        <Player />
       </div>
     </div>
   );

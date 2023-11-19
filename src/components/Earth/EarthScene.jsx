@@ -25,11 +25,11 @@ export const EarthScene = (props) => {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     earthRef.current.rotation.y = elapsedTime / 60 + 4.7;
-    cloudsRef.current.rotation.y = elapsedTime / 70;
+    cloudsRef.current.rotation.y = elapsedTime / 80;
 
-    sunRef.current.position.x = Math.cos(elapsedTime / 50) * 20;
-    sunRef.current.position.z = Math.sin(elapsedTime / 50) * 20;
-    sunRef.current.position.y = Math.sin(elapsedTime / -50) * 10;
+    sunRef.current.position.x = Math.cos(elapsedTime / 10) * 20;
+    sunRef.current.position.z = Math.sin(elapsedTime / 10) * 20;
+    sunRef.current.position.y = Math.sin(elapsedTime / -10) * 5;
 
     moonRef.current.position.x = Math.cos(elapsedTime / 50) * 3;
     moonRef.current.position.z = Math.sin(elapsedTime / 50) * 1;
@@ -100,7 +100,7 @@ export const EarthScene = (props) => {
       </mesh>
       <mesh position={[10, 0, -10]} ref={sunRef} rotation={[0, 0, 0]}>
         <sphereGeometry args={[0.15, 32, 32]} />
-        <meshPhongMaterial emissive="yellow" />
+        <meshPhongMaterial emissive="#fcfc5f" />
         <pointLight intensity={2000} />
       </mesh>
       <Intro />
