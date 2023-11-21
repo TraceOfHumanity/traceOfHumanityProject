@@ -27,14 +27,13 @@ export const EarthScene = (props) => {
     earthRef.current.rotation.y = elapsedTime / 60 + 4.7;
     cloudsRef.current.rotation.y = elapsedTime / 80;
 
-    sunRef.current.position.x = Math.cos(elapsedTime / 10) * 20;
-    sunRef.current.position.z = Math.sin(elapsedTime / 10) * 20;
-    sunRef.current.position.y = Math.sin(elapsedTime / -10) * 5;
+    sunRef.current.position.x = Math.cos(elapsedTime / 30) * 20;
+    sunRef.current.position.z = Math.sin(elapsedTime / 30) * 20;
+    sunRef.current.position.y = Math.sin(elapsedTime / -30) * 5;
 
     moonRef.current.position.x = Math.cos(elapsedTime / 50) * 3;
     moonRef.current.position.z = Math.sin(elapsedTime / 50) * 1;
-
-    moonRef.current.rotation.y = elapsedTime / 50;
+    moonRef.current.rotation.y = elapsedTime / -30;
 
     starsRef.current.rotation.y = elapsedTime / 150;
   });

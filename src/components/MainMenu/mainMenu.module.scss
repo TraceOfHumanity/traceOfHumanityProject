@@ -40,12 +40,18 @@
 
   .player {
     position: absolute;
-    bottom: 10px;
+    bottom: 10%;
     left: 50%;
 
     button {
       font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (2500 - 320)));
     }
+
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
   }
 
   .menuItems {

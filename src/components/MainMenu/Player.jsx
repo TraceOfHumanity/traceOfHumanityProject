@@ -41,15 +41,15 @@ export const Player = () => {
     }
   }, [isPlaying]);
 
-  useEffect(() => {
-    // Increase the volume of the audio
-    audioRef.current.volume = 1; // Set the volume to 80% (0.8)
+  // useEffect(() => {
+  //   // Increase the volume of the audio
+  //   audioRef.current.volume = 1; // Set the volume to 80% (0.8)
 
-    // Clean up the effect
-    return () => {
-      audioRef.current.volume = 1; // Reset the volume to 100% (1) when the component unmounts
-    };
-  }, []);
+  //   // Clean up the effect
+  //   return () => {
+  //     audioRef.current.volume = 1; // Reset the volume to 100% (1) when the component unmounts
+  //   };
+  // }, []);
 
   return (
     <div className={styles.player}>

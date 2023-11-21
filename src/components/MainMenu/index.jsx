@@ -7,7 +7,7 @@ import { SiAlienware } from "react-icons/si";
 
 const menuItems = [
   { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
-  { name: "Author", link: "/AboutAuthor", icon: <SiAlienware /> },
+  { name: "Author", link: "/aboutAuthor", icon: <SiAlienware /> },
   // { name: "Contact", link: "/contact" },
   // { name: "Portfolio", link: "/portfolio" },
   // { name: "Blog", link: "/blog" },
