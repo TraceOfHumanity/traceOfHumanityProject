@@ -38,22 +38,6 @@
     }
   }
 
-  .player {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-
-    button {
-      font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (2500 - 320)));
-    }
-
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-  }
-
   .menuItems {
     width: calc(250px + (500 - 250) * ((100vw - 320px) / (2500 - 320)));
     aspect-ratio: 1/1;

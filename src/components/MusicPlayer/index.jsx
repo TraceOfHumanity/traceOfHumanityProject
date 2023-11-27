@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./mainMenu.module.scss";
+import styles from "./player.module.scss";
 import { MdMusicNote } from "react-icons/md";
 import { MdMusicOff } from "react-icons/md";
 import gsap from "gsap";
 
-export const Player = () => {
+export const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
   const playButtonRef = useRef(null);
@@ -12,7 +12,7 @@ export const Player = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(
     Math.floor(Math.random() * songs.length)
   );
-  console.log(currentSongIndex);
+  // console.log(currentSongIndex);
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);

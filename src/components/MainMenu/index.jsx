@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./mainMenu.module.scss";
-import { Player } from "./Player";
+// import { Player } from "../MusicPlayer/Player";
 import { Link } from "react-router-dom";
 import { FaSpaceShuttle } from "react-icons/fa";
 import { SiAlienware } from "react-icons/si";
@@ -27,7 +27,7 @@ export const MainMenu = () => {
             </Link>
           ))}
         </div>
-        <Player />
+        {/* <Player /> */}
       </div>
     </div>
   );
