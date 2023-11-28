@@ -9,7 +9,13 @@ import { useGLTF } from "@react-three/drei";
 export function OfficeChair(props) {
   const { nodes, materials } = useGLTF("/models/officeChair.gltf");
   return (
-    <group {...props} dispose={null} scale={[0.3, 0.3, 0.3]}>
+    <group
+      {...props}
+      dispose={null}
+      scale={[0.3, 0.3, 0.3]}
+      rotation={[0, Math.PI * 1.5, 0]}
+      position={[0, 0, -0.1]}
+    >
       <mesh
         geometry={nodes.Chair.geometry}
         material={materials.Chair}

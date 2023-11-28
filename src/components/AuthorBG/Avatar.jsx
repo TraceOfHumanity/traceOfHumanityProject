@@ -15,7 +15,7 @@ export function Avatar(props) {
     actions[names[0]].play();
   }, []);
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} dispose={null} rotation={[0, Math.PI, 0]}>
       <group name="Scene">
         <group name="Armature">
           <primitive object={nodes.Hips} />
