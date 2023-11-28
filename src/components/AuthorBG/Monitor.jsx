@@ -9,7 +9,12 @@ import { useGLTF } from "@react-three/drei";
 export function Monitor(props) {
   const { nodes, materials } = useGLTF("/models/Monitor.gltf");
   return (
-    <group {...props} dispose={null} position={[-0.1, 0.7, -0.9]}>
+    <group
+      {...props}
+      dispose={null}
+      position={[-0.1, 0.7, -0.9]}
+      scale={[1.5, 1, 1]}
+    >
       <mesh
         geometry={nodes.circle.geometry}
         material={materials.Mat}
