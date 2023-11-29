@@ -1,5 +1,5 @@
 .header {
-  height: 100px;
+  height: calc(50px + (100 - 50) * ((100vw - 320px) / (2500 - 320)));
   width: 100%;
   // background: red;
   display: flex;
@@ -8,4 +8,26 @@
   padding: 10px;
   z-index: 5;
   position: relative;
+  .brain{
+    // border-radius: 50%;
+    // -webkit-border-radius: 50%;
+    // -moz-border-radius: 50%;
+    // -ms-border-radius: 50%;
+    // -o-border-radius: 50%;
+    // background-color: rgb(0, 0, 0);
+    z-index: 1;
+    position: relative;
+}
+  .nano{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    opacity: 0.5;
+    height: 50%;
+}
 }

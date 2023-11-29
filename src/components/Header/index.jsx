@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <div className={styles.header}>
-      <Link to="/">
+      <Link className={styles.brain} to="/">
         <img src="/logo.svg" alt="" />
       </Link>
+        <img className={styles.nano} src="/assets/nano.svg" alt="" />
     </div>
   );
 };

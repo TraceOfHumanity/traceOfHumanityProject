@@ -23,7 +23,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    width: calc(450px + (950 - 450) * ((100vw - 100px) / (2500 - 100)));
+    width: calc(300px + (950 - 300) * ((100vw - 320px) / (2500 - 320)));
     aspect-ratio: 5/4;
     max-width: 900px;
     border-radius: 50%;
@@ -31,15 +31,16 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+    // background-color: rgba(255, 255, 255, 0.161);
 
-    @media (max-width: 560px) {
-      width: 100vw;
-      height: 100vw;
-    }
+    // @media (max-width: 560px) {
+    //   width: 100vw;
+    //   height: 100vw;
+    // }
   }
 
   .menuItems {
-    width: calc(250px + (500 - 250) * ((100vw - 320px) / (2500 - 320)));
+    width: calc(120px + (500 - 120) * ((100vw - 320px) / (2500 - 320)));
     aspect-ratio: 1/1;
     position: relative;
 
@@ -49,10 +50,10 @@
       position: absolute;
       padding: 10px 15px;
       display: flex;
-      font-size: 18px;
+      font-size: calc(12px + (18 - 12) * ((100vw - 320px) / (2500 - 320)));
       align-items: center;
-      border-top: 1px solid rgb(0, 57, 66);
-      border-bottom: 1px solid rgb(0, 57, 66);
+      border-top: 1px solid rgba(0, 221, 255, 0.4);
+      border-bottom: 1px solid rgba(0, 221, 255, 0.4);
       text-transform: uppercase;
       ;
 
@@ -61,7 +62,7 @@
       }
 
       &:nth-child(even) {
-        left: 102%;
+        left: calc(100% + calc(20px + (10 - 20) * ((100vw - 320px) / (2500 - 320))));
         justify-content: start;
         background: $mainAlphaGradient;
       }
@@ -75,7 +76,7 @@
 
       &:nth-child(1) {
         top: 10%;
-        clip-path: polygon(0% 0%, 100% 0%, 93% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
         transform: translateX(14%);
         -webkit-transform: translateX(14%);
         -moz-transform: translateX(14%);
@@ -85,7 +86,7 @@
 
       &:nth-child(2) {
         top: 10%;
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 7% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 5% 100%);
         transform: translateX(-14%);
         -webkit-transform: translateX(-14%);
         -moz-transform: translateX(-14%);
