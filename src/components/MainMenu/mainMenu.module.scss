@@ -69,7 +69,7 @@
 
       &:nth-child(odd) {
         flex-direction: row-reverse;
-        right: 102%;
+        right: calc(100% + calc(20px + (10 - 20) * ((100vw - 320px) / (2500 - 320))));
         justify-content: end;
         background: $mainAlphaRevertGradient;
       }
