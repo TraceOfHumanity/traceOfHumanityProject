@@ -107,6 +107,10 @@ h6 {
 
 ::-webkit-scrollbar {
   width: 3px;
+
+  @media (max-width: 768px) {
+    width: 0;
+  }
 }
 
 // ::-webkit-scrollbar-track {
