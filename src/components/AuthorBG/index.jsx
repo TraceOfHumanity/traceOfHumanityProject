@@ -18,7 +18,7 @@ import { Ground } from "./Ground";
 export const AuthorBG = () => {
   const [video] = useState(() => {
     const vid = document.createElement("video");
-    vid.src = "/assets/code.mp4";
+    vid.src = "/assets/code2.mp4";
     vid.crossOrigin = "Anonymous";
     vid.loop = true;
     vid.muted = true;
@@ -27,7 +27,7 @@ export const AuthorBG = () => {
   });
   const [video2] = useState(() => {
     const vid = document.createElement("video");
-    vid.src = "/assets/spaceShuttle.mp4";
+    vid.src = "/assets/code.mp4";
     vid.crossOrigin = "Anonymous";
     vid.loop = true;
     vid.muted = true;
