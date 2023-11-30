@@ -62,17 +62,17 @@ export const AuthorBG = () => {
             <videoTexture attach="emissiveMap" args={[video2]} />
           </meshStandardMaterial>
         </mesh>
-        <pointLight position={[-1, 2, 1]} intensity={3} />
+        {/* <pointLight position={[-1, 2, 1]} intensity={3} /> */}
         <pointLight
           color="#038CAF"
-          intensity={70}
+          intensity={90}
           position={[0, 5, 0]}
           castShadow
           shadow-bias={-0.0001}
         />
         <pointLight
           color="#FE0101"
-          intensity={50}
+          intensity={70}
           position={[5, 3, 4]}
           castShadow
           shadow-bias={-0.0001}
