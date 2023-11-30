@@ -14,6 +14,13 @@ import { Desk } from "./Desk";
 import { Monitor } from "./Monitor";
 import { Keyboard } from "./Keyboard";
 import { Ground } from "./Ground";
+import { Camera } from "./Camera";
+
+// const creettingText = "Hello everyone! My name is Alexander, and I sincerely want to make our world a better place. This task requires a lot of effort, but I am sure that modern technology gives us incredible opportunities that our ancestors could not even imagine. Therefore, we must use these opportunities to become more productive and solve the complex issues before us.
+// Programming and technology are becoming an integral part of life for an increasing number of people. This allows us to automate many areas of our daily activities, which used to take a lot of time and effort.Programming and technology are becoming an integral part of life for an increasing number of people. This allows us to automate many areas of our daily activities, which used to take a lot of time and effort.Neural networks, data analytics and process automation give us the opportunity to find effective solutions and implement them.
+// Thanks to programming, I can confidently say that there are no problems that cannot be solved, everything can be solved. The only question is how long it will take.
+// Learning to program is becoming more and more accessible, thanks to open access to educational resources, online courses and programming communities. This means that anyone who has the desire can learn to code and make their own contribution to creating a better future.I believe that cooperation will help us solve even the most difficult problems. Together we can make this world a better place for all of us and future generations.
+// "
 
 export const AuthorBG = () => {
   const [video] = useState(() => {
@@ -38,7 +45,7 @@ export const AuthorBG = () => {
   return (
     <div className={styles.authorBG}>
       <Canvas>
-        <CameraControls
+        {/* <CameraControls
           autoRotate
           enableZoom={false}
           enablePan={false}
@@ -51,9 +58,9 @@ export const AuthorBG = () => {
           maxDistance={6}
           target={[0, 2, 0]}
           position={[0, 2, 0]}
-        />
+        /> */}
         {/* <mesh ref={cameraRef} position={[0, 0, 0]}> */}
-        <PerspectiveCamera makeDefault position={[-3, 2, 3]} fov={50} />
+        <Camera />
         {/* </mesh> */}
         <mesh
           rotation={[0, 0, 0]}
@@ -77,7 +84,7 @@ export const AuthorBG = () => {
             <videoTexture attach="emissiveMap" args={[video2]} />
           </meshStandardMaterial>
         </mesh>
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <pointLight position={[-1, 2, 1]} intensity={3} />
         <pointLight
           color="#038CAF"
