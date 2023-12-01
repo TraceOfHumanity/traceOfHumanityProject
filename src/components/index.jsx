@@ -4,3 +4,4 @@ export { MainMenu } from "./MainMenu";
 export { AuthorBG } from "./Author/Background";
 export { AuthorContent } from "./Author/Content";
 export { MusicPlayer } from "./MusicPlayer";
+export { Loader } from "./Loader";

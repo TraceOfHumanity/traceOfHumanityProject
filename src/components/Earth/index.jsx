@@ -1,5 +1,6 @@
 import React, { Suspense, useState } from "react";
 
+import { Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
 import styles from "./earth.module.scss";
@@ -10,16 +11,17 @@ export const Earth = () => {
 
   return (
     <div className={styles.earthScene}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Canvas>
+      <Canvas>
+        <Suspense fallback={null}>
           <Suspense fallback={null}>
             <EarthScene />
           </Suspense>
-        </Canvas>
-        {/* <div className={styles.plyer}>
+        </Suspense>
+      </Canvas>
+      {/* <div className={styles.plyer}>
         <audio src="/sounds/Ava.mp3" loop autoPlay controls></audio>
       </div> */}
-      </Suspense>
+      <Loader />
     </div>
   );
 };

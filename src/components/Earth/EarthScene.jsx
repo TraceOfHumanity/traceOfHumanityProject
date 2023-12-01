@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import * as THREE from "three";
 import { TextureLoader } from "three";
@@ -17,6 +17,7 @@ export const EarthScene = (props) => {
     TextureLoader,
     [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap, MoonMap]
   );
+  const [starsFactor, setStarsFactor] = useState(3);
 
   const earthRef = React.useRef();
   const cloudsRef = React.useRef();
@@ -50,13 +51,18 @@ export const EarthScene = (props) => {
     });
   }
 
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setStarsFactor(1);
+    }
+  }, []);
   return (
     <>
       <Stars
         radius={200}
         depth={0}
         count={10000}
-        factor={3}
+        factor={starsFactor}
         // saturation={0}
         fade={false}
         ref={starsRef}

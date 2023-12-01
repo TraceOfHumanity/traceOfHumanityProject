@@ -49,6 +49,7 @@ export const AuthorContent = () => {
           </>
         ))}
       </div>
+      {/* <Loader /> */}
     </div>
   );
 };

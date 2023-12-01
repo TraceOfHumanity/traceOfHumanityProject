@@ -2,6 +2,7 @@ import React, { Suspense, useState } from "react";
 
 import * as THREE from "three";
 
+import { Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
 import styles from "./authorBG.module.scss";
@@ -35,10 +36,10 @@ export const AuthorBG = () => {
 
   return (
     <div className={styles.authorBG}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Canvas
-        // camera={{ fov: 75, position: [0, 0, 0] }}
-        >
+      <Canvas
+      // camera={{ fov: 75, position: [0, 0, 0] }}
+      >
+        <Suspense fallback={null}>
           <Camera />
           <mesh
             rotation={[0, 0, 0]}
@@ -107,8 +108,9 @@ export const AuthorBG = () => {
             <torusGeometry args={[3.35, 0.05, 16, 100]} />
             <meshStandardMaterial emissive={[2, 2, 2]} color={[0, 0, 0]} />
           </mesh>
-        </Canvas>
-      </Suspense>
+        </Suspense>
+      </Canvas>
+      <Loader />
     </div>
   );
 };
