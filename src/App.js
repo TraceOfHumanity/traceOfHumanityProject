@@ -1,6 +1,8 @@
 import React from "react";
-import { Header, MusicPlayer } from "./components";
+
 import { Route, Routes } from "react-router-dom";
+
+import { Header, MusicPlayer } from "./components";
 import { AboutAuthor, Home, Library } from "./pages";
 
 function App() {

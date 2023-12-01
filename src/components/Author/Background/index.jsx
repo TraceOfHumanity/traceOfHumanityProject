@@ -1,20 +1,17 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+
 import * as THREE from "three";
-import { Avatar } from "./Avatar";
+
+import { Canvas } from "@react-three/fiber";
+
 import styles from "./authorBG.module.scss";
-import { OfficeChair } from "./OfficeChair";
-import {
-  CameraControls,
-  CameraShake,
-  OrbitControls,
-  PerspectiveCamera,
-} from "@react-three/drei";
-import { Desk } from "./Desk";
-import { Monitor } from "./Monitor";
-import { Keyboard } from "./Keyboard";
-import { Ground } from "./Ground";
+import { Avatar } from "./Avatar";
 import { Camera } from "./Camera";
+import { Desk } from "./Desk";
+import { Ground } from "./Ground";
+import { Keyboard } from "./Keyboard";
+import { Monitor } from "./Monitor";
+import { OfficeChair } from "./OfficeChair";
 
 export const AuthorBG = () => {
   const [video] = useState(() => {
@@ -38,7 +35,9 @@ export const AuthorBG = () => {
 
   return (
     <div className={styles.authorBG}>
-      <Canvas>
+      <Canvas
+      // camera={{ fov: 75, position: [0, 0, 0] }}
+      >
         <Camera />
         <mesh
           rotation={[0, 0, 0]}
@@ -84,7 +83,7 @@ export const AuthorBG = () => {
         <Keyboard />
         <Ground />
         <mesh
-          rotation={[-0.8, 0, 0]}
+          rotation={[-0.7, 0, 0]}
           position={[0, 0, 0]}
           scale={[0.6, 0.6, 0.6]}
         >
@@ -92,7 +91,7 @@ export const AuthorBG = () => {
           <meshStandardMaterial emissive={[2, 2, 2]} color={[0, 0, 0]} />
         </mesh>
         <mesh
-          rotation={[-1, 0, 0]}
+          rotation={[-0.9, 0, 0]}
           position={[0, 0, 0]}
           scale={[0.6, 0.55, 0.55]}
         >
@@ -100,7 +99,7 @@ export const AuthorBG = () => {
           <meshStandardMaterial emissive={[2, 2, 2]} color={[0, 0, 0]} />
         </mesh>
         <mesh
-          rotation={[-1.2, 0, 0]}
+          rotation={[-1.1, 0, 0]}
           position={[0, 0, 0]}
           scale={[0.6, 0.5, 0.5]}
         >

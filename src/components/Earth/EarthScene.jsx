@@ -1,15 +1,16 @@
 import React from "react";
-import { OrbitControls, Stars } from "@react-three/drei";
+
 import * as THREE from "three";
-import styles from "./earth.module.scss";
+import { TextureLoader } from "three";
+
+import { Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 
+import EarthCloudsMap from "./textures/8k_earth_clouds.jpg";
 import EarthDayMap from "./textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "./textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "./textures/8k_earth_specular_map.jpg";
-import EarthCloudsMap from "./textures/8k_earth_clouds.jpg";
 import MoonMap from "./textures/moon.jpg";
-import { TextureLoader } from "three";
 
 export const EarthScene = (props) => {
   const [dayMap, normalMap, specularMap, cloudsMap, moonMap] = useLoader(
@@ -51,16 +52,15 @@ export const EarthScene = (props) => {
 
   return (
     <>
-      {/* <ambientLight intensity={1} /> */}
-      {/* <pointLight position={[-2, 1, 2.7]} intensity={20} /> */}
       <Stars
-        radius={300}
-        depth={60}
+        radius={200}
+        depth={0}
         count={10000}
         factor={3}
-        saturation={0}
-        fade={true}
+        // saturation={0}
+        fade={false}
         ref={starsRef}
+        speed={0}
       />
       <mesh ref={cloudsRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1.006, 32, 32]} />
@@ -81,16 +81,6 @@ export const EarthScene = (props) => {
           metalness={0.1}
           roughness={1}
         />
-        {/* <OrbitControls
-          enablePan={true}
-          enableZoom={true}
-          enableRotate={true}
-          minDistance={3}
-          maxDistance={7}
-          zoomSpeed={0.6}
-          panSpeed={0.5}
-          rotateSpeed={0.4}
-        /> */}
       </mesh>
       <mesh position={[3, 0, 1]} rotation={[0, 0, 0]} ref={moonRef}>
         <sphereGeometry args={[0.1, 32, 32]} />

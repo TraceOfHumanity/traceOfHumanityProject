@@ -92,6 +92,22 @@ export const Equalizer = () => {
           begin="0.1s"
         />
       </rect>
+      <rect
+        x="100"
+        fill="#fff"
+        width="3"
+        height="10"
+        transform="translate(0) rotate(180 95 50)"
+      >
+        <animate
+          attributeName="height"
+          attributeType="XML"
+          dur="1s"
+          values="30; 100; 30"
+          repeatCount="indefinite"
+          begin="0.3s"
+        />
+      </rect>
     </svg>
   );
 };
