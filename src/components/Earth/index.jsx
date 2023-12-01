@@ -21,7 +21,11 @@ export const Earth = () => {
       {/* <div className={styles.plyer}>
         <audio src="/sounds/Ava.mp3" loop autoPlay controls></audio>
       </div> */}
-      <Loader />
+      <Loader
+        containerStyles={{
+          backgroundColor: "transparent",
+        }}
+      />
     </div>
   );
 };

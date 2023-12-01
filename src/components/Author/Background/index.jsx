@@ -110,7 +110,11 @@ export const AuthorBG = () => {
           </mesh>
         </Suspense>
       </Canvas>
-      <Loader />
+      <Loader
+        containerStyles={{
+          backgroundColor: "transparent",
+        }}
+      />
     </div>
   );
 };

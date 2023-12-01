@@ -52,6 +52,9 @@ export const EarthScene = (props) => {
   }
 
   useEffect(() => {
+    if (window.innerWidth < 1200) {
+      setStarsFactor(2);
+    }
     if (window.innerWidth < 768) {
       setStarsFactor(1);
     }
