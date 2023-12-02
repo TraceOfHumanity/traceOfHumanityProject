@@ -1,14 +1,15 @@
 // $black: #000;
 $mainBg: #000000;
 $whiteText: #e8e8e8;
-$mainGradient: linear-gradient(330deg, #0094ff, #ff0000);
+$grayText: #a8a8a8;
+$mainGradient: linear-gradient(70deg, #01B9FF, #ff0000);
 // $mainAlphaGradient: linear-gradient(330deg, rgba(0, 149, 255, 0.3), rgba(255, 0, 0, 0.3));
 $mainAlphaRevertGradient: linear-gradient(70deg,
-    rgba(0, 149, 255, 0.1),
-    rgba(255, 0, 0, 0.1));
+        rgba(0, 149, 255, 0.1),
+        rgba(255, 0, 0, 0.1));
 $mainAlphaGradient: linear-gradient(330deg,
-    rgba(0, 149, 255, 0.1),
-    rgba(255, 0, 0, 0.1));
+        rgba(0, 149, 255, 0.1),
+        rgba(255, 0, 0, 0.1));
 
 $lateralPadding: calc(8px + (100 - 8) * ((100vw - 320px) / (9999 - 320)));
 $rounded: calc(5px + (15 - 5) * ((100vw - 320px) / (2500 - 320)));

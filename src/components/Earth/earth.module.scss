@@ -10,23 +10,5 @@
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
-  // z-index: -1;
 
-  @media (max-width: 1000px) {
-    // height: calc(100vw /1.1);
-    // top: 50%;
-    // transform: translateY(-50%);
-    // -webkit-transform: translateY(-50%);
-    // -moz-transform: translateY(-50%);
-    // -ms-transform: translateY(-50%);
-    // -o-transform: translateY(-50%);
-  }
-
-  .plyer {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-  }
 }

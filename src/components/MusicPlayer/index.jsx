@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./player.module.scss";
-import { MdMusicNote } from "react-icons/md";
-import { MdMusicOff } from "react-icons/md";
+
 import gsap from "gsap";
+import { MdMusicNote } from "react-icons/md";
+
 import { Equalizer } from "./Equalizer";
+import styles from "./player.module.scss";
 
 export const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -24,9 +25,9 @@ export const MusicPlayer = () => {
     if (!isPlaying) {
       gsap.fromTo(
         playButtonRef.current,
-        { scale: 0.8, opacity: 0.5 },
+        { scale: 0.6, opacity: 0.5 },
         {
-          scale: 1.3,
+          scale: 1,
           opacity: 1,
           duration: 5,
           repeat: -1,

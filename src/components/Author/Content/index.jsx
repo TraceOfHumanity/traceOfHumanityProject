@@ -29,27 +29,17 @@ export const AuthorContent = () => {
     <div className={styles.descriptionContainer}>
       {/* <h1 className={`${styles.h1} title`}>Trace of Humanity</h1> */}
       <h2 className={styles.subTitle}>Live and let live</h2>
-      <div
-      // style={{
-      //   position: "relative",
-      //   // top: "150px",
-      //   left: "1vw",
-      //   width: "calc(300px + (800 - 300) * ((100vw - 320px) / (2500 - 320)))",
-      // }}
-      >
+      <div>
         {greetingAuthorText.map((text, index) => (
-          <>
-            <p
-              className={styles.description}
-              key={index}
-              ref={(el) => (descriptionsRef.current[index] = el)}
-            >
-              {text}
-            </p>
-          </>
+          <p
+            className={styles.description}
+            key={index}
+            ref={(el) => (descriptionsRef.current[index] = el)}
+          >
+            {text}
+          </p>
         ))}
       </div>
-      {/* <Loader /> */}
     </div>
   );
 };

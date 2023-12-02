@@ -4,7 +4,8 @@ Command: npx gltfjsx@6.2.15 Avatar.gltf
 */
 
 import React, { useEffect, useRef } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+
+import { useAnimations, useGLTF } from "@react-three/drei";
 
 export function Avatar(props) {
   const group = useRef();

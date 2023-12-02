@@ -115,6 +115,11 @@ export const AuthorBG = () => {
           backgroundColor: "transparent",
         }}
       />
+      <div
+        className={styles.electronicBg}
+        style={{ backgroundImage: "url(/assets/electronicBg.svg)" }}
+      ></div>
+      {/* <img className={styles.electronicBg} src="/assets/electronicBg.svg" alt="" /> */}
     </div>
   );
 };
