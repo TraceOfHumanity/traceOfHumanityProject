@@ -6,6 +6,7 @@ import { SiAlienware } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 import styles from "./mainMenu.module.scss";
+import { GreetingPopup } from "../GreetingPopup";
 
 const menuItems = [
   { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
@@ -29,8 +30,8 @@ export const MainMenu = () => {
             </Link>
           ))}
         </div>
-        {/* <Player /> */}
       </div>
+      <GreetingPopup />
     </div>
   );
 };

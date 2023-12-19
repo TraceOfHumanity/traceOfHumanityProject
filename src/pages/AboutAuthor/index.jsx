@@ -1,11 +1,11 @@
-import { Canvas } from "@react-three/fiber";
 import React from "react";
-import { AuthorBG, AuthorContent, Avatar } from "../../components";
+
+import { AuthorContent } from "../../components";
 
 export const AboutAuthor = () => {
   return (
     <div>
-      <AuthorBG />
+      {/* <AuthorBG /> */}
       <AuthorContent />
     </div>
   );
