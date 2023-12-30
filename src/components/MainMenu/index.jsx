@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { FaSpaceShuttle } from "react-icons/fa";
 import { SiAlienware } from "react-icons/si";
+import { useDispatch, useSelector } from "react-redux";
 // import { Player } from "../MusicPlayer/Player";
 import { Link } from "react-router-dom";
 
-import styles from "./mainMenu.module.scss";
+import { setIsOpenGreetingPopup } from "../../redux/popups/slice";
 import { GreetingPopup } from "../GreetingPopup";
+import styles from "./mainMenu.module.scss";
 
 const menuItems = [
   { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
@@ -18,6 +20,18 @@ const menuItems = [
 ];
 
 export const MainMenu = () => {
+  const dispatch = useDispatch();
+  const isShowGreetingPopup = useSelector(
+    (state) => state.popups.isOpenGreetingPopup
+  );
+  useEffect(() => {
+    const notFirstVisit = localStorage.getItem("notFirstVisit");
+    if (!notFirstVisit) {
+      localStorage.setItem("notFirstVisit", true);
+      dispatch(setIsOpenGreetingPopup(true));
+    }
+  }, []);
+
   return (
     <div className={styles.mainMenu}>
       <div className={styles.cut}>
@@ -31,7 +45,7 @@ export const MainMenu = () => {
           ))}
         </div>
       </div>
-      <GreetingPopup />
+      {isShowGreetingPopup && <GreetingPopup />}
     </div>
   );
 };

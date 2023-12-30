@@ -1,3 +1,9 @@
+import {
+  FaGithub,
+  FaTelegram,
+} from 'react-icons/fa';
+import { IoMdMail } from 'react-icons/io';
+
 export const greetingAuthorText = [
   `Hello everyone! My name is Alexander, and I sincerely want to make our
     world a better place. This task requires a lot of effort, but I am
@@ -21,28 +27,6 @@ export const greetingAuthorText = [
     problems. Together we can make this world a better place for all of us
     and future generations.`,
 ];
-// export const skillsList = [
-//   "HTML",
-//   "CSS/SCSS",
-//   "Vanilla js",
-//   "Node.JS",
-//   "React.JS",
-//   "Redux Toolkit",
-//   "C",
-//   "C++",
-//   "ARDUINO",
-//   "MongoDB",
-//   "PostgreSQL",
-//   "Three.js",
-//   "React Three Fiber",
-//   "React Three Drei",
-//   "Blender",
-//   "TailwindCSS",
-//   "Figma",
-//   "Adobe Photoshop",
-//   "Adobe Premiere Pro",
-// ];
-
 export const skillsList = [
   {
     category: "Frontend",
@@ -143,5 +127,22 @@ export const skillsList = [
   {
     category: "Languages",
     skills: ["English (Beginner)", "Ukrainian (Native)"],
+  },
+];
+export const contactsList = [
+  {
+    name: "GitHub",
+    link: "https://github.com/TraceOfHumanity",
+    logo: <FaGithub />,
+  },
+  {
+    name: "Telegram",
+    link: "https://t.me/TraceOfHumanity",
+    logo: <FaTelegram />,
+  },
+  {
+    name: "Email",
+    link: "mailto:azalexxx02@gmail.com",
+    logo: <IoMdMail />,
   },
 ];

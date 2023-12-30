@@ -5,21 +5,27 @@ import { MdMusicNote } from "react-icons/md";
 
 import { Equalizer } from "./Equalizer";
 import styles from "./player.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsPlaying } from "../../redux/audioPlayer/slice";
 
 export const MusicPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const dispatch = useDispatch();
+  const isPlaying = useSelector((state) => state.audioPlayer.isPlaying);
   const audioRef = useRef(null);
   const playButtonRef = useRef(null);
   const songs = ["/sounds/ava.mp3", "/sounds/spore.mp3"];
   const [currentSongIndex, setCurrentSongIndex] = useState(
     Math.floor(Math.random() * songs.length)
   );
-  // console.log(currentSongIndex);
 
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    dispatch(setIsPlaying(!isPlaying));
     isPlaying ? audioRef.current.pause() : audioRef.current.play();
   };
+
+  useEffect(() => {
+    isPlaying ? audioRef.current.play() : audioRef.current.pause();
+  }, [isPlaying]);
 
   useEffect(() => {
     if (!isPlaying) {
@@ -42,16 +48,6 @@ export const MusicPlayer = () => {
       gsap.to(playButtonRef.current, { scale: 1, opacity: 1, duration: 0.5 });
     }
   }, [isPlaying]);
-
-  // useEffect(() => {
-  //   // Increase the volume of the audio
-  //   audioRef.current.volume = 1; // Set the volume to 80% (0.8)
-
-  //   // Clean up the effect
-  //   return () => {
-  //     audioRef.current.volume = 1; // Reset the volume to 100% (1) when the component unmounts
-  //   };
-  // }, []);
 
   return (
     <div className={styles.player}>
