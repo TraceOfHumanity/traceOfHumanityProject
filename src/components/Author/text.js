@@ -1,8 +1,5 @@
-import {
-  FaGithub,
-  FaTelegram,
-} from 'react-icons/fa';
-import { IoMdMail } from 'react-icons/io';
+import { FaGithub, FaTelegram } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
 
 export const greetingAuthorText = [
   `Hello everyone! My name is Alexander, and I sincerely want to make our
@@ -35,94 +32,36 @@ export const skillsList = [
       "CSS/SCSS",
       "TailwindCSS",
       "Material UI",
-      "Vanilla js",
+      "Vanilla JS",
       "React.JS",
       "React Native",
       "Next.JS",
       "Redux Toolkit",
-      "Three.js",
+      "Three.JS",
       "React Three Fiber",
       "React Three Drei",
       "Astro",
     ],
-    // projects: [
-    //   {
-    //     link: (
-    //       <iframe
-    //         width="560"
-    //         height="315"
-    //         src="https://www.youtube.com/embed/9sBN-KjIqKs?si=Eel7Kye4FOH3sCzH"
-    //         title="YouTube video player"
-    //         frameborder="0"
-    //         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    //         allowfullscreen
-    //       ></iframe>
-    //     ),
-    //   },
-    //   {
-    //     link: (
-    //       <iframe
-    //         width="560"
-    //         height="315"
-    //         src="https://www.youtube.com/embed/9sBN-KjIqKs?si=Eel7Kye4FOH3sCzH"
-    //         title="YouTube video player"
-    //         frameborder="0"
-    //         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    //         allowfullscreen
-    //       ></iframe>
-    //     ),
-    //   },
-    //   {
-    //     link: (
-    //       <iframe
-    //         width="560"
-    //         height="315"
-    //         src="https://www.youtube.com/embed/9sBN-KjIqKs?si=Eel7Kye4FOH3sCzH"
-    //         title="YouTube video player"
-    //         frameborder="0"
-    //         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    //         allowfullscreen
-    //       ></iframe>
-    //     ),
-    //   },
-    // ],
   },
   {
     category: "Backend",
     skills: [
       "Node.JS",
+      "Nest.JS",
       "MongoDB",
       "PostgreSQL",
       "Express",
-      "Nest.JS",
       "Firebase",
-      "Prisma",
-      "Drizzle",
-      "GraphQL",
-      "REST API",
     ],
   },
   {
     category: "Embedded",
     skills: ["C", "C++", "Arduino"],
   },
-  {
-    category: "Tools",
-    skills: [
-      "Git",
-      "GitHub",
-      "NPM",
-      "PNPM",
-      "Yarn",
-      "ESLint",
-      "Prettier",
-      "Netlify",
-      "Vercel",
-    ],
-  },
+
   {
     category: "Design",
-    skills: ["Figma", "Adobe Photoshop", "Adobe Premiere Pro", "Blender"],
+    skills: ["Figma", "Blender"],
   },
   {
     category: "Languages",

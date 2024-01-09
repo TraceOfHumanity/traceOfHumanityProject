@@ -2,8 +2,11 @@ import React from "react";
 
 import { Route, Routes } from "react-router-dom";
 
-import { Header, MusicPlayer } from "./components";
-import { AboutAuthor, Home, Library } from "./pages";
+import { Header } from "./components/Header";
+import { MusicPlayer } from "./components/MusicPlayer";
+import { AboutAuthor } from "./pages/AboutAuthor";
+import { Home } from "./pages/Home";
+import { Library } from "./pages/Library";
 
 function App() {
   return (

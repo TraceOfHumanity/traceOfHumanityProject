@@ -7,7 +7,9 @@
   backdrop-filter: blur(10px);
   padding: 10px;
   z-index: 5;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   .brain {
     // border-radius: 50%;

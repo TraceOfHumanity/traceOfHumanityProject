@@ -1,26 +1,12 @@
-import React, {
-  useEffect,
-  useRef,
-} from 'react';
+import React, { useEffect, useRef } from "react";
 
-import baffle from 'baffle';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  FaCode,
-  FaDatabase,
-  FaTools,
-} from 'react-icons/fa';
-import { FaGears } from 'react-icons/fa6';
-import { IoLanguage } from 'react-icons/io5';
-import { MdOutlineDesignServices } from 'react-icons/md';
+import baffle from "baffle";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import {
-  contactsList,
-  greetingAuthorText,
-  skillsList,
-} from '../text';
-import styles from './content.module.scss';
+import { contactsList, greetingAuthorText } from "../text";
+import styles from "./content.module.scss";
+import { Skills } from "./Skills";
 
 export const AuthorContent = () => {
   const descriptionContainerRef = useRef(null);
@@ -67,6 +53,19 @@ export const AuthorContent = () => {
         },
       }
     );
+
+    gsap.fromTo(
+      ".contactsWrapper",
+      { duration: 0.5, opacity: 0, x: 100 },
+      {
+        delay: 0.5,
+        duration: 1,
+        opacity: 1,
+        x: 0,
+        stagger: 0.1,
+        ease: "elastic(1, 0.75)",
+      }
+    );
   }, []);
   return (
     <div className={styles.wrapper}>
@@ -88,18 +87,21 @@ export const AuthorContent = () => {
         </div>
       </div>
 
-      <div className={styles.contactsWrapper}>
-        {contactsList.map((item) => (
-          <a href={item.link} target="_blank">
-            {item.logo}
-          </a>
-        ))}
+      <div className={`contactsWrapper ${styles.contactsWrapper}`}>
+        <h2>Contacts</h2>
+        <div className={styles.contacts}>
+          {contactsList.map((item) => (
+            <a href={item.link} target="_blank" key={item.name}>
+              {item.logo}
+            </a>
+          ))}
+        </div>
       </div>
 
       <div className={styles.skillsContainer}>
         <h2>Skills</h2>
         <div className={styles.skillsList}>
-          {skillsList.map((item, index) => (
+          {/* {skillsList.map((item, index) => (
             <div className={`skill ${styles.skill}`} key={index}>
               <p className={styles.skillTitle}>{item.category}</p>
               <ul>
@@ -111,12 +113,12 @@ export const AuthorContent = () => {
                 {item.category === "Frontend" && <FaCode />}
                 {item.category === "Backend" && <FaDatabase />}
                 {item.category === "Embedded" && <FaGears />}
-                {item.category === "Tools" && <FaTools />}
                 {item.category === "Design" && <MdOutlineDesignServices />}
                 {item.category === "Languages" && <IoLanguage />}
               </div>
             </div>
-          ))}
+          ))} */}
+          <Skills />
         </div>
       </div>
     </div>
