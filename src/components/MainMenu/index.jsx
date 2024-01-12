@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Player } from "../MusicPlayer/Player";
 import { Link } from "react-router-dom";
 
-import { setIsOpenGreetingPopup } from "../../redux/popups/slice";
+import { setIsOpenGreetingPopup } from "../../redux/popups/popupsSlice";
 import { GreetingPopup } from "../GreetingPopup";
 import styles from "./mainMenu.module.scss";
 

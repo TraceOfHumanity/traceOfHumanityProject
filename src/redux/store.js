@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import popupsSlice from "./popups/slice";
-import audioPlayerSlice from "./audioPlayer/slice";
+import audioPlayerSlice from "./audioPlayer/audioPlayerSlice";
+import popupsSlice from "./popups/popupsSlice";
 
 export const store = configureStore({
   reducer: {

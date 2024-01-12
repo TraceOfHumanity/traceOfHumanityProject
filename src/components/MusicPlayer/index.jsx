@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import { MdMusicNote } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
 
+import { setIsPlaying } from "../../redux/audioPlayer/audioPlayerSlice";
 import { Equalizer } from "./Equalizer";
 import styles from "./player.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { setIsPlaying } from "../../redux/audioPlayer/slice";
 
 export const MusicPlayer = () => {
   const dispatch = useDispatch();
