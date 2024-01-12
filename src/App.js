@@ -18,8 +18,6 @@ function App() {
         <Route path="/library" element={<Library />} />
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
       </Routes>
-      {/* <MainMenu /> */}
-      {/* <Earth /> */}
     </div>
   );
 }

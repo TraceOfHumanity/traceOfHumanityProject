@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { MdMusicNote } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setIsPlaying } from "../../redux/audioPlayer/audioPlayerSlice";
+import { setIsPlaying } from "../../redux/features/audioPlayerSlice";
 import { Equalizer } from "./Equalizer";
 import styles from "./player.module.scss";
 

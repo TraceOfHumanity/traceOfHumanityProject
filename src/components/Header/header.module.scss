@@ -1,9 +1,8 @@
 .header {
   height: calc(70px + (100 - 70) * ((100vw - 320px) / (2500 - 320)));
   width: 100%;
-  // background: red;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   backdrop-filter: blur(10px);
   padding: 10px;
   z-index: 5;
@@ -12,26 +11,20 @@
   left: 0;
 
   .brain {
-    // border-radius: 50%;
-    // -webkit-border-radius: 50%;
-    // -moz-border-radius: 50%;
-    // -ms-border-radius: 50%;
-    // -o-border-radius: 50%;
-    // background-color: rgb(0, 0, 0);
     z-index: 1;
     position: relative;
+    width: 3vw;
   }
 
-  .nano {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    opacity: 0.5;
-    height: 50%;
+  .authorization {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .user img {
+    width: 30px;
+    height: 30px;
   }
 }
