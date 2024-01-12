@@ -47,7 +47,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   background-color: transparent;
-  font-weight: 600;
+  font-weight: 400;
   color: $whiteText;
 }
 
@@ -71,10 +71,13 @@ h2 {
 
 .app {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
   color: $whiteText;
   margin: 0 auto;
   padding: 1vw;
-  padding-top: calc(70px + (100 - 70) * ((100vw - 320px) / (2500 - 320)));;
+  padding-top: calc(70px + (100 - 70) * ((100vw - 320px) / (2500 - 320)));
+  ;
 }

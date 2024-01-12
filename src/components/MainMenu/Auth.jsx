@@ -5,14 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { app } from "src/firebase.config";
 import { setUser } from "src/redux/features/userSlice";
 
-import styles from "./header.module.scss";
+import styles from "./mainMenu.module.scss";
 
 export const Auth = () => {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
   const firebaseAuth = getAuth(app);
   const user = useSelector((state) => state.user.user);
-  console.log(user);
 
   const login = async () => {
     if (!user) {
@@ -39,18 +38,15 @@ export const Auth = () => {
 
   return (
     <div className={styles.authorization}>
-      {/* <button onClick={() => login()}>login</button>
-      <button>logout</button> */}
       {user ? (
         <div className={styles.user}>
-          <img src={user.photoURL} alt="" />
           <button className="flex items-center" onClick={() => logout()}>
-            logout
+            Logout
           </button>
         </div>
       ) : (
         <button className="flex items-center" onClick={() => login()}>
-          login
+          Login
         </button>
       )}
     </div>

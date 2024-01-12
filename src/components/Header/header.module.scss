@@ -10,21 +10,26 @@
   top: 0;
   left: 0;
 
+  h2 {
+    text-align: left;
+    margin: 0;
+  }
+
+  .leftColumn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+  }
+
   .brain {
     z-index: 1;
     position: relative;
-    width: 3vw;
-  }
 
-  .authorization {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .user img {
-    width: 30px;
-    height: 30px;
+    img {
+      width: 3vw;
+      max-width: 60px;
+      min-width: 40px;
+    }
   }
 }
