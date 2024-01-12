@@ -24,50 +24,81 @@ export const greetingAuthorText = [
     problems. Together we can make this world a better place for all of us
     and future generations.`,
 ];
-export const skillsList = [
-  {
-    category: "Frontend",
-    skills: [
-      "HTML",
-      "CSS/SCSS",
-      "TailwindCSS",
-      "Material UI",
-      "Vanilla JS",
-      "React.JS",
-      "React Native",
-      "Next.JS",
-      "Redux Toolkit",
-      "Three.JS",
-      "React Three Fiber",
-      "React Three Drei",
-      "Astro",
-    ],
-  },
-  {
-    category: "Backend",
-    skills: [
-      "Node.JS",
-      "Nest.JS",
-      "MongoDB",
-      "PostgreSQL",
-      "Express",
-      "Firebase",
-    ],
-  },
-  {
-    category: "Embedded",
-    skills: ["C", "C++", "Arduino"],
-  },
 
-  {
-    category: "Design",
-    skills: ["Figma", "Blender"],
-  },
-  {
-    category: "Languages",
-    skills: ["English (Beginner)", "Ukrainian (Native)"],
-  },
-];
+// export const skillsList = [
+//   {
+//     category: "Frontend",
+//     skills: [
+//       "HTML",
+//       "CSS/SCSS",
+//       "TailwindCSS",
+//       "Material UI",
+//       "Vanilla JS",
+//       "React.JS",
+//       "React Native",
+//       "Next.JS",
+//       "Redux Toolkit",
+//       "Three.JS",
+//       "React Three Fiber",
+//       "React Three Drei",
+//       "Astro",
+//     ],
+//   },
+//   {
+//     category: "Backend",
+//     skills: [
+//       "Node.JS",
+//       "Nest.JS",
+//       "MongoDB",
+//       "PostgreSQL",
+//       "Express",
+//       "Firebase",
+//     ],
+//   },
+//   {
+//     category: "Embedded",
+//     skills: ["C", "C++", "Arduino"],
+//   },
+
+//   {
+//     category: "Design",
+//     skills: ["Figma", "Blender"],
+//   },
+//   {
+//     category: "Languages",
+//     skills: ["English (Beginner)", "Ukrainian (Native)"],
+//   },
+// ];
+
+// export const skillsList = [
+//   "HTML",
+//   "CSS/SCSS",
+//   "TailwindCSS",
+//   "Material UI",
+//   "Vanilla JS",
+//   "React.JS",
+//   "React Native",
+//   "Next.JS",
+//   "Redux Toolkit",
+//   "Three.JS",
+//   "React Three Fiber",
+//   "React Three Drei",
+//   "Astro",
+//   "Node.JS",
+//   "Nest.JS",
+//   "MongoDB",
+//   "PostgreSQL",
+//   "Express",
+//   "Firebase",
+//   "C",
+//   "C++",
+//   "Arduino",
+//   "Figma",
+//   "Blender",
+//   "English (Beginner)",
+//   "Ukrainian (Native)",
+// ];
+
 export const contactsList = [
   {
     name: "GitHub",
