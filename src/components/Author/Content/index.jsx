@@ -4,9 +4,8 @@ import baffle from "baffle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { contactsList, greetingAuthorText } from "../text";
+import { contactsList, greetingAuthorText, skillsList } from "../text";
 import styles from "./content.module.scss";
-import { Skills } from "./Skills";
 
 export const AuthorContent = () => {
   const descriptionContainerRef = useRef(null);
@@ -99,9 +98,9 @@ export const AuthorContent = () => {
       </div>
 
       <div className={styles.skillsContainer}>
-        <h2>Skills</h2>
+        <h2>Tools</h2>
         <div className={styles.skillsList}>
-          {/* {skillsList.map((item, index) => (
+          {skillsList.map((item, index) => (
             <div className={`skill ${styles.skill}`} key={index}>
               <p className={styles.skillTitle}>{item.category}</p>
               <ul>
@@ -109,16 +108,10 @@ export const AuthorContent = () => {
                   <li key={index}>{skill}</li>
                 ))}
               </ul>
-              <div className={styles.icon}>
-                {item.category === "Frontend" && <FaCode />}
-                {item.category === "Backend" && <FaDatabase />}
-                {item.category === "Embedded" && <FaGears />}
-                {item.category === "Design" && <MdOutlineDesignServices />}
-                {item.category === "Languages" && <IoLanguage />}
-              </div>
+              <div className={styles.icon}>{item.logo}</div>
             </div>
-          ))} */}
-          <Skills />
+          ))}
+          {/* <Skills /> */}
         </div>
       </div>
     </div>

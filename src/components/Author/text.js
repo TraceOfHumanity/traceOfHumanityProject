@@ -1,5 +1,8 @@
-import { FaGithub, FaTelegram } from "react-icons/fa";
+import { FaCode, FaDatabase, FaGithub, FaTelegram } from "react-icons/fa";
+import { FaGears } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import { IoLanguage } from "react-icons/io5";
+import { MdOutlineDesignServices } from "react-icons/md";
 
 export const greetingAuthorText = [
   `Hello everyone! My name is Alexander, and I sincerely want to make our
@@ -25,50 +28,55 @@ export const greetingAuthorText = [
     and future generations.`,
 ];
 
-// export const skillsList = [
-//   {
-//     category: "Frontend",
-//     skills: [
-//       "HTML",
-//       "CSS/SCSS",
-//       "TailwindCSS",
-//       "Material UI",
-//       "Vanilla JS",
-//       "React.JS",
-//       "React Native",
-//       "Next.JS",
-//       "Redux Toolkit",
-//       "Three.JS",
-//       "React Three Fiber",
-//       "React Three Drei",
-//       "Astro",
-//     ],
-//   },
-//   {
-//     category: "Backend",
-//     skills: [
-//       "Node.JS",
-//       "Nest.JS",
-//       "MongoDB",
-//       "PostgreSQL",
-//       "Express",
-//       "Firebase",
-//     ],
-//   },
-//   {
-//     category: "Embedded",
-//     skills: ["C", "C++", "Arduino"],
-//   },
+export const skillsList = [
+  {
+    category: "Frontend",
+    skills: [
+      "HTML",
+      "CSS/SCSS",
+      "TailwindCSS",
+      "Material UI",
+      "Vanilla JS",
+      "React.JS",
+      "React Native",
+      "Next.JS",
+      "Redux Toolkit",
+      "Three.JS",
+      "React Three Fiber",
+      "React Three Drei",
+      "Astro",
+    ],
+    logo: <FaCode />,
+  },
+  {
+    category: "Backend",
+    skills: [
+      "Node.JS",
+      "Nest.JS",
+      "MongoDB",
+      "PostgreSQL",
+      "Express",
+      "Firebase",
+    ],
+    logo: <FaDatabase />,
+  },
+  {
+    category: "Embedded",
+    skills: ["C", "C++", "Arduino"],
+    logo: <FaGears />,
+  },
 
-//   {
-//     category: "Design",
-//     skills: ["Figma", "Blender"],
-//   },
-//   {
-//     category: "Languages",
-//     skills: ["English (Beginner)", "Ukrainian (Native)"],
-//   },
-// ];
+  {
+    category: "Design",
+    skills: ["Figma", "Blender"],
+    logo: <MdOutlineDesignServices />,
+  },
+  {
+    category: "Languages",
+    skills: ["English (Beginner)", "Ukrainian (Native)"],
+    logo: <IoLanguage />,
+  },
+];
 
 // export const skillsList = [
 //   "HTML",
