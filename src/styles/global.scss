@@ -79,5 +79,55 @@ h2 {
   margin: 0 auto;
   padding: 1vw;
   padding-top: calc(70px + (100 - 70) * ((100vw - 320px) / (2500 - 320)));
-  ;
+}
+
+.popupWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .popup {
+    overflow: visible;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+    -ms-backdrop-filter: blur(10px);
+    -o-backdrop-filter: blur(10px);
+    position: relative;
+    padding: 15px;
+    border: 1px solid $red;
+    border-radius: $rounded;
+    -webkit-border-radius: $rounded;
+    -moz-border-radius: $rounded;
+    -ms-border-radius: $rounded;
+    -o-border-radius: $rounded;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: fit-content;
+    max-width: 600px;
+
+    p {
+      font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (2500 - 320)));
+      color: $whiteText;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 5px black;
+      line-height: 1.1;
+    }
+
+    h2 {
+      text-transform: uppercase;
+    }
+
+    .closePopup {
+      margin-left: auto;
+      display: block;
+      color: $red;
+      font-size: 20px;
+    }
+  }
 }

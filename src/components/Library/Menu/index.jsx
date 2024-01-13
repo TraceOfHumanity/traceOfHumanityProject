@@ -8,14 +8,6 @@ export const LibraryMenu = () => {
       <div className="">History</div>
       <div className="">Science</div>
       <div className="">Philosophy and Religion</div>
-
-      {/* {Array.from({ length: 60 }).map((_, i) => {
-        return (
-          <div className={styles.letter} key={i}>
-            {String.fromCharCode(65 + i)}
-          </div>
-        );
-      })} */}
     </div>
   );
 };

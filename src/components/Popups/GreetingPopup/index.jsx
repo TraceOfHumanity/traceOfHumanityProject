@@ -6,30 +6,16 @@ import { useDispatch } from "react-redux";
 import { setIsPlaying } from "../../../redux/features/audioPlayerSlice";
 import { setIsOpenGreetingPopup } from "../../../redux/features/popupsSlice";
 import { greetingPopupText } from "./data";
-import styles from "./greetingPopup.module.scss";
 
 export const GreetingPopup = () => {
   const dispatch = useDispatch();
   const greetingPopupRef = useRef(null);
 
-  // useEffect(() => {
-  //   gsap.fromTo(
-  //     greetingPopupRef.current,
-  //     {
-  //       scale: 0,
-  //     },
-  //     {
-  //       scale: 1,
-  //       duration: 2,
-  //       ease: "elastic.out(0.5, 0.4)",
-  //     }
-  //   );
-  // }, []);
   return (
-    <div className={styles.greetingPopupWrapper} ref={greetingPopupRef}>
-      <div className={styles.popup}>
+    <div className="popupWrapper" ref={greetingPopupRef}>
+      <div className="popup">
         <button
-          className={styles.closePopup}
+          className="closePopup"
           onClick={() => {
             dispatch(setIsOpenGreetingPopup(false));
             dispatch(setIsPlaying(true));

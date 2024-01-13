@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
+import gsap from "gsap";
 import { FaSpaceShuttle } from "react-icons/fa";
 import { IoLogIn } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
@@ -7,9 +8,9 @@ import { SiAlienware } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 // import { Player } from "../MusicPlayer/Player";
 import { Link } from "react-router-dom";
+import { setFlashingOfTheLoginButton } from "src/redux/features/animationsSlice";
 
 import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
-import { GreetingPopup } from "../Popups/GreetingPopup";
 import { Auth } from "./Auth";
 import styles from "./mainMenu.module.scss";
 
@@ -22,15 +23,33 @@ const menuItems = [
 export const MainMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  console.log(user);
-  const isShowGreetingPopup = useSelector(
-    (state) => state.popups.isOpenGreetingPopup
-  );
+  const authButtonRef = useRef();
+  const { flashingOfTheLoginButton } = useSelector((state) => state.animations);
+
   useEffect(() => {
     const notFirstVisit = localStorage.getItem("notFirstVisit");
     if (!notFirstVisit) {
       localStorage.setItem("notFirstVisit", true);
       dispatch(setIsOpenGreetingPopup(true));
+    }
+  }, []);
+  useEffect(() => {
+    if (flashingOfTheLoginButton) {
+      gsap.fromTo(
+        authButtonRef.current,
+        { scale: 0.9 },
+        {
+          delay: 1,
+          scale: 1,
+          duration: 1.5,
+          repeat: 2,
+          transformOrigin: "center right",
+          ease: "elastic.out(10, 0.5)",
+          onComplete: () => {
+            dispatch(setFlashingOfTheLoginButton(false));
+          },
+        }
+      );
     }
   }, []);
 
@@ -39,7 +58,11 @@ export const MainMenu = () => {
       <div className={styles.cut}>
         <div className={styles.menuItemsWrapper}>
           {menuItems.map((item, index) => (
-            <div className={styles.menuItem} key={index}>
+            <div
+              className={styles.menuItem}
+              key={index}
+              ref={item.name === "authorization" ? authButtonRef : null}
+            >
               {item % 2 !== 0 ? item?.icon : null}
               {item.link && <Link to={item.link}>{item.name}</Link>}
               {item.name === "authorization" && <Auth />}
@@ -55,7 +78,6 @@ export const MainMenu = () => {
           )}
         </div>
       </div>
-      {isShowGreetingPopup && <GreetingPopup />}
     </div>
   );
 };

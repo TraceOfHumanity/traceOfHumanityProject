@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { Header } from "./components/Header";
 import { MusicPlayer } from "./components/MusicPlayer";
+import { Popups } from "./components/Popups";
 import { AboutAuthor } from "./pages/AboutAuthor";
 import { Dashboard } from "./pages/Dashboard";
 import { Home } from "./pages/Home";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      <Popups />
     </div>
   );
 }

@@ -9,6 +9,7 @@ export const Navigation = () => {
   const navigation = useNavigate();
 
   const goBack = () => navigation(-1);
+
   return (
     <div className={styles.navigation}>
       <button onClick={() => goBack()}>

@@ -2,16 +2,15 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
 
-  button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: calc(14px + (22 - 14) * ((100vw - 320px) / (1920 - 320)));
+  // button {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 5px;
+  //   font-size: calc(14px + (22 - 14) * ((100vw - 320px) / (1920 - 320)));
 
-    @media (min-width: 1920px) {
-      font-size: 22px;
-    }
-  }
+  //   @media (min-width: 1920px) {
+  //     font-size: 22px;
+  //   }
+  // }
 }
