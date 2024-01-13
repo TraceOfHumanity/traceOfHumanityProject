@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
-import { GreetingPopup } from "../GreetingPopup";
+import { GreetingPopup } from "../Popups/GreetingPopup";
 import { Auth } from "./Auth";
 import styles from "./mainMenu.module.scss";
 

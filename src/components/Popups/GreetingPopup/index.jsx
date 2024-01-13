@@ -3,8 +3,8 @@ import React, { useRef } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
 
-import { setIsPlaying } from "../../redux/features/audioPlayerSlice";
-import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
+import { setIsPlaying } from "../../../redux/features/audioPlayerSlice";
+import { setIsOpenGreetingPopup } from "../../../redux/features/popupsSlice";
 import { greetingPopupText } from "./data";
 import styles from "./greetingPopup.module.scss";
 

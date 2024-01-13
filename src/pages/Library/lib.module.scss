@@ -1,6 +1,15 @@
-.library {
-  display: flex;
+.wrapper {
   flex: 1 1 auto;
-  gap: 10px;
   max-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .library {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 10px;
+    max-height: 100%;
+    // height: 100%;
+    background: red;
+  }
 }

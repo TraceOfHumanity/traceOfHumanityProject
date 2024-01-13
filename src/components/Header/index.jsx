@@ -16,7 +16,7 @@ export const Header = () => {
 
       <div className={styles.centerColumn}></div>
 
-      <div className={styles.rightColumn}>{/* <Auth /> */}</div>
+      <div className={styles.rightColumn}></div>
     </div>
   );
 };
