@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
@@ -9,10 +9,9 @@ import { greetingPopupText } from "./data";
 
 export const GreetingPopup = () => {
   const dispatch = useDispatch();
-  const greetingPopupRef = useRef(null);
 
   return (
-    <div className="popupWrapper" ref={greetingPopupRef}>
+    <div className="popupWrapper">
       <div className="popup">
         <button
           className="closePopup"

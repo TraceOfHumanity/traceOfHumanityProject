@@ -37,14 +37,14 @@ export const MainMenu = () => {
     if (flashingOfTheLoginButton) {
       gsap.fromTo(
         authButtonRef.current,
-        { scale: 0.9 },
+        { scale: 1 },
         {
-          delay: 1,
-          scale: 1,
+          delay: 1.5,
+          scale: 1.01,
           duration: 1.5,
-          repeat: 2,
-          transformOrigin: "center right",
-          ease: "elastic.out(10, 0.5)",
+          repeat: 4,
+          transformOrigin: "center ",
+          ease: "elastic.out(10, 0.1)",
           onComplete: () => {
             dispatch(setFlashingOfTheLoginButton(false));
           },

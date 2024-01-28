@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 
 import { GreetingPopup } from "./GreetingPopup";
+import { LoginPopup } from "./LoginPopup";
 import { PleaseRegister } from "./PleaseRegisterPopup";
 
 export const Popups = () => {
@@ -23,6 +24,7 @@ export const Popups = () => {
     >
       {isOpenGreetingPopup && <GreetingPopup />}
       {isOpenPleaseRegisterPopup && <PleaseRegister />}
+      <LoginPopup />
     </div>
   );
 };
