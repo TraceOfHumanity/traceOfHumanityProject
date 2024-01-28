@@ -5,11 +5,17 @@ import { useSelector } from "react-redux";
 import { GreetingPopup } from "./GreetingPopup";
 import { LoginPopup } from "./LoginPopup";
 import { PleaseRegister } from "./PleaseRegisterPopup";
+import { RegistrationPopup } from "./RegistrationPopup";
+import { ResetPasswordPopup } from "./ResetPasswordPopup";
 
 export const Popups = () => {
-  const { isOpenGreetingPopup, isOpenPleaseRegisterPopup } = useSelector(
-    (state) => state.popups
-  );
+  const {
+    isOpenGreetingPopup,
+    isOpenPleaseRegisterPopup,
+    isShowLoginPopup,
+    isShowRegistrationPopup,
+    isShowResetPasswordPopup,
+  } = useSelector((state) => state.popups);
 
   const popupsRef = useRef(null);
 
@@ -24,7 +30,9 @@ export const Popups = () => {
     >
       {isOpenGreetingPopup && <GreetingPopup />}
       {isOpenPleaseRegisterPopup && <PleaseRegister />}
-      <LoginPopup />
+      {isShowLoginPopup && <LoginPopup />}
+      {isShowRegistrationPopup && <RegistrationPopup />}
+      {isShowResetPasswordPopup && <ResetPasswordPopup />}
     </div>
   );
 };

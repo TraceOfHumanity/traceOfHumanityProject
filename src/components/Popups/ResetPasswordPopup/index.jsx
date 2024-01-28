@@ -1,8 +1,7 @@
 import React from "react";
 
-import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
-import { IoFingerPrintOutline, IoLogIn } from "react-icons/io5";
+import { IoFingerPrintOutline } from "react-icons/io5";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import {
@@ -11,7 +10,7 @@ import {
   setIsShowResetPasswordPopup,
 } from "src/redux/features/popupsSlice";
 
-export const LoginPopup = () => {
+export const ResetPasswordPopup = () => {
   const dispatch = useDispatch();
   return (
     <div className="popupWrapper">
@@ -20,39 +19,47 @@ export const LoginPopup = () => {
 
         <button
           className="closePopup"
-          onClick={() => dispatch(setIsShowLoginPopup(false))}
+          onClick={() => dispatch(setIsShowResetPasswordPopup(false))}
         >
           <IoMdClose />
         </button>
-        <h2>Login</h2>
+        <h2>Reset password</h2>
         <form>
-          <input type="text" placeholder="Login" />
-          <input type="password" placeholder="Password" />
+          <input
+            type="text"
+            placeholder="email"
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
+            required
+          />
           <button type="submit">
-            Login <IoLogIn />
-          </button>
-          <button
-            onClick={() => {
-              dispatch(setIsShowResetPasswordPopup(true));
-              dispatch(setIsShowLoginPopup(false));
-            }}
-          >
             Reset password <TbPasswordFingerprint />
           </button>
-          <p className="or">-- or --</p>
         </form>
-        <button>
-          Login with Google <FcGoogle />
-        </button>
-        <p>
-          Don't have an account?{" "}
+
+        <p
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
           <button
             onClick={() => {
-              dispatch(setIsShowLoginPopup(false));
+              dispatch(setIsShowResetPasswordPopup(false));
+              dispatch(setIsShowLoginPopup(true));
+            }}
+          >
+            Login
+          </button>
+          <button
+            onClick={() => {
+              dispatch(setIsShowResetPasswordPopup(false));
               dispatch(setIsShowRegistrationPopup(true));
             }}
           >
-            Register
+            Registration
           </button>
         </p>
       </div>

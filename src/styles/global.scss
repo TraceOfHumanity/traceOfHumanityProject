@@ -91,6 +91,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
 
   .popup {
     overflow: visible;
@@ -138,12 +139,14 @@ h2 {
 
     .closePopup {
       margin-left: auto;
-      display: block;
+      display: flex;
+      justify-content: flex-end;
       height: fit-content;
       color: $red;
       font-size: 20px;
       border: none;
       padding: 0;
+      width: 100%;
     }
 
     form {
@@ -167,7 +170,6 @@ h2 {
 
     input:focus {
       outline: none;
-      //border: 1px solid $red;
       animation: border 1s ease-in-out infinite alternate;
       -webkit-animation: border 1s ease-in-out infinite alternate;
     }
