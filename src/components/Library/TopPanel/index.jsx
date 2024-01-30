@@ -1,7 +1,8 @@
 import React from "react";
 
-import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { MdOutlinePostAdd } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import { setIsOpenPleaseRegisterPopup } from "src/redux/features/popupsSlice";
 
 import { Navigation } from "../Navigation";
@@ -9,7 +10,8 @@ import styles from "./topPanel.module.scss";
 
 export const TopPanel = () => {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.user.user);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
   console.log(useLocation());
 
   const showWarningPopup = () => {
@@ -18,7 +20,7 @@ export const TopPanel = () => {
   return (
     <div className={styles.topPanel}>
       <Navigation />
-      {/* {user ? (
+      {isLoggedIn ? (
         <Link to="/create-post">
           <MdOutlinePostAdd />
           Add post
@@ -28,7 +30,7 @@ export const TopPanel = () => {
           <MdOutlinePostAdd />
           Add post
         </button>
-      )} */}
+      )}
     </div>
   );
 };

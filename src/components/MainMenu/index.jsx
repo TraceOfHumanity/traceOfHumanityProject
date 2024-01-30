@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FaSpaceShuttle } from "react-icons/fa";
 import { IoLogIn } from "react-icons/io5";
+import { MdDashboard } from "react-icons/md";
 import { SiAlienware } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 // import { Player } from "../MusicPlayer/Player";
@@ -21,7 +22,8 @@ const menuItems = [
 
 export const MainMenu = () => {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.user.user);
+  const { isLoggedIn, userId } = useSelector((state) => state.auth);
+
   const authButtonRef = useRef();
   const { flashingOfTheLoginButton } = useSelector((state) => state.animations);
 
@@ -68,13 +70,13 @@ export const MainMenu = () => {
               {item % 2 === 0 ? item?.icon : null}
             </div>
           ))}
-          {/* {user && user.email === process.env.REACT_APP_TRACE_OF_HUMANITY && (
+          {isLoggedIn && userId === process.env.REACT_APP_TRACE_OF_HUMANITY && (
             <Link className={styles.menuItem} to="dashboard">
               {menuItems.length % 2 !== 0 && <MdDashboard />}
               dashboard
               {menuItems.length % 2 === 0 && <MdDashboard />}
             </Link>
-          )} */}
+          )}
         </div>
       </div>
     </div>

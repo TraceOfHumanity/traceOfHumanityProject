@@ -63,10 +63,8 @@ export const Header = () => {
       <div className={styles.centerColumn}></div>
 
       <div className={styles.rightColumn}>
-        {isLoggedIn && showGreeting && <p>Hi, {displayName}!</p>}
+        {isLoggedIn && showGreeting && <p>Hi, {displayName} !</p>}
       </div>
     </div>
   );
 };
-
-// export default Header;
