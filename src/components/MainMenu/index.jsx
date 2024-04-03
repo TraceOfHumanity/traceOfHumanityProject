@@ -8,7 +8,7 @@ import { SiAlienware } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
 // import { Player } from "../MusicPlayer/Player";
 import { Link } from "react-router-dom";
-import { setFlashingOfTheLoginButton } from "src/redux/features/animationsSlice";
+import { setFlashingOfTheLoginButton } from "../../redux/features/animationsSlice";
 
 import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
 import { Auth } from "./Auth";

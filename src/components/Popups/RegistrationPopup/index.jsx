@@ -6,12 +6,12 @@ import { IoMdClose } from "react-icons/io";
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { Loader } from "src/components/Loader";
-import { auth } from "src/firebase.config";
+import { Loader } from "components/Loader";
+import { auth } from "firebase.config";
 import {
   setIsShowLoginPopup,
   setIsShowRegistrationPopup,
-} from "src/redux/features/popupsSlice";
+} from "../../../redux/features/popupsSlice";
 
 export const RegistrationPopup = () => {
   const dispatch = useDispatch();

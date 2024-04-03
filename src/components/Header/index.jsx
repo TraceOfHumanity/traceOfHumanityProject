@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { auth } from "src/firebase.config";
+import { auth } from "firebase.config";
 import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
-} from "src/redux/features/authSlice";
+} from "../../redux/features/authSlice";
 
 import styles from "./header.module.scss";
 

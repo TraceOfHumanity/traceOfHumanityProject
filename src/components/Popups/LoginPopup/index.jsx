@@ -11,12 +11,12 @@ import { IoFingerPrintOutline, IoLogIn } from "react-icons/io5";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { auth } from "src/firebase.config";
+import { auth } from "firebase.config";
 import {
   setIsShowLoginPopup,
   setIsShowRegistrationPopup,
   setIsShowResetPasswordPopup,
-} from "src/redux/features/popupsSlice";
+} from "../../../redux/features/popupsSlice";
 
 export const LoginPopup = () => {
   const dispatch = useDispatch();

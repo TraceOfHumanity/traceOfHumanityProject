@@ -1,7 +1,7 @@
 import React from "react";
 
-import { AuthorBG } from "src/components/Author/Background";
-import { AuthorContent } from "src/components/Author/Content";
+import { AuthorBG } from "components/Author/Background";
+import { AuthorContent } from "components/Author/Content";
 
 export const AboutAuthor = () => {
   return (

@@ -3,8 +3,8 @@ import React from "react";
 import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { auth } from "src/firebase.config";
-import { setIsShowLoginPopup } from "src/redux/features/popupsSlice";
+import { auth } from "firebase.config";
+import { setIsShowLoginPopup } from "../../redux/features/popupsSlice";
 
 import styles from "./mainMenu.module.scss";
 

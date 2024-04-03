@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
 
-// import { Earth } from "src/components/Earth";
-import { MainMenu } from "src/components/MainMenu";
+import { Earth } from 'components/Earth';
+// import { Earth } from "components/Earth";
+import { MainMenu } from 'components/MainMenu';
 
 export const Home = () => {
   return (
