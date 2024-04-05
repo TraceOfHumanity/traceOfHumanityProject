@@ -13,6 +13,8 @@ module.exports = {
         textColor: "var(--textColor)",
         opacityBlue: "var(--opacityBlue)",
         opacityRed: "var(--opacityRed)",
+        opacityBlue01: "var(--opacityBlue01)",
+        opacityRed01: "var(--opacityRed01)",
       },
       boxShadow: {},
     },
