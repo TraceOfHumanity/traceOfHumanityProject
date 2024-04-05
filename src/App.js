@@ -1,17 +1,15 @@
-import "react-toastify/dist/ReactToastify.css";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import React from "react";
-
-import { Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-
-import { Header } from "./components/Header";
-import { MusicPlayer } from "./components/MusicPlayer";
-import { Popups } from "./components/Popups";
-import { AboutAuthor } from "./pages/AboutAuthor";
-import { Dashboard } from "./pages/Dashboard";
-import { Home } from "./pages/Home";
-import { Library } from "./pages/Library";
+import { Header } from './components/Header';
+import { MusicPlayer } from './components/MusicPlayer';
+import { Popups } from './components/Popups';
+import { AboutAuthor } from './pages';
+import { Dashboard } from './pages/Dashboard';
+import { Home } from './pages/Home';
+import { Library } from './pages/Library';
 
 function App() {
   return (
