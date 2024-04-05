@@ -6,7 +6,7 @@ import { AuthorContent } from "components/Author/Content";
 export const AboutAuthor = () => {
   return (
     <div>
-      <AuthorBG />
+      {/* <AuthorBG /> */}
       <AuthorContent />
     </div>
   );

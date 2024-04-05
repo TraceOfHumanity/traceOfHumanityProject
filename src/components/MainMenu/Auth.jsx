@@ -1,12 +1,12 @@
-import React from "react";
-
+import { auth } from "firebase.config";
 import { signOut } from "firebase/auth";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { auth } from "firebase.config";
+
 import { setIsShowLoginPopup } from "../../redux/features/popupsSlice";
 
-import styles from "./mainMenu.module.scss";
+// import styles from "./mainMenu.module.scss";
 
 export const Auth = () => {
   const dispatch = useDispatch();
@@ -27,13 +27,15 @@ export const Auth = () => {
   };
 
   return (
-    <div className={styles.authorization}>
+    // <div className={styles.authorization}>
+    <div className="">
       {!isLoggedIn ? (
         <button className="flex items-center" onClick={() => login()}>
           Login
         </button>
       ) : (
-        <div className={styles.user}>
+        // <div className={styles.user}>
+        <div className="">
           <button className="flex items-center" onClick={() => logoutUser()}>
             Logout
           </button>

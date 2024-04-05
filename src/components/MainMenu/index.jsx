@@ -11,13 +11,20 @@ import { Link } from "react-router-dom";
 import { setFlashingOfTheLoginButton } from "../../redux/features/animationsSlice";
 import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
 import { Auth } from "./Auth";
+import { CentralView } from "./CentralView";
 import { MenuItemWrapper } from "./MenuItemWrapper";
-import styles from "./mainMenu.module.scss";
+import { MenuWrapper } from "./MenuWrapper";
 
 const menuItems = [
   { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
   { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  { name: "authorization", icon: <IoLogIn /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "authorization", icon: <IoLogIn /> },
 ];
 
 export const MainMenu = () => {
@@ -34,6 +41,7 @@ export const MainMenu = () => {
       dispatch(setIsOpenGreetingPopup(true));
     }
   }, []);
+
   useEffect(() => {
     if (flashingOfTheLoginButton) {
       gsap.fromTo(
@@ -44,7 +52,7 @@ export const MainMenu = () => {
           scale: 1.01,
           duration: 1.5,
           repeat: 4,
-          transformOrigin: "center ",
+          transformOrigin: "center",
           ease: "elastic.out(10, 0.1)",
           onComplete: () => {
             dispatch(setFlashingOfTheLoginButton(false));
@@ -58,8 +66,9 @@ export const MainMenu = () => {
     // <div className={styles.mainMenu}>
     <div className="fixed left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform">
       {/* <div className={styles.cut}> */}
-      <div className="flex aspect-square w-[calc(300px+(950-300)*((100vw-320px)/(2500-320)))] max-w-4xl items-center justify-center overflow-hidden rounded-full bg-red-600">
-        <div className={styles.menuItemsWrapper}>
+      <div className="relative flex aspect-square w-[calc(300px+(950-300)*((100vw-320px)/(2500-320)))] max-w-4xl items-center justify-center overflow-hidden rounded-full [&>*]:aspect-square [&>*]:w-[calc(70px+(530-70)*((100vw-320px)/(2500-320)))]">
+        {/* <div className={styles.menuItemsWrapper}> */}
+        <MenuWrapper>
           {menuItems.map((item, index) => (
             <MenuItemWrapper
               // className={styles.menuItem}
@@ -84,7 +93,8 @@ export const MainMenu = () => {
               {menuItems.length % 2 === 0 && <MdDashboard />}
             </Link>
           )}
-        </div>
+        </MenuWrapper>
+        <CentralView />
       </div>
     </div>
   );
