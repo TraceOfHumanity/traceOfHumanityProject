@@ -21,7 +21,7 @@ const menuItems = [
   { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
   { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
   { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
   // { name: "authorization", icon: <IoLogIn /> },

@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
-
+import { auth } from "firebase.config";
 import { onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { auth } from "firebase.config";
+
 import {
   REMOVE_ACTIVE_USER,
   SET_ACTIVE_USER,
-} from "../../redux/features/authSlice";
-
-import styles from "./header.module.scss";
+} from "../redux/features/authSlice";
 
 export const Header = () => {
   const [displayName, setDisplayName] = useState("");
@@ -43,7 +41,7 @@ export const Header = () => {
             email: user.email,
             userName: user.displayName ? user.displayName : displayName,
             userId: user.uid,
-          })
+          }),
         );
       } else {
         setDisplayName("");
@@ -52,17 +50,14 @@ export const Header = () => {
     });
   }, [dispatch, displayName]);
   return (
-    <div className={styles.header}>
-      <div className={styles.leftColumn}>
-        <Link className={styles.brain} to="/">
-          <img src="/logo.svg" alt="" />
+    <div className="grid grid-cols-3 items-center py-1">
+      <div className=""></div>
+      <div className="flex justify-center">
+        <Link className="" to="/">
+          <img className="w-10" src="/logo.svg" alt="" />
         </Link>
-        <h2>Trace of Humanity</h2>
       </div>
-
-      <div className={styles.centerColumn}></div>
-
-      <div className={styles.rightColumn}>
+      <div className="text-end">
         {isLoggedIn && showGreeting && <p>Hi, {displayName} !</p>}
       </div>
     </div>

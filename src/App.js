@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="app">
       <ToastContainer />
-      {/* <Header /> */}
+      <Header />
       <MusicPlayer />
       <Routes>
         <Route path="/" element={<Home />} />
