@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { Earth } from 'components/Earth';
-import { MainMenu } from 'components/MainMenu';
+import { Earth } from "components/Earth";
+import { MainMenu } from "components/MainMenu";
 
 export const Home = () => {
   return (
     <div>
       <MainMenu />
-      {/* <Earth /> */}
+      <Earth />
     </div>
   );
 };

@@ -71,8 +71,6 @@ export const MainMenu = () => {
         <MenuWrapper>
           {menuItems.map((item, index) => (
             <MenuItemWrapper
-              // className={styles.menuItem}
-              // className="min-w-44 flex gap-2 items-center"
               key={index}
               ref={item.name === "authorization" ? authButtonRef : null}
             >

@@ -1,19 +1,19 @@
-import React from 'react'
-import { sideMenuImages } from 'utils/imagesHelper'
+import React from "react";
 
+import { sideMenuImages } from "utils/imagesHelper";
 
 export const CentralView = () => {
   return (
-    <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-between pointer-events-none'>
+    <div className="pointer-events-none absolute left-1/2 top-1/2 flex max-w-lg -translate-x-1/2 -translate-y-1/2 transform justify-between">
       {sideMenuImages.map((image, index) => (
         <div
           key={index}
-          className='h-full bg-no-repeat bg-contain bg-center aspect-[2/15]'
+          className="aspect-[2/15] h-full bg-contain bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${image})`,
           }}
         ></div>
       ))}
     </div>
-  )
-}
+  );
+};
