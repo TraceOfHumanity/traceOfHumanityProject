@@ -1,31 +1,24 @@
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
-import { FaSpaceShuttle } from "react-icons/fa";
-import { IoLogIn } from "react-icons/io5";
-import { MdDashboard } from "react-icons/md";
-import { SiAlienware } from "react-icons/si";
 import { useDispatch, useSelector } from "react-redux";
-// import { Player } from "../MusicPlayer/Player";
-import { Link } from "react-router-dom";
 
 import { setFlashingOfTheLoginButton } from "../../redux/features/animationsSlice";
 import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
-import { Auth } from "./Auth";
 import { CentralView } from "./CentralView";
-import { MenuItemWrapper } from "./MenuItemWrapper";
 import { MenuWrapper } from "./MenuWrapper";
+import { Navigation } from "./Navigation";
 
-const menuItems = [
-  { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
-  { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
-  // { name: "authorization", icon: <IoLogIn /> },
-];
+// const menuItems = [
+//   { name: "explore", link: "/library", icon: <FaSpaceShuttle /> },
+//   { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   // { name: "author", link: "/aboutAuthor", icon: <SiAlienware /> },
+//   { name: "authorization", icon: <IoLogIn /> },
+// ];
 
 export const MainMenu = () => {
   const dispatch = useDispatch();
@@ -69,7 +62,7 @@ export const MainMenu = () => {
       <div className="relative flex aspect-square w-[calc(300px+(950-300)*((100vw-320px)/(2500-320)))] max-w-4xl items-center justify-center overflow-hidden rounded-full [&>*]:aspect-square [&>*]:w-[calc(70px+(530-70)*((100vw-320px)/(2500-320)))]">
         {/* <div className={styles.menuItemsWrapper}> */}
         <MenuWrapper>
-          {menuItems.map((item, index) => (
+          {/* {menuItems.map((item, index) => (
             <MenuItemWrapper
               key={index}
               ref={item.name === "authorization" ? authButtonRef : null}
@@ -81,16 +74,15 @@ export const MainMenu = () => {
             </MenuItemWrapper>
           ))}
           {isLoggedIn && userId === process.env.REACT_APP_TRACE_OF_HUMANITY && (
-            <Link
-              // className={styles.menuItem}
-              // className="min-w-44 flex gap-2 items-center"
-              to="dashboard"
-            >
-              {menuItems.length % 2 !== 0 && <MdDashboard />}
-              dashboard
-              {menuItems.length % 2 === 0 && <MdDashboard />}
-            </Link>
-          )}
+            <MenuItemWrapper>
+              <Link to="dashboard" className="inline-flex">
+                {menuItems.length % 2 !== 0 && <MdDashboard />}
+                dashboard
+                {menuItems.length % 2 === 0 && <MdDashboard />}
+              </Link>
+            </MenuItemWrapper>
+          )} */}
+          <Navigation />
         </MenuWrapper>
         <CentralView />
       </div>

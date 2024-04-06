@@ -12,19 +12,19 @@ export const Auth = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  const login = async () => {
-    dispatch(setIsShowLoginPopup(true));
-  };
+  // const login = async () => {
+  //   dispatch(setIsShowLoginPopup(true));
+  // };
 
-  const logoutUser = () => {
-    signOut(auth)
-      .then(() => {
-        toast.success("Logout success");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
+  // const logoutUser = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       toast.success("Logout success");
+  //     })
+  //     .catch((error) => {
+  //       toast.error(error.message);
+  //     });
+  // };
 
   return (
     // <div className={styles.authorization}>
