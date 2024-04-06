@@ -247,11 +247,11 @@
     --blue: #01B9FF;
     --opacityBlue: #00b7ff80;
     --opacityRed: #ff000080;
-    --opacityBlue01: #00b7ff1f;
-    --opacityRed01: #ff00001f;
-
+    --opacityBlue01: #00b7ff2f;
+    --opacityRed01: #ff00002f;
+    --white: #ffffff;
+    --opacityWhite: #ffffff80;
   }
-
 }
 
 @layer components {
@@ -277,5 +277,9 @@
 
   h6 {
     @apply text-base font-bold;
+  }
+
+  p {
+    @apply text-grayText drop-shadow-md text-xs md:text-sm lg:text-base;
   }
 }

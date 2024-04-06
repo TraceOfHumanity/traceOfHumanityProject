@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-
 import { useSelector } from "react-redux";
 
 import { GreetingPopup } from "./GreetingPopup";
@@ -22,13 +21,15 @@ export const Popups = () => {
   return (
     <div
       ref={popupsRef}
-      style={{
-        position: "fixed",
-        height: "0",
-        zIndex: "10",
-      }}
+      className="fixed left-0 top-0 z-50 h-0"
+      // style={{
+      //   position: "fixed",
+      //   height: "0",
+      //   zIndex: "10",
+      // }}
     >
-      {isOpenGreetingPopup && <GreetingPopup />}
+      {/* {isOpenGreetingPopup && <GreetingPopup />} */}
+      <GreetingPopup />
       {isOpenPleaseRegisterPopup && <PleaseRegister />}
       {isShowLoginPopup && <LoginPopup />}
       {isShowRegistrationPopup && <RegistrationPopup />}
