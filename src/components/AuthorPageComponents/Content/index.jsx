@@ -1,14 +1,13 @@
-import React, { useEffect, useRef } from "react";
-
 import baffle from "baffle";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 
-import { contactsList, greetingAuthorText, skillsList } from "../text";
-import styles from "./content.module.scss";
+import { PopupWrapper } from "ui-elements/PopupWrapper";
+
+import { greetingAuthorText } from "../text";
 
 export const AuthorContent = () => {
-  const descriptionContainerRef = useRef(null);
   const descriptionsRef = useRef([]);
   useEffect(() => {
     const title = baffle(".title");
@@ -20,20 +19,6 @@ export const AuthorContent = () => {
     title.reveal(1000, 1000);
   }, []);
   useEffect(() => {
-    gsap.fromTo(
-      descriptionContainerRef.current,
-      {
-        opacity: 0,
-        y: 100,
-      },
-      {
-        opacity: 1,
-        duration: 4,
-        y: 0,
-        transformOrigin: "top",
-        ease: "elastic.out(1, 0.4)",
-      }
-    );
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(
       ".skill",
@@ -50,7 +35,7 @@ export const AuthorContent = () => {
           end: "top 80%",
           toggleActions: "play none none reverse",
         },
-      }
+      },
     );
 
     gsap.fromTo(
@@ -63,20 +48,17 @@ export const AuthorContent = () => {
         x: 0,
         stagger: 0.1,
         ease: "elastic(1, 0.75)",
-      }
+      },
     );
   }, []);
   return (
-    <div className={styles.wrapper}>
-      <div
-        className={styles.descriptionContainer}
-        ref={descriptionContainerRef}
-      >
+    <div className="relative z-10 overflow-y-auto p-[1vw]">
+      <PopupWrapper className="relative  mt-[50vh] max-w-full lg:mt-0 lg:max-w-[40vw]">
         <h2 className="title">Live and let live</h2>
         <div>
           {greetingAuthorText.map((text, index) => (
             <p
-              className={styles.description}
+              // className={styles.description}
               key={index}
               ref={(el) => (descriptionsRef.current[index] = el)}
             >
@@ -84,9 +66,9 @@ export const AuthorContent = () => {
             </p>
           ))}
         </div>
-      </div>
+      </PopupWrapper>
 
-      <div className={`contactsWrapper ${styles.contactsWrapper}`}>
+      {/* <div className={`contactsWrapper ${styles.contactsWrapper}`}>
         <h2>Contacts</h2>
         <div className={styles.contacts}>
           {contactsList.map((item) => (
@@ -95,9 +77,9 @@ export const AuthorContent = () => {
             </a>
           ))}
         </div>
-      </div>
+      </div> */}
 
-      <div className={styles.skillsContainer}>
+      {/* <div className={styles.skillsContainer}>
         <h2>Tools</h2>
         <div className={styles.skillsList}>
           {skillsList.map((item, index) => (
@@ -111,9 +93,8 @@ export const AuthorContent = () => {
               <div className={styles.icon}>{item.logo}</div>
             </div>
           ))}
-          {/* <Skills /> */}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

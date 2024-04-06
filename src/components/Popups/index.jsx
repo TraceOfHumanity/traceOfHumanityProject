@@ -28,8 +28,7 @@ export const Popups = () => {
       //   zIndex: "10",
       // }}
     >
-      {/* {isOpenGreetingPopup && <GreetingPopup />} */}
-      <GreetingPopup />
+      {isOpenGreetingPopup && <GreetingPopup />}
       {isOpenPleaseRegisterPopup && <PleaseRegister />}
       {isShowLoginPopup && <LoginPopup />}
       {isShowRegistrationPopup && <RegistrationPopup />}

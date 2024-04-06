@@ -1,11 +1,8 @@
-import React, { Suspense, useState } from "react";
-
-import * as THREE from "three";
-
 import { Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useState } from "react";
+import * as THREE from "three";
 
-import styles from "./authorBG.module.scss";
 import { Avatar } from "./Avatar";
 import { Camera } from "./Camera";
 import { Desk } from "./Desk";
@@ -35,10 +32,8 @@ export const AuthorBG = () => {
   });
 
   return (
-    <div className={styles.authorBG}>
-      <Canvas
-      // camera={{ fov: 75, position: [0, 0, 0] }}
-      >
+    <div className="fixed inset-0 left-0 top-0 -z-10">
+      <Canvas>
         <Suspense fallback={null}>
           <Camera />
           <mesh
@@ -63,7 +58,6 @@ export const AuthorBG = () => {
               <videoTexture attach="emissiveMap" args={[video2]} />
             </meshStandardMaterial>
           </mesh>
-          {/* <pointLight position={[-1, 2, 1]} intensity={3} /> */}
           <pointLight
             color="#038CAF"
             intensity={90}
@@ -116,10 +110,9 @@ export const AuthorBG = () => {
         }}
       />
       <div
-        className={styles.electronicBg}
+        className="pointer-events-none fixed bottom-0 right-0 z-10 h-[30vh] w-[30vw] bg-contain bg-right-bottom bg-no-repeat opacity-15"
         style={{ backgroundImage: "url(/assets/electronicBg.svg)" }}
       ></div>
-      {/* <img className={styles.electronicBg} src="/assets/electronicBg.svg" alt="" /> */}
     </div>
   );
 };
