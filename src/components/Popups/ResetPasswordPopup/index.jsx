@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-
+import { auth } from "firebase.config";
 import { sendPasswordResetEmail } from "firebase/auth";
+import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+
 import { Loader } from "components/Loader";
-import { auth } from "firebase.config";
+
 import {
-  setIsShowLoginPopup,
-  setIsShowRegistrationPopup,
-  setIsShowResetPasswordPopup,
+  setIsLoginPopup,
+  setIsRegistrationPopup,
+  setIsResetPasswordPopup,
 } from "../../../redux/features/popupsSlice";
 
 export const ResetPasswordPopup = () => {
@@ -40,7 +41,7 @@ export const ResetPasswordPopup = () => {
 
         <button
           className="closePopup"
-          onClick={() => dispatch(setIsShowResetPasswordPopup(false))}
+          onClick={() => dispatch(setIsResetPasswordPopup(false))}
         >
           <IoMdClose />
         </button>
@@ -68,16 +69,16 @@ export const ResetPasswordPopup = () => {
         >
           <button
             onClick={() => {
-              dispatch(setIsShowResetPasswordPopup(false));
-              dispatch(setIsShowLoginPopup(true));
+              dispatch(setIsResetPasswordPopup(false));
+              dispatch(setIsLoginPopup(true));
             }}
           >
             Login
           </button>
           <button
             onClick={() => {
-              dispatch(setIsShowResetPasswordPopup(false));
-              dispatch(setIsShowRegistrationPopup(true));
+              dispatch(setIsResetPasswordPopup(false));
+              dispatch(setIsRegistrationPopup(true));
             }}
           >
             Registration

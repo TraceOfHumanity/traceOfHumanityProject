@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isOpenGreetingPopup: false,
   isOpenPleaseRegisterPopup: false,
-  isShowLoginPopup: false,
-  isShowRegistrationPopup: false,
-  isShowResetPasswordPopup: false,
+  isLoginPopup: false,
+  isRegistrationPopup: false,
+  isResetPasswordPopup: false,
 };
 
 const popupsSlice = createSlice({
@@ -18,14 +18,14 @@ const popupsSlice = createSlice({
     setIsOpenPleaseRegisterPopup(state, action) {
       state.isOpenPleaseRegisterPopup = action.payload;
     },
-    setIsShowLoginPopup(state, action) {
-      state.isShowLoginPopup = action.payload;
+    setIsLoginPopup(state, action) {
+      state.isLoginPopup = action.payload;
     },
-    setIsShowRegistrationPopup(state, action) {
-      state.isShowRegistrationPopup = action.payload;
+    setIsRegistrationPopup(state, action) {
+      state.isRegistrationPopup = action.payload;
     },
-    setIsShowResetPasswordPopup(state, action) {
-      state.isShowResetPasswordPopup = action.payload;
+    setIsResetPasswordPopup(state, action) {
+      state.isResetPasswordPopup = action.payload;
     },
   },
 });
@@ -33,8 +33,8 @@ const popupsSlice = createSlice({
 export const {
   setIsOpenGreetingPopup,
   setIsOpenPleaseRegisterPopup,
-  setIsShowLoginPopup,
-  setIsShowRegistrationPopup,
-  setIsShowResetPasswordPopup,
+  setIsLoginPopup,
+  setIsRegistrationPopup,
+  setIsResetPasswordPopup,
 } = popupsSlice.actions;
 export default popupsSlice.reducer;

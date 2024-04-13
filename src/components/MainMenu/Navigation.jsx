@@ -11,7 +11,9 @@ export const Navigation = () => {
       {mainMenuItems.map((item) => (
         <MenuItemWrapper>
           {item.icon}
-          <Link to={item.link}>{item.name}</Link>
+          <Link to={item.link} onClick={item.onClick}>
+            {item.name}
+          </Link>
         </MenuItemWrapper>
       ))}
     </>

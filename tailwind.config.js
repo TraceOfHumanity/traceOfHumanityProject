@@ -25,7 +25,7 @@ module.exports = {
         // popupShadow:
         //   "inset 15px 15px 50px 0px var(--opacityRed01),inset -15px -15px 20px 1px var(--opacityBlue01)",
         popupShadow:
-          " 0px 0px 20px 0px #000, inset 5px 5px 20px 0px var(--opacityRed01)",
+          "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityRed01)",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],

@@ -13,6 +13,7 @@ export const useAuth = () => {
       });
   };
 
+
   return {
     logoutUser,
   };

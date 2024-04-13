@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-
+import { auth } from "firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
 import { GiArchiveRegister } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+
 import { Loader } from "components/Loader";
-import { auth } from "firebase.config";
+
 import {
-  setIsShowLoginPopup,
-  setIsShowRegistrationPopup,
+  setIsLoginPopup,
+  setIsRegistrationPopup,
 } from "../../../redux/features/popupsSlice";
 
 export const RegistrationPopup = () => {
@@ -36,8 +37,8 @@ export const RegistrationPopup = () => {
         setEmail("");
         setPassword("");
         setConfirmPassword("");
-        dispatch(setIsShowRegistrationPopup(false));
-        dispatch(setIsShowLoginPopup(true));
+        dispatch(setIsRegistrationPopup(false));
+        dispatch(setIsLoginPopup(true));
       })
       .catch((error) => {
         toast.error(error.message);
@@ -51,7 +52,7 @@ export const RegistrationPopup = () => {
         <IoFingerPrintOutline className="popupBg" />
         <button
           className="closePopup"
-          onClick={() => dispatch(setIsShowRegistrationPopup(false))}
+          onClick={() => dispatch(setIsRegistrationPopup(false))}
         >
           <IoMdClose />
         </button>
@@ -87,8 +88,8 @@ export const RegistrationPopup = () => {
           Already have an account?
           <button
             onClick={() => {
-              dispatch(setIsShowRegistrationPopup(false));
-              dispatch(setIsShowLoginPopup(true));
+              dispatch(setIsRegistrationPopup(false));
+              dispatch(setIsLoginPopup(true));
             }}
           >
             Login

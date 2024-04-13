@@ -11,28 +11,20 @@ export const Popups = () => {
   const {
     isOpenGreetingPopup,
     isOpenPleaseRegisterPopup,
-    isShowLoginPopup,
-    isShowRegistrationPopup,
-    isShowResetPasswordPopup,
+    isLoginPopup,
+    isRegistrationPopup,
+    isResetPasswordPopup,
   } = useSelector((state) => state.popups);
 
   const popupsRef = useRef(null);
 
   return (
-    <div
-      ref={popupsRef}
-      className="fixed left-0 top-0 z-50 h-0"
-      // style={{
-      //   position: "fixed",
-      //   height: "0",
-      //   zIndex: "10",
-      // }}
-    >
+    <div ref={popupsRef} className="fixed left-0 top-0 z-50 h-0">
       {isOpenGreetingPopup && <GreetingPopup />}
       {isOpenPleaseRegisterPopup && <PleaseRegister />}
-      {isShowLoginPopup && <LoginPopup />}
-      {isShowRegistrationPopup && <RegistrationPopup />}
-      {isShowResetPasswordPopup && <ResetPasswordPopup />}
+      {isLoginPopup && <LoginPopup />}
+      {isRegistrationPopup && <RegistrationPopup />}
+      {isResetPasswordPopup && <ResetPasswordPopup />}
     </div>
   );
 };

@@ -1,22 +1,25 @@
-import React, { useState } from "react";
-
+import { auth } from "firebase.config";
 import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 import { IoFingerPrintOutline, IoLogIn } from "react-icons/io5";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { auth } from "firebase.config";
+
+import { Button } from "ui-elements/Button";
+import { PopupWrapper } from "ui-elements/PopupWrapper";
+
 import {
-  setIsShowLoginPopup,
-  setIsShowRegistrationPopup,
-  setIsShowResetPasswordPopup,
-} from "../../../redux/features/popupsSlice";
+  setIsLoginPopup,
+  setIsRegistrationPopup,
+  setIsResetPasswordPopup,
+} from "../../redux/features/popupsSlice";
 
 export const LoginPopup = () => {
   const dispatch = useDispatch();
@@ -35,7 +38,7 @@ export const LoginPopup = () => {
         toast.success("Login success");
         setEmail("");
         setPassword("");
-        dispatch(setIsShowLoginPopup(false));
+        dispatch(setIsLoginPopup(false));
       })
       .catch((error) => {
         toast.error(error.message);
@@ -48,24 +51,22 @@ export const LoginPopup = () => {
       .then((result) => {
         const user = result.user;
         toast.success("Login success");
-        dispatch(setIsShowLoginPopup(false));
+        dispatch(setIsLoginPopup(false));
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
   return (
-    <div className="popupWrapper">
-      <div className="popup">
-        <IoFingerPrintOutline className="popupBg" />
-
-        <button
-          className="closePopup"
-          onClick={() => dispatch(setIsShowLoginPopup(false))}
-        >
-          <IoMdClose />
-        </button>
-        <h2>Login</h2>
+    <div>
+      <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+        {/* <IoFingerPrintOutline className="popupBg" /> */}
+        <header>
+          <button onClick={() => dispatch(setIsLoginPopup(false))}>
+            <IoMdClose />
+          </button>
+          <h2>Login</h2>
+        </header>
         <form onSubmit={loginUser}>
           <input
             type="text"
@@ -81,34 +82,34 @@ export const LoginPopup = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit">
+          <Button type="submit">
             Login <IoLogIn />
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => {
-              dispatch(setIsShowResetPasswordPopup(true));
-              dispatch(setIsShowLoginPopup(false));
+              dispatch(setIsResetPasswordPopup(true));
+              dispatch(setIsLoginPopup(false));
             }}
           >
             Reset password <TbPasswordFingerprint />
-          </button>
+          </Button>
           <p className="or">-- or --</p>
         </form>
-        <button onClick={signInWithGoogle}>
+        <Button onClick={signInWithGoogle}>
           Login with Google <FcGoogle />
-        </button>
+        </Button>
         <p>
           Don't have an account?{" "}
           <button
             onClick={() => {
-              dispatch(setIsShowLoginPopup(false));
-              dispatch(setIsShowRegistrationPopup(true));
+              dispatch(setIsLoginPopup(false));
+              dispatch(setIsRegistrationPopup(true));
             }}
           >
             Register
           </button>
         </p>
-      </div>
+      </PopupWrapper>
     </div>
   );
 };
