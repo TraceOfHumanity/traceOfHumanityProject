@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-
 import gsap from "gsap";
+import React, { useEffect, useRef, useState } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setIsPlaying } from "../../redux/features/audioPlayerSlice";
+import { setIsPlaying } from "../../redux/slices/audioPlayerSlice";
 import { Equalizer } from "./Equalizer";
 import styles from "./player.module.scss";
 
@@ -15,7 +14,7 @@ export const MusicPlayer = () => {
   const playButtonRef = useRef(null);
   const songs = ["/sounds/ava.mp3", "/sounds/spore.mp3"];
   const [currentSongIndex, setCurrentSongIndex] = useState(
-    Math.floor(Math.random() * songs.length)
+    Math.floor(Math.random() * songs.length),
   );
 
   const togglePlayPause = () => {
@@ -41,7 +40,7 @@ export const MusicPlayer = () => {
           // delay: 10,
           // repeatDelay: 5,
           ease: "elastic.out(1, 0.3)",
-        }
+        },
       );
     } else {
       gsap.killTweensOf(playButtonRef.current);

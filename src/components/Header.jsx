@@ -4,10 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import {
-  REMOVE_ACTIVE_USER,
-  SET_ACTIVE_USER,
-} from "../redux/features/authSlice";
+import { REMOVE_ACTIVE_USER, SET_ACTIVE_USER } from "../redux/slices/authSlice";
 
 export const Header = () => {
   const [displayName, setDisplayName] = useState("");

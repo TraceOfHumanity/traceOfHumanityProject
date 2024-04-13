@@ -20,7 +20,7 @@ import {
   setIsLoginPopup,
   setIsRegistrationPopup,
   setIsResetPasswordPopup,
-} from "../../redux/features/popupsSlice";
+} from "../../redux/slices/popupsSlice";
 
 export const LoginPopup = () => {
   const dispatch = useDispatch();
@@ -30,58 +30,56 @@ export const LoginPopup = () => {
   const { loginUser, signInWithGoogle } = useAuth();
 
   return (
-    <div>
-      <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-        {/* <IoFingerPrintOutline className="popupBg" /> */}
-        <header>
-          <button onClick={() => dispatch(setIsLoginPopup(false))}>
-            <IoMdClose />
-          </button>
-          <h2>Login</h2>
-        </header>
-        <form onSubmit={(e) => loginUser(e, email, password)}>
-          <input
-            type="text"
-            placeholder="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button type="submit">
-            Login <IoLogIn />
-          </Button>
-        </form>
-        <Button
+    <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+      {/* <IoFingerPrintOutline className="popupBg" /> */}
+      <header>
+        <button onClick={() => dispatch(setIsLoginPopup(false))}>
+          <IoMdClose />
+        </button>
+        <h2>Login</h2>
+      </header>
+      <form onSubmit={(e) => loginUser(e, email, password)}>
+        <input
+          type="text"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <Button type="submit">
+          Login <IoLogIn />
+        </Button>
+      </form>
+      <Button
+        onClick={() => {
+          dispatch(setIsResetPasswordPopup(true));
+          dispatch(setIsLoginPopup(false));
+        }}
+      >
+        Reset password <TbPasswordFingerprint />
+      </Button>
+      <p className="or">-- or --</p>
+      <Button onClick={signInWithGoogle}>
+        Login with Google <FcGoogle />
+      </Button>
+      <p>
+        Don't have an account?{" "}
+        <button
           onClick={() => {
-            dispatch(setIsResetPasswordPopup(true));
             dispatch(setIsLoginPopup(false));
+            dispatch(setIsRegistrationPopup(true));
           }}
         >
-          Reset password <TbPasswordFingerprint />
-        </Button>
-        <p className="or">-- or --</p>
-        <Button onClick={signInWithGoogle}>
-          Login with Google <FcGoogle />
-        </Button>
-        <p>
-          Don't have an account?{" "}
-          <button
-            onClick={() => {
-              dispatch(setIsLoginPopup(false));
-              dispatch(setIsRegistrationPopup(true));
-            }}
-          >
-            Register
-          </button>
-        </p>
-      </PopupWrapper>
-    </div>
+          Register
+        </button>
+      </p>
+    </PopupWrapper>
   );
 };

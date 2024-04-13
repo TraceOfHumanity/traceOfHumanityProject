@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { Loader } from "components/Loader";
 
 import { Header } from "./components/Header";
 import { MusicPlayer } from "./components/MusicPlayer";
@@ -12,8 +15,10 @@ import { Home } from "./pages/Home";
 import { Library } from "./pages/Library";
 
 function App() {
+  const { isLoading } = useSelector((state) => state.loader);
   return (
     <div className="app">
+      {isLoading && <Loader />}
       <ToastContainer />
       <Header />
       <MusicPlayer />

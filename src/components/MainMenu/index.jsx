@@ -2,8 +2,8 @@ import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setFlashingOfTheLoginButton } from "../../redux/features/animationsSlice";
-import { setIsOpenGreetingPopup } from "../../redux/features/popupsSlice";
+import { setFlashingOfTheLoginButton } from "../../redux/slices/animationsSlice";
+import { setIsOpenGreetingPopup } from "../../redux/slices/popupsSlice";
 import { CentralView } from "./CentralView";
 import { MenuWrapper } from "./MenuWrapper";
 import { Navigation } from "./Navigation";

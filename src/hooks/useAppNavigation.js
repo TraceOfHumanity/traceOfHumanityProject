@@ -4,7 +4,7 @@ import { SiAlienware } from "react-icons/si";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { setIsLoginPopup } from "../redux/features/popupsSlice";
+import { setIsLoginPopup } from "../redux/slices/popupsSlice";
 import { useAuth } from "./useAuth";
 
 export const useAppNavigation = () => {

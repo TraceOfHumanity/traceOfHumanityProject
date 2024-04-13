@@ -1,10 +1,10 @@
 import React from "react";
-
 import { IoMdClose } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setFlashingOfTheLoginButton } from "../../../redux/features/animationsSlice";
-import { setIsOpenPleaseRegisterPopup } from "../../../redux/features/popupsSlice";
+
+import { setFlashingOfTheLoginButton } from "../../../redux/slices/animationsSlice";
+import { setIsOpenPleaseRegisterPopup } from "../../../redux/slices/popupsSlice";
 
 export const PleaseRegister = () => {
   const dispatch = useDispatch();

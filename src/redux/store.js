@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import animationsSlice from "./features/animationsSlice";
-import audioPlayerSlice from "./features/audioPlayerSlice";
-import authSlice from "./features/authSlice";
-import popupsSlice from "./features/popupsSlice";
+import animationsSlice from "./slices/animationsSlice";
+import audioPlayerSlice from "./slices/audioPlayerSlice";
+import authSlice from "./slices/authSlice";
+import loaderSlice from "./slices/loaderSlice";
+import popupsSlice from "./slices/popupsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export const store = configureStore({
     audioPlayer: audioPlayerSlice,
     animations: animationsSlice,
     auth: authSlice,
+    loader: loaderSlice,
   },
 });

@@ -45,10 +45,10 @@
   }
 
   p {
-    @apply text-xs text-grayText drop-shadow-md md:text-sm lg:text-base;
+    @apply inline-block gap-1 text-xs text-grayText drop-shadow-md md:text-sm lg:text-base;
     a,
     button {
-      @apply text-blue;
+      @apply inline-block px-1 text-blue;
     }
   }
 

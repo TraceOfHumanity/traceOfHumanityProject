@@ -1,5 +1,6 @@
 import { auth } from "firebase.config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "hooks/useAuth";
 import React, { useState } from "react";
 import { GiArchiveRegister } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
@@ -9,10 +10,13 @@ import { toast } from "react-toastify";
 
 import { Loader } from "components/Loader";
 
+import { Button } from "ui-elements/Button";
+import { PopupWrapper } from "ui-elements/PopupWrapper";
+
 import {
   setIsLoginPopup,
   setIsRegistrationPopup,
-} from "../../../redux/features/popupsSlice";
+} from "../../redux/slices/popupsSlice";
 
 export const RegistrationPopup = () => {
   const dispatch = useDispatch();
@@ -20,44 +24,26 @@ export const RegistrationPopup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { registerUser } = useAuth();
 
-  const registerUser = (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      toast.error("Passwords don't match");
-      return;
-    }
-    setIsLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        setIsLoading(false);
-        toast.success("Registration success");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        dispatch(setIsRegistrationPopup(false));
-        dispatch(setIsLoginPopup(true));
-      })
-      .catch((error) => {
-        toast.error(error.message);
-        setIsLoading(false);
-      });
-  };
   return (
-    <div className="popupWrapper">
-      {isLoading && <Loader />}
-      <div className="popup">
-        <IoFingerPrintOutline className="popupBg" />
-        <button
-          className="closePopup"
-          onClick={() => dispatch(setIsRegistrationPopup(false))}
+    <div>
+      {/* {isLoading && <Loader />} */}
+      <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+        {/* <IoFingerPrintOutline className="popupBg" /> */}
+        <header>
+          <button
+            className="closePopup"
+            onClick={() => dispatch(setIsRegistrationPopup(false))}
+          >
+            <IoMdClose />
+          </button>
+          <h2>Registration</h2>
+        </header>
+        <form
+          className="flex flex-col"
+          onSubmit={(e) => registerUser(e, email, password, confirmPassword)}
         >
-          <IoMdClose />
-        </button>
-        <h2>Registration</h2>
-        <form className="flex flex-col" onSubmit={registerUser}>
           <input
             type="text"
             placeholder="email"
@@ -79,9 +65,9 @@ export const RegistrationPopup = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <button type="submit">
+          <Button type="submit">
             Registration <GiArchiveRegister />
-          </button>
+          </Button>
         </form>
 
         <p>
@@ -95,7 +81,7 @@ export const RegistrationPopup = () => {
             Login
           </button>
         </p>
-      </div>
+      </PopupWrapper>
     </div>
   );
 };

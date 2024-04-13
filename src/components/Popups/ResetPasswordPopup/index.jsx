@@ -13,7 +13,7 @@ import {
   setIsLoginPopup,
   setIsRegistrationPopup,
   setIsResetPasswordPopup,
-} from "../../../redux/features/popupsSlice";
+} from "../../../redux/slices/popupsSlice";
 
 export const ResetPasswordPopup = () => {
   const dispatch = useDispatch();

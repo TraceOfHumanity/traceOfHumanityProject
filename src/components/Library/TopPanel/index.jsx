@@ -1,10 +1,9 @@
 import React from "react";
-
 import { MdOutlinePostAdd } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { setIsOpenPleaseRegisterPopup } from "../../../redux/features/popupsSlice";
 
+import { setIsOpenPleaseRegisterPopup } from "../../../redux/slices/popupsSlice";
 import { Navigation } from "../Navigation";
 import styles from "./topPanel.module.scss";
 

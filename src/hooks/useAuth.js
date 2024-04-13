@@ -1,6 +1,7 @@
 import { auth } from "firebase.config";
 import {
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -8,20 +9,54 @@ import {
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-import { setIsLoginPopup } from "../redux/features/popupsSlice";
+import { setIsLoading } from "../redux/slices/loaderSlice";
+import {
+  setIsLoginPopup,
+  setIsRegistrationPopup,
+} from "../redux/slices/popupsSlice";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
 
+  const registerUser = (e, email, password, confirmPassword) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error("Passwords don't match");
+      return;
+    }
+    // setIsLoading(true);
+    dispatch(setIsLoading(true));
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        // setIsLoading(false);
+        dispatch(setIsLoading(false));
+        toast.success("Registration success");
+        // setEmail("");
+        // setPassword("");
+        // setConfirmPassword("");
+        dispatch(setIsRegistrationPopup(false));
+        // dispatch(setIsLoginPopup(true));
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        // setIsLoading(false);
+        dispatch(setIsLoading(false));
+      });
+  };
+
   const loginUser = (e, email, password) => {
     e.preventDefault();
     // setIsLoading(true);
+    dispatch(setIsLoading(true));
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         // setIsLoading(false);
+        dispatch(setIsLoading(false));
         toast.success("Login success");
         // setEmail("");
         // setPassword("");
@@ -30,6 +65,7 @@ export const useAuth = () => {
       .catch((error) => {
         toast.error(error.message);
         // setIsLoading(false);
+        dispatch(setIsLoading(false));
       });
   };
 
@@ -56,6 +92,7 @@ export const useAuth = () => {
   };
 
   return {
+    registerUser,
     loginUser,
     signInWithGoogle,
     logoutUser,
