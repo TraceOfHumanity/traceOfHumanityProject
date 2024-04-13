@@ -1,9 +1,10 @@
 import { auth } from "firebase.config";
-import {
-  GoogleAuthProvider,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
+// import {
+//   GoogleAuthProvider,
+//   signInWithEmailAndPassword,
+//   signInWithPopup,
+// } from "firebase/auth";
+import { useAuth } from "hooks/useAuth";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
@@ -26,37 +27,8 @@ export const LoginPopup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { loginUser, signInWithGoogle } = useAuth();
 
-  const loginUser = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setIsLoading(false);
-        toast.success("Login success");
-        setEmail("");
-        setPassword("");
-        dispatch(setIsLoginPopup(false));
-      })
-      .catch((error) => {
-        toast.error(error.message);
-        setIsLoading(false);
-      });
-  };
-  const provider = new GoogleAuthProvider();
-  const signInWithGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        toast.success("Login success");
-        dispatch(setIsLoginPopup(false));
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
   return (
     <div>
       <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
@@ -67,7 +39,7 @@ export const LoginPopup = () => {
           </button>
           <h2>Login</h2>
         </header>
-        <form onSubmit={loginUser}>
+        <form onSubmit={(e) => loginUser(e, email, password)}>
           <input
             type="text"
             placeholder="email"
@@ -85,16 +57,16 @@ export const LoginPopup = () => {
           <Button type="submit">
             Login <IoLogIn />
           </Button>
-          <Button
-            onClick={() => {
-              dispatch(setIsResetPasswordPopup(true));
-              dispatch(setIsLoginPopup(false));
-            }}
-          >
-            Reset password <TbPasswordFingerprint />
-          </Button>
-          <p className="or">-- or --</p>
         </form>
+        <Button
+          onClick={() => {
+            dispatch(setIsResetPasswordPopup(true));
+            dispatch(setIsLoginPopup(false));
+          }}
+        >
+          Reset password <TbPasswordFingerprint />
+        </Button>
+        <p className="or">-- or --</p>
         <Button onClick={signInWithGoogle}>
           Login with Google <FcGoogle />
         </Button>

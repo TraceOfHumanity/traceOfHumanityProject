@@ -2,42 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --bodyBg: #000000;
     --textColor: #e8e8e8;
     --grayText: #a8a8a8;
     --red: #ff0000;
-    --blue: #01B9FF;
+    --blue: #01b9ff;
     --opacityBlue: #00b7ff80;
     --opacityRed: #ff000080;
     --opacityBlue01: #00b7ff2f;
     --opacityRed01: #ff00002f;
     --white: #ffffff;
     --opacityWhite: #ffffff80;
+    --buttonBg: #000000;
   }
 }
 
 @layer components {
   h1 {
-    @apply font-bold text-xl md:text-3xl lg:text-4xl;
+    @apply text-xl font-bold md:text-3xl lg:text-4xl;
   }
 
   h2 {
-    @apply font-bold text-lg md:text-2xl lg:text-3xl bg-gradient-to-r from-blue to-red bg-clip-text text-transparent w-fit mx-auto;
+    @apply mx-auto w-fit bg-gradient-to-r from-blue to-red bg-clip-text text-lg font-bold text-transparent md:text-2xl lg:text-3xl;
   }
 
   h3 {
-    @apply font-bold text-base md:text-xl lg:text-2xl;
+    @apply text-base font-bold md:text-xl lg:text-2xl;
   }
 
   h4 {
-    @apply font-bold text-base md:text-lg lg:text-xl;
+    @apply text-base font-bold md:text-lg lg:text-xl;
   }
 
   h5 {
-    @apply font-bold text-base md:text-base lg:text-lg;
+    @apply text-base font-bold md:text-base lg:text-lg;
   }
 
   h6 {
@@ -45,11 +45,15 @@
   }
 
   p {
-    @apply text-grayText drop-shadow-md text-xs md:text-sm lg:text-base;
+    @apply text-xs text-grayText drop-shadow-md md:text-sm lg:text-base;
+    a,
+    button {
+      @apply text-blue;
+    }
   }
 
-  form{
-    @apply flex flex-col gap-2;
+  form {
+    @apply flex w-full flex-col gap-2;
   }
 
   input {

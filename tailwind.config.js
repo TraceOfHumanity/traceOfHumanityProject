@@ -20,12 +20,12 @@ module.exports = {
         opacityRed01: "var(--opacityRed01)",
         white: "var(--white)",
         opacityWhite: "var(--opacityWhite)",
+        buttonBg: "var(--buttonBg)",
       },
       boxShadow: {
-        // popupShadow:
-        //   "inset 15px 15px 50px 0px var(--opacityRed01),inset -15px -15px 20px 1px var(--opacityBlue01)",
         popupShadow:
           "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityRed01)",
+        buttonGlare: "inset 0px 0px 10px 0px var(--opacityWhite)",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],

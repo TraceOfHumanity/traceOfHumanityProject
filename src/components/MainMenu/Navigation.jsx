@@ -8,8 +8,8 @@ export const Navigation = () => {
   const { mainMenuItems } = useAppNavigation();
   return (
     <>
-      {mainMenuItems.map((item) => (
-        <MenuItemWrapper>
+      {mainMenuItems.map((item, index) => (
+        <MenuItemWrapper key={index}>
           {item.icon}
           <Link to={item.link} onClick={item.onClick}>
             {item.name}

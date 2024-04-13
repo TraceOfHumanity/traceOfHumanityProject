@@ -6,7 +6,7 @@ export const Button = ({ children, onClick, className }) => {
   return (
     <button
       className={cn(
-        "relative -z-10 flex w-fit items-center gap-2 overflow-hidden bg-black p-2 before:absolute before:left-0 before:top-0 before:h-1/2 before:w-full before:bg-slate-700 before:content-['']",
+        "flex min-h-10 w-fit items-center gap-2 overflow-hidden rounded-lg bg-black bg-opacity-50 px-2 py-1",
         className,
       )}
       onClick={onClick}
