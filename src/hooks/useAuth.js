@@ -2,14 +2,17 @@ import { auth } from "firebase.config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
+import { REMOVE_ACTIVE_USER, SET_ACTIVE_USER } from "../redux/slices/authSlice";
 import { setIsLoading } from "../redux/slices/loaderSlice";
 import {
   setIsLoginPopup,
@@ -19,6 +22,7 @@ import {
 export const useAuth = () => {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
+  const [displayName, setDisplayName] = useState("");
 
   const registerUser = (e, email, password, confirmPassword) => {
     e.preventDefault();
@@ -26,46 +30,34 @@ export const useAuth = () => {
       toast.error("Passwords don't match");
       return;
     }
-    // setIsLoading(true);
     dispatch(setIsLoading(true));
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        // setIsLoading(false);
         dispatch(setIsLoading(false));
         toast.success("Registration success");
-        // setEmail("");
-        // setPassword("");
-        // setConfirmPassword("");
         dispatch(setIsRegistrationPopup(false));
-        // dispatch(setIsLoginPopup(true));
       })
       .catch((error) => {
         toast.error(error.message);
-        // setIsLoading(false);
         dispatch(setIsLoading(false));
       });
   };
 
   const loginUser = (e, email, password) => {
     e.preventDefault();
-    // setIsLoading(true);
     dispatch(setIsLoading(true));
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        // setIsLoading(false);
         dispatch(setIsLoading(false));
         toast.success("Login success");
-        // setEmail("");
-        // setPassword("");
         dispatch(setIsLoginPopup(false));
       })
       .catch((error) => {
         toast.error(error.message);
-        // setIsLoading(false);
         dispatch(setIsLoading(false));
       });
   };
@@ -94,19 +86,42 @@ export const useAuth = () => {
 
   const resetPassword = (e, email) => {
     e.preventDefault();
-    // setIsLoading(true);
     dispatch(setIsLoading(true));
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        // setIsLoading(false);
         dispatch(setIsLoading(false));
         toast.success("Check your email for reset password link");
       })
       .catch((error) => {
-        // setIsLoading(false);
         dispatch(setIsLoading(false));
         toast.error(error.message);
       });
+  };
+
+  const checkAuthorization = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        if (user.displayName === null) {
+          const u1 = user.email.split("@")[0];
+          const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
+          console.log(uName);
+          setDisplayName(uName);
+        } else {
+          setDisplayName(user.displayName);
+        }
+
+        dispatch(
+          SET_ACTIVE_USER({
+            email: user.email,
+            userName: user.displayName ? user.displayName : displayName,
+            userId: user.uid,
+          }),
+        );
+      } else {
+        setDisplayName("");
+        dispatch(REMOVE_ACTIVE_USER());
+      }
+    });
   };
 
   return {
@@ -115,5 +130,7 @@ export const useAuth = () => {
     signInWithGoogle,
     logoutUser,
     resetPassword,
+    checkAuthorization,
+    displayName,
   };
 };
