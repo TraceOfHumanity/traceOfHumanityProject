@@ -1,5 +1,7 @@
+import gsap from "gsap";
+import { useAnimation } from "hooks/useAnimation";
 import { useAuth } from "hooks/useAuth";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoMdClose } from "react-icons/io";
 import { IoLogIn } from "react-icons/io5";
@@ -18,9 +20,9 @@ import {
 
 export const LoginPopup = () => {
   const dispatch = useDispatch();
+  const { loginUser, signInWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loginUser, signInWithGoogle } = useAuth();
 
   return (
     <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
