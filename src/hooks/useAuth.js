@@ -2,6 +2,7 @@ import { auth } from "firebase.config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -91,10 +92,28 @@ export const useAuth = () => {
       });
   };
 
+  const resetPassword = (e, email) => {
+    e.preventDefault();
+    // setIsLoading(true);
+    dispatch(setIsLoading(true));
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // setIsLoading(false);
+        dispatch(setIsLoading(false));
+        toast.success("Check your email for reset password link");
+      })
+      .catch((error) => {
+        // setIsLoading(false);
+        dispatch(setIsLoading(false));
+        toast.error(error.message);
+      });
+  };
+
   return {
     registerUser,
     loginUser,
     signInWithGoogle,
     logoutUser,
+    resetPassword,
   };
 };

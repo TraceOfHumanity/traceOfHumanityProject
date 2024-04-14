@@ -16,6 +16,7 @@
     --white: #ffffff;
     --opacityWhite: #ffffff80;
     --buttonBg: #000000;
+    --borderColor: #ffffff20;
   }
 }
 
@@ -56,7 +57,8 @@
     @apply flex w-full flex-col gap-2;
   }
 
-  input {
-    @apply bg-transparent;
+  input,
+  textarea {
+    @apply bg-transparent outline-none;
   }
 }

@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 
 import { Button } from "ui-elements/Button";
 import { PopupWrapper } from "ui-elements/PopupWrapper";
+import { TextInput } from "ui-elements/TextInput";
 
 import {
   setIsLoginPopup,
@@ -39,14 +40,14 @@ export const LoginPopup = () => {
         <h2>Login</h2>
       </header>
       <form onSubmit={(e) => loginUser(e, email, password)}>
-        <input
+        <TextInput
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
+        <TextInput
           type="password"
           placeholder="password"
           value={password}

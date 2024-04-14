@@ -21,6 +21,7 @@ module.exports = {
         white: "var(--white)",
         opacityWhite: "var(--opacityWhite)",
         buttonBg: "var(--buttonBg)",
+        borderColor: "var(--borderColor)",
       },
       boxShadow: {
         popupShadow:
