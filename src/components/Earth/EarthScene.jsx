@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-
-import * as THREE from "three";
-import { TextureLoader } from "three";
-
 import { Stars } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
+import React, { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { TextureLoader } from "three";
 
 import EarthCloudsMap from "./textures/8k_earth_clouds.jpg";
 import EarthDayMap from "./textures/8k_earth_daymap.jpg";
@@ -15,15 +13,16 @@ import MoonMap from "./textures/moon.jpg";
 export const EarthScene = (props) => {
   const [dayMap, normalMap, specularMap, cloudsMap, moonMap] = useLoader(
     TextureLoader,
-    [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap, MoonMap]
+    [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap, MoonMap],
   );
   const [starsFactor, setStarsFactor] = useState(3);
 
-  const earthRef = React.useRef();
-  const cloudsRef = React.useRef();
-  const sunRef = React.useRef();
-  const moonRef = React.useRef();
-  const starsRef = React.useRef();
+  const earthRef = useRef();
+  const cloudsRef = useRef();
+  const sunRef = useRef();
+  const moonRef = useRef();
+  const starsRef = useRef();
+
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     earthRef.current.rotation.y = elapsedTime / 60 + 4.7;
@@ -45,7 +44,7 @@ export const EarthScene = (props) => {
     return useFrame((state) => {
       state.camera.position.lerp(
         vec.set(state.mouse.x * 0.2, state.mouse.y * 0.1, 4),
-        0.05
+        0.05,
       );
       state.camera.lookAt(0, 0, 0);
     });
