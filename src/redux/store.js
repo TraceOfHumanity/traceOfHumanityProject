@@ -8,10 +8,10 @@ import popupsSlice from "./slices/popupsSlice";
 
 export const store = configureStore({
   reducer: {
-    popups: popupsSlice,
     audioPlayer: audioPlayerSlice,
-    animations: animationsSlice,
     auth: authSlice,
+    animations: animationsSlice,
     loader: loaderSlice,
+    popups: popupsSlice,
   },
 });
