@@ -1,5 +1,6 @@
 import { useAppNavigation } from "hooks/useAppNavigation";
 import React from "react";
+import { MdSpaceDashboard } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -20,6 +21,7 @@ export const Navigation = () => {
       ))}
       {userId === process.env.REACT_APP_TRACE_OF_HUMANITY && (
         <MenuItemWrapper>
+          <MdSpaceDashboard />
           <Link to="/dashboard">Dashboard</Link>
         </MenuItemWrapper>
       )}

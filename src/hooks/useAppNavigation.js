@@ -23,6 +23,7 @@ export const useAppNavigation = () => {
       link: "/aboutAuthor",
       icon: <SiAlienware />,
     },
+
     {
       name: `${isLoggedIn ? "logout" : "login"}`,
       icon: <IoLogIn />,

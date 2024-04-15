@@ -34,7 +34,7 @@ export const useAuth = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         dispatch(setIsLoading(false));
         toast.success("Registration success");
         dispatch(setIsRegistrationPopup(false));
@@ -104,7 +104,7 @@ export const useAuth = () => {
         if (user.displayName === null) {
           const u1 = user.email.split("@")[0];
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
-          console.log(uName);
+          // console.log(uName);
           setDisplayName(uName);
         } else {
           setDisplayName(user.displayName);
