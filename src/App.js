@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="app">
       {isLoading && <Loader />}
-      <ToastContainer />
+      <ToastContainer theme="dark" />
       <Header />
       <MusicPlayer />
       <Routes>

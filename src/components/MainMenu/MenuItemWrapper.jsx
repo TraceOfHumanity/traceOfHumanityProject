@@ -1,7 +1,9 @@
+import { useAnimation } from "hooks/useAnimation";
 import React, { useEffect, useRef } from "react";
 
-export const MenuItemWrapper = ({ children }) => {
+export const MenuItemWrapper = ({ children, buttonId }) => {
   const itemRef = useRef(null);
+  const { hintAnimation } = useAnimation();
 
   useEffect(() => {
     const childrenArray = Array.from(itemRef.current.children);
@@ -15,6 +17,12 @@ export const MenuItemWrapper = ({ children }) => {
         }
       }
     });
+  }, []);
+
+  useEffect(() => {
+    if (buttonId === "loginButton") {
+      hintAnimation(itemRef);
+    }
   }, []);
 
   return (

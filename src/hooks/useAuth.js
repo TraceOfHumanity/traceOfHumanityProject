@@ -104,7 +104,6 @@ export const useAuth = () => {
         if (user.displayName === null) {
           const u1 = user.email.split("@")[0];
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
-          // console.log(uName);
           setDisplayName(uName);
         } else {
           setDisplayName(user.displayName);

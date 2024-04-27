@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@gsap/react": "^2.1.1",
     "@react-three/drei": "^9.88.16",
     "@react-three/fiber": "^8.15.11",
     "@reduxjs/toolkit": "^2.2.3",

@@ -3,16 +3,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
 
-import { PopupWrapper } from "ui-elements/PopupWrapper";
+import { greetingAuthorText } from "utils/textData";
 
-import { greetingAuthorText } from "../text";
+import { PopupWrapper } from "ui-elements/PopupWrapper";
 
 export const AuthorContent = () => {
   const descriptionsRef = useRef([]);
   useEffect(() => {
     const title = baffle(".title");
     title.set({
-      characters: "▓h￦u﮺ﬕmힰaꥅn㐣i㒸ty",
+      characters: "▓h￦u﮺ˤmힰaꥅn/i~ty",
       speed: 70,
     });
     title.start();
@@ -57,11 +57,7 @@ export const AuthorContent = () => {
         <h2 className="title">Live and let live</h2>
         <div>
           {greetingAuthorText.map((text, index) => (
-            <p
-              // className={styles.description}
-              key={index}
-              ref={(el) => (descriptionsRef.current[index] = el)}
-            >
+            <p key={index} ref={(el) => (descriptionsRef.current[index] = el)}>
               {text}
             </p>
           ))}
