@@ -13,7 +13,7 @@ export const Camera = () => {
     const x = Math.sin(elapsedTime / -10) * radius;
     const z = Math.cos(elapsedTime / -10) * radius;
 
-    cameraRef.current.position.set(x, 2, z);
+    cameraRef.current.position.set(4, 1.5, 1);
     cameraRef.current.lookAt(0, 0, 0);
   });
   return <PerspectiveCamera makeDefault fov={50} ref={cameraRef} />;

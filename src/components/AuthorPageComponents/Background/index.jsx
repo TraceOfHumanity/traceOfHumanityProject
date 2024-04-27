@@ -78,30 +78,30 @@ export const AuthorBG = () => {
           <Monitor />
           <Keyboard />
           <Ground />
-          <mesh
+          {/* <mesh
             rotation={[-0.7, 0, 0]}
             position={[0, 0, 0]}
             scale={[0.6, 0.6, 0.6]}
           >
             <torusGeometry args={[3.35, 0.05, 16, 100]} />
             <meshStandardMaterial emissive={[2, 2, 2]} color={[0, 0, 0]} />
-          </mesh>
-          <mesh
+          </mesh> */}
+          {/* <mesh
             rotation={[-0.9, 0, 0]}
             position={[0, 0, 0]}
             scale={[0.6, 0.55, 0.55]}
           >
             <torusGeometry args={[3.35, 0.05, 16, 100]} />
             <meshStandardMaterial emissive={[2, 2, 2]} color={[0, 0, 0]} />
-          </mesh>
-          <mesh
+          </mesh> */}
+          {/* <mesh
             rotation={[-1.1, 0, 0]}
             position={[0, 0, 0]}
             scale={[0.6, 0.5, 0.5]}
           >
             <torusGeometry args={[3.35, 0.05, 16, 100]} />
             <meshStandardMaterial emissive={[2, 2, 2]} color={[0, 0, 0]} />
-          </mesh>
+          </mesh> */}
         </Suspense>
       </Canvas>
       <Loader

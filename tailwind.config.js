@@ -31,6 +31,12 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      content: {
+        folderTop: "url('/public/assets/folderHeader.svg')",
+      },
+      gridTemplateColumns: {
+        "skills": "repeat(auto-fill, minmax(280px, 1fr))",
+      },
     },
   },
   plugins: [],
