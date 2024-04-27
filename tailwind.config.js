@@ -35,7 +35,7 @@ module.exports = {
         folderTop: "url('/public/assets/folderHeader.svg')",
       },
       gridTemplateColumns: {
-        "skills": "repeat(auto-fill, minmax(280px, 1fr))",
+        // "skills": "repeat(auto-fill, minmax(280px, 1fr))",
       },
     },
   },

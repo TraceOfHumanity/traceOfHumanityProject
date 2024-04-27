@@ -10,10 +10,10 @@ export const Camera = () => {
     const elapsedTime = state.clock.getElapsedTime();
     const radius = 5;
 
-    const x = Math.sin(elapsedTime / -10) * radius;
-    const z = Math.cos(elapsedTime / -10) * radius;
+    // const x = Math.sin(elapsedTime / -5) * radius;
+    const z = Math.cos(elapsedTime / -10) * radius / 2;
 
-    cameraRef.current.position.set(4, 1.5, 1);
+    cameraRef.current.position.set(5, 1.5, z);
     cameraRef.current.lookAt(0, 0, 0);
   });
   return <PerspectiveCamera makeDefault fov={50} ref={cameraRef} />;

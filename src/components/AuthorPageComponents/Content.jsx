@@ -6,6 +6,8 @@ import { greetingAuthorText } from "utils/textData";
 
 import { PopupWrapper } from "ui-elements/PopupWrapper";
 
+import { skillsList } from "./text";
+
 export const AuthorContent = () => {
   const { generatingTitleAnimation, sideDropAnimation } = useAnimation();
   const descriptionsRef = useRef([]);
@@ -33,18 +35,23 @@ export const AuthorContent = () => {
         </div>
       </PopupWrapper>
 
-      <div className="grid-cols-skills grid">
-        {Array(10)
-          .fill(null)
-          .map((_, index) => (
-            <div
-              key={index}
-              className="before:content-folderTop h-10 before:w-full relative before:absolute before:top-0 before:left-0"
-              ref={(el) => (skillsRef.current[index] = el)}
-            >
-              {index}
+      <div className="grid max-w-80 gap-4">
+        {skillsList.map((item, index) => (
+          <div
+            key={index}
+            className="before:content-folderTop relative before:absolute before:left-0 before:top-0 before:w-full before:transform "
+            ref={(el) => (skillsRef.current[index] = el)}
+          >
+            <h4 className="max-w-[50%] overflow-hidden text-ellipsis whitespace-nowrap p-1">
+              {item.category}
+            </h4>
+            <div className="border rounded-b-md">
+              {item.skills.map((skill, index) => (
+                <p key={index}>{skill}</p>
+              ))}
             </div>
-          ))}
+          </div>
+        ))}
       </div>
     </div>
   );

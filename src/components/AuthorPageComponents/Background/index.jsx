@@ -60,14 +60,14 @@ export const AuthorBG = () => {
           </mesh>
           <pointLight
             color="#038CAF"
-            intensity={90}
+            intensity={50}
             position={[0, 5, 0]}
             castShadow
             shadow-bias={-0.0001}
           />
           <pointLight
             color="#FE0101"
-            intensity={70}
+            intensity={20}
             position={[5, 3, 4]}
             castShadow
             shadow-bias={-0.0001}

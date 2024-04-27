@@ -16,7 +16,7 @@ export function Monitor(props) {
       position={[-0.1, 0.7, -0.9]}
       scale={[1.5, 1, 1]}
     >
-      <pointLight intensity={0.3} position={[0, 1, 0.001]} />
+      <pointLight intensity={0.5} position={[0, 0.5, 0]} />
       <mesh
         geometry={nodes.circle.geometry}
         material={materials.Mat}
