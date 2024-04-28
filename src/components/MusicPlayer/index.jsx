@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setIsPlaying } from "../../redux/slices/audioPlayerSlice";
 import { Equalizer } from "./Equalizer";
-import styles from "./player.module.scss";
+// import styles from "./player.module.scss";
 
 export const MusicPlayer = () => {
   const dispatch = useDispatch();
@@ -49,9 +49,9 @@ export const MusicPlayer = () => {
   }, [isPlaying]);
 
   return (
-    <div className={styles.player}>
+    <div className="fixed bottom-2 right-2 z-10 bg-black bg-opacity-20 rounded-full p-0.5">
       <audio src={songs[currentSongIndex]} ref={audioRef} loop></audio>
-      <div className={styles.playerButtons}>
+      <div className="text-2xl flex justify-center items-center aspect-square">
         <button onClick={() => togglePlayPause()} ref={playButtonRef}>
           {/* {isPlaying ? <MdMusicOff /> : <MdMusicNote />} */}
           {isPlaying ? <Equalizer /> : <MdMusicNote />}

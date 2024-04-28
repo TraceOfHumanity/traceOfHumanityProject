@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./player.module.scss";
+// import styles from "./player.module.scss";
 
 export const Equalizer = () => {
   return (
@@ -10,9 +10,7 @@ export const Equalizer = () => {
       height={25}
       x="0px"
       y="0px"
-      className={styles.musicNote}
       viewBox="0 0 100 100"
-      // enable-background="new 0 0 100 100"
     >
       <rect
         fill="#fff"
