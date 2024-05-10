@@ -1,9 +1,11 @@
 import { useAnimation } from "hooks/useAnimation";
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 export const MenuItemWrapper = ({ children, buttonId }) => {
   const itemRef = useRef(null);
   const { hintAnimation } = useAnimation();
+  const {flashingOfTheLoginButton} = useSelector((state) => state.animations);
 
   useEffect(() => {
     const childrenArray = Array.from(itemRef.current.children);
@@ -20,7 +22,7 @@ export const MenuItemWrapper = ({ children, buttonId }) => {
   }, []);
 
   useEffect(() => {
-    if (buttonId === "loginButton") {
+    if (buttonId === "loginButton" && flashingOfTheLoginButton) {
       hintAnimation(itemRef);
     }
   }, []);

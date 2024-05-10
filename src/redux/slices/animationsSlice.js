@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  flashingOfTheLoginButton: false,
+  flashingOfTheLoginButton: true,
 };
 
 const animationsSlice = createSlice({

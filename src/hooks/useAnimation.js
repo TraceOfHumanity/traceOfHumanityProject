@@ -1,9 +1,9 @@
 import baffle from "baffle";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useDispatch } from "react-redux";
 
 import { setFlashingOfTheLoginButton } from "../redux/slices/animationsSlice";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const useAnimation = () => {
   const dispatch = useDispatch();
@@ -19,14 +19,21 @@ export const useAnimation = () => {
   const hintAnimation = (refElement) => {
     gsap.fromTo(
       refElement.current,
-      { scale: 1 },
+      {
+        // scale: 1.1,
+        duration: 1,
+        // opacity: 0.7,
+        boxShadow: "0px 0px 15px 0px #01b9ff",
+      },
       {
         delay: 1,
-        scale: 1.01,
-        duration: 1.5,
+        boxShadow: "0px 0px 0px 0px transparent",
+        // scale: 1,
+        duration: 1.2,
+        // opacity: 1,
         repeat: 4,
         transformOrigin: "center",
-        ease: "elastic.out(10, 0.1)",
+        ease: "elastic.out(1, 0.5)",
         onComplete: () => {
           dispatch(setFlashingOfTheLoginButton(false));
         },
@@ -65,5 +72,10 @@ export const useAnimation = () => {
     );
   };
 
-  return { popupAnimation, hintAnimation, generatingTitleAnimation, sideDropAnimation };
+  return {
+    popupAnimation,
+    hintAnimation,
+    generatingTitleAnimation,
+    sideDropAnimation,
+  };
 };
