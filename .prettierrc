@@ -2,16 +2,10 @@
   "semi": true,
   "singleQuote": false,
   "bracketSpacing": true,
+  "tabWidth": 2,
   "trailingComma": "all",
   "arrowParens": "always",
-  "importOrder": [
-    "^pages/(.*)$",
-    "^components/(.*)$",
-    "^utils/(.*)$",
-    "^ui-elements/(.*)$",
-    "^styles/(.*)$",
-    "^[./]"
-  ],
+  "importOrder": ["react", "<THIRD_PARTY_MODULES>", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderCaseInsensitive": false,

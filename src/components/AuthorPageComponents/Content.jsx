@@ -2,11 +2,10 @@ import { useGSAP } from "@gsap/react";
 import { useAnimation } from "hooks/useAnimation";
 import React, { useRef } from "react";
 
-import { greetingAuthorText } from "utils/textData";
+import { greetingAuthorText, skillsList } from "utils/textData";
 
 import { PopupWrapper } from "ui-elements/PopupWrapper";
 
-import { skillsList } from "./text";
 
 export const AuthorContent = () => {
   const { generatingTitleAnimation, sideDropAnimation } = useAnimation();
