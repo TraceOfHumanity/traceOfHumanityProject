@@ -1,13 +1,14 @@
 import React from "react";
 
-import { Earth } from "components/Earth";
+import { Earth } from "components/3DComponents/Earth";
 import { MainMenu } from "components/MainMenu";
+import { PageWrapper } from "components/PageWrapper";
 
 export const Home = () => {
   return (
-    <div>
+    <PageWrapper>
       <MainMenu />
-      {/* <Earth /> */}
-    </div>
+      <Earth />
+    </PageWrapper>
   );
 };

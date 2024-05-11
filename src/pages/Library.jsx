@@ -4,16 +4,16 @@ import { Outlet } from "react-router-dom";
 import { LibraryMenu } from "components/Library/Menu";
 import { TopPanel } from "components/Library/TopPanel";
 
-import styles from "./lib.module.scss";
+import { PageWrapper } from "components/PageWrapper";
 
 export const Library = () => {
   return (
-    <div className={styles.wrapper}>
+    <PageWrapper >
       <TopPanel />
-      <div className={styles.library}>
+      <div>
         <LibraryMenu />
         <Outlet />
       </div>
-    </div>
+    </PageWrapper>
   );
 };
