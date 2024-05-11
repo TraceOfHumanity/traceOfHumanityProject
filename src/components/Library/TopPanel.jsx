@@ -3,9 +3,8 @@ import { MdOutlinePostAdd } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
-import { setIsOpenPleaseRegisterPopup } from "../../../redux/slices/popupsSlice";
-import { Navigation } from "../Navigation";
-import styles from "./topPanel.module.scss";
+import { setIsOpenPleaseRegisterPopup } from "../../redux/slices/popupsSlice";
+import { Navigation } from "./Navigation";
 
 export const TopPanel = () => {
   const dispatch = useDispatch();
@@ -17,15 +16,21 @@ export const TopPanel = () => {
     dispatch(setIsOpenPleaseRegisterPopup(true));
   };
   return (
-    <div className={styles.topPanel}>
+    <div className="mb-2 flex items-center gap-5">
       <Navigation />
       {isLoggedIn ? (
-        <Link to="/create-post">
+        <Link
+          className="flex items-center gap-2 text-sm md:text-base"
+          to="/create-post"
+        >
           <MdOutlinePostAdd />
           Add post
         </Link>
       ) : (
-        <button onClick={() => showWarningPopup()}>
+        <button
+          className="flex items-center gap-2 text-sm md:text-base"
+          onClick={() => showWarningPopup()}
+        >
           <MdOutlinePostAdd />
           Add post
         </button>
