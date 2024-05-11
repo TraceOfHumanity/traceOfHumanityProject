@@ -20,20 +20,17 @@ export const useAnimation = () => {
     gsap.fromTo(
       refElement.current,
       {
-        // scale: 1.1,
         duration: 1,
-        // opacity: 0.7,
-        boxShadow: "0px 0px 15px 0px #01b9ff",
+        boxShadow: "inset 0px 0px 15px 0px #01b9ff",
+        ease: "elastic.out(5, 0.5)",
       },
       {
         delay: 1,
-        boxShadow: "0px 0px 0px 0px transparent",
-        // scale: 1,
+        boxShadow: "inset 0px 0px 15px 0px transparent",
         duration: 1.2,
-        // opacity: 1,
         repeat: 4,
         transformOrigin: "center",
-        ease: "elastic.out(1, 0.5)",
+        ease: "elastic.out(1, 1)",
         onComplete: () => {
           dispatch(setFlashingOfTheLoginButton(false));
         },

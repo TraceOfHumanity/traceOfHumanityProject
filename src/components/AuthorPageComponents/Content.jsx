@@ -35,17 +35,17 @@ export const AuthorContent = () => {
         </div>
       </PopupWrapper>
 
-      <div className="grid max-w-80 gap-4">
+      <div className="grid w-full gap-4 mt-24 min-[360px]:grid-cols-2 min-[550px]:grid-cols-3 min-[900px]:grid-cols-4 lg:grid-cols-5">
         {skillsList.map((item, index) => (
           <div
             key={index}
-            className="before:content-folderTop relative before:absolute before:left-0 before:top-0 before:w-full before:transform "
+            className="relative shadow-popupShadow h-fit overflow-hidden rounded-lg backdrop-blur-md"
             ref={(el) => (skillsRef.current[index] = el)}
           >
-            <h4 className="max-w-[50%] overflow-hidden text-ellipsis whitespace-nowrap p-1">
+            <h4 className="overflow-hidden text-ellipsis whitespace-nowrap p-1 border rounded-t-lg border-borderColor">
               {item.category}
             </h4>
-            <div className="border rounded-b-md">
+            <div className="border rounded-b-md flex flex-col border-borderColor p-1 border-t-0">
               {item.skills.map((skill, index) => (
                 <p key={index}>{skill}</p>
               ))}

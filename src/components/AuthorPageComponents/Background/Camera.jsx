@@ -11,7 +11,7 @@ export const Camera = () => {
     const radius = 5;
 
     // const x = Math.sin(elapsedTime / -5) * radius;
-    const z = Math.cos(elapsedTime / -10) * radius / 2;
+    const z = Math.cos(elapsedTime / 10) * radius / 3;
 
     cameraRef.current.position.set(5, 1.5, z);
     cameraRef.current.lookAt(0, 0, 0);

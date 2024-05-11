@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <div>
       <MainMenu />
-      <Earth />
+      {/* <Earth /> */}
     </div>
   );
 };

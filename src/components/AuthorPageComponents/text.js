@@ -39,7 +39,7 @@ export const skillsList = [
   },
   {
     category: "Embedded",
-    skills: ["C", "C++", "Arduino"],
+    skills: ["C++", "Arduino"],
     logo: <FaGears />,
   },
 
