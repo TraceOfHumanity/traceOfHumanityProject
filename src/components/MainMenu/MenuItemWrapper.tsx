@@ -1,25 +1,32 @@
-import { useAnimation } from "hooks/useAnimation";
-import { useAppSelector } from "hooks/useReduxToolkit";
-import React, { useEffect, useRef } from "react";
+import {useAnimation} from "hooks/useAnimation";
+import {useAppSelector} from "hooks/useReduxToolkit";
+import React, {useEffect, useRef} from "react";
 
 interface MenuItemWrapperProps {
   children: React.ReactNode;
-  buttonId: string;
+  buttonId: string | boolean;
 }
 
-export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({ children, buttonId }) => {
-  const itemRef = useRef(null);
-  const { hintAnimation } = useAnimation();
-  const {flashingOfTheLoginButton} = useAppSelector((state) => state.animations);
+export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
+  children,
+  buttonId,
+}) => {
+  const itemRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const {hintAnimation} = useAnimation();
+  const {flashingOfTheLoginButton} = useAppSelector(
+    (state) => state.animations
+  );
 
   useEffect(() => {
-    const childrenArray = Array.from(itemRef.current.children);
+    // const childrenArray = Array.from(itemRef.current.children);
+    const childrenArray = Array.from(itemRef.current?.children || []);
 
-    childrenArray.forEach((child) => {
+    childrenArray.forEach((child: any) => {
       if (child.tagName === "A") {
-        while (child.offsetWidth > itemRef.current.offsetWidth - 55) {
-          child.style.fontSize = `${
-            parseInt(window.getComputedStyle(child).fontSize) - 1
+        const htmlChild = child as HTMLElement;
+        while (htmlChild.offsetWidth > itemRef.current?.offsetWidth - 55) {
+          htmlChild.style.fontSize = `${
+            parseInt(window.getComputedStyle(htmlChild).fontSize) - 1
           }px`;
         }
       }
