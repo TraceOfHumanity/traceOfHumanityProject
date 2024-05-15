@@ -1,11 +1,16 @@
 import { useAnimation } from "hooks/useAnimation";
+import { useAppSelector } from "hooks/useReduxToolkit";
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
 
-export const MenuItemWrapper = ({ children, buttonId }) => {
+interface MenuItemWrapperProps {
+  children: React.ReactNode;
+  buttonId: string;
+}
+
+export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({ children, buttonId }) => {
   const itemRef = useRef(null);
   const { hintAnimation } = useAnimation();
-  const {flashingOfTheLoginButton} = useSelector((state) => state.animations);
+  const {flashingOfTheLoginButton} = useAppSelector((state) => state.animations);
 
   useEffect(() => {
     const childrenArray = Array.from(itemRef.current.children);

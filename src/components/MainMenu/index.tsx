@@ -12,7 +12,7 @@ export const MainMenu = () => {
   useEffect(() => {
     const notFirstVisit = localStorage.getItem("notFirstVisit");
     if (!notFirstVisit) {
-      localStorage.setItem("notFirstVisit", true);
+      localStorage.setItem("notFirstVisit", "true");
       dispatch(setIsOpenGreetingPopup(true));
     }
   }, []);
