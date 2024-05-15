@@ -17,15 +17,15 @@ function App() {
       {isLoading && <Loader />}
       <ToastContainer theme="dark" />
       <Header />
-      <MusicPlayer />
-      <Routes>
-        <Route path="/" element={<Home />} />
+      {/* <MusicPlayer /> */}
+      {/* <Routes> */}
+        {/* <Route path="/" element={<Home />} /> */}
         {/* <Route path="/library" element={<Library />}>
           <Route path=":subtopic" element={<p>123</p>} />
         </Route>
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
         <Route path="/dashboard" element={<Dashboard />} /> */}
-      </Routes>
+      {/* </Routes> */}
       <Popups />
     </div>
   );
