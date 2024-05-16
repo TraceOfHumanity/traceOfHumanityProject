@@ -2,7 +2,15 @@ import React from "react";
 
 import { cn } from "utils/cn";
 
-export const Button = ({ children, onClick, className, type }) => {
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+  className?: string;
+  type?: "button" | "submit" | "reset";
+  
+}
+
+export const Button: React.FC<ButtonProps> = ({ children, onClick, className, type }) => {
   return (
     <button
       className={cn(

@@ -22,7 +22,6 @@ module.exports = {
         opacityWhite: "var(--opacityWhite)",
         buttonBg: "var(--buttonBg)",
         borderColor: "var(--borderColor)",
-
       },
     },
   },
