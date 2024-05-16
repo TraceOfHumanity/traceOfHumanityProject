@@ -1,13 +1,10 @@
 import React from "react";
-import { IoMdClose } from "react-icons/io";
-import { useDispatch } from "react-redux";
-
-import { greetingPopupText } from "utils/textData";
-
-import { PopupWrapper } from "ui-elements/PopupWrapper";
-
-import { setIsPlaying } from "../../redux/slices/audioPlayerSlice";
-import { setIsOpenGreetingPopup } from "../../redux/slices/popupsSlice";
+import {IoMdClose} from "react-icons/io";
+import {useDispatch} from "react-redux";
+import {greetingPopupText} from "utils/textData";
+import {PopupWrapper} from "ui-elements/PopupWrapper";
+import {setIsPlaying} from "../../redux/slices/audioPlayerSlice";
+import {setIsOpenGreetingPopup} from "../../redux/slices/popupsSlice";
 
 export const GreetingPopup = () => {
   const dispatch = useDispatch();

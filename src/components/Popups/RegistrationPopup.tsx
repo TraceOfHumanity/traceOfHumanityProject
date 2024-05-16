@@ -1,12 +1,12 @@
-import { useAuth } from "hooks/useAuth";
-import React, { useState } from "react";
-import { GiArchiveRegister } from "react-icons/gi";
-import { IoMdClose } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import {useAuth} from "hooks/useAuth";
+import React, {useState} from "react";
+import {GiArchiveRegister} from "react-icons/gi";
+import {IoMdClose} from "react-icons/io";
+import {useDispatch} from "react-redux";
 
-import { Button } from "ui-elements/Button";
-import { PopupWrapper } from "ui-elements/PopupWrapper";
-import { TextInput } from "ui-elements/TextInput";
+import {Button} from "ui-elements/Button";
+import {PopupWrapper} from "ui-elements/PopupWrapper";
+import {TextInput} from "ui-elements/TextInput";
 
 import {
   setIsLoginPopup,
@@ -15,7 +15,7 @@ import {
 
 export const RegistrationPopup = () => {
   const dispatch = useDispatch();
-  const { registerUser } = useAuth();
+  const {registerUser} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

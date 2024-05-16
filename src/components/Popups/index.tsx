@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 
-import { GreetingPopup } from "./GreetingPopup";
-import { LoginPopup } from "./LoginPopup";
-import { PleaseRegister } from "./PleaseRegisterPopup";
-import { RegistrationPopup } from "./RegistrationPopup";
-import { ResetPasswordPopup } from "./ResetPasswordPopup";
-import { useAppSelector } from "hooks/useReduxToolkit";
+import {GreetingPopup} from "./GreetingPopup";
+import {LoginPopup} from "./LoginPopup";
+import {PleaseRegister} from "./PleaseRegisterPopup";
+import {RegistrationPopup} from "./RegistrationPopup";
+import {ResetPasswordPopup} from "./ResetPasswordPopup";
+import {useAppSelector} from "hooks/useReduxToolkit";
 
 export const Popups = () => {
   const {

@@ -1,16 +1,16 @@
 import gsap from "gsap";
-import { useAnimation } from "hooks/useAnimation";
-import { useAuth } from "hooks/useAuth";
-import React, { useEffect, useRef, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { IoMdClose } from "react-icons/io";
-import { IoLogIn } from "react-icons/io5";
-import { TbPasswordFingerprint } from "react-icons/tb";
-import { useDispatch } from "react-redux";
+import {useAnimation} from "hooks/useAnimation";
+import {useAuth} from "hooks/useAuth";
+import React, {useEffect, useRef, useState} from "react";
+import {FcGoogle} from "react-icons/fc";
+import {IoMdClose} from "react-icons/io";
+import {IoLogIn} from "react-icons/io5";
+import {TbPasswordFingerprint} from "react-icons/tb";
+import {useDispatch} from "react-redux";
 
-import { Button } from "ui-elements/Button";
-import { PopupWrapper } from "ui-elements/PopupWrapper";
-import { TextInput } from "ui-elements/TextInput";
+import {Button} from "ui-elements/Button";
+import {PopupWrapper} from "ui-elements/PopupWrapper";
+import {TextInput} from "ui-elements/TextInput";
 
 import {
   setIsLoginPopup,
@@ -20,7 +20,7 @@ import {
 
 export const LoginPopup = () => {
   const dispatch = useDispatch();
-  const { loginUser, signInWithGoogle } = useAuth();
+  const {loginUser, signInWithGoogle} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
