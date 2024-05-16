@@ -1,16 +1,19 @@
-import { useAnimation } from "hooks/useAnimation";
-import React, { useEffect, useRef } from "react";
+import React, {useEffect, useRef} from "react";
 
-import { cn } from "utils/cn";
+import {useAnimation} from "hooks/useAnimation";
+import {cn} from "utils/cn";
 
 interface PopupWrapperProps {
   children: React.ReactNode;
   className?: string;
 }
 
-export const PopupWrapper: React.FC<PopupWrapperProps> = ({ children, className }) => {
+export const PopupWrapper: React.FC<PopupWrapperProps> = ({
+  children,
+  className,
+}) => {
   const popupRef = useRef(null);
-  const { popupAnimation } = useAnimation();
+  const {popupAnimation} = useAnimation();
 
   useEffect(() => {
     popupAnimation(popupRef);

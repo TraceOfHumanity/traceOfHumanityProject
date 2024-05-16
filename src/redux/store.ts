@@ -1,21 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from "@reduxjs/toolkit";
 
-import firstSlice from './slices/first';
-import audioPlayerSlice from './slices/audioPlayerSlice';
-import authSlice from './slices/authSlice';
-import animationsSlice from './slices/animationsSlice';
-import loaderSlice from './slices/loaderSlice';
-import popupsSlice from './slices/popupsSlice';
+import animationsSlice from "./slices/animationsSlice";
+import audioPlayerSlice from "./slices/audioPlayerSlice";
+import authSlice from "./slices/authSlice";
+import loaderSlice from "./slices/loaderSlice";
+import popupsSlice from "./slices/popupsSlice";
 
 export const store = configureStore({
   reducer: {
-    firstSlice: firstSlice,
     audioPlayer: audioPlayerSlice,
     auth: authSlice,
     animations: animationsSlice,
     loader: loaderSlice,
     popups: popupsSlice,
-
   },
 });
 

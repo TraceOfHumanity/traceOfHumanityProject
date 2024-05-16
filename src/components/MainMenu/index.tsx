@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, {useEffect} from "react";
+import {useDispatch} from "react-redux";
 
-import { setIsOpenGreetingPopup } from "../../redux/slices/popupsSlice";
-import { CentralView } from "./CentralView";
-import { MenuWrapper } from "./MenuWrapper";
-import { Navigation } from "./Navigation";
+import {setIsOpenGreetingPopup} from "../../redux/slices/popupsSlice";
+import {CentralView} from "./CentralView";
+import {MenuWrapper} from "./MenuWrapper";
+import {Navigation} from "./Navigation";
 
 export const MainMenu = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,6 @@ export const MainMenu = () => {
       dispatch(setIsOpenGreetingPopup(true));
     }
   }, []);
-
 
   return (
     <div className="fixed left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform">

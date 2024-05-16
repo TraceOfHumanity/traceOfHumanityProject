@@ -1,6 +1,6 @@
 import React from "react";
 
-import { sideMenuImages } from "utils/imagesHelper";
+import {sideMenuImages} from "utils/imagesHelper";
 
 export const CentralView = () => {
   return (

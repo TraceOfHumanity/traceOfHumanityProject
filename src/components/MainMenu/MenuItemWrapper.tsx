@@ -1,6 +1,7 @@
+import React, {useEffect, useRef} from "react";
+
 import {useAnimation} from "hooks/useAnimation";
 import {useAppSelector} from "hooks/useReduxToolkit";
-import React, {useEffect, useRef} from "react";
 
 interface MenuItemWrapperProps {
   children: React.ReactNode;
@@ -11,10 +12,12 @@ export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
   children,
   buttonId,
 }) => {
-  const itemRef = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
+  const itemRef = useRef<HTMLDivElement>(
+    null,
+  ) as React.MutableRefObject<HTMLDivElement>;
   const {hintAnimation} = useAnimation();
   const {flashingOfTheLoginButton} = useAppSelector(
-    (state) => state.animations
+    (state) => state.animations,
   );
 
   useEffect(() => {

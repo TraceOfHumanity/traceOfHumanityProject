@@ -1,10 +1,11 @@
-import {useAppNavigation} from "hooks/useAppNavigation";
 import React from "react";
 import {MdSpaceDashboard} from "react-icons/md";
 import {Link} from "react-router-dom";
 
-import {MenuItemWrapper} from "./MenuItemWrapper";
+import {useAppNavigation} from "hooks/useAppNavigation";
 import {useAppSelector} from "hooks/useReduxToolkit";
+
+import {MenuItemWrapper} from "./MenuItemWrapper";
 
 export const Navigation = () => {
   const {mainMenuItems} = useAppNavigation();
