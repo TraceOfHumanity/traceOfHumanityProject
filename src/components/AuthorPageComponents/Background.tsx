@@ -1,16 +1,16 @@
-import { Loader } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useState } from "react";
+import {Loader} from "@react-three/drei";
+import {Canvas} from "@react-three/fiber";
+import React, {Suspense, useState} from "react";
 
+import {Avatar} from "components/3DComponents/ForAuthorPage/Avatar";
 import * as THREE from "three";
 
-import { Avatar } from "../3DComponents/ForAuthorPage/Avatar";
-import { Camera } from "../3DComponents/ForAuthorPage/Camera";
-import { Desk } from "../3DComponents/ForAuthorPage/Desk";
-import { Ground } from "../3DComponents/ForAuthorPage/Ground";
-import { Keyboard } from "../3DComponents/ForAuthorPage/Keyboard";
-import { Monitor } from "../3DComponents/ForAuthorPage/Monitor";
-import { OfficeChair } from "../3DComponents/ForAuthorPage/OfficeChair";
+import {Camera} from "../3DComponents/ForAuthorPage/Camera";
+import {Desk} from "../3DComponents/ForAuthorPage/Desk";
+import {Ground} from "../3DComponents/ForAuthorPage/Ground";
+import {Keyboard} from "../3DComponents/ForAuthorPage/Keyboard";
+import {Monitor} from "../3DComponents/ForAuthorPage/Monitor";
+import {OfficeChair} from "../3DComponents/ForAuthorPage/OfficeChair";
 
 export const AuthorBG = () => {
   const [video] = useState(() => {
@@ -73,6 +73,7 @@ export const AuthorBG = () => {
             castShadow
             shadow-bias={-0.0001}
           />
+          <Avatar />
           {/* <Avatar /> */}
           <OfficeChair />
           <Desk />
@@ -112,7 +113,7 @@ export const AuthorBG = () => {
       />
       <div
         className="pointer-events-none fixed bottom-0 right-0 z-10 h-[30vh] w-[30vw] bg-contain bg-right-bottom bg-no-repeat opacity-15"
-        style={{ backgroundImage: "url(/assets/electronicBg.svg)" }}
+        style={{backgroundImage: "url(/assets/electronicBg.svg)"}}
       ></div>
     </div>
   );
