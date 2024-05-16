@@ -73,7 +73,7 @@ export const AuthorBG = () => {
             castShadow
             shadow-bias={-0.0001}
           />
-          <Avatar />
+          {/* <Avatar /> */}
           <OfficeChair />
           <Desk />
           <Monitor />

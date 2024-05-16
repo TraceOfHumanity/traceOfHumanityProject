@@ -1,9 +1,9 @@
+import {MeshReflectorMaterial} from "@react-three/drei";
+import {useLoader} from "@react-three/fiber";
 import React from "react";
 
-import { TextureLoader } from "three";
-
-import { MeshReflectorMaterial } from "@react-three/drei";
-import { useLoader } from "@react-three/fiber";
+import {TextureLoader} from "three";
+import * as THREE from "three";
 
 export function Ground() {
   const [roughness, normal] = useLoader(TextureLoader, [
@@ -17,7 +17,7 @@ export function Ground() {
       <MeshReflectorMaterial
         envMapIntensity={0}
         normalMap={normal}
-        normalScale={[0.15, 0.15]}
+        normalScale={new THREE.Vector2(0.15, 0.15)}
         roughnessMap={roughness}
         dithering={true}
         color={[0.015, 0.015, 0.015]}
@@ -31,7 +31,6 @@ export function Ground() {
         depthScale={0.01}
         minDepthThreshold={0.9}
         maxDepthThreshold={1}
-        debug={0}
         reflectorOffset={0.2}
       />
     </mesh>
