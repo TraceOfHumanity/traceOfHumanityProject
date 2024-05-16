@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick: () => void;
   className?: string;
   type?: "button" | "submit" | "reset";
-  
+  styleType?: "delete" | "ghost"
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, onClick, className, type }) => {

@@ -23,6 +23,14 @@ module.exports = {
         buttonBg: "var(--buttonBg)",
         borderColor: "var(--borderColor)",
       },
+      boxShadow: {
+        popupShadow:
+          "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityRed01)",
+        buttonGlare: "inset 0px 0px 10px 0px var(--opacityWhite)",
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],

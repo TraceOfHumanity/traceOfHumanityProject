@@ -3,7 +3,12 @@ import React, { useEffect, useRef } from "react";
 
 import { cn } from "utils/cn";
 
-export const PopupWrapper = ({ children, className }) => {
+interface PopupWrapperProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+export const PopupWrapper: React.FC<PopupWrapperProps> = ({ children, className }) => {
   const popupRef = useRef(null);
   const { popupAnimation } = useAnimation();
 
