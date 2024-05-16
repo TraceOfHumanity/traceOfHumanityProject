@@ -4,7 +4,7 @@ import { PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 export const Camera = () => {
-  const cameraRef = useRef();
+  const cameraRef = useRef<any>();
 
   useFrame((state, delta) => {
     const elapsedTime = state.clock.getElapsedTime();
