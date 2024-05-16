@@ -4,7 +4,7 @@ import { cn } from "utils/cn";
 
 interface ButtonProps {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   type?: "button" | "submit" | "reset";
   styleType?: "delete" | "ghost"

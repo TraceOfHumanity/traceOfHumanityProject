@@ -1,18 +1,12 @@
-import { auth } from "firebase.config";
-import { sendPasswordResetEmail } from "firebase/auth";
-import { useAuth } from "hooks/useAuth";
-import React, { useState } from "react";
-import { IoMdClose } from "react-icons/io";
-import { IoFingerPrintOutline } from "react-icons/io5";
-import { TbPasswordFingerprint } from "react-icons/tb";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import {useAuth} from "hooks/useAuth";
+import React, {useState} from "react";
+import {IoMdClose} from "react-icons/io";
+import {TbPasswordFingerprint} from "react-icons/tb";
+import {useDispatch} from "react-redux";
 
-import { Loader } from "components/Loader";
-
-import { Button } from "ui-elements/Button";
-import { PopupWrapper } from "ui-elements/PopupWrapper";
-import { TextInput } from "ui-elements/TextInput";
+import {Button} from "ui-elements/Button";
+import {PopupWrapper} from "ui-elements/PopupWrapper";
+import {TextInput} from "ui-elements/TextInput";
 
 import {
   setIsLoginPopup,
@@ -23,11 +17,10 @@ import {
 export const ResetPasswordPopup = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-  const { resetPassword } = useAuth();
+  const {resetPassword} = useAuth();
 
   return (
     <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-      {/* <IoFingerPrintOutline className="popupBg" /> */}
       <header>
         <button
           className="closePopup"

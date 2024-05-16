@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InputWrapper } from "./InputWrapper";
+import {InputWrapper} from "./InputWrapper";
 
 interface TextInputProps {
   value: string;

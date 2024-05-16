@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
-import { useSelector } from "react-redux";
 
 import { GreetingPopup } from "./GreetingPopup";
 import { LoginPopup } from "./LoginPopup";
 import { PleaseRegister } from "./PleaseRegisterPopup";
 import { RegistrationPopup } from "./RegistrationPopup";
 import { ResetPasswordPopup } from "./ResetPasswordPopup";
+import { useAppSelector } from "hooks/useReduxToolkit";
 
 export const Popups = () => {
   const {
@@ -14,7 +14,7 @@ export const Popups = () => {
     isLoginPopup,
     isRegistrationPopup,
     isResetPasswordPopup,
-  } = useSelector((state) => state.popups);
+  } = useAppSelector((state) => state.popups);
 
   const popupsRef = useRef(null);
 
