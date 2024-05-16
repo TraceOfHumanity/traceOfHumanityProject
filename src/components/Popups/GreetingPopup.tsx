@@ -1,8 +1,10 @@
 import React from "react";
 import {IoMdClose} from "react-icons/io";
 import {useDispatch} from "react-redux";
-import {greetingPopupText} from "utils/textData";
+
 import {PopupWrapper} from "ui-elements/PopupWrapper";
+import {greetingPopupText} from "utils/textData";
+
 import {setIsPlaying} from "../../redux/slices/audioPlayerSlice";
 import {setIsOpenGreetingPopup} from "../../redux/slices/popupsSlice";
 

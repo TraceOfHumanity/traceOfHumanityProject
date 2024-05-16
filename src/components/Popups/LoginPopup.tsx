@@ -1,13 +1,11 @@
-import gsap from "gsap";
-import {useAnimation} from "hooks/useAnimation";
-import {useAuth} from "hooks/useAuth";
-import React, {useEffect, useRef, useState} from "react";
+import React, { useState} from "react";
 import {FcGoogle} from "react-icons/fc";
 import {IoMdClose} from "react-icons/io";
 import {IoLogIn} from "react-icons/io5";
 import {TbPasswordFingerprint} from "react-icons/tb";
 import {useDispatch} from "react-redux";
 
+import {useAuth} from "hooks/useAuth";
 import {Button} from "ui-elements/Button";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 import {TextInput} from "ui-elements/TextInput";

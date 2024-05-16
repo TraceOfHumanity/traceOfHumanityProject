@@ -1,9 +1,9 @@
-import {useAuth} from "hooks/useAuth";
 import React, {useState} from "react";
 import {GiArchiveRegister} from "react-icons/gi";
 import {IoMdClose} from "react-icons/io";
 import {useDispatch} from "react-redux";
 
+import {useAuth} from "hooks/useAuth";
 import {Button} from "ui-elements/Button";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 import {TextInput} from "ui-elements/TextInput";
