@@ -10,18 +10,18 @@ import EarthNormalMap from "./textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "./textures/8k_earth_specular_map.jpg";
 import MoonMap from "./textures/moon.jpg";
 
-export const EarthScene = (props) => {
+export const EarthScene = (props: any) => {
   const [dayMap, normalMap, specularMap, cloudsMap, moonMap] = useLoader(
     TextureLoader,
     [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap, MoonMap],
   );
   const [starsFactor, setStarsFactor] = useState(3);
 
-  const earthRef = useRef();
-  const cloudsRef = useRef();
-  const sunRef = useRef();
-  const moonRef = useRef();
-  const starsRef = useRef();
+  const earthRef = useRef<any>();
+  const cloudsRef = useRef<any>();
+  const sunRef = useRef<any>();
+  const moonRef = useRef<any>();
+  const starsRef = useRef<any>();
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
