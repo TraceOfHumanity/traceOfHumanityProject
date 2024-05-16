@@ -20,11 +20,11 @@ function App() {
       {/* <MusicPlayer /> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/library" element={<Library />}>
+        <Route path="/library" element={<Library />}>
           <Route path=":subtopic" element={<p>123</p>} />
         </Route>
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
-        <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Popups />
     </div>
