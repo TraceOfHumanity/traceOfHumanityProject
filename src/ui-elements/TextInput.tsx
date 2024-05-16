@@ -2,7 +2,15 @@ import React from "react";
 
 import { InputWrapper } from "./InputWrapper";
 
-export const TextInput = ({
+interface TextInputProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  type?: string;
+  required?: boolean;
+}
+
+export const TextInput: React.FC<TextInputProps> = ({
   value,
   onChange,
   placeholder,
