@@ -7,9 +7,11 @@ import {greetingAuthorText, skillsList} from "utils/textData";
 
 export const AuthorContent = () => {
   const {generatingTitleAnimation, sideDropAnimation} = useAnimation();
-  const descriptionsRef = useRef([]);
-  const titleRef = useRef(null);
-  const skillsRef = useRef([]);
+  // const descriptionsRef = useRef([]);
+  const descriptionsRef = useRef<Array<HTMLParagraphElement | null>>([]);
+  // const titleRef = useRef(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const skillsRef = useRef<Array<HTMLDivElement | null>>([]);
 
   useGSAP(() => {
     generatingTitleAnimation(titleRef);
