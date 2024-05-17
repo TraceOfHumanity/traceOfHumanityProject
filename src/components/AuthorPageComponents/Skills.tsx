@@ -8,13 +8,13 @@ export const Skills = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const skillRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
+  const gsapAnimation = () => {
     gsap.registerPlugin(ScrollTrigger);
     const angleStep = 180 / (skillsList.length - 1);
     skillRefs.current.forEach((skill, index) => {
       if (skill) {
         const angle = angleStep * index - 90;
-        const radius = 200;
+        const radius = window.innerWidth < 768 ? window.innerWidth / 3 : 200;
         const x =
           radius * Math.sin((angle * Math.PI) / 180) - skill.offsetWidth / 2;
         const y = (radius * Math.cos((angle * Math.PI) / 180)) / 2;
@@ -38,6 +38,18 @@ export const Skills = () => {
         );
       }
     });
+  };
+
+  useEffect(() => {
+    gsapAnimation();
+
+    return () => {
+      skillRefs.current.forEach((skill) => {
+        if (skill) {
+          gsap.killTweensOf(skill);
+        }
+      });
+    };
   }, []);
 
   return (
@@ -49,21 +61,20 @@ export const Skills = () => {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
         {skillsList.map((skill, index) => (
           <div
-            className="absolute w-fit rounded-md p-2 opacity-0 shadow-popupShadow hover:z-50"
+            className="absolute w-fit rounded-md p-2 opacity-0 shadow-popupShadow hover:z-50 group"
             key={skill.category}
             ref={(el) => (skillRefs.current[index] = el)}
           >
             <h3
-              className="relative text-grayText after:absolute after:pointer-events-none after:left-1/2 after:top-[-30px] after:z-50 after:-translate-y-full after:-translate-x-1/2 after:transform after:rounded-md after:bg-black after:px-2 after:py-1 after:text-xs after:text-white after:opacity-0 after:transition-all after:duration-300 after:ease-in-out after:content-[attr(data-tooltip)] hover:after:opacity-100"
-              data-tooltip={skill.skills.join(", ")}
+              className="relative text-grayText "
             >
               {skill.category}
             </h3>
-            {/* <ul>
-              {skill.skills.map((skill, index) => (
-                <li key={index}>{skill}</li>
+            <div className="shadow-blueShadow pointer-events-none absolute left-1/2 top-[-30px] z-50 -translate-x-1/2 -translate-y-full transform rounded-md bg-black p-2 text-base text-white opacity-0 transition-all duration-300 ease-in-out content-[attr(data-tooltip)] hover:opacity-100 flex flex-col group-hover:z-50 group-hover:opacity-100">
+              {skill.skills.map((item, index) => (
+                <p key={index}>{item}</p>
               ))}
-            </ul> */}
+            </div>
           </div>
         ))}
       </div>

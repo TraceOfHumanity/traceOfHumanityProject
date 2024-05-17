@@ -1,15 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  darkMode: "class",
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     container: {
       center: true,
-      padding: '10px',
+      padding: "10px",
     },
     extend: {
       colors: {
-        mainBg: 'var(--mainBg)',
+        mainBg: "var(--mainBg)",
         textColor: "var(--textColor)",
         grayText: "var(--grayText)",
         red: "var(--red)",
@@ -26,6 +26,8 @@ module.exports = {
       boxShadow: {
         popupShadow:
           "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityRed01)",
+        blueShadow:
+          "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityBlue01)",
         buttonGlare: "inset 0px 0px 10px 0px var(--opacityWhite)",
       },
       fontFamily: {
