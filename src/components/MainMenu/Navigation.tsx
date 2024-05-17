@@ -6,6 +6,9 @@ import {useAppNavigation} from "hooks/useAppNavigation";
 import {useAppSelector} from "hooks/useReduxToolkit";
 
 import {MenuItemWrapper} from "./MenuItemWrapper";
+import { FaSpaceShuttle } from "react-icons/fa";
+import { SiAlienware } from "react-icons/si";
+import { IoLogIn } from "react-icons/io5";
 
 export const Navigation = () => {
   const {mainMenuItems} = useAppNavigation();
@@ -18,7 +21,10 @@ export const Navigation = () => {
           key={index}
           buttonId={item.name === "login" ? "loginButton" : `${item.name}`}
         >
-          {item.icon}
+          {/* {item.icon} */}
+          {item.name === "explore" && <FaSpaceShuttle />}
+          {item.name === "author" && <SiAlienware />}
+          {item.name === "login" && <IoLogIn />}
           {item.link ? (
             <Link to={item.link}>{item.name}</Link>
           ) : (

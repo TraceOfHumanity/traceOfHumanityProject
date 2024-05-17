@@ -4,6 +4,15 @@ import { IoMdMail } from "react-icons/io";
 import { IoLanguage } from "react-icons/io5";
 import { MdOutlineDesignServices } from "react-icons/md";
 
+type FaCode = typeof FaCode;
+type FaDatabase = typeof FaDatabase;
+type FaGithub = typeof FaGithub;
+type FaTelegram = typeof FaTelegram;
+type FaGears = typeof FaGears;
+type IoMdMail = typeof IoMdMail;
+type IoLanguage = typeof IoLanguage;
+type MdOutlineDesignServices = typeof MdOutlineDesignServices;
+
 export const greetingPopupText = {
   title: "Welcome to Trace of Humanity!",
   text: [
@@ -55,7 +64,7 @@ export const skillsList = [
       "React Three Drei",
       "Astro",
     ],
-    logo: <FaCode />,
+    logo: FaCode 
   },
   {
     category: "Backend",
@@ -67,23 +76,23 @@ export const skillsList = [
       "Express",
       "Firebase",
     ],
-    logo: <FaDatabase />,
+    logo: FaDatabase,
   },
   {
     category: "Embedded",
     skills: ["C++", "Arduino"],
-    logo: <FaGears />,
+    logo: FaGears,
   },
 
   {
     category: "Design",
     skills: ["Figma", "Blender"],
-    logo: <MdOutlineDesignServices />,
+    logo: MdOutlineDesignServices,
   },
   {
     category: "Languages",
     skills: ["English (Beginner)", "Ukrainian (Native)"],
-    logo: <IoLanguage />,
+    logo: IoLanguage,
   },
 ];
 
@@ -91,16 +100,16 @@ export const contactsList = [
   {
     name: "GitHub",
     link: "https://github.com/TraceOfHumanity",
-    logo: <FaGithub />,
+    logo: FaGithub,
   },
   {
     name: "Telegram",
     link: "https://t.me/TraceOfHumanity",
-    logo: <FaTelegram />,
+    logo: FaTelegram,
   },
   {
     name: "Email",
     link: "mailto:azalexxx02@gmail.com",
-    logo: <IoMdMail />,
+    logo: IoMdMail,
   },
 ];

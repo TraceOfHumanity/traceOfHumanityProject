@@ -4,8 +4,9 @@ import {useAnimation} from "hooks/useAnimation";
 import {useAppSelector} from "hooks/useReduxToolkit";
 
 interface MenuItemWrapperProps {
-  children: React.ReactNode;
+  children: React.ReactNode | any;
   buttonId?: string;
+  // icon?: iconType
 }
 
 export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
