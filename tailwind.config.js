@@ -31,6 +31,9 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      backgroundImage: {
+        headerCenter: "url('/public/assets/headerCenter.svg')",
+      },
     },
   },
   plugins: [],

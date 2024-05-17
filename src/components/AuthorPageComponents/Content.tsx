@@ -34,7 +34,8 @@ export const AuthorContent = () => {
         </div>
       </PopupWrapper>
 
-      <div className="mt-24 grid w-full gap-4 min-[360px]:grid-cols-2 min-[550px]:grid-cols-3 min-[900px]:grid-cols-4 lg:grid-cols-5">
+      <h2 className="mt-36 mb-3">Skills</h2>
+      <div className=" grid w-full gap-4 min-[360px]:grid-cols-2 min-[550px]:grid-cols-3 min-[900px]:grid-cols-4 lg:grid-cols-5">
         {skillsList.map((item, index) => (
           <div
             key={index}

@@ -1,4 +1,4 @@
-import {Loader} from "@react-three/drei";
+import {Loader, OrbitControls} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
 import React, {Suspense, useState} from "react";
 
@@ -37,6 +37,7 @@ export const AuthorBG = () => {
       <Canvas>
         <Suspense fallback={null}>
           <Camera />
+          {/* <OrbitControls /> */}
           <mesh
             rotation={[0, 0, 0]}
             position={[0.73, 1.17, -0.9]}
@@ -59,17 +60,19 @@ export const AuthorBG = () => {
               <videoTexture attach="emissiveMap" args={[video2]} />
             </meshStandardMaterial>
           </mesh>
+          <pointLight intensity={5} position={[0, 3, 5]} />
+          {/* <ambientLight intensity={0.1} /> */}
           <pointLight
             color="#038CAF"
             intensity={50}
-            position={[0, 5, 0]}
             castShadow
             shadow-bias={-0.0001}
+            position={[3, 5, -2]}
           />
           <pointLight
             color="#FE0101"
             intensity={20}
-            position={[5, 3, 4]}
+            position={[-7, 5, 4]}
             castShadow
             shadow-bias={-0.0001}
           />
@@ -111,10 +114,10 @@ export const AuthorBG = () => {
           backgroundColor: "transparent",
         }}
       />
-      <div
+      {/* <div
         className="pointer-events-none fixed bottom-0 right-0 z-10 h-[30vh] w-[30vw] bg-contain bg-right-bottom bg-no-repeat opacity-15"
         style={{backgroundImage: "url(/assets/electronicBg.svg)"}}
-      ></div>
+      ></div> */}
     </div>
   );
 };

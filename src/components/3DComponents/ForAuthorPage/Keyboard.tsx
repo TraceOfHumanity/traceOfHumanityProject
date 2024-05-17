@@ -14,7 +14,7 @@ export function Keyboard(props: any) {
       {...props}
       dispose={null}
       scale={[0.35, 0.35, 0.35]}
-      position={[0, 0.64, -0.65]}
+      position={[0, 0.64, -0.55]}
       rotation={[0, Math.PI, 0]}
     >
       <group position={[0, 0.248, 0]} scale={[0.952, 0.035, 0.392]}>
