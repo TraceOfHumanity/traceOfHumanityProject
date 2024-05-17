@@ -1,4 +1,8 @@
-import { auth } from "firebase.config";
+import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
+
+import {auth} from "firebase.config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -8,23 +12,40 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 
-import { REMOVE_ACTIVE_USER, SET_ACTIVE_USER } from "../redux/slices/authSlice";
-import { setIsLoading } from "../redux/slices/loaderSlice";
+import {REMOVE_ACTIVE_USER, SET_ACTIVE_USER} from "../redux/slices/authSlice";
+import {setIsLoading} from "../redux/slices/loaderSlice";
 import {
   setIsLoginPopup,
   setIsRegistrationPopup,
 } from "../redux/slices/popupsSlice";
 
+interface IAuth {
+  registerUser: (
+    e: any,
+    email: string,
+    password: string,
+    confirmPassword: string,
+  ) => void;
+  loginUser: (e: any, email: string, password: string) => void;
+  signInWithGoogle: () => void;
+  logoutUser: () => void;
+  resetPassword: (e: any, email: string) => void;
+  checkAuthorization: () => void;
+}
+
 export const useAuth = () => {
   const dispatch = useDispatch();
   const provider = new GoogleAuthProvider();
-  const [displayName, setDisplayName] = useState("");
+  // const [displayName, setDisplayName] = useState("");
+  const [displayName, setDisplayName] = useState<string>("");
 
-  const registerUser = (e, email, password, confirmPassword) => {
+  const registerUser: IAuth["registerUser"] = (
+    e,
+    email,
+    password,
+    confirmPassword,
+  ) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error("Passwords don't match");
@@ -45,7 +66,7 @@ export const useAuth = () => {
       });
   };
 
-  const loginUser = (e, email, password) => {
+  const loginUser: IAuth["loginUser"] = (e, email, password): void => {
     e.preventDefault();
     dispatch(setIsLoading(true));
 
@@ -62,7 +83,7 @@ export const useAuth = () => {
       });
   };
 
-  const signInWithGoogle = () => {
+  const signInWithGoogle: IAuth["signInWithGoogle"] = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
@@ -74,7 +95,7 @@ export const useAuth = () => {
       });
   };
 
-  const logoutUser = () => {
+  const logoutUser: IAuth["logoutUser"] = () => {
     signOut(auth)
       .then(() => {
         toast.success("Logout success");
@@ -84,7 +105,7 @@ export const useAuth = () => {
       });
   };
 
-  const resetPassword = (e, email) => {
+  const resetPassword: IAuth["resetPassword"] = (e, email) => {
     e.preventDefault();
     dispatch(setIsLoading(true));
     sendPasswordResetEmail(auth, email)
@@ -98,9 +119,9 @@ export const useAuth = () => {
       });
   };
 
-  const checkAuthorization = () => {
+  const checkAuthorization: IAuth["checkAuthorization"] = () => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user && user.email) {
         if (user.displayName === null) {
           const u1 = user.email.split("@")[0];
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
