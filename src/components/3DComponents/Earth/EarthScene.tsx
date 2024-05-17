@@ -1,8 +1,9 @@
-import { Stars } from "@react-three/drei";
-import { useFrame, useLoader } from "@react-three/fiber";
-import React, { useEffect, useRef, useState } from "react";
+import {Stars} from "@react-three/drei";
+import {useFrame, useLoader} from "@react-three/fiber";
+import React, {useEffect, useRef, useState} from "react";
+
 import * as THREE from "three";
-import { TextureLoader } from "three";
+import {TextureLoader} from "three";
 
 import EarthCloudsMap from "./textures/8k_earth_clouds.jpg";
 import EarthDayMap from "./textures/8k_earth_daymap.jpg";
@@ -13,7 +14,7 @@ import MoonMap from "./textures/moon.jpg";
 export const EarthScene = (props: any) => {
   const [dayMap, nightMap, specularMap, cloudsMap, moonMap] = useLoader(
     TextureLoader,
-    [EarthDayMap, EarthNightMap, EarthSpecularMap, EarthCloudsMap, MoonMap]
+    [EarthDayMap, EarthNightMap, EarthSpecularMap, EarthCloudsMap, MoonMap],
   );
   const [starsFactor, setStarsFactor] = useState(3);
 
@@ -23,14 +24,14 @@ export const EarthScene = (props: any) => {
   const moonRef = useRef<any>();
   const starsRef = useRef<any>();
 
-  useFrame(({ clock }) => {
-    const elapsedTime = clock.getElapsedTime();
-    earthRef.current.rotation.y = elapsedTime / 60 + 4.7;
+  useFrame(({clock}) => {
+    const elapsedTime = clock.getElapsedTime() * 1.3;
+    earthRef.current.rotation.y = elapsedTime / 60 + Math.PI;
     cloudsRef.current.rotation.y = elapsedTime / 80;
 
     sunRef.current.position.x = Math.cos(elapsedTime / 30) * 20;
     sunRef.current.position.z = Math.sin(elapsedTime / 30) * 20;
-    sunRef.current.position.y = Math.sin(elapsedTime / -30) * 5;
+    sunRef.current.position.y = Math.sin(elapsedTime / -30) * 10;
 
     moonRef.current.position.x = Math.cos(elapsedTime / 50) * 3;
     moonRef.current.position.z = Math.sin(elapsedTime / 50) * 1;
@@ -44,7 +45,7 @@ export const EarthScene = (props: any) => {
     return useFrame((state) => {
       state.camera.position.lerp(
         vec.set(state.mouse.x * 0.2, state.mouse.y * 0.1, 4),
-        0.05
+        0.05,
       );
       state.camera.lookAt(0, 0, 0);
     });
@@ -62,9 +63,9 @@ export const EarthScene = (props: any) => {
   // Шейдерний матеріал для денного та нічного освітлення
   const earthMaterial = new THREE.ShaderMaterial({
     uniforms: {
-      dayTexture: { value: dayMap },
-      nightTexture: { value: nightMap },
-      sunDirection: { value: new THREE.Vector3() }
+      dayTexture: {value: dayMap},
+      nightTexture: {value: nightMap},
+      sunDirection: {value: new THREE.Vector3()},
     },
     vertexShader: `
       varying vec2 vUv;
@@ -94,12 +95,14 @@ export const EarthScene = (props: any) => {
         vec4 nightColor = texture2D(nightTexture, vUv);
         gl_FragColor = mix(nightColor, dayColor, max(dotProduct, 0.0));
       }
-    `
+    `,
   });
 
   useFrame(() => {
     if (sunRef.current) {
-      earthMaterial.uniforms.sunDirection.value = sunRef.current.position.clone().normalize();
+      earthMaterial.uniforms.sunDirection.value = sunRef.current.position
+        .clone()
+        .normalize();
     }
   });
 
@@ -124,7 +127,12 @@ export const EarthScene = (props: any) => {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh ref={earthRef} position={[0, 0, 0]} rotation={[0, 0, -0.2]} material={earthMaterial}>
+      <mesh
+        ref={earthRef}
+        position={[0, 0, 0]}
+        rotation={[0, Math.PI, -0.2]}
+        material={earthMaterial}
+      >
         <sphereGeometry args={[1, 50, 50]} />
       </mesh>
       <mesh position={[3, 0, 1]} rotation={[0, 0, 0]} ref={moonRef}>
@@ -132,7 +140,7 @@ export const EarthScene = (props: any) => {
         <meshPhongMaterial map={moonMap} />
         <pointLight intensity={0.01} />
       </mesh>
-      <mesh position={[10, 5, -10]} ref={sunRef} rotation={[0, 0, 0]}>
+      <mesh position={[0, -5, -20]} ref={sunRef} rotation={[0, 0, 0]}>
         <sphereGeometry args={[0.15, 32, 32]} />
         <meshPhongMaterial emissive="#fcfc5f" />
         <pointLight intensity={2000} />
