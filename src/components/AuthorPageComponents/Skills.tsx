@@ -1,4 +1,8 @@
 import React, {useEffect, useRef} from "react";
+import {FaCode, FaDatabase} from "react-icons/fa";
+import {FaGears} from "react-icons/fa6";
+import {IoLanguage} from "react-icons/io5";
+import {MdOutlineDesignServices} from "react-icons/md";
 
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -14,7 +18,7 @@ export const Skills = () => {
     skillRefs.current.forEach((skill, index) => {
       if (skill) {
         const angle = angleStep * index - 90;
-        const radius = window.innerWidth < 768 ? window.innerWidth / 3 : 200;
+        const radius = window.innerWidth < 768 ? window.innerWidth / 3 : 230;
         const x =
           radius * Math.sin((angle * Math.PI) / 180) - skill.offsetWidth / 2;
         const y = (radius * Math.cos((angle * Math.PI) / 180)) / 2;
@@ -61,18 +65,21 @@ export const Skills = () => {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
         {skillsList.map((skill, index) => (
           <div
-            className="absolute w-fit rounded-md p-2 opacity-0 shadow-popupShadow hover:z-50 group"
+            className="group absolute w-fit rounded-md p-2 opacity-0 shadow-popupShadow hover:z-50 flex gap-2 md:gap-3 items-center"
             key={skill.category}
             ref={(el) => (skillRefs.current[index] = el)}
           >
-            <h3
-              className="relative text-grayText "
-            >
-              {skill.category}
-            </h3>
-            <div className="shadow-blueShadow pointer-events-none absolute left-1/2 top-[-30px] z-50 -translate-x-1/2 -translate-y-full transform rounded-md bg-black p-2 text-base text-white opacity-0 transition-all duration-300 ease-in-out content-[attr(data-tooltip)] hover:opacity-100 flex flex-col group-hover:z-50 group-hover:opacity-100">
+            {skill.category === "Frontend" && <FaCode className="text-xl" />}
+            {skill.category === "Backend" && <FaDatabase className="text-xl" />}
+            {skill.category === "Embedded" && <FaGears className="text-xl" />}
+            {skill.category === "Design" && <MdOutlineDesignServices className="text-xl" />}
+            {skill.category === "Languages" && <IoLanguage className="text-xl" />}
+            <h3 className="relative text-grayText max-md:text-sm">{skill.category}</h3>
+            <div className="shadow-blueShadow pointer-events-none absolute left-1/2 top-[-30px] z-50 flex -translate-x-1/2 -translate-y-full transform flex-col rounded-md bg-black p-2 text-base text-white opacity-0 transition-all duration-300 ease-in-out content-[attr(data-tooltip)] hover:opacity-100 group-hover:z-50 group-hover:opacity-100">
               {skill.skills.map((item, index) => (
-                <p key={index}>{item}</p>
+                <p className="whitespace-nowrap" key={index}>
+                  {item}
+                </p>
               ))}
             </div>
           </div>

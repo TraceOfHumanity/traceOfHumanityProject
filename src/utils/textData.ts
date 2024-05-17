@@ -1,9 +1,8 @@
-import { FaCode, FaDatabase, FaGithub, FaTelegram } from "react-icons/fa";
-import { FaGears } from "react-icons/fa6";
-import { IoMdMail } from "react-icons/io";
-import { IoLanguage } from "react-icons/io5";
-import { MdOutlineDesignServices } from "react-icons/md";
-
+import {FaCode, FaDatabase, FaGithub, FaTelegram} from "react-icons/fa";
+import {FaGears} from "react-icons/fa6";
+import {IoMdMail} from "react-icons/io";
+import {IoLanguage} from "react-icons/io5";
+import {MdOutlineDesignServices} from "react-icons/md";
 
 export const greetingPopupText = {
   title: "Welcome to Trace of Humanity!",
@@ -53,18 +52,12 @@ export const skillsList = [
       "Three.JS",
       "R3F",
       "React Three Drei",
-      "Astro",
     ],
     // logo: <FaCode />:
   },
   {
     category: "Backend",
-    skills: [
-      "Node.JS",
-      "MongoDB",
-      "Express",
-      "Firebase",
-    ],
+    skills: ["Node.JS", "MongoDB", "Express", "Firebase"],
     // logo: <FaDatabase />,
   },
   {
