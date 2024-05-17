@@ -17,10 +17,10 @@ export const Skills = () => {
         const radius = 200;
         const x =
           radius * Math.sin((angle * Math.PI) / 180) - skill.offsetWidth / 2;
-        const y = radius * Math.cos((angle * Math.PI) / 180);
+        const y = (radius * Math.cos((angle * Math.PI) / 180)) / 2;
         gsap.fromTo(
           skill,
-          {x: 0, y: 0, opacity: 0},
+          {x: 0, y: 0, opacity: 0, duration: 0.1},
           {
             x,
             y,
@@ -32,7 +32,7 @@ export const Skills = () => {
               trigger: titleRef.current!,
               start: "top 90%",
               end: "bottom 20%",
-              toggleActions: "play reverse reverse reverse",
+              toggleActions: "play play reverse reverse",
             },
           },
         );
@@ -49,11 +49,21 @@ export const Skills = () => {
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
         {skillsList.map((skill, index) => (
           <div
-            className="absolute w-fit rounded-md bg-blue p-1 opacity-0"
+            className="absolute w-fit rounded-md p-2 opacity-0 shadow-popupShadow hover:z-50"
             key={skill.category}
             ref={(el) => (skillRefs.current[index] = el)}
           >
-            {skill.category}
+            <h3
+              className="relative text-grayText after:absolute after:pointer-events-none after:left-1/2 after:top-[-30px] after:z-50 after:-translate-y-full after:-translate-x-1/2 after:transform after:rounded-md after:bg-black after:px-2 after:py-1 after:text-xs after:text-white after:opacity-0 after:transition-all after:duration-300 after:ease-in-out after:content-[attr(data-tooltip)] hover:after:opacity-100"
+              data-tooltip={skill.skills.join(", ")}
+            >
+              {skill.category}
+            </h3>
+            {/* <ul>
+              {skill.skills.map((skill, index) => (
+                <li key={index}>{skill}</li>
+              ))}
+            </ul> */}
           </div>
         ))}
       </div>
