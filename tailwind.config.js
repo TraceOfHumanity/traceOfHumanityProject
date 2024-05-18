@@ -9,7 +9,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        bodyBg: "var(--bodyBg)",
+        mainBg: "var(--mainBg)",
         textColor: "var(--textColor)",
         grayText: "var(--grayText)",
         red: "var(--red)",
@@ -26,16 +26,15 @@ module.exports = {
       boxShadow: {
         popupShadow:
           "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityRed01)",
+        blueShadow:
+          "0px 0px 20px 0px #000, inset 5px 5px 20px 5px var(--opacityBlue01)",
         buttonGlare: "inset 0px 0px 10px 0px var(--opacityWhite)",
       },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
-      content: {
-        folderTop: "url('/public/assets/folderHeader.svg')",
-      },
-      gridTemplateColumns: {
-        // "skills": "repeat(auto-fill, minmax(280px, 1fr))",
+      backgroundImage: {
+        headerCenter: "url('/public/assets/headerCenter.svg')",
       },
     },
   },
