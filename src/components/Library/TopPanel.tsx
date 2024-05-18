@@ -1,14 +1,15 @@
 import React from "react";
 import { MdOutlinePostAdd } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import { setIsOpenPleaseRegisterPopup } from "../../redux/slices/popupsSlice";
 import { Navigation } from "./Navigation";
+import { useAppSelector } from "hooks/useReduxToolkit";
 
 export const TopPanel = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useAppSelector((state) => state.auth);
 
   console.log(useLocation());
 
@@ -16,7 +17,7 @@ export const TopPanel = () => {
     dispatch(setIsOpenPleaseRegisterPopup(true));
   };
   return (
-    <div className="mb-2 flex items-center gap-5">
+    <div className="mb-2 flex items-center gap-5 border-b border-opacityBlue01">
       <Navigation />
       {isLoggedIn ? (
         <Link

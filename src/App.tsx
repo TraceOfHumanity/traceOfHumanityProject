@@ -19,7 +19,7 @@ function App() {
       {isLoading && <Loader />}
       <ToastContainer theme="dark" />
       <Header />
-      {/* <MusicPlayer /> */}
+      <MusicPlayer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/library" element={<Library />}>

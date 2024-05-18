@@ -1,16 +1,17 @@
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import { MdMusicNote } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { setIsPlaying } from "../../redux/slices/audioPlayerSlice";
 import { Equalizer } from "./Equalizer";
+import { useAppSelector } from "hooks/useReduxToolkit";
 // import styles from "./player.module.scss";
 
 export const MusicPlayer = () => {
   const dispatch = useDispatch();
-  const isPlaying = useSelector((state) => state.audioPlayer.isPlaying);
-  const audioRef = useRef(null);
+  const isPlaying = useAppSelector((state) => state.audioPlayer.isPlaying);
+  const audioRef = useRef<(HTMLAudioElement | null)>(null);
   const playButtonRef = useRef(null);
   const songs = ["/sounds/ava.mp3", "/sounds/spore.mp3"];
   const [currentSongIndex, setCurrentSongIndex] = useState(
@@ -19,11 +20,16 @@ export const MusicPlayer = () => {
 
   const togglePlayPause = () => {
     dispatch(setIsPlaying(!isPlaying));
-    isPlaying ? audioRef.current.pause() : audioRef.current.play();
+    if (audioRef.current) {
+      isPlaying ? audioRef.current.pause() : audioRef.current.play();
+    }
   };
 
   useEffect(() => {
-    isPlaying ? audioRef.current.play() : audioRef.current.pause();
+    if (audioRef.current) {
+      audioRef.current.src = songs[currentSongIndex];
+      isPlaying ? audioRef.current.play() : audioRef.current.pause();
+    }
   }, [isPlaying]);
 
   useEffect(() => {

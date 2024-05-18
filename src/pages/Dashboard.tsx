@@ -1,5 +1,7 @@
 import React from "react";
 
+import {PageWrapper} from "components/PageWrapper";
+
 export const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <PageWrapper>Dashboard</PageWrapper>;
 };
