@@ -12,15 +12,15 @@ export const AuthorContent = () => {
   const descriptionsRef = useRef<Array<HTMLParagraphElement | null>>([]);
   // const titleRef = useRef(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
-  const skillsRef = useRef<Array<HTMLDivElement | null>>([]);
+  // const skillsRef = useRef<Array<HTMLDivElement | null>>([]);
 
   useGSAP(() => {
     generatingTitleAnimation(titleRef);
   });
 
-  useGSAP(() => {
-    sideDropAnimation(skillsRef);
-  });
+  // useGSAP(() => {
+  //   sideDropAnimation(skillsRef);
+  // });
 
   return (
     <div className="relative z-10 p-[1vw]">
