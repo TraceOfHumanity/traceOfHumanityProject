@@ -10,6 +10,7 @@ import {AboutAuthor} from "pages/AboutAuthor";
 import {Home} from "pages/Home";
 import {Library} from "pages/Library";
 import { Dashboard } from "pages/Dashboard";
+import { CreatePost } from "pages/CreatePost";
 
 function App() {
   const {isLoading} = useAppSelector((state) => state.loader);
@@ -26,7 +27,7 @@ function App() {
         </Route>
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/create-post" element={<p>create post</p>} /> */}
+        <Route path="/create-post" element={<CreatePost /> }/>
       </Routes>
       <Popups />
     </div>

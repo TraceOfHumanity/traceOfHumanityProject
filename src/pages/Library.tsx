@@ -10,7 +10,7 @@ export const Library = () => {
   return (
     <PageWrapper >
       <TopPanel />
-      <div>
+      <div className="flex gap-2">
         <LibraryMenu />
         <Outlet />
       </div>
