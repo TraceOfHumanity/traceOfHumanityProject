@@ -11,7 +11,7 @@ import { useAppSelector } from "hooks/useReduxToolkit";
 export const MusicPlayer = () => {
   const dispatch = useDispatch();
   const isPlaying = useAppSelector((state) => state.audioPlayer.isPlaying);
-  const audioRef = useRef<(HTMLAudioElement | null)>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const playButtonRef = useRef(null);
   const songs = ["/sounds/ava.mp3", "/sounds/spore.mp3"];
   const [currentSongIndex, setCurrentSongIndex] = useState(

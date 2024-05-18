@@ -2,15 +2,15 @@ import {Loader, OrbitControls} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
 import React, {Suspense, useState} from "react";
 
-import {Avatar} from "components/3DComponents/ForAuthorPage/Avatar";
+import {Avatar} from "components/3D/ForAuthorPage/Avatar";
 import * as THREE from "three";
 
-import {Camera} from "../3DComponents/ForAuthorPage/Camera";
-import {Desk} from "../3DComponents/ForAuthorPage/Desk";
-import {Ground} from "../3DComponents/ForAuthorPage/Ground";
-import {Keyboard} from "../3DComponents/ForAuthorPage/Keyboard";
-import {Monitor} from "../3DComponents/ForAuthorPage/Monitor";
-import {OfficeChair} from "../3DComponents/ForAuthorPage/OfficeChair";
+import {Camera} from "../3D/ForAuthorPage/Camera";
+import {Desk} from "../3D/ForAuthorPage/Desk";
+import {Ground} from "../3D/ForAuthorPage/Ground";
+import {Keyboard} from "../3D/ForAuthorPage/Keyboard";
+import {Monitor} from "../3D/ForAuthorPage/Monitor";
+import {OfficeChair} from "../3D/ForAuthorPage/OfficeChair";
 
 export const AuthorBG = () => {
   const [video] = useState(() => {

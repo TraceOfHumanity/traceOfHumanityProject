@@ -1,8 +1,8 @@
 import React from "react";
 
-import { AuthorContent } from "components/AuthorPageComponents/Content";
+import { AuthorContent } from "components/AuthorPage/Content";
 import { PageWrapper } from "components/PageWrapper";
-import { AuthorBG } from "components/AuthorPageComponents/Background";
+import { AuthorBG } from "components/AuthorPage/Background";
 
 export const AboutAuthor = () => {
   return (
