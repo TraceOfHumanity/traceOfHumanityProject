@@ -7,7 +7,7 @@ import { AuthorBG } from "components/AuthorPageComponents/Background";
 export const AboutAuthor = () => {
   return (
     <PageWrapper className="md:pt-20">
-      <AuthorBG />
+      {/* <AuthorBG /> */}
       <AuthorContent />
     </PageWrapper>
   );

@@ -1,9 +1,3 @@
-import {FaCode, FaDatabase, FaGithub, FaTelegram} from "react-icons/fa";
-import {FaGears} from "react-icons/fa6";
-import {IoMdMail} from "react-icons/io";
-import {IoLanguage} from "react-icons/io5";
-import {MdOutlineDesignServices} from "react-icons/md";
-
 export const greetingPopupText = {
   title: "Welcome to Trace of Humanity!",
   text: [
@@ -44,82 +38,46 @@ export const skillsList = [
       "HTML",
       "CSS/SCSS",
       "TailwindCSS",
-      "Vanilla JS",
+      "JS/TS",
       "React",
-      "React Native",
+      // "React Native",
       "Next.JS",
       "Redux Toolkit",
       "Three.JS",
       "R3F",
       "React Three Drei",
     ],
-    // logo: <FaCode />:
   },
   {
     category: "Backend",
     skills: ["Node.JS", "MongoDB", "Express", "Firebase"],
-    // logo: <FaDatabase />,
   },
   {
     category: "Embedded",
     skills: ["C++", "Arduino"],
-    // logo: <FaGears />,
   },
 
   {
     category: "Design",
     skills: ["Figma", "Blender"],
-    // logo: <MdOutlineDesignServices />,
   },
   {
     category: "Languages",
     skills: ["English (Beginner)", "Ukrainian (Native)"],
-    // logo: <IoLanguage />,
   },
 ];
-
-// export const skillsList = [
-//   "HTML",
-//   "CSS/SCSS",
-//   "TailwindCSS",
-//   "Material UI",
-//   "Vanilla JS",
-//   "React.JS",
-//   "React Native",
-//   "Next.JS",
-//   "Redux Toolkit",
-//   "Three.JS",
-//   "React Three Fiber",
-//   "React Three Drei",
-//   "Astro",
-//   "Node.JS",
-//   "Nest.JS",
-//   "MongoDB",
-//   "PostgreSQL",
-//   "Express",
-//   "Firebase",
-//   "C++",
-//   "Arduino",
-//   "Figma",
-//   "Blender",
-//   "English (Beginner)",
-//   "Ukrainian (Native)",
-// ]
 
 export const contactsList = [
   {
     name: "GitHub",
     link: "https://github.com/TraceOfHumanity",
-    // logo: <FaGithub />,
   },
   {
     name: "Telegram",
     link: "https://t.me/TraceOfHumanity",
-    // logo: <FaTelegram />,
   },
   {
     name: "Email",
     link: "mailto:azalexxx02@gmail.com",
-    // logo: <IoMdMail />,
   },
 ];
