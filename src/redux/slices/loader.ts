@@ -4,7 +4,7 @@ const initialState = {
   isLoading: false,
 };
 
-const loaderSlice = createSlice({
+const loader = createSlice({
   name: "loader",
   initialState,
   reducers: {
@@ -14,5 +14,5 @@ const loaderSlice = createSlice({
   },
 });
 
-export const { setIsLoading } = loaderSlice.actions;
-export default loaderSlice.reducer;
+export const { setIsLoading } = loader.actions;
+export default loader.reducer;

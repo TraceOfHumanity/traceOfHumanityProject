@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 import {greetingPopupText} from "utils/textData";
 
-import {setIsPlaying} from "../../redux/slices/audioPlayerSlice";
+import {setIsPlaying} from "../../redux/slices/audioPlayer";
 import {setIsOpenGreetingPopup} from "../../redux/slices/popupsSlice";
 
 export const GreetingPopup = () => {

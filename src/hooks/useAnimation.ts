@@ -4,7 +4,7 @@ import baffle from "baffle";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-import {setFlashingOfTheLoginButton} from "../redux/slices/animationsSlice";
+import {setFlashingOfTheLoginButton} from "../redux/slices/animations";
 
 interface IUseAnimation {
   popupAnimation: (refElement: React.RefObject<HTMLDivElement>) => void;

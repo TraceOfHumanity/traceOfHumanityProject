@@ -13,8 +13,8 @@ import {
   signOut,
 } from "firebase/auth";
 
-import {REMOVE_ACTIVE_USER, SET_ACTIVE_USER} from "../redux/slices/authSlice";
-import {setIsLoading} from "../redux/slices/loaderSlice";
+import {REMOVE_ACTIVE_USER, SET_ACTIVE_USER} from "../redux/slices/auth";
+import {setIsLoading} from "../redux/slices/loader";
 import {
   setIsLoginPopup,
   setIsRegistrationPopup,

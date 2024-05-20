@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdMusicNote } from "react-icons/md";
 import { useDispatch } from "react-redux";
 
-import { setIsPlaying } from "../../redux/slices/audioPlayerSlice";
+import { setIsPlaying } from "../../redux/slices/audioPlayer";
 import { Equalizer } from "./Equalizer";
 import { useAppSelector } from "hooks/useReduxToolkit";
 // import styles from "./player.module.scss";

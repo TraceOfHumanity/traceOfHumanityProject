@@ -4,14 +4,16 @@ import {MdCloudUpload} from "react-icons/md";
 import {PageWrapper} from "components/PageWrapper";
 import {articleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/firebaseFunctions";
-import { SimpleLoader } from "ui-elements/SimpleLoader";
+import {useAppSelector} from "hooks/useReduxToolkit";
+import {SimpleLoader} from "ui-elements/SimpleLoader";
+import { setDescription, setImageUrl, setTitle } from "../redux/slices/createPost";
 
 export const CreatePost = () => {
   const {addArticle} = useFirebase();
-
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const {isLoading} = useAppSelector((state) => state.loader);
+  const {title, description, imageUrl} = useAppSelector(
+    (state) => state.createPost,
+  );
 
   const {addImage} = articleActions();
 
@@ -19,7 +21,7 @@ export const CreatePost = () => {
     e: React.FormEvent,
     title: string,
     description: string,
-    imageUrl: string | null,
+    imageUrl: string,
   ) => {
     e.preventDefault();
 
@@ -39,7 +41,7 @@ export const CreatePost = () => {
 
     setTitle("");
     setDescription("");
-    setImageUrl(null);
+    setImageUrl("");
   };
 
   return (
@@ -64,22 +66,49 @@ export const CreatePost = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div className="bg-red">
-          <p>imageUrl</p>
+        <div className="flex items-center justify-center rounded-md border border-dotted">
+          {/* <p>imageUrl</p>
           <label htmlFor="image">
             <MdCloudUpload />
           </label>
           <input
+          className="hidden"
             id="image"
             type="file"
             alt="image"
             onChange={(e) => addImage(e, setImageUrl)}
             accept="image/*"
           />
+        <input type="submit" value="Submit Post" /> */}
+          {isLoading ? (
+            <SimpleLoader />
+          ) : (
+            <>
+              {!imageUrl ? (
+                <>
+                  <label htmlFor="image">
+                    <MdCloudUpload />
+                  </label>
+                  <input
+                    className="hidden"
+                    id="image"
+                    type="file"
+                    alt="image"
+                    onChange={(e) => addImage(e)}
+                    accept="image/*"
+                  />
+                </>
+              ) : (
+                <>
+                  <img src={imageUrl} alt="image" />
+                  <button onClick={() => setImageUrl("")}>Remove Image</button>
+                </>
+              )}
+            </>
+          )}
         </div>
-        <input type="submit" value="Submit Post" />
       </form>
-      <SimpleLoader />
+      {/* <SimpleLoader /> */}
     </PageWrapper>
   );
 };

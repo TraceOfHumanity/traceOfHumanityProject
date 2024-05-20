@@ -8,7 +8,7 @@ const initialState = {
   userId: null,
 };
 
-export const authSlice = createSlice({
+export const auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -30,11 +30,11 @@ export const authSlice = createSlice({
   },
 });
 
-export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } = authSlice.actions;
+export const { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } = auth.actions;
 
 export const selectIsLoggedIn = (state: RootState) => state.auth.isLoggedIn;
 export const selectEmail = (state: RootState) => state.auth.email;
 export const selectUserName = (state: RootState) => state.auth.userName;
 export const selectUserId = (state: RootState) => state.auth.userId;
 
-export default authSlice.reducer;
+export default auth.reducer;

@@ -4,7 +4,7 @@ const initialState = {
   flashingOfTheLoginButton: false,
 };
 
-const animationsSlice = createSlice({
+const animations = createSlice({
   name: "animations",
   initialState,
   reducers: {
@@ -14,5 +14,5 @@ const animationsSlice = createSlice({
   },
 });
 
-export const { setFlashingOfTheLoginButton } = animationsSlice.actions;
-export default animationsSlice.reducer;
+export const { setFlashingOfTheLoginButton } = animations.actions;
+export default animations.reducer;
