@@ -4,6 +4,7 @@ import {MdCloudUpload} from "react-icons/md";
 import {PageWrapper} from "components/PageWrapper";
 import {articleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/firebaseFunctions";
+import { SimpleLoader } from "ui-elements/SimpleLoader";
 
 export const CreatePost = () => {
   const {addArticle} = useFirebase();
@@ -78,6 +79,7 @@ export const CreatePost = () => {
         </div>
         <input type="submit" value="Submit Post" />
       </form>
+      <SimpleLoader />
     </PageWrapper>
   );
 };

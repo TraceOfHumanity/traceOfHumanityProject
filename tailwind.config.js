@@ -36,6 +36,20 @@ module.exports = {
       backgroundImage: {
         headerCenter: "url('/public/assets/headerCenter.svg')",
       },
+      keyframes: {
+        spin: {
+          "0%": {transform: "rotate(0deg)"},
+          "100%": {transform: "rotate(-360deg)"},
+        },
+        spinReverse: {
+          "0%": {transform: "rotate(0deg)"},
+          "100%": {transform: "rotate(360deg)"},
+        },
+      },
+      animation: {
+        spin: "spin 1.5s linear infinite",
+        spinReverse: "spinReverse 1.5s linear infinite",
+      },
     },
   },
   plugins: [],

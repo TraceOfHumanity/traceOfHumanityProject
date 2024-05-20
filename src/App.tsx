@@ -2,7 +2,6 @@ import {Route, Routes} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 
 import {Header} from "components/Header";
-import {Loader} from "components/Loader";
 import {MusicPlayer} from "components/MusicPlayer";
 import {Popups} from "components/Popups";
 import {useAppSelector} from "hooks/useReduxToolkit";
@@ -11,12 +10,13 @@ import {Home} from "pages/Home";
 import {Library} from "pages/Library";
 import { Dashboard } from "pages/Dashboard";
 import { CreatePost } from "pages/CreatePost";
+import { SimpleLoader } from "ui-elements/SimpleLoader";
 
 function App() {
   const {isLoading} = useAppSelector((state) => state.loader);
   return (
     <div className="">
-      {isLoading && <Loader />}
+      {isLoading && <SimpleLoader />}
       <ToastContainer theme="dark" />
       <Header />
       <MusicPlayer />
