@@ -15,17 +15,27 @@ import {
 } from "firebase/firestore";
 
 interface IFirebase {
-  newArticle: {
-    title: string;
-    description: string;
-    imageUrl: string;
-  };
+  newArticle: (
+    title: string,
+    description: string,
+    imageUrl: string,
+  ) => Promise<void>;
 }
 
 export const useFirebase = () => {
-  const articleCollectionRef = collection(db, "Images");
+  const articleCollectionRef = collection(db, "articles");
 
-  const addArticle: IFirebase["newArticle"] = (newArticle) => {
-    return addDoc(articleCollectionRef, newArticle);
-  }  ;  
+  const addArticle: IFirebase["newArticle"] = async (
+    title,
+    description,
+    imageUrl,
+  ) => {
+    await addDoc(articleCollectionRef, {
+      title,
+      description,
+      imageUrl,
+    });
+  };
+
+  return {addArticle};
 };
