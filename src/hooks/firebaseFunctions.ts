@@ -18,7 +18,8 @@ interface IFirebase {
   newArticle: (
     title: string,
     description: string,
-    imageUrl: string,
+    imageUrl: string | null,
+    createdAt: Date,
   ) => Promise<void>;
 }
 
@@ -29,11 +30,13 @@ export const useFirebase = () => {
     title,
     description,
     imageUrl,
+    createdAt,
   ) => {
     await addDoc(articleCollectionRef, {
       title,
       description,
       imageUrl,
+      createdAt,
     });
   };
 
