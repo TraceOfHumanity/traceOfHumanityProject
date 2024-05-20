@@ -2,20 +2,26 @@ import React, {useState} from "react";
 import {MdCloudUpload} from "react-icons/md";
 
 import {PageWrapper} from "components/PageWrapper";
-import {articleActions} from "hooks/articleActions";
+import {useArticleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/firebaseFunctions";
-import {useAppSelector} from "hooks/useReduxToolkit";
+import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
-import { setDescription, setImageUrl, setTitle } from "../redux/slices/createPost";
+
+import {
+  setDescription,
+  setImageUrl,
+  setTitle,
+} from "../redux/slices/createPost";
 
 export const CreatePost = () => {
+  const dispatch = useAppDispatch();
   const {addArticle} = useFirebase();
   const {isLoading} = useAppSelector((state) => state.loader);
   const {title, description, imageUrl} = useAppSelector(
     (state) => state.createPost,
   );
 
-  const {addImage} = articleActions();
+  const {addImage, deleteImage} = useArticleActions();
 
   const handleSubmit = (
     e: React.FormEvent,
@@ -39,9 +45,9 @@ export const CreatePost = () => {
       newArticle.createdAt,
     );
 
-    setTitle("");
-    setDescription("");
-    setImageUrl("");
+    dispatch(setTitle(""));
+    dispatch(setDescription(""));
+    dispatch(setImageUrl(""));
   };
 
   return (
@@ -55,7 +61,7 @@ export const CreatePost = () => {
           <input
             type="text"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => dispatch(setTitle(e.target.value))}
           />
         </div>
         <div className="">
@@ -63,7 +69,7 @@ export const CreatePost = () => {
           <input
             type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => dispatch(setDescription(e.target.value))}
           />
         </div>
         <div className="flex items-center justify-center rounded-md border border-dotted">
@@ -101,14 +107,15 @@ export const CreatePost = () => {
               ) : (
                 <>
                   <img src={imageUrl} alt="image" />
-                  <button onClick={() => setImageUrl("")}>Remove Image</button>
+                  <button onClick={() => deleteImage(imageUrl as string)}>
+                    Remove Image
+                  </button>
                 </>
               )}
             </>
           )}
         </div>
       </form>
-      {/* <SimpleLoader /> */}
     </PageWrapper>
   );
 };
