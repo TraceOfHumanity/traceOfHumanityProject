@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import {MdCloudUpload} from "react-icons/md";
+import SimpleMdeReact from "react-simplemde-editor";
 
 import {PageWrapper} from "components/PageWrapper";
+import "easymde/dist/easymde.min.css";
 import {useArticleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/firebaseFunctions";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
@@ -12,10 +14,12 @@ import {
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
+import { cn } from "utils/cn";
+import { Dropdown } from "ui-elements/Dropdown";
 
 export const CreatePost = () => {
   const dispatch = useAppDispatch();
-  const {addArticle} = useFirebase();
+  const {createPost} = useFirebase();
   const {isLoading} = useAppSelector((state) => state.loader);
   const {title, description, imageUrl} = useAppSelector(
     (state) => state.createPost,
@@ -38,7 +42,7 @@ export const CreatePost = () => {
       createdAt: new Date(),
     };
 
-    addArticle(
+    createPost(
       newArticle.title,
       newArticle.description,
       newArticle.imageUrl,
@@ -52,7 +56,9 @@ export const CreatePost = () => {
 
   return (
     <PageWrapper>
-      <form
+      <h1>Create Post</h1>
+      <Dropdown />
+      {/* <form
         action=""
         onSubmit={(e) => handleSubmit(e, title, description, imageUrl)}
       >
@@ -65,34 +71,32 @@ export const CreatePost = () => {
           />
         </div>
         <div className="">
-          <p>description</p>
-          <input
-            type="text"
+          <SimpleMdeReact
             value={description}
-            onChange={(e) => dispatch(setDescription(e.target.value))}
+            onChange={(e) => dispatch(setDescription(e))}
+            options={{
+              spellChecker: false,
+              hideIcons: [
+                "guide",
+                "fullscreen",
+                "side-by-side",
+                "preview",
+                "quote",
+              ],
+              
+            }}
+          placeholder="Post text here..."
           />
         </div>
-        <div className="flex items-center justify-center rounded-md border border-dotted">
-          {/* <p>imageUrl</p>
-          <label htmlFor="image">
-            <MdCloudUpload />
-          </label>
-          <input
-          className="hidden"
-            id="image"
-            type="file"
-            alt="image"
-            onChange={(e) => addImage(e, setImageUrl)}
-            accept="image/*"
-          />
-        <input type="submit" value="Submit Post" /> */}
+        <div className=" relative flex items-center justify-center rounded-md border border-dotted aspect-video">
           {isLoading ? (
             <SimpleLoader />
           ) : (
             <>
               {!imageUrl ? (
                 <>
-                  <label htmlFor="image">
+                  <label className="absolute inset-0 flex justify-center items-center flex-col" htmlFor="image">
+                    <p>Upload Image</p>
                     <MdCloudUpload />
                   </label>
                   <input
@@ -115,7 +119,17 @@ export const CreatePost = () => {
             </>
           )}
         </div>
-      </form>
+        <div className="">
+        </div>
+        <button type="submit" disabled={isLoading || !title || !description}
+          className={cn("",
+            isLoading ? "bg-gray-400" : "bg-blue-500",
+            !title || !description ? "cursor-not-allowed" : "cursor-pointer"
+          )}
+        >
+          Submit
+        </button>
+      </form> */}
     </PageWrapper>
   );
 };

@@ -26,7 +26,7 @@ interface IFirebase {
 export const useFirebase = () => {
   const articleCollectionRef = collection(db, "articles");
 
-  const addArticle: IFirebase["newArticle"] = async (
+  const createPost: IFirebase["newArticle"] = async (
     title,
     description,
     imageUrl,
@@ -40,5 +40,7 @@ export const useFirebase = () => {
     });
   };
 
-  return {addArticle};
+  const getAllPosts = async () => {};
+
+  return {createPost, getAllPosts};
 };
