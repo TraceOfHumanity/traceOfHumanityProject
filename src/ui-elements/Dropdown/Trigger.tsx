@@ -1,7 +1,9 @@
-import React, {Dispatch, useRef} from "react";
-import {IoIosArrowDown} from "react-icons/io";
+import React, { Dispatch, useRef } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { setListCoordinators } from "../../redux/slices/dropdown";
+import { useAppDispatch } from "hooks/useReduxToolkit";
+import { getRefCoordinates } from "utils/getRefCoordinates";
 
-import {InputWrapper} from "ui-elements/InputWrapper";
 
 interface TriggerProps {
   isOpen: boolean;
@@ -9,15 +11,22 @@ interface TriggerProps {
 }
 
 export const Trigger: React.FC<TriggerProps> = (props) => {
-  const {isOpen, setIsOpen} = props;
+  const dispatch = useAppDispatch();
+  const { isOpen, setIsOpen } = props;
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+    dispatch(setListCoordinators(getRefCoordinates(buttonRef)));
+  };
+
   return (
-    <button
-      className="flex w-full items-center justify-between gap-2"
-      onClick={() => setIsOpen(!isOpen)}
+    <button 
+      className="flex justify-between items-center gap-2 w-full" 
+      onClick={handleClick}
       ref={buttonRef}
     >
-      Trigger
+      Тригер
       <IoIosArrowDown />
     </button>
   );

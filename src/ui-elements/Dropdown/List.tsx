@@ -17,7 +17,7 @@ export const List = () => {
   const {x, y, width} = listCoordinators;
   return (
     <div
-      className="fixed bg-black z-50"
+      className="fixed bg-gray-500 z-50"
       style={{
         top: y,
         left: x,
