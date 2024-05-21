@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const createPostSlice = createSlice({
-  name: "loader",
+  name: "createPost",
   initialState,
   reducers: {
     setTitle: (state, action) => {

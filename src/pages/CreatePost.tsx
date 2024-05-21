@@ -7,15 +7,15 @@ import "easymde/dist/easymde.min.css";
 import {useArticleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/firebaseFunctions";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+import {Dropdown} from "ui-elements/Dropdown";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
+import {cn} from "utils/cn";
 
 import {
   setDescription,
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
-import { cn } from "utils/cn";
-import { Dropdown } from "ui-elements/Dropdown";
 
 export const CreatePost = () => {
   const dispatch = useAppDispatch();
@@ -58,7 +58,7 @@ export const CreatePost = () => {
     <PageWrapper>
       <h1>Create Post</h1>
       <Dropdown />
-      {/* <form
+      <form
         action=""
         onSubmit={(e) => handleSubmit(e, title, description, imageUrl)}
       >
@@ -83,19 +83,21 @@ export const CreatePost = () => {
                 "preview",
                 "quote",
               ],
-              
             }}
-          placeholder="Post text here..."
+            placeholder="Post text here..."
           />
         </div>
-        <div className=" relative flex items-center justify-center rounded-md border border-dotted aspect-video">
+        <div className=" relative flex aspect-video items-center justify-center rounded-md border border-dotted">
           {isLoading ? (
             <SimpleLoader />
           ) : (
             <>
               {!imageUrl ? (
                 <>
-                  <label className="absolute inset-0 flex justify-center items-center flex-col" htmlFor="image">
+                  <label
+                    className="absolute inset-0 flex flex-col items-center justify-center"
+                    htmlFor="image"
+                  >
                     <p>Upload Image</p>
                     <MdCloudUpload />
                   </label>
@@ -119,17 +121,19 @@ export const CreatePost = () => {
             </>
           )}
         </div>
-        <div className="">
-        </div>
-        <button type="submit" disabled={isLoading || !title || !description}
-          className={cn("",
+        <div className=""></div>
+        <button
+          type="submit"
+          disabled={isLoading || !title || !description}
+          className={cn(
+            "",
             isLoading ? "bg-gray-400" : "bg-blue-500",
-            !title || !description ? "cursor-not-allowed" : "cursor-pointer"
+            !title || !description ? "cursor-not-allowed" : "cursor-pointer",
           )}
         >
           Submit
         </button>
-      </form> */}
+      </form>
     </PageWrapper>
   );
-};
+};  

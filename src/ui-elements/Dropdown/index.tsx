@@ -7,7 +7,7 @@ export const Dropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div>
+    <div className="max-w-72">
       <Trigger 
         isOpen={isOpen}
         setIsOpen={setIsOpen}
