@@ -24,16 +24,15 @@ export const List = () => {
     null,
   );
 
-  const {x, y, width, height} = triggerCoordinators;
+  const {x = 0, y = 0, width = 0, height = 0} = triggerCoordinators || {};
 
   useEffect(() => {
-    if (listRef.current) {
-      setListCoordinates(getRefCoordinates(listRef));
-      console.log(listCoordinates);
+    const coordinates = getRefCoordinates(listRef);
+    if (coordinates) {
+      setListCoordinates(coordinates);
+      console.log(coordinates);
     }
-  }, [
-      
-  ]);
+  }, [triggerCoordinators]);
 
   return (
     <div
