@@ -17,7 +17,7 @@ export const List = () => {
   const {x, y, width} = listCoordinators;
   return (
     <ul
-      className="fixed z-50 after:absolute after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30 border-r border-l p-1 border-borderColor after:left-0"
+      className="fixed z-50 after:absolute after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30 border-r border-l p-1 border-borderColor after:left-0 backdrop-blur"
       style={{
         top: y,
         left: x,
