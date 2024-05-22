@@ -1,11 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 import {List} from "./List";
 import {Trigger} from "./Trigger";
 
 export const Dropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dropdownRef = React.createRef<HTMLDivElement>();
+  const dropdownRef = useRef<(HTMLDivElement | null)>(null);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  }
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (
@@ -25,8 +29,8 @@ export const Dropdown = () => {
   }, []);
 
   return (
-    <div className="max-w-72 bg-fuchsia-600" ref={dropdownRef}>
-      <Trigger isOpen={isOpen} setIsOpen={setIsOpen} />
+    <div className="max-w-72" ref={dropdownRef}>
+      <Trigger isOpen={isOpen} handleClick={handleClick} />
       {isOpen && <List />}
     </div>
   );

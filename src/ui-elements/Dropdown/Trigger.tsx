@@ -7,23 +7,23 @@ import { getRefCoordinates } from "utils/getRefCoordinates";
 
 interface TriggerProps {
   isOpen: boolean;
-  setIsOpen: Dispatch<boolean>;
+  handleClick: Dispatch<boolean>;
 }
 
 export const Trigger: React.FC<TriggerProps> = (props) => {
   const dispatch = useAppDispatch();
-  const { isOpen, setIsOpen } = props;
+  const { isOpen, handleClick } = props;
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
+  const openCloseHandler = () => {
+    handleClick(!isOpen);
     dispatch(setListCoordinators(getRefCoordinates(buttonRef)));
   };
 
   return (
     <button 
       className="flex justify-between items-center gap-2 w-full" 
-      onClick={handleClick}
+      onClick={openCloseHandler}
       ref={buttonRef}
     >
       Тригер

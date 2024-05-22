@@ -58,7 +58,7 @@ export const CreatePost = () => {
     <PageWrapper>
       <h1>Create Post</h1>
       <Dropdown />
-      {/* <form
+      <form
         action=""
         onSubmit={(e) => handleSubmit(e, title, description, imageUrl)}
       >
@@ -133,7 +133,7 @@ export const CreatePost = () => {
         >
           Submit
         </button>
-      </form> */}
+      </form>
     </PageWrapper>
   );
 };  
