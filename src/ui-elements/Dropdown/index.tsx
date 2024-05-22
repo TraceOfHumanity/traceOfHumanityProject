@@ -2,8 +2,11 @@ import React, {useEffect, useRef, useState} from "react";
 
 import {List} from "./List";
 import {Trigger} from "./Trigger";
+import { useAppDispatch } from "hooks/useReduxToolkit";
+import { setTriggerCoordinators } from "../../redux/slices/dropdown";
 
 export const Dropdown = () => {
+  const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<(HTMLDivElement | null)>(null);
 
@@ -16,8 +19,8 @@ export const Dropdown = () => {
       dropdownRef.current &&
       !dropdownRef.current.contains(event.target as Node)
     ) {
-      console.log("click outside");
       setIsOpen(false);
+      dispatch(setTriggerCoordinators({}));
     }
   };
 

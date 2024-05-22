@@ -3,8 +3,9 @@ export const getRefCoordinates = (ref: React.RefObject<HTMLElement>) => {
     const rect = ref.current.getBoundingClientRect();
     return {
       x: rect.x,
-      y: rect.y + rect.height,
+      y: rect.y,
       width: rect.width,
-    };
+      height: rect.height,
+    } 
   }
 }

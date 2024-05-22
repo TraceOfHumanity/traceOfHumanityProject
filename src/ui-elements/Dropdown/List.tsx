@@ -1,32 +1,65 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {useAppSelector} from "hooks/useReduxToolkit";
+import {getRefCoordinates} from "utils/getRefCoordinates";
 
-interface ListCoordinators {
+interface Coordinators {
   x?: number;
   y?: number;
   width?: number;
+  height?: number;
 }
 
 export const List = () => {
-  const listCoordinators = useAppSelector(
-    (state: {dropdown: {listCoordinators: ListCoordinators}}) =>
-      state.dropdown.listCoordinators,
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [isInsideScreen, setIsInsideScreen] = useState<boolean>(true);
+  const listRef = React.useRef<HTMLDivElement | null>(null);
+
+  const triggerCoordinators = useAppSelector(
+    (state: {dropdown: {triggerCoordinators: Coordinators}}) =>
+      state.dropdown.triggerCoordinators,
   );
 
-  const {x, y, width} = listCoordinators;
+  const [listCoordinates, setListCoordinates] = useState<Coordinators | null | undefined>(
+    null,
+  );
+
+  const {x, y, width, height} = triggerCoordinators;
+
+  useEffect(() => {
+    if (listRef.current) {
+      setListCoordinates(getRefCoordinates(listRef));
+    }
+  }, []);
+
   return (
-    <ul
-      className="fixed z-50 after:absolute after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30 border-r border-l p-1 border-borderColor after:left-0 backdrop-blur"
+    <div
+      className="fixed z-50 border-l border-r border-borderColor p-1 shadow-[inset_0px_4px_4px_var(--opacityBlue01)] backdrop-blur before:absolute before:bottom-full before:left-0 before:h-4 before:w-full before:rotate-180 before:bg-dropdownBottom before:bg-contain before:bg-bottom before:bg-no-repeat before:opacity-30 after:absolute after:left-0 after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30"
       style={{
-        top: y,
-        left: x,
-        width: width,
+        top: `${y + height}px`,
+        left: `${x}px`,
+        width: `${width}px`,
       }}
+      ref={listRef}
     >
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
+      <ul className="max-h-72 overflow-y-auto">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
   );
 };

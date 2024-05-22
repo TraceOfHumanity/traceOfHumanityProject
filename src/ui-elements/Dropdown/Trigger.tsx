@@ -1,6 +1,6 @@
 import React, { Dispatch, useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { setListCoordinators } from "../../redux/slices/dropdown";
+import { setTriggerCoordinators } from "../../redux/slices/dropdown";
 import { useAppDispatch } from "hooks/useReduxToolkit";
 import { getRefCoordinates } from "utils/getRefCoordinates";
 
@@ -17,7 +17,7 @@ export const Trigger: React.FC<TriggerProps> = (props) => {
 
   const openCloseHandler = () => {
     handleClick(!isOpen);
-    dispatch(setListCoordinators(getRefCoordinates(buttonRef)));
+    dispatch(setTriggerCoordinators(getRefCoordinates(buttonRef)));
   };
 
   return (
