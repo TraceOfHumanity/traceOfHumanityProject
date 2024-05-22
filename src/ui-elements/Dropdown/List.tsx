@@ -13,14 +13,14 @@ interface Coordinators {
 export const List = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [isInsideScreen, setIsInsideScreen] = useState<boolean>(true);
-  const listRef = React.useRef<HTMLDivElement | null>(null);
+  const listRef = React.useRef<HTMLDivElement>(null);
 
   const triggerCoordinators = useAppSelector(
     (state: {dropdown: {triggerCoordinators: Coordinators}}) =>
       state.dropdown.triggerCoordinators,
   );
 
-  const [listCoordinates, setListCoordinates] = useState<Coordinators | null | undefined>(
+  const [listCoordinates, setListCoordinates] = useState<Coordinators | null>(
     null,
   );
 
@@ -29,14 +29,17 @@ export const List = () => {
   useEffect(() => {
     if (listRef.current) {
       setListCoordinates(getRefCoordinates(listRef));
+      console.log(listCoordinates);
     }
-  }, []);
+  }, [
+      
+  ]);
 
   return (
     <div
-      className="fixed z-50 border-l border-r border-borderColor p-1 shadow-[inset_0px_4px_4px_var(--opacityBlue01)] backdrop-blur before:absolute before:bottom-full before:left-0 before:h-4 before:w-full before:rotate-180 before:bg-dropdownBottom before:bg-contain before:bg-bottom before:bg-no-repeat before:opacity-30 after:absolute after:left-0 after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30"
+      className="fixed z-50 mt-4 border-l border-r border-borderColor p-1 shadow-[inset_0px_4px_4px_var(--opacityBlue01)] backdrop-blur before:pointer-events-none before:absolute before:bottom-full before:left-0 before:h-4 before:w-full before:rotate-180 before:bg-dropdownBottom before:bg-contain before:bg-bottom before:bg-no-repeat before:opacity-30 after:pointer-events-none after:absolute after:left-0 after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30"
       style={{
-        top: `${y + height}px`,
+        top: `${y}px`,
         left: `${x}px`,
         width: `${width}px`,
       }}

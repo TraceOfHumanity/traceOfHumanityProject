@@ -20,7 +20,6 @@ export const Dropdown = () => {
       !dropdownRef.current.contains(event.target as Node)
     ) {
       setIsOpen(false);
-      dispatch(setTriggerCoordinators({}));
     }
   };
 
