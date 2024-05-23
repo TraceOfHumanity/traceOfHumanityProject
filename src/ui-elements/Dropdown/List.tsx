@@ -36,7 +36,7 @@ export const List = () => {
 
   return (
     <div
-      className="fixed z-50 mt-4 border-l border-r border-borderColor p-1 shadow-[inset_0px_0px_10px_4px_var(--opacityBlue01)] backdrop-blur before:pointer-events-none before:absolute before:bottom-full before:left-0 before:h-4 before:w-full before:rotate-180 before:bg-dropdownBottom before:bg-contain before:bg-bottom before:bg-no-repeat before:opacity-30 after:pointer-events-none after:absolute after:left-0 after:top-full after:h-4 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30"
+      className="fixed z-50 border-borderColor before:pointer-events-none before:bottom-full before:left-0 before:block before:h-2.5 before:w-full before:rotate-180 before:bg-dropdownBottom before:bg-contain before:bg-bottom before:bg-no-repeat before:opacity-30 after:pointer-events-none after:left-0 after:top-full after:block after:h-2.5 after:w-full after:bg-dropdownBottom after:bg-contain after:bg-bottom after:bg-no-repeat after:opacity-30"
       style={{
         top: `${y + height}px`,
         left: `${x}px`,
@@ -44,7 +44,7 @@ export const List = () => {
       }}
       ref={listRef}
     >
-      <ul className="max-h-72 overflow-y-auto">
+      <ul className="max-h-72 overflow-y-auto shadow-[inset_0px_0px_10px_4px_var(--opacityBlue01)] backdrop-blur hover:[&>li]:shadow-[inset_0px_0px_10px_4px_var(--opacityBlue01)] [&>li]:px-2 [&>li]:py-1">
         <li>Item 1</li>
         <li>Item 2</li>
         <li>Item 3</li>

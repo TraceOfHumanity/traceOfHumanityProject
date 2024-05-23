@@ -36,6 +36,7 @@ module.exports = {
       backgroundImage: {
         headerCenter: "url('/public/assets/headerCenter.svg')",
         dropdownBottom: "url('/public/assets/dropdownListBottom.svg')",
+        dropdownTriggerBottom: "url('/public/assets/dropdownTriggerBottom.svg')",
       },
       keyframes: {
         spin: {
