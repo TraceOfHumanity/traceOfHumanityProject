@@ -43,7 +43,7 @@ export const Dropdown: FC<DropdownProps> = ({list}) => {
         isOpen={isOpen}
         handleClick={handleClick}
       />
-      {isOpen && <List list={list} />}
+      {isOpen && <List list={list} setSelectedItem={setSelectedItem} setIsOpen={setIsOpen} />}
     </div>
   );
 };

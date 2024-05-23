@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--opacityRed);
+  border-radius: 10px;
 }
 
 @layer base {
