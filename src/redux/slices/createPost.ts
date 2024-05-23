@@ -4,6 +4,7 @@ const initialState = {
   title: "",
   description: "",
   imageUrl: "",
+  topics: [],
 };
 
 const createPostSlice = createSlice({

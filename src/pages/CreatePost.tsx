@@ -57,8 +57,84 @@ export const CreatePost = () => {
   return (
     <PageWrapper>
       <h1>Create Post</h1>
-      <Dropdown />
-      <Dropdown />
+      <Dropdown
+        list={[
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+        ]}
+      />
+      <Dropdown
+        list={[
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+        ]}
+      />
+      <Dropdown
+        list={[
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+        ]}
+      />
+      <Dropdown
+        list={[
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+        ]}
+      />
+      <Dropdown
+        list={[
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+        ]}
+      />
+      <Dropdown
+        list={[
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+          "one",
+          "two",
+          "three",
+        ]}
+      />
       {/* <form
         action=""
         onSubmit={(e) => handleSubmit(e, title, description, imageUrl)}
@@ -137,4 +213,4 @@ export const CreatePost = () => {
       </form> */}
     </PageWrapper>
   );
-};  
+};

@@ -1,18 +1,24 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 
 import {List} from "./List";
 import {Trigger} from "./Trigger";
-import { useAppDispatch } from "hooks/useReduxToolkit";
-import { setTriggerCoordinators } from "../../redux/slices/dropdown";
 
-export const Dropdown = () => {
-  const dispatch = useAppDispatch();
+// import { useAppDispatch } from "hooks/useReduxToolkit";
+// import { setTriggerCoordinators } from "../../redux/slices/dropdown";
+
+interface DropdownProps {
+  list: string[];
+}
+
+export const Dropdown: FC<DropdownProps> = ({list}) => {
+  // const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<(HTMLDivElement | null)>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [selectedItem, setSelectedItem] = useState<string>("");
 
   const handleClick = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (
@@ -32,8 +38,12 @@ export const Dropdown = () => {
 
   return (
     <div className="max-w-72" ref={dropdownRef}>
-      <Trigger isOpen={isOpen} handleClick={handleClick} />
-      {isOpen && <List />}
+      <Trigger
+        selectedItem={selectedItem}
+        isOpen={isOpen}
+        handleClick={handleClick}
+      />
+      {isOpen && <List list={list} />}
     </div>
   );
 };

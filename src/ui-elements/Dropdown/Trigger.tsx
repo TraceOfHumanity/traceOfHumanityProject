@@ -1,4 +1,5 @@
-import React, {Dispatch, useRef} from "react";
+import {is} from "@react-three/fiber/dist/declarations/src/core/utils";
+import React, {Dispatch, FC, useRef} from "react";
 import {IoIosArrowDown} from "react-icons/io";
 
 import {useAppDispatch} from "hooks/useReduxToolkit";
@@ -8,13 +9,17 @@ import {getRefCoordinates} from "utils/getRefCoordinates";
 import {setTriggerCoordinators} from "../../redux/slices/dropdown";
 
 interface TriggerProps {
+  selectedItem: string;
   isOpen: boolean;
   handleClick: Dispatch<boolean>;
 }
 
-export const Trigger: React.FC<TriggerProps> = (props) => {
+export const Trigger: FC<TriggerProps> = ({
+  selectedItem,
+  isOpen,
+  handleClick,
+}) => {
   const dispatch = useAppDispatch();
-  const {isOpen, handleClick} = props;
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const openCloseHandler = () => {
@@ -25,15 +30,17 @@ export const Trigger: React.FC<TriggerProps> = (props) => {
   return (
     <button
       className={cn(
-        "w-full bg-gradient-to-br from-opacityBlue to-opacityRed rounded p-[1px]",
-        isOpen ? "after:drop-shadow-[0_2px_1px_var(--blue)]" : "",
+        "w-full rounded bg-gradient-to-br from-opacityBlue to-opacityRed p-[1px]",
+        isOpen ? "shadow-[0_4px_4px_var(--opacityBlue01)]" : "",
       )}
       onClick={openCloseHandler}
       ref={buttonRef}
     >
-      <p className="flex items-center justify-between px-2 pt-1 bg-mainBg rounded">
-        Тригер
-        <IoIosArrowDown />
+      <p className="flex items-center justify-between rounded bg-mainBg px-2 py-1">
+        {selectedItem || "Select"}
+        <IoIosArrowDown
+          className={cn("duration-200 ml-auto", isOpen ? "-scale-y-100 transform" : "")}
+        />
       </p>
     </button>
   );
