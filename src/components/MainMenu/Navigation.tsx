@@ -24,7 +24,8 @@ export const Navigation = () => {
           {/* {item.icon} */}
           {item.name === "explore" && <FaSpaceShuttle />}
           {item.name === "author" && <SiAlienware />}
-          {item.name === "login" || (item.name === "logout" && <IoLogIn />)}
+          {item.name === "login"  && <IoLogIn />}
+          {item.name === "logout" && <IoLogIn />}
           {item.link ? (
             <Link to={item.link}>{item.name}</Link>
           ) : (

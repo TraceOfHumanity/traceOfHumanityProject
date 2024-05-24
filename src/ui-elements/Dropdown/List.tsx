@@ -13,11 +13,12 @@ interface Coordinators {
 
 interface ListProps {
   list: string[];
-  setSelectedItem: Dispatch<SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
+  dispatchFunction?: () => void;
 }
 
-export const List: FC<ListProps> = ({list, setSelectedItem, setIsOpen}) => {
+export const List: FC<ListProps> = ({list, setValue, setIsOpen, dispatchFunction}) => {
   const listRef = React.useRef<HTMLDivElement>(null);
 
   const triggerCoordinators = useAppSelector(
@@ -55,8 +56,9 @@ export const List: FC<ListProps> = ({list, setSelectedItem, setIsOpen}) => {
           <li
             key={index}
             onClick={() => {
-              setSelectedItem(item);
+              setValue(item);
               setIsOpen && setIsOpen(false);
+              dispatchFunction && dispatchFunction();
             }}
           >
             {item}

@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import {MdCloudUpload} from "react-icons/md";
 import SimpleMdeReact from "react-simplemde-editor";
 
 import {PageWrapper} from "components/PageWrapper";
 import "easymde/dist/easymde.min.css";
 import {useArticleActions} from "hooks/articleActions";
-import {useFirebase} from "hooks/firebaseFunctions";
+import {useFirebase} from "hooks/useFunctions";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {Dropdown} from "ui-elements/Dropdown";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
@@ -16,6 +16,20 @@ import {
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
+
+type ToolbarButton =
+  | "bold"
+  | "italic"
+  | "heading"
+  | "quote"
+  | "unordered-list"
+  | "ordered-list"
+  | "link"
+  | "image"
+  | "guide"
+  | "fullscreen"
+  | "side-by-side"
+  | "preview";
 
 export const CreatePost = () => {
   const dispatch = useAppDispatch();
@@ -54,88 +68,29 @@ export const CreatePost = () => {
     dispatch(setImageUrl(""));
   };
 
+  const options = useMemo(
+    () => ({
+      spellChecker: false,
+      hideIcons: [
+        "guide",
+        "fullscreen",
+        "side-by-side",
+        "preview",
+        "quote",
+      ] as ToolbarButton[],
+    }),
+    [],
+  );
+
   return (
     <PageWrapper>
       <h1>Create Post</h1>
-      <Dropdown
-        list={[
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-        ]}
-      />
-      <Dropdown
-        list={[
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-        ]}
-      />
-      <Dropdown
-        list={[
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-        ]}
-      />
-      <Dropdown
-        list={[
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-        ]}
-      />
-      <Dropdown
-        list={[
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-        ]}
-      />
-      <Dropdown
-        list={[
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-          "one",
-          "two",
-          "three",
-        ]}
-      />
-      {/* <form
+      {/* <Dropdown
+        list={["one", "two", "three", "four", "five", "six"]}
+        selectedItem="one"
+      />*/}
+
+      <form
         action=""
         onSubmit={(e) => handleSubmit(e, title, description, imageUrl)}
       >
@@ -151,24 +106,15 @@ export const CreatePost = () => {
           <SimpleMdeReact
             value={description}
             onChange={(e) => dispatch(setDescription(e))}
-            options={{
-              spellChecker: false,
-              hideIcons: [
-                "guide",
-                "fullscreen",
-                "side-by-side",
-                "preview",
-                "quote",
-              ],
-            }}
+            options={options}
             placeholder="Post text here..."
           />
         </div>
-        <div className=" relative flex aspect-video items-center justify-center rounded-md border border-dotted">
+        <div className=" relative flex aspect-video items-center justify-center overflow-hidden rounded-md border border-dotted">
           {isLoading ? (
             <SimpleLoader />
           ) : (
-            <>
+            <div className="flex flex-col w-full h-full">
               {!imageUrl ? (
                 <>
                   <label
@@ -189,16 +135,23 @@ export const CreatePost = () => {
                 </>
               ) : (
                 <>
-                  <img src={imageUrl} alt="image" />
+                  <img
+                    className="h-full w-full object-contain"
+                    src={imageUrl}
+                    alt=""
+                  />
                   <button onClick={() => deleteImage(imageUrl as string)}>
                     Remove Image
                   </button>
                 </>
               )}
-            </>
+            </div>
           )}
         </div>
-        <div className=""></div>
+        <Dropdown 
+          list={["one", "two", "three", "four", "five", "six"]} 
+          selectedItem="one"
+        />
         <button
           type="submit"
           disabled={isLoading || !title || !description}
@@ -210,7 +163,7 @@ export const CreatePost = () => {
         >
           Submit
         </button>
-      </form> */}
+      </form>
     </PageWrapper>
   );
 };

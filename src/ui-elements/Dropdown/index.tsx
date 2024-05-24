@@ -8,13 +8,19 @@ import {Trigger} from "./Trigger";
 
 interface DropdownProps {
   list: string[];
+  selectedItem: string;
+  dispatchFunction?: () => void;
 }
 
-export const Dropdown: FC<DropdownProps> = ({list}) => {
+export const Dropdown: FC<DropdownProps> = ({
+  list,
+  selectedItem,
+  dispatchFunction,
+}) => {
   // const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const [selectedItem, setSelectedItem] = useState<string>("");
+  const [value, setValue] = useState<string>(selectedItem);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -38,12 +44,15 @@ export const Dropdown: FC<DropdownProps> = ({list}) => {
 
   return (
     <div className="max-w-72" ref={dropdownRef}>
-      <Trigger
-        selectedItem={selectedItem}
-        isOpen={isOpen}
-        handleClick={handleClick}
-      />
-      {isOpen && <List list={list} setSelectedItem={setSelectedItem} setIsOpen={setIsOpen} />}
+      <Trigger value={value} isOpen={isOpen} handleClick={handleClick} />
+      {isOpen && (
+        <List
+          list={list}
+          setValue={setValue}
+          setIsOpen={setIsOpen}
+          dispatchFunction={dispatchFunction}
+        />
+      )}
     </div>
   );
 };

@@ -25,6 +25,7 @@ interface IFirebase {
 
 export const useFirebase = () => {
   const articleCollectionRef = collection(db, "articles");
+  const categoriesCollectionRef = collection(db, 'categories');
 
   const createPost: IFirebase["newArticle"] = async (
     title,

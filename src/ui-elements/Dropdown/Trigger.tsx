@@ -9,13 +9,13 @@ import {getRefCoordinates} from "utils/getRefCoordinates";
 import {setTriggerCoordinators} from "../../redux/slices/dropdown";
 
 interface TriggerProps {
-  selectedItem: string;
+  value: string;
   isOpen: boolean;
   handleClick: Dispatch<boolean>;
 }
 
 export const Trigger: FC<TriggerProps> = ({
-  selectedItem,
+  value,
   isOpen,
   handleClick,
 }) => {
@@ -37,7 +37,7 @@ export const Trigger: FC<TriggerProps> = ({
       ref={buttonRef}
     >
       <p className="flex items-center justify-between rounded bg-mainBg px-2 py-1">
-        {selectedItem || "Select"}
+        {value || "Select"}
         <IoIosArrowDown
           className={cn("duration-200 ml-auto", isOpen ? "-scale-y-100 transform" : "")}
         />
