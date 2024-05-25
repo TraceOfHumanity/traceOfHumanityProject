@@ -5,7 +5,7 @@ import SimpleMdeReact from "react-simplemde-editor";
 import {PageWrapper} from "components/PageWrapper";
 import "easymde/dist/easymde.min.css";
 import {useArticleActions} from "hooks/articleActions";
-import {useFirebase} from "hooks/useFunctions";
+import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {Dropdown} from "ui-elements/Dropdown";
 import {SimpleLoader} from "ui-elements/SimpleLoader";

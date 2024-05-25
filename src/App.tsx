@@ -12,9 +12,12 @@ import {Dashboard} from "pages/Dashboard";
 import {Home} from "pages/Home";
 import {Library} from "pages/Library";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
+import { useFirebase } from "hooks/useFirebase";
 
 function App() {
   const {isLoading} = useAppSelector((state) => state.loader);
+  const {getAllCategories} = useFirebase();
+  getAllCategories();
   return (
     <div className="">
       {isLoading && <SimpleLoader />}

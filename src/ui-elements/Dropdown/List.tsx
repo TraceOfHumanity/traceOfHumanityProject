@@ -18,7 +18,12 @@ interface ListProps {
   dispatchFunction?: () => void;
 }
 
-export const List: FC<ListProps> = ({list, setValue, setIsOpen, dispatchFunction}) => {
+export const List: FC<ListProps> = ({
+  list,
+  setValue,
+  setIsOpen,
+  dispatchFunction,
+}) => {
   const listRef = React.useRef<HTMLDivElement>(null);
 
   const triggerCoordinators = useAppSelector(
