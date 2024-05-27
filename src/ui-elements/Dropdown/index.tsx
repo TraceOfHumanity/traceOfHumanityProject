@@ -1,5 +1,7 @@
 import React, {FC, useEffect, useRef, useState} from "react";
 
+import {cn} from "utils/cn";
+
 import {List} from "./List";
 import {Trigger} from "./Trigger";
 
@@ -9,13 +11,17 @@ import {Trigger} from "./Trigger";
 interface DropdownProps {
   list: string[];
   selectedItem: string;
-  dispatchFunction?: () => void;
+  dispatchFunction?: (item: string) => void;
+  placeholder?: string;
+  className?: string;
 }
 
 export const Dropdown: FC<DropdownProps> = ({
   list,
   selectedItem,
   dispatchFunction,
+  placeholder,
+  className,
 }) => {
   // const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -43,8 +49,13 @@ export const Dropdown: FC<DropdownProps> = ({
   }, []);
 
   return (
-    <div className="max-w-72" ref={dropdownRef}>
-      <Trigger value={value} isOpen={isOpen} handleClick={handleClick} />
+    <div className={cn("max-w-72", className)} ref={dropdownRef}>
+      <Trigger
+        value={value}
+        isOpen={isOpen}
+        handleClick={handleClick}
+        placeholder={placeholder}
+      />
       {isOpen && (
         <List
           list={list}

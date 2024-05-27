@@ -15,7 +15,7 @@ interface ListProps {
   list: string[];
   setValue: Dispatch<SetStateAction<string>>;
   setIsOpen?: Dispatch<SetStateAction<boolean>>;
-  dispatchFunction?: () => void;
+  dispatchFunction?: (item: string) => void;
 }
 
 export const List: FC<ListProps> = ({
@@ -63,7 +63,7 @@ export const List: FC<ListProps> = ({
             onClick={() => {
               setValue(item);
               setIsOpen && setIsOpen(false);
-              dispatchFunction && dispatchFunction();
+              dispatchFunction && dispatchFunction(item);
             }}
           >
             {item}

@@ -32,7 +32,7 @@ interface IFirebase {
 export const useFirebase = () => {
   const dispatch = useAppDispatch();
 
-  const articleCollectionRef = collection(db, "articles");
+  const postsCollectionRef = collection(db, "posts");
   const categoriesCollectionRef = collection(db, "categories");
 
   const createPost: IFirebase["newArticle"] = async (
@@ -42,7 +42,7 @@ export const useFirebase = () => {
     createdAt,
     category,
   ) => {
-    await addDoc(articleCollectionRef, {
+    await addDoc(postsCollectionRef, {
       title,
       description,
       imageUrl,
@@ -50,6 +50,7 @@ export const useFirebase = () => {
       category,
     });
   };
+
 
   const createCategory: IFirebase["newCategory"] = async (name) => {
     await addDoc(categoriesCollectionRef, {

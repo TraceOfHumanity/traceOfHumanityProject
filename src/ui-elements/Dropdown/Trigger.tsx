@@ -12,17 +12,20 @@ interface TriggerProps {
   value: string;
   isOpen: boolean;
   handleClick: Dispatch<boolean>;
+  placeholder?: string;
 }
 
 export const Trigger: FC<TriggerProps> = ({
   value,
   isOpen,
   handleClick,
+  placeholder,
 }) => {
   const dispatch = useAppDispatch();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const openCloseHandler = () => {
+  const openCloseHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     handleClick(!isOpen);
     dispatch(setTriggerCoordinators(getRefCoordinates(buttonRef)));
   };
@@ -33,13 +36,16 @@ export const Trigger: FC<TriggerProps> = ({
         "w-full rounded bg-gradient-to-br from-opacityBlue to-opacityRed p-[1px]",
         isOpen ? "shadow-[0_4px_4px_var(--opacityBlue01)]" : "",
       )}
-      onClick={openCloseHandler}
+      onClick={(e) => openCloseHandler(e)}
       ref={buttonRef}
     >
       <p className="flex items-center justify-between rounded bg-mainBg px-2 py-1">
-        {value || "Select"}
+        {value || placeholder || "Select an item"}
         <IoIosArrowDown
-          className={cn("duration-200 ml-auto", isOpen ? "-scale-y-100 transform" : "")}
+          className={cn(
+            "ml-auto duration-200",
+            isOpen ? "-scale-y-100 transform" : "",
+          )}
         />
       </p>
     </button>

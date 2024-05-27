@@ -4,7 +4,7 @@ const initialState = {
   title: "",
   description: "",
   imageUrl: "",
-  topics: [],
+  category: "",
 };
 
 const createPostSlice = createSlice({
@@ -20,8 +20,12 @@ const createPostSlice = createSlice({
     setImageUrl: (state, action) => {
       state.imageUrl = action.payload;
     },
+    setCategory: (state, action) => {
+      state.category = action.payload;
+    },
   },
 });
 
-export const {setTitle, setDescription, setImageUrl} = createPostSlice.actions;
+export const {setTitle, setDescription, setImageUrl, setCategory} =
+  createPostSlice.actions;
 export default createPostSlice.reducer;

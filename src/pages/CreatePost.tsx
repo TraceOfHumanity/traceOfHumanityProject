@@ -9,9 +9,11 @@ import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {Dropdown} from "ui-elements/Dropdown";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
+import {TextInput} from "ui-elements/TextInput";
 import {cn} from "utils/cn";
 
 import {
+  setCategory,
   setDescription,
   setImageUrl,
   setTitle,
@@ -31,12 +33,18 @@ type ToolbarButton =
   | "side-by-side"
   | "preview";
 
+interface Category {
+  name: string;
+}
 export const CreatePost = () => {
   const dispatch = useAppDispatch();
   const {createPost} = useFirebase();
   const {isLoading} = useAppSelector((state) => state.loader);
-  const {title, description, imageUrl} = useAppSelector(
+  const {title, description, imageUrl, category} = useAppSelector(
     (state) => state.createPost,
+  );
+  const allCategories: Category[] = useAppSelector(
+    (state) => state.dashboard.allCategories,
   );
 
   const {addImage, deleteImage} = useArticleActions();
@@ -45,15 +53,17 @@ export const CreatePost = () => {
     e: React.FormEvent,
     title: string,
     description: string,
-    imageUrl: string,
+    imageUrl?: string,
+    category?: string,
   ) => {
     e.preventDefault();
 
     const newArticle = {
       title,
       description,
-      imageUrl,
+      imageUrl: imageUrl || "",
       createdAt: new Date(),
+      category,
     };
 
     createPost(
@@ -61,11 +71,13 @@ export const CreatePost = () => {
       newArticle.description,
       newArticle.imageUrl,
       newArticle.createdAt,
+      newArticle.category,
     );
 
     dispatch(setTitle(""));
     dispatch(setDescription(""));
     dispatch(setImageUrl(""));
+    dispatch(setCategory(""));
   };
 
   const options = useMemo(
@@ -92,17 +104,19 @@ export const CreatePost = () => {
 
       <form
         action=""
-        onSubmit={(e) => handleSubmit(e, title, description, imageUrl)}
+        onSubmit={(e) =>
+          handleSubmit(e, title, description, imageUrl, category)
+        }
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 "
       >
-        <div className="">
-          <p>title</p>
-          <input
-            type="text"
+        <div className="col-span-full">
+          <TextInput
             value={title}
-            onChange={(e) => dispatch(setTitle(e.target.value))}
+            onChange={(e) => dispatch(setTitle(e))}
+            placeholder="Title"
           />
         </div>
-        <div className="">
+        <div className="md:col-span-2">
           <SimpleMdeReact
             value={description}
             onChange={(e) => dispatch(setDescription(e))}
@@ -114,7 +128,7 @@ export const CreatePost = () => {
           {isLoading ? (
             <SimpleLoader />
           ) : (
-            <div className="flex flex-col w-full h-full">
+            <div className="flex h-full w-full flex-col">
               {!imageUrl ? (
                 <>
                   <label
@@ -148,15 +162,18 @@ export const CreatePost = () => {
             </div>
           )}
         </div>
-        <Dropdown 
-          list={["one", "two", "three", "four", "five", "six"]} 
-          selectedItem="one"
+        <Dropdown
+          list={allCategories.map((category) => category.name)}
+          selectedItem={category}
+          dispatchFunction={(item) => dispatch(setCategory(item))}
+          placeholder="Select a category"
+          className="max-w-full "
         />
         <button
           type="submit"
           disabled={isLoading || !title || !description}
           className={cn(
-            "",
+            "col-span-full",
             isLoading ? "bg-gray-400" : "bg-blue-500",
             !title || !description ? "cursor-not-allowed" : "cursor-pointer",
           )}
