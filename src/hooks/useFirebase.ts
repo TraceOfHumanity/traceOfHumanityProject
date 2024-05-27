@@ -15,10 +15,11 @@ import {
 } from "firebase/firestore";
 
 import {setAllCategories} from "../redux/slices/dashboard";
+import {setLastPost, setPosts} from "../redux/slices/library";
 import {useAppDispatch} from "./useReduxToolkit";
 
 interface IFirebase {
-  newArticle: (
+  newPost: (
     title: string,
     description: string,
     imageUrl: string | null,
@@ -27,6 +28,10 @@ interface IFirebase {
   ) => Promise<void>;
 
   newCategory: (name: string) => Promise<void>;
+
+  getAllCategories: () => Promise<void>;
+
+  getAllPosts: (postsPerLoad: number, startAfterPost?: any) => Promise<void>;
 }
 
 export const useFirebase = () => {
@@ -35,7 +40,7 @@ export const useFirebase = () => {
   const postsCollectionRef = collection(db, "posts");
   const categoriesCollectionRef = collection(db, "categories");
 
-  const createPost: IFirebase["newArticle"] = async (
+  const createPost: IFirebase["newPost"] = async (
     title,
     description,
     imageUrl,
@@ -51,7 +56,6 @@ export const useFirebase = () => {
     });
   };
 
-
   const createCategory: IFirebase["newCategory"] = async (name) => {
     await addDoc(categoriesCollectionRef, {
       name,
@@ -63,5 +67,37 @@ export const useFirebase = () => {
     dispatch(setAllCategories(categories.docs.map((doc) => doc.data())));
   };
 
-  return {createPost, createCategory, getAllCategories};
+  const getAllPosts: IFirebase["getAllPosts"] = async (
+    postsPerLoad,
+    startAfterPost,
+  ) => {
+    const posts: any[] = [];
+
+    const firstPostsQuery = query(
+      postsCollectionRef,
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+    );
+
+    const postsQuery = query(
+      postsCollectionRef,
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+      startAfter(startAfterPost),
+    );
+
+    // const postsSnapshot = await getDocs(firstPostsQuery);
+    const postsSnapshot = startAfterPost
+      ? await getDocs(postsQuery)
+      : await getDocs(firstPostsQuery);
+    dispatch(setLastPost(postsSnapshot.docs[postsSnapshot.docs.length - 1]));
+    postsSnapshot.docs.forEach((doc) => {
+      posts.push(doc.data());
+    });
+
+    dispatch(setPosts(posts));
+    // dispatch(setPosts(postsSnapshot.docs.map((doc) => doc.data())));
+  };
+
+  return {createPost, createCategory, getAllCategories, getAllPosts};
 };

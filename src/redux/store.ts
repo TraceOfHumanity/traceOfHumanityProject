@@ -6,6 +6,7 @@ import auth from "./slices/auth";
 import createPost from "./slices/createPost";
 import dashboard from "./slices/dashboard";
 import dropdown from "./slices/dropdown";
+import library from "./slices/library";
 import loader from "./slices/loader";
 import popupsSlice from "./slices/popupsSlice";
 
@@ -19,7 +20,12 @@ export const store = configureStore({
     loader,
     popups: popupsSlice,
     createPost,
+    library,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
