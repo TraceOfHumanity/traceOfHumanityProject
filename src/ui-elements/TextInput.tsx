@@ -22,7 +22,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       <input
         type={type}
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e)}
         placeholder={placeholder}
         className="w-full"
         required={required}

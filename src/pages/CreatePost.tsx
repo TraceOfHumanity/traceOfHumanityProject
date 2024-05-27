@@ -112,7 +112,7 @@ export const CreatePost = () => {
         <div className="col-span-full">
           <TextInput
             value={title}
-            onChange={(e) => dispatch(setTitle(e))}
+            onChange={(e) => dispatch(setTitle(e.target.value))}
             placeholder="Title"
           />
         </div>
@@ -124,7 +124,7 @@ export const CreatePost = () => {
             placeholder="Post text here..."
           />
         </div>
-        <div className=" relative flex aspect-video items-center justify-center overflow-hidden rounded-md border border-dotted">
+        <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-md border border-dotted sm:aspect-auto sm:h-full">
           {isLoading ? (
             <SimpleLoader />
           ) : (

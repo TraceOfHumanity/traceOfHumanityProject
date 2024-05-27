@@ -31,7 +31,7 @@
 
 @layer components {
   h1 {
-    @apply text-xl font-bold md:text-3xl lg:text-4xl;
+    @apply text-xl font-bold md:text-3xl lg:text-4xl mb-3 md:mb-5 ;
   }
 
   h2 {
