@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
-  postsPerLoad: 3,
+  postsPerLoad: 5,
   lastPost: null,
 };
 

@@ -1,5 +1,6 @@
 import React, {useMemo, useState} from "react";
 import {MdCloudUpload} from "react-icons/md";
+import {useNavigate} from "react-router-dom";
 import SimpleMdeReact from "react-simplemde-editor";
 
 import {PageWrapper} from "components/PageWrapper";
@@ -7,6 +8,7 @@ import "easymde/dist/easymde.min.css";
 import {useArticleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+import {setLastPost} from "../redux/slices/library";
 import {Dropdown} from "ui-elements/Dropdown";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
 import {TextInput} from "ui-elements/TextInput";
@@ -18,7 +20,6 @@ import {
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
-import { useNavigate } from "react-router-dom";
 
 type ToolbarButton =
   | "bold"
@@ -82,7 +83,9 @@ export const CreatePost = () => {
     dispatch(setDescription(""));
     dispatch(setImageUrl(""));
     dispatch(setCategory(""));
-    
+
+    dispatch(setLastPost(null));
+
     navigate("/library");
   };
 

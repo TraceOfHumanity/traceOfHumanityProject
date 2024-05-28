@@ -1,5 +1,6 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import Markdown from "react-markdown";
+import { SimpleLoader } from "ui-elements/SimpleLoader";
 
 interface PostItemProps {
   title: string;
@@ -8,18 +9,32 @@ interface PostItemProps {
 }
 
 export const PostItem: FC<PostItemProps> = ({title, description, imageUrl}) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <div className="grid h-fit gap-2 border-b border-opacityBlue pb-2 sm:grid-cols-2">
+    <div className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2">
       {imageUrl ? (
-        <img
-          className=" w-full object-cover sm:col-span-1  max-h-80"
-          src={imageUrl}
-          alt={title}
-        />
+        <div className="relative">
+          {isLoading && (
+            <div className="absolute left-0 top-0 h-full w-full flex justify-center items-center">
+              <SimpleLoader />
+            </div>
+          )}
+          <img
+            className=" max-h-80 w-full object-cover  sm:col-span-1"
+            src={imageUrl}
+            alt={title}
+            onLoad={handleImageLoad}
+          />
+        </div>
       ) : (
         <div className="p-10">
           <img
-            className="w-full object-contain sm:col-span-1 max-h-80"
+            className="max-h-80 w-full object-contain sm:col-span-1"
             src="/logo.svg"
             alt=""
           />
