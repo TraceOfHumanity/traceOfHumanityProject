@@ -11,17 +11,15 @@ export const TopPanel = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useAppSelector((state) => state.auth);
 
-  console.log(useLocation());
-
   const showWarningPopup = () => {
     dispatch(setIsOpenPleaseRegisterPopup(true));
   };
   return (
-    <div className="mb-2 flex items-center gap-5 border-b border-opacityBlue01">
+    <div className="mb-2 pb-2 flex items-center gap-5 border-b border-opacityBlue">
       <Navigation />
       {isLoggedIn ? (
         <Link
-          className="flex items-center gap-2 text-sm md:text-base"
+          className="flex items-center gap-2 text-xs md:text-sm lg:text-base"
           to="/create-post"
         >
           <MdOutlinePostAdd />
@@ -29,7 +27,7 @@ export const TopPanel = () => {
         </Link>
       ) : (
         <button
-          className="flex items-center gap-2 text-sm md:text-base"
+          className="flex items-center gap-2 text-xs md:text-sm lg:text-base"
           onClick={() => showWarningPopup()}
         >
           <MdOutlinePostAdd />

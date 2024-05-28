@@ -2,6 +2,8 @@ import React from "react";
 
 import {useAppSelector} from "hooks/useReduxToolkit";
 
+import {PostItem} from "./PostItem";
+
 interface Post {
   title: string;
   description: string;
@@ -11,13 +13,14 @@ interface Post {
 export const Posts = () => {
   const {posts} = useAppSelector((state) => state.library);
   return (
-    <div>
+    <div className="grid gap-5">
       {posts.map((post: Post) => (
-        <div key={post.title}>
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
-          <img src={post.imageUrl} alt="" />
-        </div>
+        <PostItem
+          key={post.title}
+          title={post.title}
+          description={post.description}
+          imageUrl={post.imageUrl}
+        />
       ))}
     </div>
   );

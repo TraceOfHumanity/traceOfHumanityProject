@@ -8,7 +8,7 @@ import {PageWrapper} from "components/PageWrapper";
 
 export const Library = () => {
   return (
-    <PageWrapper>
+    <PageWrapper className="relative">
       <TopPanel />
       <div className="flex gap-2">
         <LibraryMenu />

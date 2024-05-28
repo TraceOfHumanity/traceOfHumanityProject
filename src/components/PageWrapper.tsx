@@ -10,5 +10,5 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({
   children,
   className,
 }) => {
-  return <div className={cn("p-[1vw]", className)}>{children}</div>;
+  return <div className={cn("px-[1vw] py-2", className)}>{children}</div>;
 };

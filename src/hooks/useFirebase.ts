@@ -92,7 +92,7 @@ export const useFirebase = () => {
       : await getDocs(firstPostsQuery);
     dispatch(setLastPost(postsSnapshot.docs[postsSnapshot.docs.length - 1]));
     postsSnapshot.docs.forEach((doc) => {
-      posts.push(doc.data());
+      posts.push({...doc.data(), id: doc.id});
     });
 
     dispatch(setPosts(posts));
