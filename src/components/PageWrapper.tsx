@@ -14,7 +14,7 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-col overflow-hidden px-[1vw] py-2 flex-auto",
+        "flex flex-col overflow-hidden py-2 flex-auto",
         className,
       )}
     >

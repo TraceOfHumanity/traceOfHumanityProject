@@ -18,6 +18,7 @@ import {
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
+import { useNavigate } from "react-router-dom";
 
 type ToolbarButton =
   | "bold"
@@ -38,6 +39,7 @@ interface Category {
 }
 export const CreatePost = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {createPost} = useFirebase();
   const {isLoading} = useAppSelector((state) => state.loader);
   const {title, description, imageUrl, category} = useAppSelector(
@@ -64,6 +66,8 @@ export const CreatePost = () => {
       imageUrl: imageUrl || "",
       createdAt: new Date(),
       category,
+      likes: 0,
+      views: 0,
     };
 
     createPost(
@@ -78,6 +82,8 @@ export const CreatePost = () => {
     dispatch(setDescription(""));
     dispatch(setImageUrl(""));
     dispatch(setCategory(""));
+    
+    navigate("/library");
   };
 
   const options = useMemo(
@@ -174,7 +180,7 @@ export const CreatePost = () => {
           disabled={isLoading || !title || !description}
           className={cn(
             "col-span-full",
-            isLoading ? "bg-gray-400" : "bg-blue-500",
+            // isLoading ? "bg-gray-400" : "bg-blue-500",
             !title || !description ? "cursor-not-allowed" : "cursor-pointer",
           )}
         >

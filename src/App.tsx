@@ -17,22 +17,9 @@ import {SimpleLoader} from "ui-elements/SimpleLoader";
 
 function App() {
   const {isLoading} = useAppSelector((state) => state.loader);
-  const {postsPerLoad, lastPost} = useAppSelector((state) => state.library);
-
-  const {getAllCategories, getAllPosts} = useFirebase();
-
-  useEffect(() => {
-    getAllCategories()
-      .then(() => console.log("Categories are loaded successfully"))
-      .catch((error) => console.error(error));
-
-    getAllPosts(postsPerLoad, lastPost)
-      .then(() => console.log("Posts are loaded successfully"))
-      .catch((error) => console.error(error));
-  }, []);
 
   return (
-    <div className="flex-auto flex flex-col h-screen w-screen overflow-y-auto">
+    <div className="flex-auto flex flex-col h-screen w-screen overflow-y-auto container">
       {isLoading && <SimpleLoader />}
       <ToastContainer theme="dark" />
       <Header />
