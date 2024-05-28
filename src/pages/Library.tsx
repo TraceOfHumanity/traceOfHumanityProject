@@ -10,9 +10,8 @@ export const Library = () => {
   return (
     <PageWrapper className="relative">
       <TopPanel />
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-auto overflow-hidden">
         <LibraryMenu />
-        {/* <Outlet /> */}
         <Posts />
       </div>
     </PageWrapper>

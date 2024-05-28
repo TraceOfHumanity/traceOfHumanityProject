@@ -13,7 +13,7 @@ interface Post {
 export const Posts = () => {
   const {posts} = useAppSelector((state) => state.library);
   return (
-    <div className="grid gap-5">
+    <div className="flex flex-col gap-5 bg-red flex-auto overflow-y-auto">
       {posts.map((post: Post) => (
         <PostItem
           key={post.title}

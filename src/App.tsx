@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <div className="">
+    <div className="flex-auto flex flex-col h-screen w-screen overflow-y-auto">
       {isLoading && <SimpleLoader />}
       <ToastContainer theme="dark" />
       <Header />
