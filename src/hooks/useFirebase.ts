@@ -73,8 +73,8 @@ export const useFirebase = () => {
     startAfterPost,
   ) => {
     const responsePosts: any[] = [];
-    console.log("startAfterPost", startAfterPost);
-    console.log("postsPerLoad", postsPerLoad);
+    // console.log("startAfterPost", startAfterPost);
+    // console.log("postsPerLoad", postsPerLoad);
 
     const firstPostsQuery = query(
       postsCollectionRef,

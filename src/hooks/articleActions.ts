@@ -17,7 +17,7 @@ export const useArticleActions = () => {
 
   const addImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // e.preventDefault();
-    console.log(e.target.files);
+    // console.log(e.target.files);
     dispatch(setIsLoading(true));
     const image = e.target.files?.[0];
 

@@ -18,8 +18,6 @@ export const Posts = () => {
   const {getAllPosts} = useFirebase();
   const {hasMorePosts, lastPost} = useAppSelector((state) => state.library);
 
-  console.log("lastPost", lastPost);
-
   const handleScroll = (e: Event) => {
     const target = e.currentTarget as HTMLDivElement;
     const {scrollTop, clientHeight, scrollHeight} = target;
