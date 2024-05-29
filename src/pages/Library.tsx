@@ -9,7 +9,7 @@ import {useFirebase} from "hooks/useFirebase";
 import {useAppSelector} from "hooks/useReduxToolkit";
 
 export const Library = () => {
-  const {postsPerLoad, lastPost} = useAppSelector((state) => state.library);
+  const {lastPost} = useAppSelector((state) => state.library);
 
   const {getAllCategories, getAllPosts} = useFirebase();
 
@@ -18,9 +18,9 @@ export const Library = () => {
       .then(() => console.log("Categories are loaded successfully"))
       .catch((error) => console.error(error));
 
-    getAllPosts(postsPerLoad, lastPost)
-      .then(() => console.log("Posts are loaded successfully"))
-      .catch((error) => console.error(error));
+      getAllPosts(lastPost)
+        .then(() => console.log("Posts are loaded successfully"))
+        .catch((error) => console.error(error));
   }, []);
   
   return (

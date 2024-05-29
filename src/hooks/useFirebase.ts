@@ -15,8 +15,8 @@ import {
 } from "firebase/firestore";
 
 import {setAllCategories} from "../redux/slices/dashboard";
-import {setLastPost, setPosts} from "../redux/slices/library";
-import {useAppDispatch} from "./useReduxToolkit";
+import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
+import {useAppDispatch, useAppSelector} from "./useReduxToolkit";
 
 interface IFirebase {
   newPost: (
@@ -31,12 +31,14 @@ interface IFirebase {
 
   getAllCategories: () => Promise<void>;
 
-  getAllPosts: (postsPerLoad: number, startAfterPost?: any) => Promise<void>;
+  getAllPosts: (startAfterPost?: any) => Promise<void>;
 }
 
 export const useFirebase = () => {
   const dispatch = useAppDispatch();
-
+  const {posts, postsPerLoad} = useAppSelector(
+    (state) => state.library,
+  );
   const postsCollectionRef = collection(db, "posts");
   const categoriesCollectionRef = collection(db, "categories");
 
@@ -68,12 +70,11 @@ export const useFirebase = () => {
   };
 
   const getAllPosts: IFirebase["getAllPosts"] = async (
-    postsPerLoad,
     startAfterPost,
   ) => {
-    const posts: any[] = [];
-    console.log("startAfterPost", startAfterPost)
-    console.log("postsPerLoad", postsPerLoad)
+    const responsePosts: any[] = [];
+    console.log("startAfterPost", startAfterPost);
+    console.log("postsPerLoad", postsPerLoad);
 
     const firstPostsQuery = query(
       postsCollectionRef,
@@ -93,11 +94,14 @@ export const useFirebase = () => {
       ? await getDocs(postsQuery)
       : await getDocs(firstPostsQuery);
     dispatch(setLastPost(postsSnapshot.docs[postsSnapshot.docs.length - 1]));
+    if (postsSnapshot.docs.length < postsPerLoad) {
+      dispatch(setHasMorePosts(false));
+    }
     postsSnapshot.docs.forEach((doc) => {
-      posts.push({...doc.data(), id: doc.id});
+      responsePosts.push({...doc.data(), id: doc.id});
     });
 
-    dispatch(setPosts(posts));
+    dispatch(setPosts([...posts, ...responsePosts]));
     // dispatch(setPosts(postsSnapshot.docs.map((doc) => doc.data())));
   };
 

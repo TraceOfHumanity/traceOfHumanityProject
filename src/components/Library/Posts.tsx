@@ -1,7 +1,7 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 
 import {useFirebase} from "hooks/useFirebase";
-import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+import {useAppSelector} from "hooks/useReduxToolkit";
 
 import {PostItem} from "./PostItem";
 
@@ -13,12 +13,10 @@ interface Post {
 }
 
 export const Posts = () => {
-  const dispatch = useAppDispatch();
   const {posts} = useAppSelector((state) => state.library);
   const postsWrapperRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const {getAllPosts} = useFirebase();
-  const {postsPerLoad, lastPost} = useAppSelector((state) => state.library);
+  const {hasMorePosts, lastPost} = useAppSelector((state) => state.library);
 
   console.log("lastPost", lastPost);
 
@@ -30,18 +28,11 @@ export const Posts = () => {
       scrollHeight - scrollTop <= clientHeight + 5 ||
       scrollHeight === clientHeight
     ) {
-      setIsLoading(true);
-
-      getAllPosts(postsPerLoad, lastPost)
-        .then(() => console.log("Posts are loaded successfully"))
-        .catch((error) => console.error(error));
-      // if (activeCategoryID === null) {
-      //   dispatch(getMoreImagesInGallery());
-      // } else {
-      //   dispatch(getMoreImagesByCategory(activeCategoryName));
-      // }
-    } else {
-      setIsLoading(false);
+      if (hasMorePosts) {
+        getAllPosts(lastPost)
+          .then(() => console.log("Posts are loaded successfully"))
+          .catch((error) => console.error(error));
+      }
     }
   };
 
@@ -55,9 +46,7 @@ export const Posts = () => {
         postsWrapperRef.current.removeEventListener("scroll", handleScroll);
       }
     };
-  }, [
-    lastPost,
-  ]);
+  }, [lastPost]);
 
   return (
     <div
