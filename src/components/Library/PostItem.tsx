@@ -1,14 +1,17 @@
 import React, {FC, useState} from "react";
 import Markdown from "react-markdown";
-import { SimpleLoader } from "ui-elements/SimpleLoader";
+import {Link} from "react-router-dom";
+
+import {SimpleLoader} from "ui-elements/SimpleLoader";
 
 interface PostItemProps {
+  id: string;
   title: string;
   description: string;
   imageUrl: string;
 }
 
-export const PostItem: FC<PostItemProps> = ({title, description, imageUrl}) => {
+export const PostItem: FC<PostItemProps> = ({id, title, description, imageUrl}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const handleImageLoad = () => {
@@ -16,11 +19,14 @@ export const PostItem: FC<PostItemProps> = ({title, description, imageUrl}) => {
   };
 
   return (
-    <div className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2">
+    <Link
+      to={`/library/${id}`}
+      className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2"
+    >
       {imageUrl ? (
         <div className="relative">
           {isLoading && (
-            <div className="absolute left-0 top-0 h-full w-full flex justify-center items-center">
+            <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
               <SimpleLoader />
             </div>
           )}
@@ -44,6 +50,6 @@ export const PostItem: FC<PostItemProps> = ({title, description, imageUrl}) => {
         <h2 className="sm:col-span-1 sm:col-start-2 ">{title}</h2>
         <Markdown>{description}</Markdown>
       </div>
-    </div>
+    </Link>
   );
 };

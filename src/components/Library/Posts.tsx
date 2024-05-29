@@ -54,6 +54,7 @@ export const Posts = () => {
       {posts.map((post: Post) => (
         <PostItem
           key={post.id}
+          id={post.id}
           title={post.title}
           description={post.description}
           imageUrl={post.imageUrl}
