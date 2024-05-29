@@ -20,6 +20,8 @@ export const Posts = () => {
   const {getAllPosts} = useFirebase();
   const {postsPerLoad, lastPost} = useAppSelector((state) => state.library);
 
+  console.log("lastPost", lastPost);
+
   const handleScroll = (e: Event) => {
     const target = e.currentTarget as HTMLDivElement;
     const {scrollTop, clientHeight, scrollHeight} = target;
@@ -53,7 +55,9 @@ export const Posts = () => {
         postsWrapperRef.current.removeEventListener("scroll", handleScroll);
       }
     };
-  }, []);
+  }, [
+    lastPost,
+  ]);
 
   return (
     <div
