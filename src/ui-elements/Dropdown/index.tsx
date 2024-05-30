@@ -3,7 +3,8 @@ import React, {FC, useEffect, useRef, useState} from "react";
 import {cn} from "utils/cn";
 
 import {List} from "./List";
-import {Trigger} from "./Trigger";
+import {MultiSelectContainer} from "./MultiSelectContainer";
+import {Trigger} from "./TriggerButton";
 
 // import { useAppDispatch } from "hooks/useReduxToolkit";
 // import { setTriggerCoordinators } from "../../redux/slices/dropdown";
@@ -14,6 +15,7 @@ interface DropdownProps {
   dispatchFunction?: (item: string) => void;
   placeholder?: string;
   className?: string;
+  type?: "multiSelect";
 }
 
 export const Dropdown: FC<DropdownProps> = ({
@@ -22,6 +24,7 @@ export const Dropdown: FC<DropdownProps> = ({
   dispatchFunction,
   placeholder,
   className,
+  type,
 }) => {
   // const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -48,14 +51,24 @@ export const Dropdown: FC<DropdownProps> = ({
     };
   }, []);
 
+  const dropdownHeader = () => {
+    if (type === "multiSelect") {
+      return <MultiSelectContainer />;
+    } else {
+      return (
+        <Trigger
+          value={value}
+          isOpen={isOpen}
+          handleClick={handleClick}
+          placeholder={placeholder}
+        />
+      );
+    }
+  };
+
   return (
     <div className={cn("max-w-72", className)} ref={dropdownRef}>
-      <Trigger
-        value={value}
-        isOpen={isOpen}
-        handleClick={handleClick}
-        placeholder={placeholder}
-      />
+      {dropdownHeader()}
       {isOpen && (
         <List
           list={list}

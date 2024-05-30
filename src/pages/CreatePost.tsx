@@ -176,7 +176,8 @@ export const CreatePost = () => {
           selectedItem='dr'
           dispatchFunction={(item) => dispatch(setCategory(item))}
           placeholder="Select a category"
-          className="max-w-full "
+          className="max-w-full"
+          type="multiSelect"
         />
         <button
           type="submit"
