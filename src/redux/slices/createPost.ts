@@ -4,7 +4,7 @@ const initialState = {
   title: "",
   description: "",
   imageUrl: "",
-  category: "",
+  category: [],
 };
 
 const createPostSlice = createSlice({

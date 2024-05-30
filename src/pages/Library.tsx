@@ -29,7 +29,6 @@ export const Library = () => {
       <div className="flex flex-auto gap-2 overflow-hidden">
         <LibraryMenu />
         <Outlet />
-        {/* <Posts /> */}
       </div>
     </PageWrapper>
   );

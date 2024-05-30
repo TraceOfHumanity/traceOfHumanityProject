@@ -24,7 +24,7 @@ interface IFirebase {
     description: string,
     imageUrl: string | null,
     createdAt: Date,
-    category?: string,
+    category?: string[],
   ) => Promise<void>;
 
   newCategory: (name: string) => Promise<void>;

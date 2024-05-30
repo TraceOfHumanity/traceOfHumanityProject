@@ -57,7 +57,7 @@ export const CreatePost = () => {
     title: string,
     description: string,
     imageUrl?: string,
-    category?: string,
+    category?: Array<string>,
   ) => {
     e.preventDefault();
 
@@ -82,7 +82,7 @@ export const CreatePost = () => {
     dispatch(setTitle(""));
     dispatch(setDescription(""));
     dispatch(setImageUrl(""));
-    dispatch(setCategory(""));
+    dispatch(setCategory([]));
 
     dispatch(setLastPost(null));
 
@@ -173,7 +173,7 @@ export const CreatePost = () => {
         </div>
         <Dropdown
           list={allCategories.map((category) => category.name)}
-          selectedItem={category}
+          selectedItem='dr'
           dispatchFunction={(item) => dispatch(setCategory(item))}
           placeholder="Select a category"
           className="max-w-full "
