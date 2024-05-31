@@ -63,7 +63,7 @@ export const CreatePost = () => {
     title: string,
     description: string,
     imageUrl?: string,
-    category?: Array<string>,
+    categories?: string[],
   ) => {
     e.preventDefault();
 
@@ -72,7 +72,7 @@ export const CreatePost = () => {
       description,
       imageUrl: imageUrl || "",
       createdAt: new Date(),
-      category,
+      categories,
       likes: 0,
       views: 0,
     };
@@ -82,7 +82,7 @@ export const CreatePost = () => {
       newArticle.description,
       newArticle.imageUrl,
       newArticle.createdAt,
-      newArticle.category,
+      newArticle.categories,
     );
 
     dispatch(setTitle(""));

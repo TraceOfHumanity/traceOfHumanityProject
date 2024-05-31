@@ -47,14 +47,14 @@ export const useFirebase = () => {
     description,
     imageUrl,
     createdAt,
-    category,
+    categories,
   ) => {
     await addDoc(postsCollectionRef, {
       title,
       description,
       imageUrl,
       createdAt,
-      category,
+      categories,
     });
   };
 
