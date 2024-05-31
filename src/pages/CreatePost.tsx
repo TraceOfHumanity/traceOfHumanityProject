@@ -19,7 +19,7 @@ import {
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
-import {setLastPost} from "../redux/slices/library";
+import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
 
 type ToolbarButton =
   | "bold"
@@ -91,6 +91,8 @@ export const CreatePost = () => {
     dispatch(setCategories([]));
 
     dispatch(setLastPost(null));
+    dispatch(setPosts([]));
+    dispatch(setHasMorePosts(true));
 
     navigate("/library");
   };
@@ -109,8 +111,17 @@ export const CreatePost = () => {
     [],
   );
 
+  const addCategory = (category: string) => {
+    if (!categories.includes(category) && categories.length < 3) {
+      dispatch(setCategories([...categories, category]));
+    }
+  };
+  const removeCategory = (category: string) => {
+    dispatch(setCategories(categories.filter((cat) => cat !== category)));
+  }
+
   return (
-    <PageWrapper>
+    <PageWrapper className="overflow-y-auto">
       <h1>Create Post</h1>
       <form
         action=""
@@ -175,14 +186,12 @@ export const CreatePost = () => {
         <Dropdown
           list={allCategories.map((category) => category.name)}
           selectedItem="dr"
-          dispatchFunction={(item) =>
-            !categories.includes(item) &&
-            categories.length < 3 &&
-            dispatch(setCategories([...categories, item]))
-          }
-          placeholder="Select a category"
+          dispatchFunction={(item) => addCategory(item)}
+          updateFunction={(item) => removeCategory(item)}
+          placeholder="Select a categories"
           className="max-w-full"
           type="multiSelect"
+          selectedItems={categories}
         />
         {/* <Dropdown
           list={allCategories.map((category) => category.name)}

@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useRef, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 
 import {cn} from "utils/cn";
 
@@ -6,33 +6,33 @@ import {List} from "./List";
 import {MultiSelectContainer} from "./MultiSelectContainer";
 import {Trigger} from "./TriggerButton";
 
-// import { useAppDispatch } from "hooks/useReduxToolkit";
-// import { setTriggerCoordinators } from "../../redux/slices/dropdown";
-
 interface DropdownProps {
   list: string[];
   selectedItem: string;
   dispatchFunction?: (item: string) => void;
+  updateFunction?: (item: string) => void;
   placeholder?: string;
   className?: string;
   type?: "multiSelect";
+  selectedItems?: string[];
 }
 
 export const Dropdown: FC<DropdownProps> = ({
   list,
   selectedItem,
   dispatchFunction,
+  updateFunction,
   placeholder,
   className,
   type,
+  selectedItems,
 }) => {
-  // const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [value, setValue] = useState<string>(selectedItem);
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
   };
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
@@ -53,7 +53,15 @@ export const Dropdown: FC<DropdownProps> = ({
 
   const DropdownHeader = () => {
     if (type === "multiSelect") {
-      return <MultiSelectContainer isOpen={isOpen} handleClick={handleClick} />;
+      return (
+        <MultiSelectContainer
+          isOpen={isOpen}
+          handleClick={handleClick}
+          placeholder={placeholder}
+          selectedItems={selectedItems}
+          updateFunction={updateFunction}
+        />
+      );
     } else {
       return (
         <Trigger
