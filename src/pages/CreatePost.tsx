@@ -20,20 +20,7 @@ import {
   setTitle,
 } from "../redux/slices/createPost";
 import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
-
-type ToolbarButton =
-  | "bold"
-  | "italic"
-  | "heading"
-  | "quote"
-  | "unordered-list"
-  | "ordered-list"
-  | "link"
-  | "image"
-  | "guide"
-  | "fullscreen"
-  | "side-by-side"
-  | "preview";
+import { Form } from "components/CreatePost/Form";
 
 interface Category {
   name: string;
@@ -56,162 +43,10 @@ export const CreatePost = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const {addImage, deleteImage} = useArticleActions();
-
-  const handleSubmit = (
-    e: React.FormEvent,
-    title: string,
-    description: string,
-    imageUrl?: string,
-    categories?: string[],
-  ) => {
-    e.preventDefault();
-
-    const newArticle = {
-      title,
-      description,
-      imageUrl: imageUrl || "",
-      createdAt: new Date(),
-      categories,
-      likes: 0,
-      views: 0,
-    };
-
-    createPost(
-      newArticle.title,
-      newArticle.description,
-      newArticle.imageUrl,
-      newArticle.createdAt,
-      newArticle.categories,
-    );
-
-    dispatch(setTitle(""));
-    dispatch(setDescription(""));
-    dispatch(setImageUrl(""));
-    dispatch(setCategories([]));
-
-    dispatch(setLastPost(null));
-    dispatch(setPosts([]));
-    dispatch(setHasMorePosts(true));
-
-    navigate("/library");
-  };
-
-  const options = useMemo(
-    () => ({
-      spellChecker: false,
-      hideIcons: [
-        "guide",
-        "fullscreen",
-        "side-by-side",
-        "preview",
-        "quote",
-      ] as ToolbarButton[],
-    }),
-    [],
-  );
-
-  const addCategory = (category: string) => {
-    if (!categories.includes(category) && categories.length < 3) {
-      dispatch(setCategories([...categories, category]));
-    }
-  };
-  const removeCategory = (category: string) => {
-    dispatch(setCategories(categories.filter((cat) => cat !== category)));
-  }
-
   return (
     <PageWrapper className="overflow-y-auto">
       <h1>Create Post</h1>
-      <form
-        action=""
-        onSubmit={(e) =>
-          handleSubmit(e, title, description, imageUrl, categories)
-        }
-        className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 "
-      >
-        <div className="col-span-full">
-          <TextInput
-            value={title}
-            onChange={(e) => dispatch(setTitle(e.target.value))}
-            placeholder="Title"
-          />
-        </div>
-        <div className="md:col-span-2">
-          <SimpleMdeReact
-            value={description}
-            onChange={(e) => dispatch(setDescription(e))}
-            options={options}
-            placeholder="Post text here..."
-          />
-        </div>
-        <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-md border border-dotted sm:aspect-auto sm:h-full">
-          {isLoading ? (
-            <SimpleLoader />
-          ) : (
-            <div className="flex h-full w-full flex-col">
-              {!imageUrl ? (
-                <>
-                  <label
-                    className="absolute inset-0 flex flex-col items-center justify-center"
-                    htmlFor="image"
-                  >
-                    <p>Upload Image</p>
-                    <MdCloudUpload />
-                  </label>
-                  <input
-                    className="hidden"
-                    id="image"
-                    type="file"
-                    alt="image"
-                    onChange={(e) => addImage(e)}
-                    accept="image/*"
-                  />
-                </>
-              ) : (
-                <>
-                  <img
-                    className="h-full w-full object-contain"
-                    src={imageUrl}
-                    alt=""
-                  />
-                  <button onClick={() => deleteImage(imageUrl as string)}>
-                    Remove Image
-                  </button>
-                </>
-              )}
-            </div>
-          )}
-        </div>
-        <Dropdown
-          list={allCategories.map((category) => category.name)}
-          selectedItem="dr"
-          dispatchFunction={(item) => addCategory(item)}
-          updateFunction={(item) => removeCategory(item)}
-          placeholder="Select a categories"
-          className="max-w-full"
-          type="multiSelect"
-          selectedItems={categories}
-        />
-        {/* <Dropdown
-          list={allCategories.map((category) => category.name)}
-          selectedItem='dr'
-          dispatchFunction={(item) => dispatch(setCategories(item))}
-          placeholder="Select a category"
-          className="max-w-full"
-        /> */}
-        <button
-          type="submit"
-          disabled={isLoading || !title || !description}
-          className={cn(
-            "col-span-full",
-            // isLoading ? "bg-gray-400" : "bg-blue-500",
-            !title || !description ? "cursor-not-allowed" : "cursor-pointer",
-          )}
-        >
-          Submit
-        </button>
-      </form>
+      <Form />
     </PageWrapper>
   );
 };

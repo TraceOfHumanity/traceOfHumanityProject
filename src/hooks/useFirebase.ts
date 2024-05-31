@@ -17,6 +17,7 @@ import {
 import {setAllCategories} from "../redux/slices/dashboard";
 import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
 import {useAppDispatch, useAppSelector} from "./useReduxToolkit";
+import { setIsLoading } from "../redux/slices/loader";
 
 interface IFirebase {
   newPost: (
@@ -72,10 +73,9 @@ export const useFirebase = () => {
   const getAllPosts: IFirebase["getAllPosts"] = async (
     startAfterPost,
   ) => {
-    const responsePosts: any[] = [];
-    // console.log("startAfterPost", startAfterPost);
-    // console.log("postsPerLoad", postsPerLoad);
 
+    const responsePosts: any[] = [];
+    dispatch(setIsLoading(true));
     const firstPostsQuery = query(
       postsCollectionRef,
       orderBy("createdAt", "desc"),

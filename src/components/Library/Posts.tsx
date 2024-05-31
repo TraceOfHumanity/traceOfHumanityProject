@@ -1,8 +1,9 @@
 import React, {useEffect, useRef} from "react";
 
 import {useFirebase} from "hooks/useFirebase";
-import {useAppSelector} from "hooks/useReduxToolkit";
+import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 
+import {setIsLoading} from "../../redux/slices/loader";
 import {PostItem} from "./PostItem";
 
 interface Post {
@@ -13,6 +14,7 @@ interface Post {
 }
 
 export const Posts = () => {
+  const dispatch = useAppDispatch();
   const {posts} = useAppSelector((state) => state.library);
   const postsWrapperRef = useRef<HTMLDivElement>(null);
   const {getAllPosts} = useFirebase();
@@ -28,7 +30,10 @@ export const Posts = () => {
     ) {
       if (hasMorePosts) {
         getAllPosts(lastPost)
-          .then(() => console.log("Posts are loaded successfully"))
+          .then(() => {
+            dispatch(setIsLoading(false));
+            console.log("Posts are loaded successfully");
+          })
           .catch((error) => console.error(error));
       }
     }
