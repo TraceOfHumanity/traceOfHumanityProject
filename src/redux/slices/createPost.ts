@@ -1,10 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = {
+interface CreatePostState {
+  title: string;
+  description: string;
+  imageUrl: string;
+  categories: string[];
+}
+
+const initialState: CreatePostState = {
   title: "",
   description: "",
   imageUrl: "",
-  category: [],
+  categories: [],
 };
 
 const createPostSlice = createSlice({
@@ -20,12 +27,12 @@ const createPostSlice = createSlice({
     setImageUrl: (state, action) => {
       state.imageUrl = action.payload;
     },
-    setCategory: (state, action) => {
-      state.category = action.payload;
+    setCategories: (state, action) => {
+      state.categories = action.payload;
     },
   },
 });
 
-export const {setTitle, setDescription, setImageUrl, setCategory} =
+export const {setTitle, setDescription, setImageUrl, setCategories} =
   createPostSlice.actions;
 export default createPostSlice.reducer;

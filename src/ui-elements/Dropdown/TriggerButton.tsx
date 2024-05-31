@@ -1,4 +1,3 @@
-import {is} from "@react-three/fiber/dist/declarations/src/core/utils";
 import React, {Dispatch, FC, useRef} from "react";
 import {IoIosArrowDown} from "react-icons/io";
 

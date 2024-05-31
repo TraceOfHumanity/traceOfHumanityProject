@@ -51,9 +51,9 @@ export const Dropdown: FC<DropdownProps> = ({
     };
   }, []);
 
-  const dropdownHeader = () => {
+  const DropdownHeader = () => {
     if (type === "multiSelect") {
-      return <MultiSelectContainer />;
+      return <MultiSelectContainer isOpen={isOpen} handleClick={handleClick} />;
     } else {
       return (
         <Trigger
@@ -67,8 +67,8 @@ export const Dropdown: FC<DropdownProps> = ({
   };
 
   return (
-    <div className={cn("max-w-72", className)} ref={dropdownRef}>
-      {dropdownHeader()}
+    <div className={cn("max-w-72 select-none", className)} ref={dropdownRef}>
+      {DropdownHeader()}
       {isOpen && (
         <List
           list={list}

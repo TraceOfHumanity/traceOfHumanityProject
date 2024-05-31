@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {MdCloudUpload} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import SimpleMdeReact from "react-simplemde-editor";
@@ -8,18 +8,18 @@ import "easymde/dist/easymde.min.css";
 import {useArticleActions} from "hooks/articleActions";
 import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
-import {setLastPost} from "../redux/slices/library";
 import {Dropdown} from "ui-elements/Dropdown";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
 import {TextInput} from "ui-elements/TextInput";
 import {cn} from "utils/cn";
 
 import {
-  setCategory,
+  setCategories,
   setDescription,
   setImageUrl,
   setTitle,
 } from "../redux/slices/createPost";
+import {setLastPost} from "../redux/slices/library";
 
 type ToolbarButton =
   | "bold"
@@ -41,14 +41,20 @@ interface Category {
 export const CreatePost = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const {createPost} = useFirebase();
+  const {createPost, getAllCategories} = useFirebase();
   const {isLoading} = useAppSelector((state) => state.loader);
-  const {title, description, imageUrl, category} = useAppSelector(
+  const {title, description, imageUrl, categories} = useAppSelector(
     (state) => state.createPost,
   );
   const allCategories: Category[] = useAppSelector(
     (state) => state.dashboard.allCategories,
   );
+
+  useEffect(() => {
+    getAllCategories()
+      .then(() => console.log("Categories are loaded successfully"))
+      .catch((error) => console.error(error));
+  }, []);
 
   const {addImage, deleteImage} = useArticleActions();
 
@@ -82,7 +88,7 @@ export const CreatePost = () => {
     dispatch(setTitle(""));
     dispatch(setDescription(""));
     dispatch(setImageUrl(""));
-    dispatch(setCategory([]));
+    dispatch(setCategories([]));
 
     dispatch(setLastPost(null));
 
@@ -106,15 +112,10 @@ export const CreatePost = () => {
   return (
     <PageWrapper>
       <h1>Create Post</h1>
-      {/* <Dropdown
-        list={["one", "two", "three", "four", "five", "six"]}
-        selectedItem="one"
-      />*/}
-
       <form
         action=""
         onSubmit={(e) =>
-          handleSubmit(e, title, description, imageUrl, category)
+          handleSubmit(e, title, description, imageUrl, categories)
         }
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 "
       >
@@ -173,12 +174,23 @@ export const CreatePost = () => {
         </div>
         <Dropdown
           list={allCategories.map((category) => category.name)}
-          selectedItem='dr'
-          dispatchFunction={(item) => dispatch(setCategory(item))}
+          selectedItem="dr"
+          dispatchFunction={(item) =>
+            !categories.includes(item) &&
+            categories.length < 3 &&
+            dispatch(setCategories([...categories, item]))
+          }
           placeholder="Select a category"
           className="max-w-full"
           type="multiSelect"
         />
+        {/* <Dropdown
+          list={allCategories.map((category) => category.name)}
+          selectedItem='dr'
+          dispatchFunction={(item) => dispatch(setCategories(item))}
+          placeholder="Select a category"
+          className="max-w-full"
+        /> */}
         <button
           type="submit"
           disabled={isLoading || !title || !description}

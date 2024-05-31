@@ -10,7 +10,6 @@ import {useAppSelector} from "hooks/useReduxToolkit";
 
 export const Library = () => {
   const {lastPost} = useAppSelector((state) => state.library);
-
   const {getAllCategories, getAllPosts} = useFirebase();
 
   useEffect(() => {
