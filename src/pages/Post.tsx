@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import Markdown from "react-markdown";
 
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useFirebase} from "hooks/useFirebase";
@@ -30,5 +31,19 @@ export const OnePost = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  return <div>Post</div>;
+  return (
+    <div className="w-full">
+      <img
+        className="float-left max-h-96 w-full object-cover md:w-1/2"
+        src={post.imageUrl}
+        alt={post.title}
+      />
+      <h1>{post.title}</h1>
+      <Markdown>{post.description}</Markdown>
+      <div className="">
+        <p>{post.likes}</p>
+        <p>{post.views}</p>
+      </div>
+    </div>
+  );
 };
