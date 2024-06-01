@@ -8,7 +8,7 @@ export const Navigation = () => {
   return (
     <div className="flex items-center gap-2">
       <button
-        onClick={() => navigation("/")}
+        onClick={() => navigation(-1)}
         className="flex items-center gap-2 text-xs md:text-sm lg:text-base"
       >
         <IoIosArrowRoundBack />

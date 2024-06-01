@@ -11,7 +11,7 @@ import {CreatePost} from "pages/CreatePost";
 import {Dashboard} from "pages/Dashboard";
 import {Home} from "pages/Home";
 import {Library} from "pages/Library";
-import {Post} from "pages/Post";
+import {OnePost} from "pages/Post";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/library" element={<Library />}>
           <Route index element={<Posts />} />
-          <Route path=":post" element={<Post />} />
+          <Route path=":post" element={<OnePost />} />
         </Route>
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
         <Route path="/dashboard" element={<Dashboard />} />

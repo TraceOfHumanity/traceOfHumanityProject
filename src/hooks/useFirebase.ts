@@ -16,8 +16,8 @@ import {
 
 import {setAllCategories} from "../redux/slices/dashboard";
 import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
+import {setIsLoading} from "../redux/slices/loader";
 import {useAppDispatch, useAppSelector} from "./useReduxToolkit";
-import { setIsLoading } from "../redux/slices/loader";
 
 interface IFirebase {
   newPost: (
@@ -35,13 +35,12 @@ interface IFirebase {
   getAllCategories: () => Promise<void>;
 
   getAllPosts: (startAfterPost?: any) => Promise<void>;
+  getOnePost: (id: string) => Promise<any>;
 }
 
 export const useFirebase = () => {
   const dispatch = useAppDispatch();
-  const {posts, postsPerLoad} = useAppSelector(
-    (state) => state.library,
-  );
+  const {posts, postsPerLoad} = useAppSelector((state) => state.library);
   const postsCollectionRef = collection(db, "posts");
   const categoriesCollectionRef = collection(db, "categories");
 
@@ -76,10 +75,7 @@ export const useFirebase = () => {
     dispatch(setAllCategories(categories.docs.map((doc) => doc.data())));
   };
 
-  const getAllPosts: IFirebase["getAllPosts"] = async (
-    startAfterPost,
-  ) => {
-
+  const getAllPosts: IFirebase["getAllPosts"] = async (startAfterPost) => {
     const responsePosts: any[] = [];
     dispatch(setIsLoading(true));
     const firstPostsQuery = query(
@@ -111,5 +107,17 @@ export const useFirebase = () => {
     // dispatch(setPosts(postsSnapshot.docs.map((doc) => doc.data())));
   };
 
-  return {createPost, createCategory, getAllCategories, getAllPosts};
+  const getOnePost: IFirebase["getOnePost"] = async (id) => {
+    const postRef = doc(db, "posts", id);
+    const post = await getDoc(postRef);
+    return post.data();
+  };
+
+  return {
+    createPost,
+    createCategory,
+    getAllCategories,
+    getAllPosts,
+    getOnePost,
+  };
 };

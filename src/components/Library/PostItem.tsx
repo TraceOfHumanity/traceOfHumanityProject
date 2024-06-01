@@ -30,7 +30,7 @@ export const PostItem: FC<PostItemProps> = ({
   return (
     <Link
       to={`/library/${id}`}
-      className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2 max-h-80 overflow-hidden"
+      className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2"
     >
       {imageUrl ? (
         <div className="relative">
@@ -40,7 +40,7 @@ export const PostItem: FC<PostItemProps> = ({
             </div>
           )}
           <img
-            className="w-full h-full object-cover sm:col-span-1"
+            className="w-full h-full object-cover max-h-80 sm:col-span-1"
             src={imageUrl}
             alt={title}
             onLoad={handleImageLoad}

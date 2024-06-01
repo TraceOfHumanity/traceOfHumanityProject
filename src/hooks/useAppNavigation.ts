@@ -1,14 +1,15 @@
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
+import {useLocation} from "react-router-dom";
 
-import { setIsLoginPopup } from "../redux/slices/popupsSlice";
-import { useAuth } from "./useAuth";
-import { useAppSelector } from "./useReduxToolkit";
-
+import {setIsLoginPopup} from "../redux/slices/popupsSlice";
+import {useAuth} from "./useAuth";
+import {useAppSelector} from "./useReduxToolkit";
 
 export const useAppNavigation = () => {
-  const { isLoggedIn } = useAppSelector((state) => state.auth);
-  const { logoutUser } = useAuth();
+  const {isLoggedIn} = useAppSelector((state) => state.auth);
+  const {logoutUser} = useAuth();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const mainMenuItems = [
     {
@@ -29,10 +30,20 @@ export const useAppNavigation = () => {
         }
       },
     },
-    
   ];
+
+  const getPath = () => {
+    const pathname = location.pathname;
+    const pathArray = pathname.split("/");
+
+    return {
+      pathname,
+      pathArray,
+    };
+  };
 
   return {
     mainMenuItems,
+    getPath,
   };
 };
