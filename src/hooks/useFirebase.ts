@@ -26,6 +26,8 @@ interface IFirebase {
     imageUrl: string | null,
     createdAt: Date,
     category?: string[],
+    likes?: number,
+    views?: number,
   ) => Promise<void>;
 
   newCategory: (name: string) => Promise<void>;
@@ -49,6 +51,8 @@ export const useFirebase = () => {
     imageUrl,
     createdAt,
     categories,
+    likes,
+    views,
   ) => {
     await addDoc(postsCollectionRef, {
       title,
@@ -56,6 +60,8 @@ export const useFirebase = () => {
       imageUrl,
       createdAt,
       categories,
+      likes,
+      views,
     });
   };
 

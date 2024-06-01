@@ -5,11 +5,12 @@ import {useNavigate} from "react-router-dom";
 export const Navigation = () => {
   const navigation = useNavigate();
 
-  const goBack = () => navigation(-1);
-
   return (
     <div className="flex items-center gap-2">
-      <button onClick={() => goBack()} className="flex items-center gap-2 text-xs md:text-sm lg:text-base">
+      <button
+        onClick={() => navigation("/")}
+        className="flex items-center gap-2 text-xs md:text-sm lg:text-base"
+      >
         <IoIosArrowRoundBack />
         Go Back
       </button>

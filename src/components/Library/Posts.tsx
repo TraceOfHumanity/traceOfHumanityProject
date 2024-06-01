@@ -11,6 +11,8 @@ interface Post {
   title: string;
   description: string;
   imageUrl: string;
+  likes: number;
+  views: number;
 }
 
 export const Posts = () => {
@@ -63,6 +65,8 @@ export const Posts = () => {
           title={post.title}
           description={post.description}
           imageUrl={post.imageUrl}
+          likes={post.likes}
+          views={post.views}
         />
       ))}
     </div>

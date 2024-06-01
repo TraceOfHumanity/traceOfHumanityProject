@@ -80,6 +80,8 @@ export const Form = () => {
         newArticle.imageUrl,
         newArticle.createdAt,
         newArticle.categories,
+        newArticle.likes,
+        newArticle.views,
       )
         .then(() => {
           dispatch(setTitle(""));
