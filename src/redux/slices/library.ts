@@ -5,6 +5,7 @@ const initialState = {
   postsPerLoad: 5,
   hasMorePosts: true,
   lastPost: null,
+  selectedCategory: "",
 };
 
 const library = createSlice({
@@ -23,8 +24,12 @@ const library = createSlice({
     setHasMorePosts: (state, action) => {
       state.hasMorePosts = action.payload;
     },
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
   },
 });
 
-export const {setPosts, setLastPost, setHasMorePosts} = library.actions;
+export const {setPosts, setLastPost, setHasMorePosts, setSelectedCategory} =
+  library.actions;
 export default library.reducer;

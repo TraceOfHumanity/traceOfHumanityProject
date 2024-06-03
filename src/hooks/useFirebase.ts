@@ -1,3 +1,4 @@
+import {clear} from "console";
 import {db} from "firebase.config";
 import {
   addDoc,
@@ -35,6 +36,7 @@ interface IFirebase {
   getAllCategories: () => Promise<void>;
 
   getAllPosts: (startAfterPost?: any) => Promise<void>;
+  getPostsByCategory: (category: string, startAfterPost?: any) => Promise<void>;
   getOnePost: (id: string) => Promise<any>;
   updatePost: (id: string, data: any) => Promise<void>;
 }
@@ -77,6 +79,7 @@ export const useFirebase = () => {
   const getAllPosts: IFirebase["getAllPosts"] = async (startAfterPost) => {
     const responsePosts: any[] = [];
     dispatch(setIsLoading(true));
+
     const firstPostsQuery = query(
       postsCollectionRef,
       orderBy("createdAt", "desc"),
@@ -90,7 +93,6 @@ export const useFirebase = () => {
       startAfter(startAfterPost),
     );
 
-    // const postsSnapshot = await getDocs(firstPostsQuery);
     const postsSnapshot = startAfterPost
       ? await getDocs(postsQuery)
       : await getDocs(firstPostsQuery);
@@ -103,7 +105,47 @@ export const useFirebase = () => {
     });
 
     dispatch(setPosts([...posts, ...responsePosts]));
-    // dispatch(setPosts(postsSnapshot.docs.map((doc) => doc.data())));
+  };
+
+  const getPostsByCategory: IFirebase["getPostsByCategory"] = async (
+    category,
+    startAfterPost,
+  ) => {
+    const responsePosts: any[] = [];
+    dispatch(setIsLoading(true));
+
+    console.log("category", category);
+    console.log("startAfterPost", startAfterPost);
+    const firstPostsQuery = query(
+      postsCollectionRef,
+      where("categories", "array-contains", category),
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+    );
+
+    const postsQuery = query(
+      postsCollectionRef,
+      where("categories", "array-contains", category),
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+      startAfter(startAfterPost),
+    );
+
+    const postsSnapshot = startAfterPost !== null
+      ? await getDocs(postsQuery)
+      : await getDocs(firstPostsQuery);
+    dispatch(setLastPost(postsSnapshot.docs[postsSnapshot.docs.length - 1]));
+    if (postsSnapshot.docs.length < postsPerLoad) {
+      dispatch(setHasMorePosts(false));
+    }
+    postsSnapshot.docs.forEach((doc) => {
+      responsePosts.push({...doc.data(), id: doc.id});
+    });
+
+    console.log("responsePosts", responsePosts);
+
+    // dispatch(setPosts([...posts, ...responsePosts]));
+    dispatch(setPosts([...responsePosts]));
   };
 
   const getOnePost: IFirebase["getOnePost"] = async (id) => {
@@ -115,14 +157,15 @@ export const useFirebase = () => {
   const updatePost = async (id: string, data: any) => {
     const postRef = doc(db, "posts", id);
     await updateDoc(postRef, data);
-  }
+  };
 
   return {
     createPost,
     createCategory,
     getAllCategories,
     getAllPosts,
+    getPostsByCategory,
     getOnePost,
-    updatePost
+    updatePost,
   };
 };
