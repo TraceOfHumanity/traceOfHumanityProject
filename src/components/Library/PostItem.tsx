@@ -1,4 +1,5 @@
 import React, {FC, useState} from "react";
+import {FaEye} from "react-icons/fa";
 import Markdown from "react-markdown";
 import {Link} from "react-router-dom";
 
@@ -9,8 +10,9 @@ interface PostItemProps {
   title: string;
   description: string;
   imageUrl: string;
-  likes: number;
+  // likes: number;
   views: number;
+  categories: string[];
 }
 
 export const PostItem: FC<PostItemProps> = ({
@@ -18,8 +20,9 @@ export const PostItem: FC<PostItemProps> = ({
   title,
   description,
   imageUrl,
-  likes,
+  // likes,
   views,
+  categories,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -40,7 +43,7 @@ export const PostItem: FC<PostItemProps> = ({
             </div>
           )}
           <img
-            className="w-full h-full object-cover max-h-80 sm:col-span-1"
+            className="h-full max-h-80 w-full object-cover sm:col-span-1"
             src={imageUrl}
             alt={title}
             onLoad={handleImageLoad}
@@ -49,7 +52,7 @@ export const PostItem: FC<PostItemProps> = ({
       ) : (
         <div className="p-10">
           <img
-            className="w-full h-full object-contain sm:col-span-1"
+            className="h-full max-h-64 w-full object-contain  sm:col-span-1"
             src="/logo.svg"
             alt=""
           />
@@ -58,9 +61,19 @@ export const PostItem: FC<PostItemProps> = ({
       <div className=" flex flex-col">
         <h2 className="sm:col-span-1 sm:col-start-2 ">{title}</h2>
         <Markdown>{description}</Markdown>
-        <div className="mt-auto flex">
-          <span className="mr-2">{likes} Likes</span>
-          <span>{views} Views</span>
+        <div className="mt-auto flex justify-between gap-2">
+          {/* <span className="mr-2">{likes} Likes</span> */}
+          <span className="flex gap-1 items-center">
+            <FaEye />
+            {views}
+          </span>
+          <span>
+            {categories.map((category) => (
+              <span key={category} className="ml-2">
+                {category}
+              </span>
+            ))}
+          </span>
         </div>
       </div>
     </Link>

@@ -69,7 +69,6 @@ export const Form = () => {
       imageUrl: imageUrl || "",
       createdAt: new Date(),
       categories,
-      likes: 0,
       views: 0,
     };
 
@@ -80,7 +79,6 @@ export const Form = () => {
         newArticle.imageUrl,
         newArticle.createdAt,
         newArticle.categories,
-        newArticle.likes,
         newArticle.views,
       )
         .then(() => {

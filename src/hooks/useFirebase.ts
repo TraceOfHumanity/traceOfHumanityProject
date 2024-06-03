@@ -51,7 +51,6 @@ export const useFirebase = () => {
     imageUrl,
     createdAt,
     categories,
-    likes,
     views,
   ) => {
     await addDoc(postsCollectionRef, {
@@ -60,7 +59,6 @@ export const useFirebase = () => {
       imageUrl,
       createdAt,
       categories,
-      likes,
       views,
     });
   };

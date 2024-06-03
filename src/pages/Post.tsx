@@ -41,7 +41,7 @@ export const OnePost = () => {
       <h1>{post.title}</h1>
       <Markdown>{post.description}</Markdown>
       <div className="">
-        <p>{post.likes}</p>
+        {/* <p>{post.likes}</p> */}
         <p>{post.views}</p>
       </div>
     </div>
