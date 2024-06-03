@@ -10,7 +10,6 @@ interface PostItemProps {
   title: string;
   description: string;
   imageUrl: string;
-  // likes: number;
   views: number;
   categories: string[];
 }
@@ -20,7 +19,6 @@ export const PostItem: FC<PostItemProps> = ({
   title,
   description,
   imageUrl,
-  // likes,
   views,
   categories,
 }) => {
@@ -58,7 +56,7 @@ export const PostItem: FC<PostItemProps> = ({
           />
         </div>
       )}
-      <div className=" flex flex-col">
+      <div className="flex flex-col">
         <h2 className="sm:col-span-1 sm:col-start-2 ">{title}</h2>
         <Markdown>{description}</Markdown>
         <div className="mt-auto flex justify-between gap-2">

@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
+import {FaEye} from "react-icons/fa";
 import Markdown from "react-markdown";
 
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useFirebase} from "hooks/useFirebase";
+import {cn} from "utils/cn";
 
 interface Post {
   id: string;
@@ -11,13 +13,13 @@ interface Post {
   imageUrl: string;
   likes: number;
   views: number;
+  categories: string[];
 }
 
 export const OnePost = () => {
   const {getOnePost, updatePost} = useFirebase();
   const {getPath} = useAppNavigation();
   const [post, setPost] = useState({} as Post);
-
 
   useEffect(() => {
     const {pathArray} = getPath();
@@ -32,17 +34,35 @@ export const OnePost = () => {
   }, []);
 
   return (
-    <div className="w-full">
-      <img
-        className="float-left max-h-96 w-full object-cover md:w-1/2"
-        src={post.imageUrl}
-        alt={post.title}
-      />
-      <h1>{post.title}</h1>
-      <Markdown>{post.description}</Markdown>
-      <div className="">
-        {/* <p>{post.likes}</p> */}
-        <p>{post.views}</p>
+    <div className="grid h-fit w-full gap-2 border-b border-opacityBlue pb-2 last:border-none  sm:grid-cols-2">
+      <div className="flex justify-center">
+        <img
+          className={cn(
+            "float-left max-h-96 w-full",
+            post.imageUrl ? "object-cover" : "object-contain p-3",
+          )}
+          src={post.imageUrl || "/logo.svg"}
+          alt={post.title}
+        />
+      </div>
+      <div className="flex flex-col">
+        <h2>{post.title}</h2>
+        <Markdown>{post.description}</Markdown>
+        <div className="mt-auto flex justify-between gap-7 items-start">
+          <span className="flex items-center gap-1">
+            <FaEye />
+            {post.views}
+          </span>
+          <span className="flex flex-wrap">
+            Categories:
+            {post.categories &&
+              post.categories.map((category) => (
+                <span key={category} className="ml-2">
+                  {category}
+                </span>
+              ))}
+          </span>
+        </div>
       </div>
     </div>
   );
