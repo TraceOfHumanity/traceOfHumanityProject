@@ -36,6 +36,7 @@ interface IFirebase {
 
   getAllPosts: (startAfterPost?: any) => Promise<void>;
   getOnePost: (id: string) => Promise<any>;
+  updatePost: (id: string, data: any) => Promise<void>;
 }
 
 export const useFirebase = () => {
@@ -113,11 +114,17 @@ export const useFirebase = () => {
     return post.data();
   };
 
+  const updatePost = async (id: string, data: any) => {
+    const postRef = doc(db, "posts", id);
+    await updateDoc(postRef, data);
+  }
+
   return {
     createPost,
     createCategory,
     getAllCategories,
     getAllPosts,
     getOnePost,
+    updatePost
   };
 };

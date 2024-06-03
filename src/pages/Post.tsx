@@ -14,11 +14,10 @@ interface Post {
 }
 
 export const OnePost = () => {
-  const {getOnePost} = useFirebase();
+  const {getOnePost, updatePost} = useFirebase();
   const {getPath} = useAppNavigation();
   const [post, setPost] = useState({} as Post);
 
-  console.log("post", post);
 
   useEffect(() => {
     const {pathArray} = getPath();
@@ -27,6 +26,7 @@ export const OnePost = () => {
     getOnePost(postId)
       .then((post) => {
         setPost(post);
+        updatePost(postId, {views: post.views + 1});
       })
       .catch((error) => console.error(error));
   }, []);
