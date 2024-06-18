@@ -104,7 +104,7 @@ export const useFirebase = () => {
       postsCollectionRef,
       where("categories", "array-contains", category),
       orderBy("createdAt", "desc"),
-      limit(postsPerLoad),
+      limit(3),
     );
 
     const postsQuery = query(
@@ -118,7 +118,7 @@ export const useFirebase = () => {
       postsCollectionRef,
       where("categories", "array-contains", category),
       orderBy("createdAt", "desc"),
-      limit(postsPerLoad),
+      limit(3),
       startAfter(startAfterPost),
     );
 
@@ -150,9 +150,15 @@ export const useFirebase = () => {
       }
     }
 
-    postsSnapshot.docs.forEach((doc) => {
-      responsePosts.push({...doc.data(), id: doc.id});
-    });
+    if (category) {
+      postsSnapshotWithCategories.docs.forEach((doc) => {
+        responsePosts.push({...doc.data(), id: doc.id});
+      });
+    } else {
+      postsSnapshot.docs.forEach((doc) => {
+        responsePosts.push({...doc.data(), id: doc.id});
+      });
+    }
 
     dispatch(setPosts([...posts, ...responsePosts]));
   };

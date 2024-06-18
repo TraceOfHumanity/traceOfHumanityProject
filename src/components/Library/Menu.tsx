@@ -69,6 +69,7 @@ export const LibraryMenu = () => {
               key={category.name}
               className="rounded border border-opacityBlue bg-mainBg p-2 text-start"
               onClick={() => {
+                dispatch(setPosts([]));
                 dispatch(setLastPost(null));
                 dispatch(setSelectedCategory(category.name));
               }}
