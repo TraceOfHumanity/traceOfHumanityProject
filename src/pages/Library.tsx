@@ -13,30 +13,21 @@ import {setIsLoading} from "../redux/slices/loader";
 export const Library = () => {
   const dispatch = useAppDispatch();
   const {lastPost, selectedCategory} = useAppSelector((state) => state.library);
-  const {getAllCategories, getAllPosts, getPostsByCategory} = useFirebase();
+  const {getAllCategories, getPosts} = useFirebase();
 
   useEffect(() => {
     getAllCategories()
       .then(() => console.log("Categories are loaded successfully"))
       .catch((error) => console.error(error));
+  }, []);
 
-    getAllPosts(lastPost)
+  useEffect(() => {
+    getPosts(selectedCategory, lastPost)
       .then(() => {
         dispatch(setIsLoading(false));
         console.log("Posts are loaded successfully");
       })
       .catch((error) => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    if (selectedCategory) {
-      getPostsByCategory(selectedCategory, lastPost)
-        .then(() => {
-          dispatch(setIsLoading(false));
-          console.log("Posts are loaded successfully");
-        })
-        .catch((error) => console.error(error));
-    }
   }, [selectedCategory]);
 
   return (

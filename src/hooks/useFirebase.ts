@@ -14,6 +14,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
+import {get} from "http";
 
 import {setAllCategories} from "../redux/slices/dashboard";
 import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
@@ -39,6 +40,7 @@ interface IFirebase {
   getPostsByCategory: (category: string, startAfterPost?: any) => Promise<void>;
   getOnePost: (id: string) => Promise<any>;
   updatePost: (id: string, data: any) => Promise<void>;
+  getPosts: (category: string, startAfterPost?: any) => Promise<void>;
 }
 
 export const useFirebase = () => {
@@ -76,78 +78,6 @@ export const useFirebase = () => {
     dispatch(setAllCategories(categories.docs.map((doc) => doc.data())));
   };
 
-  const getAllPosts: IFirebase["getAllPosts"] = async (startAfterPost) => {
-    const responsePosts: any[] = [];
-    dispatch(setIsLoading(true));
-
-    const firstPostsQuery = query(
-      postsCollectionRef,
-      orderBy("createdAt", "desc"),
-      limit(postsPerLoad),
-    );
-
-    const postsQuery = query(
-      postsCollectionRef,
-      orderBy("createdAt", "desc"),
-      limit(postsPerLoad),
-      startAfter(startAfterPost),
-    );
-
-    const postsSnapshot = startAfterPost
-      ? await getDocs(postsQuery)
-      : await getDocs(firstPostsQuery);
-    dispatch(setLastPost(postsSnapshot.docs[postsSnapshot.docs.length - 1]));
-    if (postsSnapshot.docs.length < postsPerLoad) {
-      dispatch(setHasMorePosts(false));
-    }
-    postsSnapshot.docs.forEach((doc) => {
-      responsePosts.push({...doc.data(), id: doc.id});
-    });
-
-    dispatch(setPosts([...posts, ...responsePosts]));
-  };
-
-  const getPostsByCategory: IFirebase["getPostsByCategory"] = async (
-    category,
-    startAfterPost,
-  ) => {
-    const responsePosts: any[] = [];
-    dispatch(setIsLoading(true));
-
-    console.log("category", category);
-    console.log("startAfterPost", startAfterPost);
-    const firstPostsQuery = query(
-      postsCollectionRef,
-      where("categories", "array-contains", category),
-      orderBy("createdAt", "desc"),
-      limit(postsPerLoad),
-    );
-
-    const postsQuery = query(
-      postsCollectionRef,
-      where("categories", "array-contains", category),
-      orderBy("createdAt", "desc"),
-      limit(postsPerLoad),
-      startAfter(startAfterPost),
-    );
-
-    const postsSnapshot = startAfterPost !== null
-      ? await getDocs(postsQuery)
-      : await getDocs(firstPostsQuery);
-    dispatch(setLastPost(postsSnapshot.docs[postsSnapshot.docs.length - 1]));
-    if (postsSnapshot.docs.length < postsPerLoad) {
-      dispatch(setHasMorePosts(false));
-    }
-    postsSnapshot.docs.forEach((doc) => {
-      responsePosts.push({...doc.data(), id: doc.id});
-    });
-
-    console.log("responsePosts", responsePosts);
-
-    // dispatch(setPosts([...posts, ...responsePosts]));
-    dispatch(setPosts([...responsePosts]));
-  };
-
   const getOnePost: IFirebase["getOnePost"] = async (id) => {
     const postRef = doc(db, "posts", id);
     const post = await getDoc(postRef);
@@ -159,12 +89,81 @@ export const useFirebase = () => {
     await updateDoc(postRef, data);
   };
 
+  const getPosts: IFirebase["getPosts"] = async (category, startAfterPost) => {
+    console.log("getPosts");
+    const responsePosts: any[] = [];
+    dispatch(setIsLoading(true));
+
+    const firstPostsQuery = query(
+      postsCollectionRef,
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+    );
+
+    const firstPostsQueryWithCategories = query(
+      postsCollectionRef,
+      where("categories", "array-contains", category),
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+    );
+
+    const postsQuery = query(
+      postsCollectionRef,
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+      startAfter(startAfterPost),
+    );
+
+    const postsQueryWithCategories = query(
+      postsCollectionRef,
+      where("categories", "array-contains", category),
+      orderBy("createdAt", "desc"),
+      limit(postsPerLoad),
+      startAfter(startAfterPost),
+    );
+
+    const postsSnapshot = startAfterPost
+      ? await getDocs(postsQuery)
+      : await getDocs(firstPostsQuery);
+
+    const postsSnapshotWithCategories = startAfterPost
+      ? await getDocs(postsQueryWithCategories)
+      : await getDocs(firstPostsQueryWithCategories);
+
+    dispatch(
+      setLastPost(
+        category
+          ? postsSnapshotWithCategories.docs[
+              postsSnapshotWithCategories.docs.length - 1
+            ]
+          : postsSnapshot.docs[postsSnapshot.docs.length - 1],
+      ),
+    );
+
+    if (category) {
+      if (postsSnapshotWithCategories.docs.length < postsPerLoad) {
+        dispatch(setHasMorePosts(false));
+      }
+    } else {
+      if (postsSnapshot.docs.length < postsPerLoad) {
+        dispatch(setHasMorePosts(false));
+      }
+    }
+
+    postsSnapshot.docs.forEach((doc) => {
+      responsePosts.push({...doc.data(), id: doc.id});
+    });
+
+    dispatch(setPosts([...posts, ...responsePosts]));
+  };
+
   return {
     createPost,
     createCategory,
     getAllCategories,
-    getAllPosts,
-    getPostsByCategory,
+    getPosts,
+    // getAllPosts,
+    // getPostsByCategory,
     getOnePost,
     updatePost,
   };

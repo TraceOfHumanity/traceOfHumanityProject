@@ -20,8 +20,10 @@ export const Posts = () => {
   const dispatch = useAppDispatch();
   const {posts} = useAppSelector((state) => state.library);
   const postsWrapperRef = useRef<HTMLDivElement>(null);
-  const {getAllPosts} = useFirebase();
-  const {hasMorePosts, lastPost} = useAppSelector((state) => state.library);
+  const {getPosts} = useFirebase();
+  const {hasMorePosts, lastPost, selectedCategory} = useAppSelector(
+    (state) => state.library,
+  );
 
   const handleScroll = (e: Event) => {
     const target = e.currentTarget as HTMLDivElement;
@@ -32,7 +34,7 @@ export const Posts = () => {
       scrollHeight === clientHeight
     ) {
       if (hasMorePosts) {
-        getAllPosts(lastPost)
+        getPosts(selectedCategory, lastPost)
           .then(() => {
             dispatch(setIsLoading(false));
             console.log("Posts are loaded successfully");
@@ -40,7 +42,7 @@ export const Posts = () => {
           .catch((error) => console.error(error));
       }
     }
-  };
+  };  
 
   useEffect(() => {
     if (postsWrapperRef.current) {
