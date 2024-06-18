@@ -5,6 +5,7 @@ import {IoMenu} from "react-icons/io5";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 
 import {
+  setHasMorePosts,
   setLastPost,
   setPosts,
   setSelectedCategory,
@@ -64,6 +65,17 @@ export const LibraryMenu = () => {
               <IoMdClose />
             </button>
           </header>
+          <button
+            className="rounded border border-opacityBlue bg-mainBg p-2 text-start"
+            onClick={() => {
+              dispatch(setPosts([]));
+              dispatch(setLastPost(null));
+              dispatch(setSelectedCategory(""));
+              dispatch(setHasMorePosts(true));
+            }}
+          >
+            All
+          </button>
           {allCategories.map((category: {name: string}) => (
             <button
               key={category.name}

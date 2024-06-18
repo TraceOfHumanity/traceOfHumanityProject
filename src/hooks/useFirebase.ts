@@ -104,7 +104,7 @@ export const useFirebase = () => {
       postsCollectionRef,
       where("categories", "array-contains", category),
       orderBy("createdAt", "desc"),
-      limit(3),
+      limit(postsPerLoad),
     );
 
     const postsQuery = query(
@@ -118,7 +118,7 @@ export const useFirebase = () => {
       postsCollectionRef,
       where("categories", "array-contains", category),
       orderBy("createdAt", "desc"),
-      limit(3),
+      limit(postsPerLoad),
       startAfter(startAfterPost),
     );
 
