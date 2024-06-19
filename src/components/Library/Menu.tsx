@@ -15,6 +15,7 @@ export const LibraryMenu = () => {
   const dispatch = useAppDispatch();
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const {allCategories} = useAppSelector((state) => state.dashboard);
+  const {selectedCategory} = useAppSelector((state) => state.library);
 
   useEffect(() => {
     if (window.innerWidth > 1024) {
@@ -41,7 +42,7 @@ export const LibraryMenu = () => {
   }, []);
 
   return (
-    <div className="absolute left-2 top-10 z-20 flex flex-col gap-2 overflow-y-auto lg:relative lg:left-0 lg:top-0 lg:w-full lg:max-w-80">
+    <div className="absolute left-2 top-10 z-20 flex flex-col gap-2 overflow-y-auto lg:relative lg:left-0 lg:top-0 lg:w-full lg:max-w-80 lg:min-w-80">
       <button
         className="rounded border border-opacityBlue bg-mainBg p-1 lg:hidden"
         onClick={() => {
@@ -52,7 +53,7 @@ export const LibraryMenu = () => {
         <IoMenu />
       </button>
       {isOpenMenu && (
-        <div className="fixed left-0 top-0 flex h-screen w-screen flex-col gap-2 overflow-y-auto p-3 shadow-popupShadow backdrop-blur lg:relative lg:w-full lg:p-0 lg:shadow-none lg:backdrop-blur-none">
+        <div className="fixed left-0 top-0 flex h-screen w-screen flex-col gap-2 overflow-y-auto p-3 shadow-popupShadow backdrop-blur lg:relative lg:w-80  lg:p-0 lg:shadow-none lg:backdrop-blur-none">
           <header className="flex justify-between gap-2">
             <h3>Categories</h3>
             <button
@@ -81,9 +82,12 @@ export const LibraryMenu = () => {
               key={category.name}
               className="rounded border border-opacityBlue bg-mainBg p-2 text-start"
               onClick={() => {
-                dispatch(setPosts([]));
-                dispatch(setLastPost(null));
-                dispatch(setSelectedCategory(category.name));
+                if (selectedCategory !== category.name) {
+                  dispatch(setPosts([]));
+                  dispatch(setLastPost(null));
+                  dispatch(setSelectedCategory(category.name));
+                  dispatch(setHasMorePosts(true));
+                }
               }}
             >
               {category.name}

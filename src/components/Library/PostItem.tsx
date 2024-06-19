@@ -31,7 +31,7 @@ export const PostItem: FC<PostItemProps> = ({
   return (
     <Link
       to={`/library/${id}`}
-      className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2"
+      className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2 max-h-96 min-h-96 overflow-hidden"
     >
       {imageUrl ? (
         <div className="relative">
@@ -61,17 +61,17 @@ export const PostItem: FC<PostItemProps> = ({
         <Markdown>{description}</Markdown>
         <div className="mt-auto flex justify-between gap-2">
           {/* <span className="mr-2">{likes} Likes</span> */}
-          <span className="flex gap-1 items-center">
+          <span className="flex items-center gap-1">
             <FaEye />
             {views}
           </span>
-          <span>
+          <div className="flex flex-wrap justify-end">
             {categories.map((category) => (
               <span key={category} className="ml-2">
                 {category}
               </span>
             ))}
-          </span>
+          </div>
         </div>
       </div>
     </Link>

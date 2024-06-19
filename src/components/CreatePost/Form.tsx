@@ -123,7 +123,7 @@ export const Form = () => {
       onSubmit={(e) =>
         handleSubmit(e, title, description, imageUrl, categories)
       }
-      className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 "
+      className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
     >
       <div className="col-span-full">
         <TextInput
@@ -140,7 +140,7 @@ export const Form = () => {
           placeholder="Post text here..."
         />
       </div>
-      <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-md border border-dotted sm:aspect-auto sm:h-full">
+      <div className="relative flex aspect-video justify-center overflow-hidden rounded-md border border-dotted sm:aspect-auto items-center h-fit min-h-40">
         {isLoading ? (
           <SimpleLoader />
         ) : (

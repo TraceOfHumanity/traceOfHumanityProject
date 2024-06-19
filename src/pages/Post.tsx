@@ -34,18 +34,18 @@ export const OnePost = () => {
   }, []);
 
   return (
-    <div className="grid h-fit w-full gap-2 border-b border-opacityBlue pb-2 last:border-none  sm:grid-cols-2">
-      <div className="flex justify-center">
+    <div className="grid w-full gap-2 border-b border-opacityBlue pb-2 last:border-none  sm:grid-cols-2">
+      <div className="flex justify-center items-start">
         <img
           className={cn(
-            "float-left max-h-96 w-full",
-            post.imageUrl ? "object-cover" : "object-contain p-3",
+            "float-left w-full h-auto",
+            post.imageUrl ? "object-contain" : "object-contain p-3",
           )}
           src={post.imageUrl || "/logo.svg"}
           alt={post.title}
         />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <h2>{post.title}</h2>
         <Markdown>{post.description}</Markdown>
         <div className="mt-auto flex justify-between gap-7 items-start">
