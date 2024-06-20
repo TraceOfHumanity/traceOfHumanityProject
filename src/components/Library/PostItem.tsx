@@ -31,8 +31,9 @@ export const PostItem: FC<PostItemProps> = ({
   return (
     <Link
       to={`/library/${id}`}
-      className="grid h-fit gap-2 border-b border-opacityBlue pb-2 last:border-none sm:grid-cols-2 max-h-96 min-h-96 overflow-hidden"
+      className="grid gap-2 border-b border-opacityBlue pb-5 last:border-none sm:grid-cols-2"
     >
+      <h2 className="col-span-2">{title}</h2>
       {imageUrl ? (
         <div className="relative">
           {isLoading && (
@@ -56,9 +57,10 @@ export const PostItem: FC<PostItemProps> = ({
           />
         </div>
       )}
-      <div className="flex flex-col">
-        <h2 className="sm:col-span-1 sm:col-start-2 ">{title}</h2>
-        <Markdown>{description}</Markdown>
+      <div className="flex flex-col gap-2">
+        <div className="max-h-80 overflow-hidden">
+          <Markdown>{description}</Markdown>
+        </div>
         <div className="mt-auto flex justify-between gap-2">
           {/* <span className="mr-2">{likes} Likes</span> */}
           <span className="flex items-center gap-1">
