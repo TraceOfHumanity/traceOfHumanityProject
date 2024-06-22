@@ -20,13 +20,7 @@ export const MainMenu = () => {
       localStorage.setItem("notFirstVisit", "true");
       dispatch(setIsOpenGreetingPopup(true));
     }
-    if (userId === process.env.REACT_APP_TRACE_OF_HUMANITY) {
-      getRequestsForArticles()
-        .then(() =>
-          console.log("Requests for articles are loaded successfully"),
-        )
-        .catch((error) => console.error(error));
-    }
+    
   }, []);
 
   return (

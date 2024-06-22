@@ -34,21 +34,21 @@ export const OnePost = () => {
   }, []);
 
   return (
-    <div className="grid w-full gap-2 border-b border-opacityBlue pb-2 last:border-none  sm:grid-cols-2">
-      <div className="flex justify-center items-start">
+    <div className="grid w-full gap-2 border-b border-opacityBlue pb-2 last:border-none  sm:grid-cols-2 overflow-y-auto">
+      <h2 className="col-span-2">{post.title}</h2>
+      <div className="flex items-start justify-center">
         <img
           className={cn(
-            "float-left w-full h-auto",
+            "float-left h-auto w-full",
             post.imageUrl ? "object-contain" : "object-contain p-3",
           )}
           src={post.imageUrl || "/logo.svg"}
           alt={post.title}
         />
       </div>
-      <div className="flex flex-col ">
-        <h2>{post.title}</h2>
+      <div className="flex flex-col">
         <Markdown>{post.description}</Markdown>
-        <div className="mt-auto flex justify-between gap-7 items-start">
+        <div className="mt-auto flex items-start justify-between gap-7">
           <span className="flex items-center gap-1">
             <FaEye />
             {post.views}

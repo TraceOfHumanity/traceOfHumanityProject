@@ -189,29 +189,15 @@ export const useFirebase = () => {
   const getRequestsForArticles: IFirebase["getRequestsForArticles"] =
     async () => {
       const requests = await getDocs(articleCreationRequestRef);
-      dispatch(
-        setRequestsToCreateArticles(requests.docs.map((doc) => doc.data())),
-      );
-      // return requests.docs.map((doc) => doc.data());
+
+      const requestsData = requests.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+
+      dispatch(setRequestsToCreateArticles(requestsData));
     };
 
-  // const acceptArticleCreationRequests: IFirebase["acceptArticleCreationRequests"] =
-  //   async (postId) => {
-  //     const postRef = doc(db, "articleCreationRequest", postId);
-  //     const post = await getDoc(postRef);
-  //     const postData = post.data();
-
-  //     await addDoc(postsCollectionRef, {
-  //       title: postData.title,
-  //       description: postData.description,
-  //       imageUrl: postData.imageUrl,
-  //       createdAt: postData.createdAt,
-  //       categories: postData.categories,
-  //       views: postData.views,
-  //     });
-
-  //     await deleteDoc(postRef);
-  //   };
   const acceptArticleCreationRequests: IFirebase["acceptArticleCreationRequests"] =
     async (postId) => {
       try {

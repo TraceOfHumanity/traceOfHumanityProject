@@ -30,7 +30,7 @@ export const PostItem: FC<PostItemProps> = ({
 
   return (
     <Link
-      to={`/library/${id}`}
+      to={id}
       className="grid gap-2 border-b border-opacityBlue pb-5 last:border-none sm:grid-cols-2"
     >
       <h2 className="col-span-2">{title}</h2>

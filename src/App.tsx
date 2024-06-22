@@ -15,7 +15,7 @@ import {OnePost} from "pages/Post";
 
 function App() {
   return (
-    <div className="container flex h-screen w-screen flex-auto flex-col overflow-y-auto">
+    <div className="container flex h-screen w-screen flex-auto flex-col overflow-hidden pb-2 md:pb-5">
       <ToastContainer theme="dark" />
       <Header />
       <MusicPlayer />
@@ -27,6 +27,7 @@ function App() {
         </Route>
         <Route path="/aboutAuthor" element={<AboutAuthor />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/:post" element={<OnePost />} />
         <Route path="/create-post" element={<CreatePost />} />
       </Routes>
       <Popups />
