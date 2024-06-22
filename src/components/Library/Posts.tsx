@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from "react";
 
 import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+import {SimpleLoader} from "ui-elements/SimpleLoader";
 
 import {setIsLoading} from "../../redux/slices/loader";
 import {PostItem} from "./PostItem";
@@ -19,6 +20,7 @@ interface Post {
 export const Posts = () => {
   const dispatch = useAppDispatch();
   const {posts} = useAppSelector((state) => state.library);
+  const {isLoading} = useAppSelector((state) => state.loader);
   const postsWrapperRef = useRef<HTMLDivElement>(null);
   const {getPosts} = useFirebase();
   const {hasMorePosts, lastPost, selectedCategory} = useAppSelector(
@@ -42,7 +44,7 @@ export const Posts = () => {
           .catch((error) => console.error(error));
       }
     }
-  };  
+  };
 
   useEffect(() => {
     if (postsWrapperRef.current) {
@@ -58,7 +60,7 @@ export const Posts = () => {
 
   return (
     <div
-      className="flex flex-auto flex-col gap-5 overflow-y-auto"
+      className="flex flex-auto flex-col gap-5 overflow-y-auto relative"
       ref={postsWrapperRef}
     >
       {posts.map((post: Post) => (
@@ -73,6 +75,9 @@ export const Posts = () => {
           categories={post.categories}
         />
       ))}
+      {isLoading && <SimpleLoader
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
+      />}
     </div>
   );
 };
