@@ -44,8 +44,9 @@ interface Category {
 export const Form = () => {
   const dispatch = useAppDispatch();
   const {addImage, deleteImage} = useArticleActions();
-  const {createPost} = useFirebase();
+  const {createPost, createArticleCreationRequest} = useFirebase();
   const navigate = useNavigate();
+  const {userId} = useAppSelector((state) => state.auth);
   const {title, description, imageUrl, categories} = useAppSelector(
     (state) => state.createPost,
   );
@@ -73,25 +74,47 @@ export const Form = () => {
     };
 
     if (title && description) {
-      createPost(
-        newArticle.title,
-        newArticle.description,
-        newArticle.imageUrl,
-        newArticle.createdAt,
-        newArticle.categories,
-        newArticle.views,
-      )
-        .then(() => {
-          dispatch(setTitle(""));
-          dispatch(setDescription(""));
-          dispatch(setImageUrl(""));
-          dispatch(setCategories([]));
-          dispatch(setPosts([]));
-          dispatch(setLastPost(null));
-          dispatch(setHasMorePosts(true));
-          navigate("/library");
-        })
-        .catch((error) => console.error(error));
+      if (userId === process.env.REACT_APP_TRACE_OF_HUMANITY) {
+        createPost(
+          newArticle.title,
+          newArticle.description,
+          newArticle.imageUrl,
+          newArticle.createdAt,
+          newArticle.categories,
+          newArticle.views,
+        )
+          .then(() => {
+            dispatch(setTitle(""));
+            dispatch(setDescription(""));
+            dispatch(setImageUrl(""));
+            dispatch(setCategories([]));
+            dispatch(setPosts([]));
+            dispatch(setLastPost(null));
+            dispatch(setHasMorePosts(true));
+            navigate("/library");
+          })
+          .catch((error) => console.error(error));
+      } else {
+        createArticleCreationRequest(
+          newArticle.title,
+          newArticle.description,
+          newArticle.imageUrl,
+          newArticle.createdAt,
+          newArticle.categories,
+          newArticle.views,
+        )
+          .then(() => {
+            dispatch(setTitle(""));
+            dispatch(setDescription(""));
+            dispatch(setImageUrl(""));
+            dispatch(setCategories([]));
+            dispatch(setPosts([]));
+            dispatch(setLastPost(null));
+            dispatch(setHasMorePosts(true));
+            navigate("/library");
+          })
+          .catch((error) => console.error(error));
+      }
     }
   };
 
@@ -140,7 +163,7 @@ export const Form = () => {
           placeholder="Post text here..."
         />
       </div>
-      <div className="relative flex aspect-video justify-center overflow-hidden rounded-md border border-dotted sm:aspect-auto items-center h-fit min-h-40">
+      <div className="relative flex aspect-video h-fit min-h-40 items-center justify-center overflow-hidden rounded-md border border-dotted sm:aspect-auto">
         {isLoading ? (
           <SimpleLoader />
         ) : (

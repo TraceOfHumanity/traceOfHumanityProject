@@ -14,7 +14,6 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import {get} from "http";
 
 import {setAllCategories} from "../redux/slices/dashboard";
 import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
@@ -28,9 +27,10 @@ interface IFirebase {
     imageUrl: string | null,
     createdAt: Date,
     category?: string[],
-    likes?: number,
     views?: number,
   ) => Promise<void>;
+
+
 
   newCategory: (name: string) => Promise<void>;
 
@@ -46,8 +46,10 @@ interface IFirebase {
 export const useFirebase = () => {
   const dispatch = useAppDispatch();
   const {posts, postsPerLoad} = useAppSelector((state) => state.library);
+
   const postsCollectionRef = collection(db, "posts");
   const categoriesCollectionRef = collection(db, "categories");
+  const articleCreationRequestRef = collection(db, "articleCreationRequest");
 
   const createPost: IFirebase["newPost"] = async (
     title,
@@ -58,6 +60,24 @@ export const useFirebase = () => {
     views,
   ) => {
     await addDoc(postsCollectionRef, {
+      title,
+      description,
+      imageUrl,
+      createdAt,
+      categories,
+      views,
+    });
+  };
+
+  const createArticleCreationRequest: IFirebase["newPost"] = async (
+    title,
+    description,
+    imageUrl,
+    createdAt,
+    categories,
+    views,
+  ) => {
+    await addDoc(articleCreationRequestRef, {
       title,
       description,
       imageUrl,
@@ -165,11 +185,10 @@ export const useFirebase = () => {
 
   return {
     createPost,
+    createArticleCreationRequest,
     createCategory,
     getAllCategories,
     getPosts,
-    // getAllPosts,
-    // getPostsByCategory,
     getOnePost,
     updatePost,
   };
