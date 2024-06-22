@@ -12,7 +12,6 @@ interface Post {
   title: string;
   description: string;
   imageUrl: string;
-  // likes: number;
   views: number;
   categories: string[];
 }
@@ -70,7 +69,6 @@ export const Posts = () => {
           title={post.title}
           description={post.description}
           imageUrl={post.imageUrl}
-          // likes={post.likes}
           views={post.views}
           categories={post.categories}
         />

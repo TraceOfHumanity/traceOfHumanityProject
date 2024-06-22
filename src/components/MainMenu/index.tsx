@@ -1,6 +1,9 @@
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
 
+import {useFirebase} from "hooks/useFirebase";
+import {useAppSelector} from "hooks/useReduxToolkit";
+
 import {setIsOpenGreetingPopup} from "../../redux/slices/popups";
 import {CentralView} from "./CentralView";
 import {MenuWrapper} from "./MenuWrapper";
@@ -8,12 +11,21 @@ import {Navigation} from "./Navigation";
 
 export const MainMenu = () => {
   const dispatch = useDispatch();
+  const {userId} = useAppSelector((state) => state.auth);
+  const {getRequestsForArticles} = useFirebase();
 
   useEffect(() => {
     const notFirstVisit = localStorage.getItem("notFirstVisit");
     if (!notFirstVisit) {
       localStorage.setItem("notFirstVisit", "true");
       dispatch(setIsOpenGreetingPopup(true));
+    }
+    if (userId === process.env.REACT_APP_TRACE_OF_HUMANITY) {
+      getRequestsForArticles()
+        .then(() =>
+          console.log("Requests for articles are loaded successfully"),
+        )
+        .catch((error) => console.error(error));
     }
   }, []);
 

@@ -13,6 +13,7 @@ import {MenuItemWrapper} from "./MenuItemWrapper";
 export const Navigation = () => {
   const {mainMenuItems} = useAppNavigation();
   const {userId} = useAppSelector((state) => state.auth);
+  const {requestsToCreateArticles} = useAppSelector((state) => state.dashboard);
 
   return (
     <>
@@ -24,7 +25,7 @@ export const Navigation = () => {
           {/* {item.icon} */}
           {item.name === "explore" && <FaSpaceShuttle />}
           {item.name === "author" && <SiAlienware />}
-          {item.name === "login"  && <IoLogIn />}
+          {item.name === "login" && <IoLogIn />}
           {item.name === "logout" && <IoLogIn />}
           {item.link ? (
             <Link to={item.link}>{item.name}</Link>
@@ -36,7 +37,12 @@ export const Navigation = () => {
       {userId === process.env.REACT_APP_TRACE_OF_HUMANITY && (
         <MenuItemWrapper>
           <MdSpaceDashboard />
-          <Link to="/dashboard">Dashboard</Link>
+          <Link className="relative" to="/dashboard">
+            Dashboard
+            {requestsToCreateArticles.length > 0 && (
+              <span className="absolute -right-1 top-0 block size-2 rounded-full bg-red animate-ping" />
+            )}
+          </Link>
         </MenuItemWrapper>
       )}
     </>

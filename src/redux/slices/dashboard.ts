@@ -3,9 +3,10 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
   creatingCategoryValue: "",
   allCategories: [],
+  requestsToCreateArticles: [],
 };
 
-const dashboardSlice = createSlice({
+const dashboard = createSlice({
   name: "dashboard",
   initialState,
   reducers: {
@@ -15,9 +16,15 @@ const dashboardSlice = createSlice({
     setAllCategories: (state, action) => {
       state.allCategories = action.payload;
     },
+    setRequestsToCreateArticles: (state, action) => {
+      state.requestsToCreateArticles = action.payload;
+    },
   },
 });
 
-export const {setCreatingCategoryValue, setAllCategories} =
-  dashboardSlice.actions;
-export default dashboardSlice.reducer;
+export const {
+  setCreatingCategoryValue,
+  setAllCategories,
+  setRequestsToCreateArticles,
+} = dashboard.actions;
+export default dashboard.reducer;

@@ -15,7 +15,10 @@ import {
   where,
 } from "firebase/firestore";
 
-import {setAllCategories} from "../redux/slices/dashboard";
+import {
+  setAllCategories,
+  setRequestsToCreateArticles,
+} from "../redux/slices/dashboard";
 import {setHasMorePosts, setLastPost, setPosts} from "../redux/slices/library";
 import {setIsLoading} from "../redux/slices/loader";
 import {useAppDispatch, useAppSelector} from "./useReduxToolkit";
@@ -30,8 +33,6 @@ interface IFirebase {
     views?: number,
   ) => Promise<void>;
 
-
-
   newCategory: (name: string) => Promise<void>;
 
   getAllCategories: () => Promise<void>;
@@ -41,6 +42,8 @@ interface IFirebase {
   getOnePost: (id: string) => Promise<any>;
   updatePost: (id: string, data: any) => Promise<void>;
   getPosts: (category: string, startAfterPost?: any) => Promise<void>;
+  getRequestsForArticles: () => Promise<void>;
+  acceptArticleCreationRequests: (postId: string) => Promise<void>;
 }
 
 export const useFirebase = () => {
@@ -183,6 +186,69 @@ export const useFirebase = () => {
     dispatch(setPosts([...posts, ...responsePosts]));
   };
 
+  const getRequestsForArticles: IFirebase["getRequestsForArticles"] =
+    async () => {
+      const requests = await getDocs(articleCreationRequestRef);
+      dispatch(
+        setRequestsToCreateArticles(requests.docs.map((doc) => doc.data())),
+      );
+      // return requests.docs.map((doc) => doc.data());
+    };
+
+  // const acceptArticleCreationRequests: IFirebase["acceptArticleCreationRequests"] =
+  //   async (postId) => {
+  //     const postRef = doc(db, "articleCreationRequest", postId);
+  //     const post = await getDoc(postRef);
+  //     const postData = post.data();
+
+  //     await addDoc(postsCollectionRef, {
+  //       title: postData.title,
+  //       description: postData.description,
+  //       imageUrl: postData.imageUrl,
+  //       createdAt: postData.createdAt,
+  //       categories: postData.categories,
+  //       views: postData.views,
+  //     });
+
+  //     await deleteDoc(postRef);
+  //   };
+  const acceptArticleCreationRequests: IFirebase["acceptArticleCreationRequests"] =
+    async (postId) => {
+      try {
+        const postRef = doc(db, "articleCreationRequest", postId);
+        const post = await getDoc(postRef);
+
+        if (!post.exists()) {
+          throw new Error(`No document found with ID: ${postId}`);
+        }
+
+        const postData = post.data();
+
+        if (!postData) {
+          throw new Error("Document data is undefined");
+        }
+
+        await addDoc(postsCollectionRef, {
+          title: postData.title,
+          description: postData.description,
+          imageUrl: postData.imageUrl,
+          createdAt: postData.createdAt,
+          categories: postData.categories,
+          views: postData.views,
+        });
+
+        await deleteDoc(postRef);
+        console.log(
+          `Article creation request with ID: ${postId} has been accepted and processed.`,
+        );
+      } catch (error) {
+        console.error(
+          `Error processing article creation request with ID: ${postId}`,
+          error,
+        );
+      }
+    };
+
   return {
     createPost,
     createArticleCreationRequest,
@@ -191,5 +257,7 @@ export const useFirebase = () => {
     getPosts,
     getOnePost,
     updatePost,
+    getRequestsForArticles,
+    acceptArticleCreationRequests,
   };
 };
