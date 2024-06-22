@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 
 import {setFlashingOfTheLoginButton} from "../../redux/slices/animations";
-import {setIsOpenPleaseRegisterPopup} from "../../redux/slices/popupsSlice";
+import {setIsOpenPleaseRegisterPopup} from "../../redux/slices/popups";
 
 export const PleaseRegister = () => {
   const dispatch = useDispatch();

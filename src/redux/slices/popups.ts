@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
   isOpenGreetingPopup: false,
@@ -6,9 +6,10 @@ const initialState = {
   isLoginPopup: false,
   isRegistrationPopup: false,
   isResetPasswordPopup: false,
+  isRequestToCreateArticleSentPopup: false,
 };
 
-const popupsSlice = createSlice({
+const popups = createSlice({
   name: "popups",
   initialState,
   reducers: {
@@ -27,6 +28,9 @@ const popupsSlice = createSlice({
     setIsResetPasswordPopup(state, action) {
       state.isResetPasswordPopup = action.payload;
     },
+    setIsRequestToCreateArticleSentPopup(state, action) {
+      state.isRequestToCreateArticleSentPopup = action.payload;
+    },
   },
 });
 
@@ -36,5 +40,6 @@ export const {
   setIsLoginPopup,
   setIsRegistrationPopup,
   setIsResetPasswordPopup,
-} = popupsSlice.actions;
-export default popupsSlice.reducer;
+  setIsRequestToCreateArticleSentPopup,
+} = popups.actions;
+export default popups.reducer;

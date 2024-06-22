@@ -18,7 +18,7 @@ import {setIsLoading} from "../redux/slices/loader";
 import {
   setIsLoginPopup,
   setIsRegistrationPopup,
-} from "../redux/slices/popupsSlice";
+} from "../redux/slices/popups";
 
 interface IAuth {
   registerUser: (

@@ -1,7 +1,7 @@
 import {useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
 
-import {setIsLoginPopup} from "../redux/slices/popupsSlice";
+import {setIsLoginPopup} from "../redux/slices/popups";
 import {useAuth} from "./useAuth";
 import {useAppSelector} from "./useReduxToolkit";
 

@@ -8,7 +8,7 @@ import dashboard from "./slices/dashboard";
 import dropdown from "./slices/dropdown";
 import library from "./slices/library";
 import loader from "./slices/loader";
-import popupsSlice from "./slices/popupsSlice";
+import popups from "./slices/popups";
 
 export const store = configureStore({
   reducer: {
@@ -18,7 +18,7 @@ export const store = configureStore({
     dashboard,
     dropdown,
     loader,
-    popups: popupsSlice,
+    popups,
     createPost,
     library,
   },

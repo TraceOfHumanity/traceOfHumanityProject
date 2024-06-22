@@ -3,7 +3,7 @@ import { MdOutlinePostAdd } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
-import { setIsOpenPleaseRegisterPopup } from "../../redux/slices/popupsSlice";
+import { setIsOpenPleaseRegisterPopup } from "../../redux/slices/popups";
 import { Navigation } from "./Navigation";
 import { useAppSelector } from "hooks/useReduxToolkit";
 

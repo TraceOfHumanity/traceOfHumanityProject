@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";
 
-import {setIsOpenGreetingPopup} from "../../redux/slices/popupsSlice";
+import {setIsOpenGreetingPopup} from "../../redux/slices/popups";
 import {CentralView} from "./CentralView";
 import {MenuWrapper} from "./MenuWrapper";
 import {Navigation} from "./Navigation";

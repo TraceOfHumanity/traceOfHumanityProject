@@ -11,7 +11,7 @@ import {TextInput} from "ui-elements/TextInput";
 import {
   setIsLoginPopup,
   setIsRegistrationPopup,
-} from "../../redux/slices/popupsSlice";
+} from "../../redux/slices/popups";
 
 export const RegistrationPopup = () => {
   const dispatch = useDispatch();
