@@ -5,6 +5,7 @@ import Markdown from "react-markdown";
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useFirebase} from "hooks/useFirebase";
 import {cn} from "utils/cn";
+import { StarsAnimation } from "components/StarsAnimation";
 
 interface Post {
   id: string;
@@ -43,7 +44,7 @@ export const OnePost = () => {
   }, []);
 
   return (
-    <div className="grid w-full gap-2 overflow-y-auto border-b border-opacityBlue pb-2  last:border-none sm:grid-cols-2">
+    <div className="relative grid w-full gap-2 overflow-y-auto pb-2 last:border-none sm:grid-cols-2">
       <h2 className="col-span-2">{post.title}</h2>
       <div className="flex items-start justify-center">
         <img
@@ -55,7 +56,7 @@ export const OnePost = () => {
           alt={post.title}
         />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col rounded-xl border border-b border-borderColor p-1 backdrop-blur-[6px]">
         <Markdown>{post.description}</Markdown>
         <div className="mt-auto flex items-start justify-between gap-7">
           <span className="flex items-center gap-1">
@@ -73,6 +74,7 @@ export const OnePost = () => {
           </span>
         </div>
       </div>
+      <StarsAnimation />
     </div>
   );
 };

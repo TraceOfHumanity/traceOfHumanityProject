@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 export const StarsAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const n_stars = 50;
-  const colors = ["#176ab6", "#fb9b39"];
+  const colors = ["#ff0000", "#00b7ff"];
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -11,7 +11,7 @@ export const StarsAnimation = () => {
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) return; // Ensure the context is not null
+    if (!ctx) return;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -60,7 +60,7 @@ export const StarsAnimation = () => {
       }
 
       draw() {
-        if (!ctx) return; // Add this check to ensure ctx is not null
+        if (!ctx) return; 
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.shadowBlur = randomInt(3, 15);
@@ -120,5 +120,5 @@ export const StarsAnimation = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed -z-10 h-screen w-screen" />;
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 -z-10 h-screen w-screen" />;
 };
