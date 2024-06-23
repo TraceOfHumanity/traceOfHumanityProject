@@ -1,14 +1,13 @@
 import React from "react";
 import { MdOutlinePostAdd } from "react-icons/md";
-import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
 import { setIsOpenPleaseRegisterPopup } from "../../redux/slices/popups";
 import { Navigation } from "./Navigation";
-import { useAppSelector } from "hooks/useReduxToolkit";
+import { useAppDispatch, useAppSelector } from "hooks/useReduxToolkit";
 
 export const TopPanel = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { isLoggedIn } = useAppSelector((state) => state.auth);
 
   const showWarningPopup = () => {

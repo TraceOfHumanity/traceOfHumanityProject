@@ -1,10 +1,9 @@
-import {useDispatch} from "react-redux";
-
 import baffle from "baffle";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 import {setFlashingOfTheLoginButton} from "../redux/slices/animations";
+import {useAppDispatch} from "./useReduxToolkit";
 
 interface IUseAnimation {
   popupAnimation: (refElement: React.RefObject<HTMLDivElement>) => void;
@@ -16,7 +15,7 @@ interface IUseAnimation {
 }
 
 export const useAnimation = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const popupAnimation: IUseAnimation["popupAnimation"] = (refElement) => {
     gsap.fromTo(

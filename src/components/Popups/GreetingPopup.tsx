@@ -1,15 +1,15 @@
 import React from "react";
 import {IoMdClose} from "react-icons/io";
-import {useDispatch} from "react-redux";
 
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 import {greetingPopupText} from "utils/textData";
 
 import {setIsPlaying} from "../../redux/slices/audioPlayer";
 import {setIsOpenGreetingPopup} from "../../redux/slices/popups";
+import { useAppDispatch } from "hooks/useReduxToolkit";
 
 export const GreetingPopup = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">

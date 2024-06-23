@@ -3,7 +3,6 @@ import {FcGoogle} from "react-icons/fc";
 import {IoMdClose} from "react-icons/io";
 import {IoLogIn} from "react-icons/io5";
 import {TbPasswordFingerprint} from "react-icons/tb";
-import {useDispatch} from "react-redux";
 
 import {useAuth} from "hooks/useAuth";
 import {Button} from "ui-elements/Button";
@@ -15,9 +14,10 @@ import {
   setIsRegistrationPopup,
   setIsResetPasswordPopup,
 } from "../../redux/slices/popups";
+import { useAppDispatch } from "hooks/useReduxToolkit";
 
 export const LoginPopup = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {loginUser, signInWithGoogle} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

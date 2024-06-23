@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {GiArchiveRegister} from "react-icons/gi";
 import {IoMdClose} from "react-icons/io";
-import {useDispatch} from "react-redux";
 
 import {useAuth} from "hooks/useAuth";
 import {Button} from "ui-elements/Button";
@@ -12,9 +11,10 @@ import {
   setIsLoginPopup,
   setIsRegistrationPopup,
 } from "../../redux/slices/popups";
+import { useAppDispatch } from "hooks/useReduxToolkit";
 
 export const RegistrationPopup = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {registerUser} = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

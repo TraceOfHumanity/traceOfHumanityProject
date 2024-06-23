@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {IoMdClose} from "react-icons/io";
 import {TbPasswordFingerprint} from "react-icons/tb";
-import {useDispatch} from "react-redux";
 
 import {useAuth} from "hooks/useAuth";
 import {Button} from "ui-elements/Button";
@@ -13,9 +12,10 @@ import {
   setIsRegistrationPopup,
   setIsResetPasswordPopup,
 } from "../../redux/slices/popups";
+import { useAppDispatch } from "hooks/useReduxToolkit";
 
 export const ResetPasswordPopup = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const {resetPassword} = useAuth();
 

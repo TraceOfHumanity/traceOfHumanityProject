@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {useDispatch} from "react-redux";
 import {toast} from "react-toastify";
 
 import {auth} from "firebase.config";
@@ -19,6 +18,7 @@ import {
   setIsLoginPopup,
   setIsRegistrationPopup,
 } from "../redux/slices/popups";
+import { useAppDispatch } from "./useReduxToolkit";
 
 interface IAuth {
   registerUser: (
@@ -35,7 +35,7 @@ interface IAuth {
 }
 
 export const useAuth = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const provider = new GoogleAuthProvider();
   // const [displayName, setDisplayName] = useState("");
   const [displayName, setDisplayName] = useState<string>("");

@@ -1,14 +1,13 @@
-import {useDispatch} from "react-redux";
 import {useLocation} from "react-router-dom";
 
 import {setIsLoginPopup} from "../redux/slices/popups";
 import {useAuth} from "./useAuth";
-import {useAppSelector} from "./useReduxToolkit";
+import {useAppDispatch, useAppSelector} from "./useReduxToolkit";
 
 export const useAppNavigation = () => {
   const {isLoggedIn} = useAppSelector((state) => state.auth);
   const {logoutUser} = useAuth();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
 
   const mainMenuItems = [

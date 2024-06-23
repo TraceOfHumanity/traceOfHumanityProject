@@ -7,7 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: "button" | "submit" | "reset";
-  styleType?: "delete" | "ghost";
+  variant?: "delete" | "ghost";
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -15,11 +15,14 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   className,
   type,
+  variant,
 }) => {
   return (
     <button
       className={cn(
         "flex min-h-10 w-fit items-center gap-2 overflow-hidden rounded-lg border border-borderColor bg-black bg-opacity-50 px-2 py-1",
+        variant === "delete" ? "bg-red" : "",
+        variant === "ghost" ? "" : "",
         className,
       )}
       onClick={onClick}

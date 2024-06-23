@@ -1,8 +1,7 @@
 import React, {useEffect} from "react";
-import {useDispatch} from "react-redux";
 
 import {useFirebase} from "hooks/useFirebase";
-import {useAppSelector} from "hooks/useReduxToolkit";
+import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 
 import {setIsOpenGreetingPopup} from "../../redux/slices/popups";
 import {CentralView} from "./CentralView";
@@ -10,7 +9,7 @@ import {MenuWrapper} from "./MenuWrapper";
 import {Navigation} from "./Navigation";
 
 export const MainMenu = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const {userId} = useAppSelector((state) => state.auth);
   const {getRequestsForArticles} = useFirebase();
 

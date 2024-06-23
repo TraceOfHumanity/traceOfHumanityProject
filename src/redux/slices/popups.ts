@@ -7,6 +7,7 @@ const initialState = {
   isRegistrationPopup: false,
   isResetPasswordPopup: false,
   isRequestToCreateArticleSentPopup: false,
+  isDeletePostConfirmationPopup: true,
 };
 
 const popups = createSlice({
@@ -31,6 +32,9 @@ const popups = createSlice({
     setIsRequestToCreateArticleSentPopup(state, action) {
       state.isRequestToCreateArticleSentPopup = action.payload;
     },
+    setIsDeletePostConfirmationPopup(state, action) {
+      state.isDeletePostConfirmationPopup = action.payload;
+    },
   },
 });
 
@@ -41,5 +45,6 @@ export const {
   setIsRegistrationPopup,
   setIsResetPasswordPopup,
   setIsRequestToCreateArticleSentPopup,
+  setIsDeletePostConfirmationPopup,
 } = popups.actions;
 export default popups.reducer;

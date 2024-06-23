@@ -1,15 +1,15 @@
 import React from "react";
 import {IoMdClose} from "react-icons/io";
-import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 
 import {setFlashingOfTheLoginButton} from "../../redux/slices/animations";
 import {setIsOpenPleaseRegisterPopup} from "../../redux/slices/popups";
+import { useAppDispatch } from "hooks/useReduxToolkit";
 
 export const PleaseRegister = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   return (

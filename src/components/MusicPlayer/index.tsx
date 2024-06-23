@@ -1,15 +1,16 @@
-import gsap from "gsap";
-import React, { useEffect, useRef, useState } from "react";
-import { MdMusicNote } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import React, {useEffect, useRef, useState} from "react";
+import {MdMusicNote} from "react-icons/md";
 
-import { setIsPlaying } from "../../redux/slices/audioPlayer";
-import { Equalizer } from "./Equalizer";
-import { useAppSelector } from "hooks/useReduxToolkit";
+import gsap from "gsap";
+import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+
+import {setIsPlaying} from "../../redux/slices/audioPlayer";
+import {Equalizer} from "./Equalizer";
+
 // import styles from "./player.module.scss";
 
 export const MusicPlayer = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const isPlaying = useAppSelector((state) => state.audioPlayer.isPlaying);
   const audioRef = useRef<HTMLAudioElement>(null);
   const playButtonRef = useRef(null);
@@ -36,7 +37,7 @@ export const MusicPlayer = () => {
     if (!isPlaying) {
       gsap.fromTo(
         playButtonRef.current,
-        { scale: 0.6, opacity: 0.5 },
+        {scale: 0.6, opacity: 0.5},
         {
           scale: 1,
           opacity: 1,
@@ -50,14 +51,14 @@ export const MusicPlayer = () => {
       );
     } else {
       gsap.killTweensOf(playButtonRef.current);
-      gsap.to(playButtonRef.current, { scale: 1, opacity: 1, duration: 0.5 });
+      gsap.to(playButtonRef.current, {scale: 1, opacity: 1, duration: 0.5});
     }
   }, [isPlaying]);
 
   return (
-    <div className="fixed bottom-2 right-2 z-10 bg-black bg-opacity-20 rounded-full p-0.5">
+    <div className="fixed bottom-2 right-2 z-10 rounded-full bg-black bg-opacity-20 p-0.5">
       <audio src={songs[currentSongIndex]} ref={audioRef} loop></audio>
-      <div className="text-2xl flex justify-center items-center aspect-square">
+      <div className="flex aspect-square items-center justify-center text-2xl">
         <button onClick={() => togglePlayPause()} ref={playButtonRef}>
           {/* {isPlaying ? <MdMusicOff /> : <MdMusicNote />} */}
           {isPlaying ? <Equalizer /> : <MdMusicNote />}
