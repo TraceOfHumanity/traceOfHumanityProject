@@ -25,16 +25,25 @@ export const OnePost = () => {
     const {pathArray} = getPath();
     const postId = pathArray[pathArray.length - 1];
 
-    getOnePost(postId)
-      .then((post) => {
-        setPost(post);
-        updatePost(postId, {views: post.views + 1});
-      })
-      .catch((error) => console.error(error));
+    if (pathArray.includes("dashboard")) {
+      getOnePost(postId, true)
+        .then((post) => {
+          setPost(post);
+          // updatePost(postId, {views: post.views + 1});
+        })
+        .catch((error) => console.error(error));
+    } else {
+      getOnePost(postId)
+        .then((post) => {
+          setPost(post);
+          updatePost(postId, {views: post.views + 1});
+        })
+        .catch((error) => console.error(error));
+    }
   }, []);
 
   return (
-    <div className="grid w-full gap-2 border-b border-opacityBlue pb-2 last:border-none  sm:grid-cols-2 overflow-y-auto">
+    <div className="grid w-full gap-2 overflow-y-auto border-b border-opacityBlue pb-2  last:border-none sm:grid-cols-2">
       <h2 className="col-span-2">{post.title}</h2>
       <div className="flex items-start justify-center">
         <img

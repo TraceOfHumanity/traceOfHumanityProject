@@ -1,11 +1,11 @@
 import React, {useEffect, useRef} from "react";
 
+import {PostPreview} from "components/PostPreview";
 import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
 
 import {setIsLoading} from "../../redux/slices/loader";
-import {PostItem} from "./PostItem";
 
 interface Post {
   id: string;
@@ -59,11 +59,11 @@ export const Posts = () => {
 
   return (
     <div
-      className="flex flex-auto flex-col gap-5 overflow-y-auto relative"
+      className="relative flex flex-auto flex-col gap-5 overflow-y-auto"
       ref={postsWrapperRef}
     >
       {posts.map((post: Post) => (
-        <PostItem
+        <PostPreview
           key={post.id}
           id={post.id}
           title={post.title}
@@ -73,9 +73,9 @@ export const Posts = () => {
           categories={post.categories}
         />
       ))}
-      {isLoading && <SimpleLoader
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
-      />}
+      {isLoading && (
+        <SimpleLoader className="absolute bottom-0 left-1/2 -translate-x-1/2 transform" />
+      )}
     </div>
   );
 };

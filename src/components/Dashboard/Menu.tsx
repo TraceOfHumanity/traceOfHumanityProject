@@ -4,7 +4,7 @@ import {MdOutlinePostAdd} from "react-icons/md";
 
 export const Menu = () => {
   return (
-    <div className="flex flex-shrink flex-col gap-2 rounded-xl border-y border-r-2 border-borderColor bg-slate-50 bg-opacity-5 p-2">
+    <div className="flex flex-shrink flex-col gap-2 rounded-xl border-y border-r-2 border-borderColor bg-slate-50 bg-opacity-5 p-2 backdrop-blur">
       <button>
         <BiCategoryAlt className="min-h-6 min-w-6" />
       </button>

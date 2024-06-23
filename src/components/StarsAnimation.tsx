@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 export const StarsAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const n_stars = 200;
+  const n_stars = 50;
   const colors = ["#176ab6", "#fb9b39"];
 
   useEffect(() => {

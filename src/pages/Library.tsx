@@ -9,6 +9,7 @@ import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 
 import {setIsLoading} from "../redux/slices/loader";
+import { StarsAnimation } from "components/StarsAnimation";
 
 export const Library = () => {
   const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ export const Library = () => {
 
   return (
     <PageWrapper className="relative">
+        <StarsAnimation />
       <TopPanel />
       <div className="flex flex-auto gap-2 overflow-hidden">
         <LibraryMenu />

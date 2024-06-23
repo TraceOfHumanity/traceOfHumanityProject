@@ -4,7 +4,7 @@ import {Menu} from "components/Dashboard/Menu";
 import {Posts} from "components/Dashboard/Posts";
 import {PageWrapper} from "components/PageWrapper";
 import { useFirebase } from "hooks/useFirebase";
-import { StarsAnimation } from "components/CanvasBg";
+import { StarsAnimation } from "components/StarsAnimation";
 
 export const Dashboard = () => {
   const {getRequestsForArticles} = useFirebase();
@@ -21,7 +21,6 @@ export const Dashboard = () => {
       <div className="flex flex-auto gap-2 overflow-hidden">
         <StarsAnimation />
         <Menu />
-        {/* <CreateCategory /> */}
         <Posts />
       </div>
     </PageWrapper>

@@ -39,7 +39,7 @@ interface IFirebase {
 
   getAllPosts: (startAfterPost?: any) => Promise<void>;
   getPostsByCategory: (category: string, startAfterPost?: any) => Promise<void>;
-  getOnePost: (id: string) => Promise<any>;
+  getOnePost: (id: string, fromDashboard?: boolean) => Promise<any>;
   updatePost: (id: string, data: any) => Promise<void>;
   getPosts: (category: string, startAfterPost?: any) => Promise<void>;
   getRequestsForArticles: () => Promise<void>;
@@ -101,9 +101,13 @@ export const useFirebase = () => {
     dispatch(setAllCategories(categories.docs.map((doc) => doc.data())));
   };
 
-  const getOnePost: IFirebase["getOnePost"] = async (id) => {
+  const getOnePost: IFirebase["getOnePost"] = async (id, fromDashboard) => {
     const postRef = doc(db, "posts", id);
-    const post = await getDoc(postRef);
+    const postFromRequestToCreateRef = doc(db, "articleCreationRequest", id);
+    // const post = await getDoc(postRef);
+    const post = await getDoc(
+      fromDashboard ? postFromRequestToCreateRef : postRef,
+    );
     return post.data();
   };
 
