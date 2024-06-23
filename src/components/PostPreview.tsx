@@ -3,7 +3,9 @@ import {FaEye} from "react-icons/fa";
 import Markdown from "react-markdown";
 import {Link} from "react-router-dom";
 
+import {useAppSelector} from "hooks/useReduxToolkit";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
+import { PostActions } from "./PostActions";
 
 interface IPostPreviewProps {
   id: string;
@@ -39,7 +41,7 @@ export const PostPreview: FC<IPostPreviewProps> = ({
               </div>
             )}
             <img
-              className="h-full w-full object-cover sm:col-span-1 max-h-96"
+              className="h-full max-h-96 w-full object-cover sm:col-span-1"
               src={imageUrl}
               alt={title}
               onLoad={handleImageLoad}
@@ -55,7 +57,7 @@ export const PostPreview: FC<IPostPreviewProps> = ({
           </div>
         )}
       </div>
-      <div className="sm:col-start-2 sm:col-end-4 [&>*:nth-child(n+4)]:hidden [&>*]:line-clamp-6 flex flex-col">
+      <div className="flex flex-col sm:col-start-2 sm:col-end-4 [&>*:nth-child(n+4)]:hidden [&>*]:line-clamp-6">
         <Markdown>{description}</Markdown>
         <Link
           className="!block text-center underline sm:col-start-2 sm:col-end-4"

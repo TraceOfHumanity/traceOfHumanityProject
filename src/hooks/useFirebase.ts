@@ -239,6 +239,14 @@ export const useFirebase = () => {
       }
     };
 
+  const deletePost = async (id: string) => {
+    await deleteDoc(doc(db, "posts", id));
+  };
+
+  const withdrawTheOfferToCreateAnArticle = async (id: string) => {
+    await deleteDoc(doc(db, "articleCreationRequest", id));
+  };
+
   return {
     createPost,
     createArticleCreationRequest,
@@ -249,5 +257,7 @@ export const useFirebase = () => {
     updatePost,
     getRequestsForArticles,
     acceptArticleCreationRequests,
+    deletePost,
+    withdrawTheOfferToCreateAnArticle,
   };
 };
