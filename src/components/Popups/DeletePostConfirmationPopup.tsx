@@ -1,7 +1,7 @@
 import React from 'react'
 
-export const DeletePostconfirmationPopup = () => {
+export const DeletePostConfirmationPopup = () => {
   return (
-    <div>DeletePostconfirmationPopup</div>
+    <div>DeletePostConfirmationPopup</div>
   )
 }
