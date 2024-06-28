@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {FaCloudUploadAlt} from "react-icons/fa";
 
 import {useFirebase} from "hooks/useFirebase";
@@ -7,6 +7,7 @@ import {PopupWrapper} from "ui-elements/PopupWrapper";
 import {TextInput} from "ui-elements/TextInput";
 
 import {setCreatingCategoryValue} from "../../redux/slices/dashboard";
+import { usePopup } from "hooks/usePopup";
 
 interface Coordinators {
   x?: number;
@@ -17,6 +18,7 @@ interface Coordinators {
 
 export const CreateCategory = () => {
   const dispatch = useAppDispatch();
+  const {closePopup, closeCreateCategoryPopup} = usePopup();
   const {createCategory} = useFirebase();
   const {creatingCategoryValue} = useAppSelector((state) => state.dashboard);
   const {createCategoryPopupCoordinates} = useAppSelector(
@@ -24,6 +26,7 @@ export const CreateCategory = () => {
       return state.popups;
     },
   );
+  const createCategoryPopupRef = React.createRef<HTMLDivElement>();
 
   const handleSubmit = (category: string) => {
     if (category) {
@@ -32,6 +35,19 @@ export const CreateCategory = () => {
     }
   };
 
+  const clickOutside = (event: MouseEvent) => {
+    if (closePopup(createCategoryPopupRef, event)) {
+      closeCreateCategoryPopup();
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", clickOutside);
+    return () => {
+      document.removeEventListener("mousedown", clickOutside);
+    };
+  }, []);
+
   return (
     <div
       className="fixed flex items-center gap-2"
@@ -39,8 +55,9 @@ export const CreateCategory = () => {
         top: `${createCategoryPopupCoordinates.y}px`,
         left: `${createCategoryPopupCoordinates.x}px`,
       }}
+      ref={createCategoryPopupRef}
     >
-      <PopupWrapper>
+      <PopupWrapper className="flex-row">
         <TextInput
           value={creatingCategoryValue}
           onChange={(e) => dispatch(setCreatingCategoryValue(e.target.value))}
