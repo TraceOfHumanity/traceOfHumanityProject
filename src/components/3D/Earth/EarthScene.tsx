@@ -9,13 +9,19 @@ import EarthCloudsMap from "./textures/8k_earth_clouds.jpg";
 import EarthDayMap from "./textures/8k_earth_daymap.jpg";
 import EarthNightMap from "./textures/8k_earth_nightmap.jpg";
 import EarthSpecularMap from "./textures/8k_earth_specular_map.jpg";
+import HaloTexture from "./textures/haloMap.png";
 import MoonMap from "./textures/moon.jpg";
 
 export const EarthScene = (props: any) => {
-  const [dayMap, nightMap, specularMap, cloudsMap, moonMap] = useLoader(
-    TextureLoader,
-    [EarthDayMap, EarthNightMap, EarthSpecularMap, EarthCloudsMap, MoonMap],
-  );
+  const [dayMap, nightMap, specularMap, cloudsMap, moonMap, haloMap] =
+    useLoader(TextureLoader, [
+      EarthDayMap,
+      EarthNightMap,
+      EarthSpecularMap,
+      EarthCloudsMap,
+      MoonMap,
+      HaloTexture,
+    ]);
   const [starsFactor, setStarsFactor] = useState(3);
 
   const earthRef = useRef<any>();
@@ -23,6 +29,7 @@ export const EarthScene = (props: any) => {
   const sunRef = useRef<any>();
   const moonRef = useRef<any>();
   const starsRef = useRef<any>();
+  const haloRef = useRef<any>();
 
   useFrame(({clock}) => {
     const elapsedTime = clock.getElapsedTime() * 1.3;
@@ -60,7 +67,6 @@ export const EarthScene = (props: any) => {
     }
   }, []);
 
-  // Шейдерний матеріал для денного та нічного освітлення
   const earthMaterial = new THREE.ShaderMaterial({
     uniforms: {
       dayTexture: {value: dayMap},
@@ -75,7 +81,7 @@ export const EarthScene = (props: any) => {
       void main() {
         vUv = uv;
         vNormal = normalize(normalMatrix * normal);
-        vPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+        vPosition = (modelMatrix * vec4(position, 2.0)).xyz;
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
     `,
@@ -93,7 +99,8 @@ export const EarthScene = (props: any) => {
         float dotProduct = dot(vNormal, lightDir);
         vec4 dayColor = texture2D(dayTexture, vUv);
         vec4 nightColor = texture2D(nightTexture, vUv);
-        gl_FragColor = mix(nightColor, dayColor, max(dotProduct, 0.0));
+        float transition = smoothstep(-0.2, 0.99, dotProduct);
+        gl_FragColor = mix(nightColor, dayColor, transition);
       }
     `,
   });
@@ -140,10 +147,11 @@ export const EarthScene = (props: any) => {
         <meshPhongMaterial map={moonMap} />
         <pointLight intensity={0.01} />
       </mesh>
-      <mesh position={[0, -5, -20]} ref={sunRef} rotation={[0, 0, 0]}>
-        <sphereGeometry args={[0.15, 32, 32]} />
-        <meshPhongMaterial emissive="#fcfc5f" />
+      <mesh position={[0, -20, -20]} ref={sunRef} rotation={[0, 0, 0]}>
         <pointLight intensity={2000} />
+        <sprite ref={haloRef} position={[0, 0, 0]} scale={[0.6, 0.6, 0.6]}>
+          <spriteMaterial map={haloMap} />
+        </sprite>
       </mesh>
       <Intro />
     </>

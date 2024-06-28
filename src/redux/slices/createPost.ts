@@ -5,6 +5,7 @@ interface CreatePostState {
   description: string;
   imageUrl: string;
   categories: string[];
+  isUpdatingPost: boolean;
 }
 
 const initialState: CreatePostState = {
@@ -12,6 +13,7 @@ const initialState: CreatePostState = {
   description: "",
   imageUrl: "",
   categories: [],
+  isUpdatingPost: false,
 };
 
 const createPostSlice = createSlice({
@@ -30,9 +32,17 @@ const createPostSlice = createSlice({
     setCategories: (state, action) => {
       state.categories = action.payload;
     },
+    setIsUpdatingPost: (state, action) => {
+      state.isUpdatingPost = action.payload;
+    },
   },
 });
 
-export const {setTitle, setDescription, setImageUrl, setCategories} =
-  createPostSlice.actions;
+export const {
+  setTitle,
+  setDescription,
+  setImageUrl,
+  setCategories,
+  setIsUpdatingPost,
+} = createPostSlice.actions;
 export default createPostSlice.reducer;

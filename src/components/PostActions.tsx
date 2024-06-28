@@ -8,6 +8,8 @@ import {
   setIsAcceptRequestAPostPopup,
   setIsDeletePostConfirmationPopup,
 } from "../redux/slices/popups";
+import { setIsUpdatingPost } from "../redux/slices/createPost";
+import { Link } from "react-router-dom";
 
 export const PostActions = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +23,10 @@ export const PostActions = () => {
     dispatch(setIsAcceptRequestAPostPopup(true));
   };
 
+  const enableEditMode = () => {
+    dispatch(setIsUpdatingPost(true));
+  }
+
   return (
     <div className="absolute right-0 top-0 z-10 flex gap-2 opacity-0 group-hover:opacity-100">
       {getPath().pathArray.includes("dashboard") && (
@@ -30,6 +36,15 @@ export const PostActions = () => {
         >
           <FaCheck />
         </button>
+      )}
+      {getPath().pathArray.includes("library") && (
+        <Link
+          to="/create-post"
+          className="rounded border border-borderColor p-1 backdrop-blur"
+          onClick={enableEditMode}
+        >
+          <FaCheck />
+        </Link>
       )}
       <button
         className="rounded border border-borderColor p-1 backdrop-blur"
