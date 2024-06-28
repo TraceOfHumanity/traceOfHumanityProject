@@ -1,6 +1,6 @@
 import {FaCheck} from "react-icons/fa";
 import {MdDeleteForever, MdEdit} from "react-icons/md";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useAppDispatch} from "hooks/useReduxToolkit";
@@ -12,6 +12,7 @@ import {
 } from "../redux/slices/popups";
 
 export const PostActions = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const {getPath} = useAppNavigation();
 
@@ -25,7 +26,7 @@ export const PostActions = () => {
 
   const enableEditMode = () => {
     dispatch(setIsUpdatingPost(true));
-    
+    navigate("/create-post");
   };
 
   return (

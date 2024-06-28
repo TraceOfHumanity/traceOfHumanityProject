@@ -108,7 +108,8 @@ export const useFirebase = () => {
     const post = await getDoc(
       fromDashboard ? postFromRequestToCreateRef : postRef,
     );
-    return post.data();
+    // return post.data();
+    return {...post.data(), id: post.id};
   };
 
   const updatePost = async (id: string, data: any) => {

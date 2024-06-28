@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useEffect, useMemo} from "react";
 import {MdCloudUpload} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import SimpleMdeReact from "react-simplemde-editor";
@@ -15,12 +15,14 @@ import {
   setCategories,
   setDescription,
   setImageUrl,
+  setIsUpdatingPost,
   setTitle,
 } from "../../redux/slices/createPost";
 import {
   setHasMorePosts,
   setLastPost,
   setPosts,
+  setSelectedPost,
 } from "../../redux/slices/library";
 
 type ToolbarButton =
@@ -44,7 +46,7 @@ interface Category {
 export const Form = () => {
   const dispatch = useAppDispatch();
   const {addImage, deleteImage} = useArticleActions();
-  const {createPost, createArticleCreationRequest} = useFirebase();
+  const {createPost, createArticleCreationRequest, updatePost} = useFirebase();
   const navigate = useNavigate();
   const {userId} = useAppSelector((state) => state.auth);
   const {title, description, imageUrl, categories} = useAppSelector(
@@ -54,6 +56,8 @@ export const Form = () => {
   const allCategories: Category[] = useAppSelector(
     (state) => state.dashboard.allCategories,
   );
+  const {isUpdatingPost} = useAppSelector((state) => state.createPost);
+  const {selectedPost} = useAppSelector((state) => state.library);
 
   const handleSubmit = (
     e: React.FormEvent,
@@ -73,27 +77,70 @@ export const Form = () => {
       views: 0,
     };
 
+    const updateArticle = {
+      title,
+      description,
+      imageUrl: imageUrl || "",
+      categories,
+    };
+
     if (title && description) {
       if (userId === process.env.REACT_APP_TRACE_OF_HUMANITY) {
-        createPost(
-          newArticle.title,
-          newArticle.description,
-          newArticle.imageUrl,
-          newArticle.createdAt,
-          newArticle.categories,
-          newArticle.views,
-        )
-          .then(() => {
-            dispatch(setTitle(""));
-            dispatch(setDescription(""));
-            dispatch(setImageUrl(""));
-            dispatch(setCategories([]));
-            dispatch(setPosts([]));
-            dispatch(setLastPost(null));
-            dispatch(setHasMorePosts(true));
-            navigate("/library");
-          })
-          .catch((error) => console.error(error));
+        if (isUpdatingPost) {
+          updatePost(selectedPost?.id as string, updateArticle)
+            .then(() => {
+              dispatch(setTitle(""));
+              dispatch(setDescription(""));
+              dispatch(setImageUrl(""));
+              dispatch(setCategories([]));
+              dispatch(setPosts([]));
+              dispatch(setLastPost(null));
+              dispatch(setHasMorePosts(true));
+              dispatch(setSelectedPost(null));
+              dispatch(setIsUpdatingPost(false));
+              navigate("/library");
+            })
+            .catch((error) => console.error(error));
+        } else {
+          createPost(
+            newArticle.title,
+            newArticle.description,
+            newArticle.imageUrl,
+            newArticle.createdAt,
+            newArticle.categories,
+            newArticle.views,
+          )
+            .then(() => {
+              dispatch(setTitle(""));
+              dispatch(setDescription(""));
+              dispatch(setImageUrl(""));
+              dispatch(setCategories([]));
+              dispatch(setPosts([]));
+              dispatch(setLastPost(null));
+              dispatch(setHasMorePosts(true));
+              navigate("/library");
+            })
+            .catch((error) => console.error(error));
+        }
+        // createPost(
+        //   newArticle.title,
+        //   newArticle.description,
+        //   newArticle.imageUrl,
+        //   newArticle.createdAt,
+        //   newArticle.categories,
+        //   newArticle.views,
+        // )
+        //   .then(() => {
+        //     dispatch(setTitle(""));
+        //     dispatch(setDescription(""));
+        //     dispatch(setImageUrl(""));
+        //     dispatch(setCategories([]));
+        //     dispatch(setPosts([]));
+        //     dispatch(setLastPost(null));
+        //     dispatch(setHasMorePosts(true));
+        //     navigate("/library");
+        //   })
+        //   .catch((error) => console.error(error));
       } else {
         createArticleCreationRequest(
           newArticle.title,
@@ -140,6 +187,16 @@ export const Form = () => {
   const removeCategory = (category: string) => {
     dispatch(setCategories(categories.filter((cat) => cat !== category)));
   };
+
+  useEffect(() => {
+    if (isUpdatingPost) {
+      dispatch(setTitle(selectedPost?.title || ""));
+      dispatch(setDescription(selectedPost?.description || ""));
+      dispatch(setImageUrl(selectedPost?.imageUrl || ""));
+      dispatch(setCategories(selectedPost?.categories || []));
+    }
+  }, []);
+
   return (
     <form
       action=""
