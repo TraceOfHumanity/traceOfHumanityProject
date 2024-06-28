@@ -3,6 +3,7 @@ import React, {useRef} from "react";
 import {useAppSelector} from "hooks/useReduxToolkit";
 
 import {AcceptRequestAPostPopup} from "./AcceptRequestAPostPopup";
+import {CreateCategory} from "./CreateCategoryPopup";
 import {DeletePostConfirmationPopup} from "./DeletePostConfirmationPopup";
 import {GreetingPopup} from "./GreetingPopup";
 import {LoginPopup} from "./LoginPopup";
@@ -19,6 +20,7 @@ export const Popups = () => {
     isResetPasswordPopup,
     isDeletePostConfirmationPopup,
     isAcceptRequestAPostPopup,
+    isCreateCategoryPopup,
   } = useAppSelector((state) => state.popups);
 
   const popupsRef = useRef(null);
@@ -32,6 +34,7 @@ export const Popups = () => {
       {isResetPasswordPopup && <ResetPasswordPopup />}
       {isDeletePostConfirmationPopup && <DeletePostConfirmationPopup />}
       {isAcceptRequestAPostPopup && <AcceptRequestAPostPopup />}
+      {isCreateCategoryPopup && <CreateCategory />}
     </div>
   );
 };

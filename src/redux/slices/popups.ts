@@ -9,6 +9,8 @@ const initialState = {
   isRequestToCreateArticleSentPopup: false,
   isDeletePostConfirmationPopup: false,
   isAcceptRequestAPostPopup: false,
+  isCreateCategoryPopup: false,
+  createCategoryPopupCoordinates: {},
 };
 
 const popups = createSlice({
@@ -39,6 +41,12 @@ const popups = createSlice({
     setIsAcceptRequestAPostPopup(state, action) {
       state.isAcceptRequestAPostPopup = action.payload;
     },
+    setIsCreateCategoryPopup(state, action) {
+      state.isCreateCategoryPopup = action.payload;
+    },
+    setCreateCategoryPopupCoordinates(state, action) {
+      state.createCategoryPopupCoordinates = action.payload;
+    },
   },
 });
 
@@ -51,5 +59,7 @@ export const {
   setIsRequestToCreateArticleSentPopup,
   setIsDeletePostConfirmationPopup,
   setIsAcceptRequestAPostPopup,
+  setIsCreateCategoryPopup,
+  setCreateCategoryPopupCoordinates,
 } = popups.actions;
 export default popups.reducer;
