@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useFirebase} from "hooks/useFirebase";
-import {useAppDispatch} from "hooks/useReduxToolkit";
+import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {Button} from "ui-elements/Button";
 import {PopupShadow} from "ui-elements/PopupShadow";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
@@ -16,7 +16,6 @@ export const DeletePostConfirmationPopup = () => {
   const {getPath} = useAppNavigation();
   const {deletePost, withdrawTheOfferToCreateAnArticle} = useFirebase();
   const postId = getPath().pathArray[getPath().pathArray.length - 1];
-
   const closePopup = () => {
     dispatch(setIsDeletePostConfirmationPopup(false));
   };
@@ -30,9 +29,9 @@ export const DeletePostConfirmationPopup = () => {
           navigate("/dashboard");
         })
         .catch((error) => console.error(error));
-    }
-    if (getPath().pathArray.includes("library")) {
-      deletePost(postId)
+      }
+      if (getPath().pathArray.includes("library")) {
+        deletePost(postId)
         .then(() => {
           console.log("Post is deleted successfully");
           closePopup();
