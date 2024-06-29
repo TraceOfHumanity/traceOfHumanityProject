@@ -15,7 +15,7 @@ import {OnePost} from "pages/Post";
 
 function App() {
   return (
-    <div className="container flex h-screen w-screen flex-auto flex-col overflow-hidden pb-2 md:pb-5">
+    <div className="container flex h-screen w-screen flex-auto flex-col pb-2 md:pb-5">
       <ToastContainer theme="dark" />
       <Header />
       <MusicPlayer />

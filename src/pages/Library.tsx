@@ -32,7 +32,7 @@ export const Library = () => {
   }, [selectedCategory]);
 
   return (
-    <PageWrapper className="relative">
+    <PageWrapper className="relative overflow-hidden">
         <StarsAnimation />
       <TopPanel />
       <div className="flex flex-auto gap-2 overflow-hidden">

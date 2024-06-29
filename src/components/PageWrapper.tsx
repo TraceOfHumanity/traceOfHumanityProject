@@ -14,7 +14,7 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-col overflow-hidden py-2 flex-auto gap-2",
+        "flex flex-col py-2 flex-auto gap-2",
         className,
       )}
     >

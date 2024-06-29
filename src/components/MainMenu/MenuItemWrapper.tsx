@@ -28,7 +28,7 @@ export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
     childrenArray.forEach((child: any) => {
       if (child.tagName === "A") {
         const htmlChild = child as HTMLElement;
-        while (htmlChild.offsetWidth > itemRef.current?.offsetWidth - 55) {
+        while (htmlChild.offsetWidth > itemRef.current?.offsetWidth - 50) {
           htmlChild.style.fontSize = `${
             parseInt(window.getComputedStyle(htmlChild).fontSize) - 1
           }px`;
@@ -45,7 +45,7 @@ export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
 
   return (
     <div
-      className="odd:bg absolute flex w-fit min-w-44 max-w-44 transform items-center gap-2 border-b border-t border-b-opacityBlue border-t-opacityRed bg-gradient-to-l from-opacityBlue01 to-opacityRed01 px-2 py-1 text-xs font-semibold uppercase drop-shadow-xl backdrop-blur-sm md:text-sm lg:py-2 2xl:text-base [&_*]:uppercase"
+      className="odd:bg absolute flex w-fit md:min-w-44 min-w-32 md:max-w-44 max-w-min-w-32 transform items-center gap-2 border-b border-t border-b-opacityBlue border-t-opacityRed bg-gradient-to-l from-opacityBlue01 to-opacityRed01 px-2 py-1 text-xs font-semibold uppercase drop-shadow-xl backdrop-blur-sm md:text-sm lg:py-2 2xl:text-base [&_*]:uppercase"
       ref={itemRef}
     >
       {children}
