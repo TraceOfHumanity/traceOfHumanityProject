@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import {FaCloudUploadAlt} from "react-icons/fa";
 
 import {useFirebase} from "hooks/useFirebase";
+import {usePopup} from "hooks/usePopup";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
 import {TextInput} from "ui-elements/TextInput";
 
 import {setCreatingCategoryValue} from "../../redux/slices/dashboard";
-import { usePopup } from "hooks/usePopup";
 
 interface Coordinators {
   x?: number;
@@ -32,6 +32,7 @@ export const CreateCategory = () => {
     if (category) {
       createCategory(category);
       dispatch(setCreatingCategoryValue(""));
+      closeCreateCategoryPopup();
     }
   };
 
@@ -39,7 +40,7 @@ export const CreateCategory = () => {
     if (closePopup(createCategoryPopupRef, event)) {
       closeCreateCategoryPopup();
     }
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", clickOutside);
