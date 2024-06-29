@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {Outlet} from "react-router-dom";
 
 import {LibraryMenu} from "components/Library/Menu";
-import {Posts} from "components/Library/Posts";
 import {TopPanel} from "components/Library/TopPanel";
 import {PageWrapper} from "components/PageWrapper";
 import {useFirebase} from "hooks/useFirebase";

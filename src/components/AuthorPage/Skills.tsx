@@ -59,7 +59,7 @@ export const Skills = () => {
   return (
     <div className="relative my-36">
       <div className="mx-auto flex aspect-square w-fit items-center justify-center rounded-full p-3 shadow-popupShadow">
-        <h2 ref={titleRef}>Skills</h2>
+        <h2 ref={titleRef}>Tools</h2>
       </div>
 
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
