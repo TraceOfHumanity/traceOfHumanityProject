@@ -25,16 +25,6 @@ export const useAppNavigation = () => {
       icon: SiAlienware,
     },
     {
-      name: "author",
-      link: "/aboutAuthor",
-      icon: SiAlienware,
-    },
-    {
-      name: "author",
-      link: "/aboutAuthor",
-      icon: SiAlienware,
-    },
-    {
       name: `${isLoggedIn ? "logout" : "login"}`,
       onClick: () => {
         if (isLoggedIn) {

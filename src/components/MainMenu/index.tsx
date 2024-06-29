@@ -4,7 +4,6 @@ import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 
 import {setIsOpenGreetingPopup} from "../../redux/slices/popups";
-import {CentralView} from "./CentralView";
 import {MenuWrapper} from "./MenuWrapper";
 import {Navigation} from "./Navigation";
 
@@ -28,7 +27,6 @@ export const MainMenu = () => {
         <MenuWrapper>
           <Navigation />
         </MenuWrapper>
-        {/* <CentralView /> */}
       </div>
     </div>
   );
