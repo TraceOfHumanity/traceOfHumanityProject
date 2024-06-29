@@ -1,3 +1,6 @@
+import {FaSpaceShuttle} from "react-icons/fa";
+import {IoLogIn} from "react-icons/io5";
+import {SiAlienware} from "react-icons/si";
 import {useLocation} from "react-router-dom";
 
 import {setIsLoginPopup} from "../redux/slices/popups";
@@ -14,10 +17,22 @@ export const useAppNavigation = () => {
     {
       name: "explore",
       link: "/library",
+      icon: FaSpaceShuttle,
     },
     {
       name: "author",
       link: "/aboutAuthor",
+      icon: SiAlienware,
+    },
+    {
+      name: "author",
+      link: "/aboutAuthor",
+      icon: SiAlienware,
+    },
+    {
+      name: "author",
+      link: "/aboutAuthor",
+      icon: SiAlienware,
     },
     {
       name: `${isLoggedIn ? "logout" : "login"}`,
@@ -28,6 +43,7 @@ export const useAppNavigation = () => {
           dispatch(setIsLoginPopup(true));
         }
       },
+      icon: IoLogIn,
     },
   ];
 

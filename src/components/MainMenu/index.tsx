@@ -28,7 +28,7 @@ export const MainMenu = () => {
         <MenuWrapper>
           <Navigation />
         </MenuWrapper>
-        <CentralView />
+        {/* <CentralView /> */}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useAppSelector} from "hooks/useReduxToolkit";
+import {cn} from "utils/cn";
 
 import {MenuItemWrapper} from "./MenuItemWrapper";
 
@@ -22,11 +23,14 @@ export const Navigation = () => {
           key={index}
           buttonId={item.name === "login" ? "loginButton" : `${item.name}`}
         >
-          {/* {item.icon} */}
-          {item.name === "explore" && <FaSpaceShuttle />}
-          {item.name === "author" && <SiAlienware />}
-          {item.name === "login" && <IoLogIn />}
-          {item.name === "logout" && <IoLogIn />}
+          <div
+            className={cn(
+              "bg-hexagon absolute top-0 flex aspect-square h-[calc(100%+2px)] items-center justify-center bg-contain bg-center bg-no-repeat",
+              // index % 2 === 0 ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"
+            )}
+          >
+            <item.icon />
+          </div>
           {item.link ? (
             <Link to={item.link}>{item.name}</Link>
           ) : (
@@ -36,11 +40,18 @@ export const Navigation = () => {
       ))}
       {userId === process.env.REACT_APP_TRACE_OF_HUMANITY && (
         <MenuItemWrapper>
-          <MdSpaceDashboard />
+          <div
+            className={cn(
+              "bg-hexagon absolute top-0 flex aspect-square h-[calc(100%+2px)] items-center justify-center bg-contain bg-center bg-no-repeat ",
+              // index % 2 === 0 ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"
+            )}
+          >
+            <MdSpaceDashboard />
+          </div>
           <Link className="relative" to="/dashboard">
             Dashboard
             {requestsToCreateArticles.length > 0 && (
-              <span className="absolute -right-1 top-0 block size-2 rounded-full bg-red animate-ping" />
+              <span className="absolute -right-1 top-0 block size-2 animate-ping rounded-full bg-red" />
             )}
           </Link>
         </MenuItemWrapper>
