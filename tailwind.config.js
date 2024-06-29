@@ -38,9 +38,6 @@ module.exports = {
         dropdownBottom: "url('/public/assets/dropdownListBottom.svg')",
         dropdownTriggerBottom: "url('/public/assets/dropdownTriggerBottom.svg')",
       },
-      backgroundColor: {
-        'radial-gradient': 'radial-gradient(red, var(--mainBg))',
-      },
       keyframes: {
         spin: {
           "0%": {transform: "rotate(0deg)"},
