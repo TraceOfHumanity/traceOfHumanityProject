@@ -22,13 +22,13 @@ export const Header = () => {
     checkAuthorization();
   }, [displayName]);
   return (
-    <div className="bg-headerCenter grid grid-cols-3 items-center gap-2 bg-top bg-no-repeat bg-contain [&>*]:h-full h-10">
+    <div className="bg-headerCenter mb-2 grid grid-cols-3 items-center gap-2 bg-top bg-no-repeat bg-contain [&>*]:h-full h-10">
       <div className="pl-2">
         {isLoggedIn && showGreeting && <p>Hi, {displayName}!</p>}
       </div>
       <div className="flex justify-center py-1">
         <Link className="" to="/">
-          <img className="w-10" src="/logo.svg" alt="" />
+          <img className="w-7" src="/logo.svg" alt="" />
         </Link>
       </div>
       <div className="pr-2 text-end"></div>
