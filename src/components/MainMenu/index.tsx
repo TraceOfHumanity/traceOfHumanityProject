@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 
-import {useFirebase} from "hooks/useFirebase";
-import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+import {useAppDispatch} from "hooks/useReduxToolkit";
 
 import {setIsOpenGreetingPopup} from "../../redux/slices/popups";
 import {MenuWrapper} from "./MenuWrapper";
@@ -9,8 +8,6 @@ import {Navigation} from "./Navigation";
 
 export const MainMenu = () => {
   const dispatch = useAppDispatch();
-  const {userId} = useAppSelector((state) => state.auth);
-  const {getRequestsForArticles} = useFirebase();
 
   useEffect(() => {
     const notFirstVisit = localStorage.getItem("notFirstVisit");

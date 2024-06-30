@@ -1,8 +1,5 @@
 import React from "react";
-import {FaSpaceShuttle} from "react-icons/fa";
-import {IoLogIn} from "react-icons/io5";
 import {MdSpaceDashboard} from "react-icons/md";
-import {SiAlienware} from "react-icons/si";
 import {Link} from "react-router-dom";
 
 import {useAppNavigation} from "hooks/useAppNavigation";

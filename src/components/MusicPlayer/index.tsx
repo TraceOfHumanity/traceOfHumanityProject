@@ -13,7 +13,7 @@ export const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playButtonRef = useRef(null);
   const songs = ["/sounds/ava.mp3", "/sounds/spore.mp3"];
-  const [currentSongIndex, setCurrentSongIndex] = useState(
+  const [currentSongIndex] = useState(
     Math.floor(Math.random() * songs.length),
   );
 

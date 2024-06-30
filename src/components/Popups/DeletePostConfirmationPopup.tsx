@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useFirebase} from "hooks/useFirebase";
-import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
+import {useAppDispatch} from "hooks/useReduxToolkit";
 import {Button} from "ui-elements/Button";
 import {PopupShadow} from "ui-elements/PopupShadow";
 import {PopupWrapper} from "ui-elements/PopupWrapper";

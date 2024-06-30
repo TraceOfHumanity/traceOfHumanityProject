@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlinePostAdd } from "react-icons/md";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { setIsOpenPleaseRegisterPopup } from "../../redux/slices/popups";
 import { Navigation } from "./Navigation";

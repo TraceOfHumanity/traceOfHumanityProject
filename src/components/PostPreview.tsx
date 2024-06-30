@@ -3,9 +3,7 @@ import {FaEye} from "react-icons/fa";
 import Markdown from "react-markdown";
 import {Link} from "react-router-dom";
 
-import {useAppSelector} from "hooks/useReduxToolkit";
 import {SimpleLoader} from "ui-elements/SimpleLoader";
-import { PostActions } from "./PostActions";
 
 interface IPostPreviewProps {
   id: string;
@@ -67,7 +65,6 @@ export const PostPreview: FC<IPostPreviewProps> = ({
         </Link>
 
         <div className="mt-auto !flex justify-between gap-2">
-          {/* <span className="mr-2">{likes} Likes</span> */}
           <span className="flex items-center gap-1">
             <FaEye />
             {views}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {FaEye} from "react-icons/fa";
 import Markdown from "react-markdown";
 
@@ -7,8 +7,9 @@ import {StarsAnimation} from "components/StarsAnimation";
 import {useAppNavigation} from "hooks/useAppNavigation";
 import {useFirebase} from "hooks/useFirebase";
 import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
-import {setSelectedPost} from "../redux/slices/library";
 import {cn} from "utils/cn";
+
+import {setSelectedPost} from "../redux/slices/library";
 
 export const OnePost = () => {
   const dispatch = useAppDispatch();
