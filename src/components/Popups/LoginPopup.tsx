@@ -57,11 +57,11 @@ export const LoginPopup = () => {
       >
         Reset password <TbPasswordFingerprint />
       </Button>
-      <p className="or">-- or --</p>
+      <p className="text-center">-- or --</p>
       <Button onClick={signInWithGoogle}>
         Login with Google <FcGoogle />
       </Button>
-      <p>
+      <p className="text-center">
         Don't have an account?{" "}
         <button
           onClick={() => {

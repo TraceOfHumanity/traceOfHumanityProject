@@ -60,7 +60,7 @@ export const RegistrationPopup = () => {
           </Button>
         </form>
 
-        <p>
+        <p className="text-center">
           Already have an account?
           <button
             onClick={() => {
