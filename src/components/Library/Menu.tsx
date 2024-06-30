@@ -47,7 +47,6 @@ export const LibraryMenu = () => {
         className="rounded border border-opacityBlue bg-mainBg p-1 lg:hidden"
         onClick={() => {
           setIsOpenMenu(!isOpenMenu);
-          // document.body.style.overflow = "hidden";
         }}
       >
         <IoMenu />
@@ -60,7 +59,6 @@ export const LibraryMenu = () => {
               className="rounded border border-opacityBlue bg-mainBg p-1 lg:hidden"
               onClick={() => {
                 setIsOpenMenu(false);
-                // document.body.style.overflow = "auto";
               }}
             >
               <IoMdClose />

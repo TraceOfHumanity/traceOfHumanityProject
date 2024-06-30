@@ -26,7 +26,6 @@ export const Navigation = () => {
           <div
             className={cn(
               "bg-hexagon absolute top-0 flex aspect-square h-[calc(100%+2px)] items-center justify-center bg-contain bg-center bg-no-repeat",
-              // index % 2 === 0 ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"
             )}
           >
             <item.icon />
@@ -43,7 +42,6 @@ export const Navigation = () => {
           <div
             className={cn(
               "bg-hexagon absolute top-0 flex aspect-square h-[calc(100%+2px)] items-center justify-center bg-contain bg-center bg-no-repeat ",
-              // index % 2 === 0 ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"
             )}
           >
             <MdSpaceDashboard />

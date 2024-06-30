@@ -7,8 +7,6 @@ import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {setIsPlaying} from "../../redux/slices/audioPlayer";
 import {Equalizer} from "./Equalizer";
 
-// import styles from "./player.module.scss";
-
 export const MusicPlayer = () => {
   const dispatch = useAppDispatch();
   const isPlaying = useAppSelector((state) => state.audioPlayer.isPlaying);
@@ -44,8 +42,6 @@ export const MusicPlayer = () => {
           duration: 5,
           repeat: -1,
           yoyo: true,
-          // delay: 10,
-          // repeatDelay: 5,
           ease: "elastic.out(1, 0.3)",
         },
       );
@@ -60,7 +56,6 @@ export const MusicPlayer = () => {
       <audio src={songs[currentSongIndex]} ref={audioRef} loop></audio>
       <div className="flex aspect-square items-center justify-center text-2xl">
         <button onClick={() => togglePlayPause()} ref={playButtonRef}>
-          {/* {isPlaying ? <MdMusicOff /> : <MdMusicNote />} */}
           {isPlaying ? <Equalizer /> : <MdMusicNote />}
         </button>
       </div>

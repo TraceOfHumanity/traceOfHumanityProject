@@ -37,7 +37,7 @@ export const AuthorBG = () => {
       <Canvas>
         <Suspense fallback={null}>
           <Camera />
-          {/* <OrbitControls /> */}
+          <OrbitControls />
           <mesh
             rotation={[0, 0, 0]}
             position={[0.73, 1.17, -0.9]}
@@ -77,7 +77,6 @@ export const AuthorBG = () => {
             shadow-bias={-0.0001}
           />
           <Avatar />
-          {/* <Avatar /> */}
           <OfficeChair />
           <Desk />
           <Monitor />
@@ -114,10 +113,6 @@ export const AuthorBG = () => {
           backgroundColor: "transparent",
         }}
       />
-      {/* <div
-        className="pointer-events-none fixed bottom-0 right-0 z-10 h-[30vh] w-[30vw] bg-contain bg-right-bottom bg-no-repeat opacity-15"
-        style={{backgroundImage: "url(/assets/electronicBg.svg)"}}
-      ></div> */}
     </div>
   );
 };

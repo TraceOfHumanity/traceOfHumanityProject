@@ -37,7 +37,6 @@ interface IAuth {
 export const useAuth = () => {
   const dispatch = useAppDispatch();
   const provider = new GoogleAuthProvider();
-  // const [displayName, setDisplayName] = useState("");
   const [displayName, setDisplayName] = useState<string>("");
 
   const registerUser: IAuth["registerUser"] = (
@@ -55,7 +54,6 @@ export const useAuth = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        // console.log(user);
         dispatch(setIsLoading(false));
         toast.success("Registration success");
         dispatch(setIsRegistrationPopup(false));

@@ -1,6 +1,4 @@
 import React from "react";
-// import styles from "./player.module.scss";
-
 export const Equalizer = () => {
   return (
     <svg

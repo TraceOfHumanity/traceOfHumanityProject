@@ -104,11 +104,9 @@ export const useFirebase = () => {
   const getOnePost: IFirebase["getOnePost"] = async (id, fromDashboard) => {
     const postRef = doc(db, "posts", id);
     const postFromRequestToCreateRef = doc(db, "articleCreationRequest", id);
-    // const post = await getDoc(postRef);
     const post = await getDoc(
       fromDashboard ? postFromRequestToCreateRef : postRef,
     );
-    // return post.data();
     return {...post.data(), id: post.id};
   };
 
