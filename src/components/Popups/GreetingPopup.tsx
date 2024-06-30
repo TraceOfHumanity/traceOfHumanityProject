@@ -12,7 +12,7 @@ export const GreetingPopup = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+    <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform fixed">
       <header>
         <h2>{greetingPopupText.title}</h2>
         <button

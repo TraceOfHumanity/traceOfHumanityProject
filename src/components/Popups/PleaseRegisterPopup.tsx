@@ -13,7 +13,7 @@ export const PleaseRegister = () => {
   const navigate = useNavigate();
 
   return (
-    <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+    <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform fixed">
       <header>
         <button
           onClick={() => {
@@ -25,8 +25,8 @@ export const PleaseRegister = () => {
           <IoMdClose />
         </button>
       </header>
-      <h2>important info!</h2>
-      <p>Only authorized users can request the creation of a new article!</p>
+      <h2>Important info!</h2>
+      <p className="text-center">Only authorized users can request the creation of a new article!</p>
     </PopupWrapper>
   );
 };

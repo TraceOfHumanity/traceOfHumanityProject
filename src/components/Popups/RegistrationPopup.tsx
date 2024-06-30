@@ -22,7 +22,7 @@ export const RegistrationPopup = () => {
 
   return (
     <div>
-      <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+      <PopupWrapper className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform fixed">
         <header>
           <button
             className="closePopup"
