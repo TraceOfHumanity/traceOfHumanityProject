@@ -3,12 +3,12 @@ import React, {useRef} from "react";
 
 import {useAnimation} from "hooks/useAnimation";
 import {PopupWrapper} from "ui-elements/PopupWrapper";
-import {greetingAuthorText, skillsList} from "utils/textData";
+import {greetingAuthorText} from "utils/textData";
 
 import {Skills} from "./Skills";
 
 export const AuthorContent = () => {
-  const {generatingTitleAnimation, sideDropAnimation} = useAnimation();
+  const {generatingTitleAnimation} = useAnimation();
   const descriptionsRef = useRef<Array<HTMLParagraphElement | null>>([]);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
 
