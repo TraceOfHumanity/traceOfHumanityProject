@@ -1,4 +1,4 @@
-import {FaSpaceShuttle} from "react-icons/fa";
+import {FaLock, FaSpaceShuttle} from "react-icons/fa";
 import {IoLogIn} from "react-icons/io5";
 import {SiAlienware} from "react-icons/si";
 import {useLocation} from "react-router-dom";
@@ -20,26 +20,6 @@ export const useAppNavigation = () => {
       icon: FaSpaceShuttle,
     },
     {
-      name: "author",
-      link: "/aboutAuthor",
-      icon: SiAlienware,
-    },
-    {
-      name: "author",
-      link: "/aboutAuthor",
-      icon: SiAlienware,
-    },
-    {
-      name: "author",
-      link: "/aboutAuthor",
-      icon: SiAlienware,
-    },
-    {
-      name: "author",
-      link: "/aboutAuthor",
-      icon: SiAlienware,
-    },
-    {
       name: `${isLoggedIn ? "logout" : "login"}`,
       onClick: () => {
         if (isLoggedIn) {
@@ -50,6 +30,30 @@ export const useAppNavigation = () => {
       },
       icon: IoLogIn,
     },
+    {
+      name: "author",
+      link: "/aboutAuthor",
+      icon: SiAlienware,
+    },
+    {
+      name: "locked",
+      // link: "/",
+      icon: FaLock
+      ,
+    },
+    {
+      name: "locked",
+      // link: "/",
+      icon: FaLock
+      ,
+    },
+    {
+      name: "locked",
+      // link: "/",
+      icon: FaLock
+      ,
+    },
+
   ];
 
   const getPath = () => {
