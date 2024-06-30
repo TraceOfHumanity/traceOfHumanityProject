@@ -10,16 +10,6 @@ import {useAppDispatch, useAppSelector} from "hooks/useReduxToolkit";
 import {setSelectedPost} from "../redux/slices/library";
 import {cn} from "utils/cn";
 
-interface Post {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  likes: number;
-  views: number;
-  categories: string[];
-}
-
 export const OnePost = () => {
   const dispatch = useAppDispatch();
   const {getOnePost, updatePost} = useFirebase();
@@ -34,14 +24,12 @@ export const OnePost = () => {
     if (pathArray.includes("dashboard")) {
       getOnePost(postId, true)
         .then((post) => {
-          // setPost(post);
           dispatch(setSelectedPost(post));
         })
         .catch((error) => console.error(error));
     } else {
       getOnePost(postId)
         .then((post) => {
-          // setPost(post);
           dispatch(setSelectedPost(post));
           updatePost(postId, {views: post.views + 1});
         })
@@ -50,7 +38,7 @@ export const OnePost = () => {
   }, []);
 
   if (!selectedPost) {
-    return <div>Loading...</div>; // Add a loading state or placeholder
+    return <div>Loading...</div>;
   }
 
   return (

@@ -37,19 +37,16 @@ export const useAppNavigation = () => {
     },
     {
       name: "locked",
-      // link: "/",
       icon: FaLock
       ,
     },
     {
       name: "locked",
-      // link: "/",
       icon: FaLock
       ,
     },
     {
       name: "locked",
-      // link: "/",
       icon: FaLock
       ,
     },

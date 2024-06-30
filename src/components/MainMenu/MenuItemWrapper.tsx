@@ -6,7 +6,6 @@ import {useAppSelector} from "hooks/useReduxToolkit";
 interface MenuItemWrapperProps {
   children: React.ReactNode | any;
   buttonId?: string;
-  // icon?: iconType
 }
 
 export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
@@ -22,7 +21,6 @@ export const MenuItemWrapper: React.FC<MenuItemWrapperProps> = ({
   );
 
   useEffect(() => {
-    // const childrenArray = Array.from(itemRef.current.children);
     const childrenArray = Array.from(itemRef.current?.children || []);
 
     childrenArray.forEach((child: any) => {

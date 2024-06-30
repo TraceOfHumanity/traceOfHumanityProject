@@ -17,21 +17,18 @@ export function Desk(props: any) {
       position={[0, 0, -0.65]}
     >
       <mesh
-        // geometry={nodes.Cube001_Cube002.geometry}
         geometry={(nodes.Cube001_Cube002 as THREE.Mesh).geometry}
         material={materials.Desk}
         position={[0, 0.15, 0]}
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh
-        // geometry={nodes.Cube002_Cube003.geometry}
         geometry={(nodes.Cube002_Cube003 as THREE.Mesh).geometry}
         material={materials.Desk}
         position={[0, 0.15, 0]}
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh
-        // geometry={nodes.Cube_Cube001.geometry}
         geometry={(nodes.Cube_Cube001 as THREE.Mesh).geometry}
         material={materials.Desk}
         position={[0, 0.15, 0]}

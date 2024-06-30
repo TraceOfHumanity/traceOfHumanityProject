@@ -40,7 +40,6 @@ export const skillsList = [
       "TailwindCSS",
       "JS/TS",
       "React",
-      // "React Native",
       "Next.JS",
       "Redux Toolkit",
       "Three.JS",

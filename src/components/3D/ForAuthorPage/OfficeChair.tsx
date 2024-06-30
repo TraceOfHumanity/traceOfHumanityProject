@@ -16,14 +16,12 @@ export function OfficeChair(props: any) {
       position={[0, 0, -0.1]}
     >
       <mesh
-        // geometry={nodes.Chair.geometry}
         geometry={(nodes.Chair as THREE.Mesh).geometry}
         material={materials.Chair}
         position={[0, 1.243, 0]}
         scale={[0.75, 0.152, 0.75]}
       >
         <mesh
-          // geometry={nodes.BezierCurve001.geometry}
           geometry={(nodes.BezierCurve001 as THREE.Mesh).geometry}
           material={materials.Metal}
           position={[0, -1.453, -0.231]}
@@ -31,7 +29,6 @@ export function OfficeChair(props: any) {
           scale={[0.85, 4.204, 0.85]}
         />
         <mesh
-          // geometry={nodes.Cube069.geometry}
           geometry={(nodes.Cube069 as THREE.Mesh).geometry}
           material={materials.Chair}
           position={[1.147, 4.909, 0]}
@@ -39,12 +36,10 @@ export function OfficeChair(props: any) {
         />
         <group position={[0, -1.021, 0]} scale={[0.234, 0.752, 0.234]}>
           <mesh
-            // geometry={nodes.Cylinder000.geometry}
             geometry={(nodes.Cylinder000 as THREE.Mesh).geometry}
             material={materials["Steel Black Polished"]}
           />
           <mesh
-            // geometry={nodes.Cylinder000_1.geometry}
             geometry={(nodes.Cylinder000_1 as THREE.Mesh).geometry}
             material={materials["Steel White"]}
           />

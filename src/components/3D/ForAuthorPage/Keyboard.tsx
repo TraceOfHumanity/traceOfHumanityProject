@@ -19,31 +19,26 @@ export function Keyboard(props: any) {
     >
       <group position={[0, 0.248, 0]} scale={[0.952, 0.035, 0.392]}>
         <mesh
-          // geometry={nodes.Cube003.geometry}
           geometry={(nodes.Cube003 as THREE.Mesh).geometry}
           material={materials.Key}
         />
         <mesh
-          // geometry={nodes.Cube003_1.geometry}
           geometry={(nodes.Cube003_1 as THREE.Mesh).geometry}
-          // material={nodes.Cube003_1.material}
           material={materials.Key}
         />
-        <mesh 
-        // geometry={nodes.Cube003_2.geometry} 
-        geometry={(nodes.Cube003_2 as THREE.Mesh).geometry}
-        material={materials.Laser} />
         <mesh
-          // geometry={nodes.Cube003_3.geometry}
+          geometry={(nodes.Cube003_2 as THREE.Mesh).geometry}
+          material={materials.Laser}
+        />
+        <mesh
           geometry={(nodes.Cube003_3 as THREE.Mesh).geometry}
           material={materials.LobangCas}
         />
-        <mesh 
-        // geometry={nodes.Cube003_4.geometry} 
-        geometry={(nodes.Cube003_4 as THREE.Mesh).geometry}
-        material={materials.Hjau} />
         <mesh
-          // geometry={nodes.Cube003_5.geometry}
+          geometry={(nodes.Cube003_4 as THREE.Mesh).geometry}
+          material={materials.Hjau}
+        />
+        <mesh
           geometry={(nodes.Cube003_5 as THREE.Mesh).geometry}
           material={materials.TextKey}
         />
