@@ -10,6 +10,7 @@ import {LoginPopup} from "./LoginPopup";
 import {PleaseRegister} from "./PleaseRegisterPopup";
 import {RegistrationPopup} from "./RegistrationPopup";
 import {ResetPasswordPopup} from "./ResetPasswordPopup";
+import { RequestToCreateArticleSentPopup } from "./RequestToCreateArticleSentPopup";
 
 export const Popups = () => {
   const {
@@ -21,6 +22,7 @@ export const Popups = () => {
     isDeletePostConfirmationPopup,
     isAcceptRequestAPostPopup,
     isCreateCategoryPopup,
+    isRequestToCreateArticleSentPopup
   } = useAppSelector((state) => state.popups);
 
   const popupsRef = useRef(null);
@@ -35,6 +37,7 @@ export const Popups = () => {
       {isDeletePostConfirmationPopup && <DeletePostConfirmationPopup />}
       {isAcceptRequestAPostPopup && <AcceptRequestAPostPopup />}
       {isCreateCategoryPopup && <CreateCategory />}
+      {isRequestToCreateArticleSentPopup && <RequestToCreateArticleSentPopup />}
     </div>
   );
 };

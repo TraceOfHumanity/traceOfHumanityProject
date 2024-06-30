@@ -24,6 +24,7 @@ import {
   setPosts,
   setSelectedPost,
 } from "../../redux/slices/library";
+import { setIsRequestToCreateArticleSentPopup } from "../../redux/slices/popups";
 
 type ToolbarButton =
   | "bold"
@@ -122,25 +123,6 @@ export const Form = () => {
             })
             .catch((error) => console.error(error));
         }
-        // createPost(
-        //   newArticle.title,
-        //   newArticle.description,
-        //   newArticle.imageUrl,
-        //   newArticle.createdAt,
-        //   newArticle.categories,
-        //   newArticle.views,
-        // )
-        //   .then(() => {
-        //     dispatch(setTitle(""));
-        //     dispatch(setDescription(""));
-        //     dispatch(setImageUrl(""));
-        //     dispatch(setCategories([]));
-        //     dispatch(setPosts([]));
-        //     dispatch(setLastPost(null));
-        //     dispatch(setHasMorePosts(true));
-        //     navigate("/library");
-        //   })
-        //   .catch((error) => console.error(error));
       } else {
         createArticleCreationRequest(
           newArticle.title,
@@ -158,6 +140,7 @@ export const Form = () => {
             dispatch(setPosts([]));
             dispatch(setLastPost(null));
             dispatch(setHasMorePosts(true));
+            dispatch(setIsRequestToCreateArticleSentPopup(true));
             navigate("/library");
           })
           .catch((error) => console.error(error));
